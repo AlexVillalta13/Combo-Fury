@@ -2416,6 +2416,9 @@ GameObject:
   - component: {fileID: 1013728465}
   - component: {fileID: 1013728466}
   - component: {fileID: 1013728467}
+  - component: {fileID: 1013728469}
+  - component: {fileID: 1013728468}
+  - component: {fileID: 1013728470}
   m_Layer: 5
   m_Name: Combat Bar
   m_TagString: Untagged
@@ -2476,7 +2479,10 @@ MonoBehaviour:
   touchBrickEventsHolder: {fileID: 11400000, guid: f6379521581245248af5ce73dcc16d7b,
     type: 2}
   pointerVelocity: 80
-  timeToSpawnBrick: 1
+  minTimeToSpawnBrick: 3
+  maxTimeSpawnBrick: 6
+  timeToSpawnBrick: 5
+  timerSpawn: 0
 --- !u!114 &1013728466
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2517,13 +2523,97 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eb953a8383db9fc45943e75de88733bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameEvent: {fileID: 11400000, guid: b93ea829a2000ff4fa69ee6f07b66422, type: 2}
+  unityEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1013728465}
+        m_TargetAssemblyTypeName: CombatBarUI, Assembly-CSharp
+        m_MethodName: RedBrickTestEvents
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &1013728468
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1013728462}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb953a8383db9fc45943e75de88733bb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameEvent: {fileID: 11400000, guid: 403b091fd373d4542966b380d66ed322, type: 2}
+  unityEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1013728465}
+        m_TargetAssemblyTypeName: CombatBarUI, Assembly-CSharp
+        m_MethodName: GreenBrickTestEvents
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &1013728469
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1013728462}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb953a8383db9fc45943e75de88733bb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
   gameEvent: {fileID: 11400000, guid: 8fbfd50eed217fd4cbd98b8332f32acd, type: 2}
   unityEvent:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1013728465}
         m_TargetAssemblyTypeName: CombatBarUI, Assembly-CSharp
-        m_MethodName: TestEvents
+        m_MethodName: YellowBrickTestEvents
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &1013728470
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1013728462}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb953a8383db9fc45943e75de88733bb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameEvent: {fileID: 11400000, guid: 7b69516682cede549a5492150fc926bb, type: 2}
+  unityEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1013728465}
+        m_TargetAssemblyTypeName: CombatBarUI, Assembly-CSharp
+        m_MethodName: PlayerGetsHitTestEvents
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

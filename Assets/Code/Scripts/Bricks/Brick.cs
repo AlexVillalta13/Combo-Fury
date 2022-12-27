@@ -5,8 +5,8 @@ using UnityEngine.UIElements;
 
 public class Brick
 {
-    TouchBrickEventsSO brickEventsHolder;
-    VisualElement brickElementAttached;
+    protected TouchBrickEventsSO brickEventsHolder;
+    protected VisualElement brickElementAttached;
 
     public Brick(VisualElement UIElement, TouchBrickEventsSO brickEventsHolder)
     {
@@ -14,10 +14,14 @@ public class Brick
         this.brickEventsHolder = brickEventsHolder;
     }
 
-    public void EffectWithTouch()
+    public virtual void EffectWithTouch()
     {
-        brickEventsHolder.GetPlayerAttackEvent().Raise();
-        brickElementAttached.RemoveFromHierarchy();
+
+    }
+
+    public VisualElement GetBrickElementAttached()
+    {
+        return brickElementAttached;
     }
 }
 public class RedBrick : Brick
@@ -27,8 +31,41 @@ public class RedBrick : Brick
 
     }
 
-    //public void EffectWithTouch()
-    //{
-    //    base.EffectWithTouch();
-    //}
+    public override void EffectWithTouch()
+    {
+        base.EffectWithTouch();
+
+        brickEventsHolder.GetPlayerBlockEvent().Raise();
+        brickElementAttached.RemoveFromHierarchy();
+    }
+}
+public class GreenBrick : Brick
+{
+    public GreenBrick(VisualElement UIElement, TouchBrickEventsSO brickEventsHolder) : base(UIElement, brickEventsHolder)
+    {
+
+    }
+
+    public override void EffectWithTouch()
+    {
+        base.EffectWithTouch();
+
+        brickEventsHolder.GetPlayerCriticalAttackEvent().Raise();
+        brickElementAttached.RemoveFromHierarchy();
+    }
+}
+public class YellowBrick : Brick
+{
+    public YellowBrick(VisualElement UIElement, TouchBrickEventsSO brickEventsHolder) : base(UIElement, brickEventsHolder)
+    {
+
+    }
+
+    public override void EffectWithTouch()
+    {
+        base.EffectWithTouch();
+
+        brickEventsHolder.GetPlayerAttackEvent().Raise();
+        brickElementAttached.RemoveFromHierarchy();
+    }
 }

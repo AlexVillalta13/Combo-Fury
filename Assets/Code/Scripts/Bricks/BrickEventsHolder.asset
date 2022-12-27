@@ -13,5 +13,7 @@ MonoBehaviour:
   m_Name: BrickEventsHolder
   m_EditorClassIdentifier: 
   playerAttackEvent: {fileID: 11400000, guid: 8fbfd50eed217fd4cbd98b8332f32acd, type: 2}
+  playerCriticalAttackEvent: {fileID: 11400000, guid: 403b091fd373d4542966b380d66ed322,
+    type: 2}
   playerBlockEvent: {fileID: 11400000, guid: b93ea829a2000ff4fa69ee6f07b66422, type: 2}
   playerIsHitEvent: {fileID: 11400000, guid: 7b69516682cede549a5492150fc926bb, type: 2}

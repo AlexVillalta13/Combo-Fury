@@ -9,7 +9,9 @@ public class CombatBarUI : MonoBehaviour
     VisualElement pointerCombatBar;
     UIDocument combatBarDocument;
     VisualElement enemyBricksElement;
+    const string enemyUSSClassName = "enemyBrick";
     VisualElement playerBrickElement;
+    const string playerUSSClassName = "playerBrick";
 
     [SerializeField] VisualTreeAsset yellowBrick;
     [SerializeField] VisualTreeAsset greenBrick;
@@ -23,8 +25,8 @@ public class CombatBarUI : MonoBehaviour
 
     [SerializeField] float minTimeToSpawnBrick = 3f;
     [SerializeField] float maxTimeSpawnBrick = 6f;
-    float timeToSpawnBrick = 5f;
-    float timerSpawn = 0f;
+    [SerializeField] float timeToSpawnBrick = 5f;
+    [SerializeField] float timerSpawn = 0f;
 
     private void Awake()
     {
@@ -46,42 +48,43 @@ public class CombatBarUI : MonoBehaviour
             timerSpawn = 0f;
             timeToSpawnBrick = UnityEngine.Random.Range(minTimeToSpawnBrick, maxTimeSpawnBrick);
 
-            int randomBrickNumber = UnityEngine.Random.Range(0, 2);
+            // TO DO: RANDOM SPAWN SYSTEM
+
+            int randomBrickNumber = UnityEngine.Random.Range(0, 3);
             if(randomBrickNumber == 0)
             {
-                SpawnBrick();
+                SpawnBrick(new RedBrick(redBrick.Instantiate(), touchBrickEventsHolder), enemyBricksElement, enemyUSSClassName);
             }
             else if(randomBrickNumber == 1)
             {
-
+                SpawnBrick(new GreenBrick(greenBrick.Instantiate(), touchBrickEventsHolder), playerBrickElement, playerUSSClassName);
             }
             else if(randomBrickNumber == 2)
             {
-
+                SpawnBrick(new YellowBrick(yellowBrick.Instantiate(), touchBrickEventsHolder), playerBrickElement, playerUSSClassName);
             }
         }
     }
 
-    private void SpawnBrick()
+    private void SpawnBrick(Brick brickScriptToSpawn, VisualElement visualElementToParentWith, string className)
     {
-        TemplateContainer brickToAdd = redBrick.Instantiate();
-        brickToAdd.style.visibility = Visibility.Hidden;
-        enemyBricksElement.Add(brickToAdd);
-        brickToAdd.AddToClassList("enemyBrick");
-        brickToAdd.style.position = Position.Absolute;
-
-        StartCoroutine(SpawnBrickCoroutine(brickToAdd));
+        StartCoroutine(SpawnBrickCoroutine(brickScriptToSpawn, brickScriptToSpawn.GetBrickElementAttached(), visualElementToParentWith, className));
     }
 
-    private IEnumerator SpawnBrickCoroutine(TemplateContainer brickToAdd)
+    private IEnumerator SpawnBrickCoroutine(Brick brickScriptToSpawn, VisualElement brickVisualElementToAdd, VisualElement visualElementToParentWith, string className)
     {
+        brickVisualElementToAdd.style.visibility = Visibility.Hidden;
+        visualElementToParentWith.Add(brickVisualElementToAdd);
+        brickVisualElementToAdd.AddToClassList(className);
+        brickVisualElementToAdd.style.position = Position.Absolute;
+
         yield return new WaitForEndOfFrame();
 
-        brickToAdd.style.visibility = Visibility.Visible;
+        brickVisualElementToAdd.style.visibility = Visibility.Visible;
 
-        brickToAdd.style.left = UnityEngine.Random.Range(enemyBricksElement.resolvedStyle.left, enemyBricksElement.resolvedStyle.left + enemyBricksElement.resolvedStyle.width - brickToAdd.resolvedStyle.width);
+        brickVisualElementToAdd.style.left = UnityEngine.Random.Range(visualElementToParentWith.resolvedStyle.left, visualElementToParentWith.resolvedStyle.left + visualElementToParentWith.resolvedStyle.width - brickVisualElementToAdd.resolvedStyle.width);
 
-        bricksInBarDict.Add(brickToAdd, new RedBrick(brickToAdd, touchBrickEventsHolder));
+        bricksInBarDict.Add(brickVisualElementToAdd, brickScriptToSpawn);
     }
 
     private void MovePointer()
@@ -155,5 +158,9 @@ public class CombatBarUI : MonoBehaviour
     public void GreenBrickTestEvents()
     {
         Debug.Log("Green Brick: Event send");
+    }
+    public void PlayerGetsHitTestEvents()
+    {
+        Debug.Log("Player gets hit: Event send");
     }
 }
