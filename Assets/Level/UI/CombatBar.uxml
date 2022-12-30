@@ -1,6 +1,5 @@
 <ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
     <Style src="project://database/Assets/Level/UI/Classes/CombatBarUIClasses.uss?fileID=7433441132597879392&amp;guid=5fa1baaeb8a4759478e2db747c99efb9&amp;type=3#CombatBarUIClasses" />
-    <ui:VisualElement style="flex-grow: 1;" />
     <ui:VisualElement name="HolderCombatBar" style="height: 456px; align-items: center; justify-content: center;">
         <ui:VisualElement name="CombatBar" style="width: 815px; height: 156px; background-color: rgb(255, 144, 0); flex-direction: row; align-items: center;">
             <ui:VisualElement name="PlayerAttacks" style="flex-grow: 1; height: 108px; position: absolute; width: 100%; flex-direction: row;" />

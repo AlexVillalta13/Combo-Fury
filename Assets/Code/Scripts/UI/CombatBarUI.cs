@@ -6,34 +6,43 @@ using UnityEngine.UIElements;
 
 public class CombatBarUI : MonoBehaviour
 {
-    VisualElement pointerCombatBar;
-    UIDocument combatBarDocument;
-    VisualElement enemyBricksElement;
+    // string references
+    const string pointerCombarBarReferfence = "PointerCombatBar";
+    const string enemyBricksElementReference = "EnemyAttacks";
+    const string playerBrickElementReference = "PlayerAttacks";
     const string enemyUSSClassName = "enemyBrick";
-    VisualElement playerBrickElement;
     const string playerUSSClassName = "playerBrick";
 
+    UIDocument combatBarDocument;
+    // visual elements references
+    VisualElement pointerCombatBar;
+    VisualElement enemyBricksElement;
+    VisualElement playerBrickElement;
+
+    [Header("Brick UI Assets")]
     [SerializeField] VisualTreeAsset yellowBrick;
     [SerializeField] VisualTreeAsset greenBrick;
     [SerializeField] VisualTreeAsset redBrick;
     Dictionary<VisualElement, Brick> bricksInBarDict = new Dictionary<VisualElement, Brick>();
 
-    [SerializeField] TouchBrickEventsSO touchBrickEventsHolder;
-
     float pointerPercentPosition = 0f;
+    [Header("Combat Bar Stats")]
     [SerializeField] float pointerVelocity = 80f;
 
     [SerializeField] float minTimeToSpawnBrick = 3f;
     [SerializeField] float maxTimeSpawnBrick = 6f;
     [SerializeField] float timeToSpawnBrick = 5f;
     [SerializeField] float timerSpawn = 0f;
+    [Header("Events")]
+    [SerializeField] TouchBrickEventsSO touchBrickEventsHolder;
+
 
     private void Awake()
     {
         combatBarDocument = GetComponent<UIDocument>();
-        pointerCombatBar = combatBarDocument.rootVisualElement.Query<VisualElement>("PointerCombatBar");
-        enemyBricksElement = combatBarDocument.rootVisualElement.Query<VisualElement>("EnemyAttacks");
-        playerBrickElement = combatBarDocument.rootVisualElement.Query<VisualElement>("PlayerAttacks");
+        pointerCombatBar = combatBarDocument.rootVisualElement.Query<VisualElement>(pointerCombarBarReferfence);
+        enemyBricksElement = combatBarDocument.rootVisualElement.Query<VisualElement>(enemyBricksElementReference);
+        playerBrickElement = combatBarDocument.rootVisualElement.Query<VisualElement>(playerBrickElementReference);
 
         timeToSpawnBrick = UnityEngine.Random.Range(minTimeToSpawnBrick, maxTimeSpawnBrick);
     }
@@ -108,9 +117,9 @@ public class CombatBarUI : MonoBehaviour
     {
         float pointerPos = pointerCombatBar.resolvedStyle.left + pointerCombatBar.resolvedStyle.width/2f;
         List<VisualElement> enemyBricksList = new List<VisualElement>();
-        enemyBricksList = enemyBricksElement.Query<VisualElement>(className: "enemyBrick").ToList();
+        enemyBricksList = enemyBricksElement.Query<VisualElement>(className: enemyUSSClassName).ToList();
         List<VisualElement> playerBricksList = new List<VisualElement>();
-        playerBricksList = playerBrickElement.Query<VisualElement>(className: "playerBrick").ToList();
+        playerBricksList = playerBrickElement.Query<VisualElement>(className: playerUSSClassName).ToList();
         List<VisualElement> bricksInPosition = new List<VisualElement>();
         foreach (VisualElement element in enemyBricksList)
         {
