@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UIElements;
 
-public class CombatBarUI : MonoBehaviour
+public class CombatBarUI : GameplayUIElement
 {
     // string references
     const string pointerCombarBarReferfence = "PointerCombatBar";
@@ -13,7 +13,7 @@ public class CombatBarUI : MonoBehaviour
     const string enemyUSSClassName = "enemyBrick";
     const string playerUSSClassName = "playerBrick";
 
-    UIDocument combatBarDocument;
+    //UIDocument combatBarDocument;
     // visual elements references
     VisualElement pointerCombatBar;
     VisualElement enemyBricksElement;
@@ -33,18 +33,24 @@ public class CombatBarUI : MonoBehaviour
     [SerializeField] float maxTimeSpawnBrick = 6f;
     [SerializeField] float timeToSpawnBrick = 5f;
     [SerializeField] float timerSpawn = 0f;
-    [Header("Events")]
+    [Header("Touch Event")]
     [SerializeField] TouchBrickEventsSO touchBrickEventsHolder;
 
 
-    private void Awake()
+    public override void Awake()
     {
-        combatBarDocument = GetComponent<UIDocument>();
-        pointerCombatBar = combatBarDocument.rootVisualElement.Query<VisualElement>(pointerCombarBarReferfence);
-        enemyBricksElement = combatBarDocument.rootVisualElement.Query<VisualElement>(enemyBricksElementReference);
-        playerBrickElement = combatBarDocument.rootVisualElement.Query<VisualElement>(playerBrickElementReference);
+        //combatBarDocument = GetComponent<UIDocument>();
+        base.Awake();
 
         timeToSpawnBrick = UnityEngine.Random.Range(minTimeToSpawnBrick, maxTimeSpawnBrick);
+    }
+
+    public override void SetElementsReferences()
+    {
+        base.SetElementsReferences();
+        pointerCombatBar = m_UIElement.Query<VisualElement>(pointerCombarBarReferfence);
+        enemyBricksElement = m_UIElement.Query<VisualElement>(enemyBricksElementReference);
+        playerBrickElement = m_UIElement.Query<VisualElement>(playerBrickElementReference);
     }
 
     void Update()

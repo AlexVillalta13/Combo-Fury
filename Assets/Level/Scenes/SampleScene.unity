@@ -2525,7 +2525,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1013728464}
-  - component: {fileID: 1013728463}
   - component: {fileID: 1013728465}
   - component: {fileID: 1013728466}
   - component: {fileID: 1013728467}
@@ -2539,23 +2538,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1013728463
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1013728462}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 19102, guid: 0000000000000000e000000000000000, type: 0}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_PanelSettings: {fileID: 11400000, guid: 1015da28e1348e54798e31265af04083, type: 2}
-  m_ParentUI: {fileID: 0}
-  sourceAsset: {fileID: 9197481963319205126, guid: bc31febbddacc444d8bf8548f11d0b71,
-    type: 3}
-  m_SortingOrder: 0
 --- !u!4 &1013728464
 Transform:
   m_ObjectHideFlags: 0
@@ -2583,6 +2565,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ff0da3d6d43f1c4fbbe011eb80d0763, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_Document: {fileID: 213082978}
+  elementName: CombatBarUI
+  elementStartedEvent: {fileID: 0}
+  elementEndedEvent: {fileID: 0}
   yellowBrick: {fileID: 9197481963319205126, guid: d688eeb05c3b1c240bc10a06db02dc87,
     type: 3}
   greenBrick: {fileID: 9197481963319205126, guid: b10966f7f772b924ea07f292f0da84e5,

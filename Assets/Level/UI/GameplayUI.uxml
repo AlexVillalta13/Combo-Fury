@@ -1,6 +1,6 @@
 <ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
-    <ui:Template name="CombatBar" src="project://database/Assets/Level/UI/CombatBar.uxml?fileID=9197481963319205126&amp;guid=bc31febbddacc444d8bf8548f11d0b71&amp;type=3#CombatBar" />
     <ui:Template name="HealthBars" src="project://database/Assets/Level/UI/HealthBars.uxml?fileID=9197481963319205126&amp;guid=6fd24a26e8cf64f4f9818b0e78313475&amp;type=3#HealthBars" />
-    <ui:Instance template="HealthBars" name="HealthBars" />
-    <ui:Instance template="CombatBar" name="CombatBar" style="bottom: 0; position: absolute; width: 100%;" />
+    <ui:Template name="CombatBar" src="project://database/Assets/Level/UI/CombatBarUI.uxml?fileID=9197481963319205126&amp;guid=bc31febbddacc444d8bf8548f11d0b71&amp;type=3#CombatBarUI" />
+    <ui:Instance template="HealthBars" name="HealthBars" style="position: absolute; top: 0; width: 100%;" />
+    <ui:Instance template="CombatBar" name="CombatBarUI" style="bottom: 0; position: absolute; width: 100%;" />
 </ui:UXML>

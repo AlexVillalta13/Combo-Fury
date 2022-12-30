@@ -1,5 +1,10 @@
 <ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
-    <ui:VisualElement style="height: 368px;">
-        <ui:VisualElement style="width: 420px; height: 128px; background-color: rgba(255, 0, 0, 255);" />
+    <ui:VisualElement name="HealthBarsHolder" style="height: 92px; flex-direction: row; align-items: center; justify-content: space-between; margin-left: 100px; margin-right: 100px; margin-top: 100px; margin-bottom: 100px;">
+        <ui:VisualElement name="PlayerBarHolder" style="width: 400px; height: 100px; border-left-width: 10px; border-right-width: 10px; border-top-width: 10px; border-bottom-width: 10px; border-left-color: rgb(0, 0, 0); border-right-color: rgb(0, 0, 0); border-top-color: rgb(0, 0, 0); border-bottom-color: rgb(0, 0, 0); border-top-left-radius: 10px; border-bottom-left-radius: 10px; border-top-right-radius: 10px; border-bottom-right-radius: 10px; flex-direction: row;">
+            <ui:VisualElement name="PlayerBar" style="background-color: rgb(32, 255, 0); width: 82%;" />
+        </ui:VisualElement>
+        <ui:VisualElement name="EnemyBarHolder" style="width: 400px; height: 100px; border-left-width: 10px; border-right-width: 10px; border-top-width: 10px; border-bottom-width: 10px; border-left-color: rgb(0, 0, 0); border-right-color: rgb(0, 0, 0); border-top-color: rgb(0, 0, 0); border-bottom-color: rgb(0, 0, 0); border-top-left-radius: 10px; border-bottom-left-radius: 10px; border-top-right-radius: 10px; border-bottom-right-radius: 10px; flex-direction: row-reverse;">
+            <ui:VisualElement name="EnemyBar" style="background-color: rgb(255, 8, 0); width: 52%;" />
+        </ui:VisualElement>
     </ui:VisualElement>
 </ui:UXML>

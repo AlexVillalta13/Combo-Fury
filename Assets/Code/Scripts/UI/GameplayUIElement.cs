@@ -12,7 +12,7 @@ public class GameplayUIElement : MonoBehaviour
     protected VisualElement m_Root;
     protected VisualElement m_UIElement;
 
-    [Header("Events")]
+    [Header("Activation Events")]
     [SerializeField] GameEvent elementStartedEvent;
     [SerializeField] GameEvent elementEndedEvent;
 
