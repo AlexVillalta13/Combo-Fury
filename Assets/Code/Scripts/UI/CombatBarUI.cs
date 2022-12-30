@@ -161,21 +161,4 @@ public class CombatBarUI : GameplayUIElement
         }
         bricksInBarDict[brickToBreack].EffectWithTouch();
     }
-
-    public void RedBrickTestEvents()
-    {
-        Debug.Log("Red Brick: Event send");
-    }
-    public void YellowBrickTestEvents()
-    {
-        Debug.Log("Yellow Brick: Event send");
-    }
-    public void GreenBrickTestEvents()
-    {
-        Debug.Log("Green Brick: Event send");
-    }
-    public void PlayerGetsHitTestEvents()
-    {
-        Debug.Log("Player gets hit: Event send");
-    }
 }
