@@ -3,10 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UIElements;
 
-public class Brick
+public class Brick: MonoBehaviour
 {
     protected TouchBrickEventsSO brickEventsHolder;
     protected VisualElement brickElementAttached;
+
+    protected float timeToAutoDelete = 0f;
 
     public Brick(VisualElement UIElement, TouchBrickEventsSO brickEventsHolder)
     {
@@ -23,12 +25,24 @@ public class Brick
     {
         return brickElementAttached;
     }
+
+    public void RemoveBrickElement()
+    {
+        brickElementAttached.RemoveFromHierarchy();
+    }
+
+    public void AutoDestroyBrickElement()
+    {
+        RemoveBrickElement();
+    }
 }
 public class RedBrick : Brick
 {
     public RedBrick(VisualElement UIElement, TouchBrickEventsSO brickEventsHolder) : base(UIElement, brickEventsHolder)
     {
 
+        timeToAutoDelete = 20f;
+        //Invoke(nameof(AutoDestroyBrickElement), timeToAutoDelete);
     }
 
     public override void EffectWithTouch()
@@ -36,13 +50,17 @@ public class RedBrick : Brick
         base.EffectWithTouch();
 
         brickEventsHolder.GetPlayerBlockEvent().Raise();
-        brickElementAttached.RemoveFromHierarchy();
+        RemoveBrickElement();
     }
+
+
 }
 public class GreenBrick : Brick
 {
     public GreenBrick(VisualElement UIElement, TouchBrickEventsSO brickEventsHolder) : base(UIElement, brickEventsHolder)
     {
+        timeToAutoDelete = 10f;
+        //Invoke(nameof(AutoDestroyBrickElement), timeToAutoDelete);
 
     }
 
@@ -51,13 +69,16 @@ public class GreenBrick : Brick
         base.EffectWithTouch();
 
         brickEventsHolder.GetPlayerCriticalAttackEvent().Raise();
-        brickElementAttached.RemoveFromHierarchy();
+        RemoveBrickElement();
     }
+
 }
 public class YellowBrick : Brick
 {
     public YellowBrick(VisualElement UIElement, TouchBrickEventsSO brickEventsHolder) : base(UIElement, brickEventsHolder)
     {
+        timeToAutoDelete = 15f;
+        //Invoke(nameof(AutoDestroyBrickElement), timeToAutoDelete);
 
     }
 
@@ -66,6 +87,7 @@ public class YellowBrick : Brick
         base.EffectWithTouch();
 
         brickEventsHolder.GetPlayerAttackEvent().Raise();
-        brickElementAttached.RemoveFromHierarchy();
+        RemoveBrickElement();
     }
+
 }
