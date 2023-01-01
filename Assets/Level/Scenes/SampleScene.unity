@@ -531,6 +531,37 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 229825808}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &238892552
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 238892553}
+  m_Layer: 5
+  m_Name: Bricks Holder
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &238892553
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 238892552}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1013728464}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &266259204
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1400,11 +1431,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerMaxHealth: 100
   playerCurrentHealth: 100
-  playerAttackPower: 6
-  playerDefense: 2
+  playerAttackPower: 22
+  playerDefense: 5
   enemyMaxHealth: 100
   enemyCurrentHealth: 100
   enemyAttackPower: 13
+  playerDeathEvent: {fileID: 11400000, guid: 796d861396c5ed24fb45316dc73e8abb, type: 2}
+  playerWinEvent: {fileID: 11400000, guid: 0d0ea66dcf3b8784ca138a5c111a2ba7, type: 2}
 --- !u!114 &460723271
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2409,6 +2442,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 900821403}
+  - component: {fileID: 900821404}
   m_Layer: 0
   m_Name: HealthBars
   m_TagString: Untagged
@@ -2431,6 +2465,23 @@ Transform:
   m_Father: {fileID: 213082977}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &900821404
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 900821402}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a9c23bc1532a2064b9495478ad350f32, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Document: {fileID: 213082978}
+  elementName: HealthBars
+  elementStartedEvent: {fileID: 11400000, guid: 277fc347f3c8c8c4999eb930f0d4ea9c,
+    type: 2}
+  elementEndedEvent: {fileID: 11400000, guid: 22b035737cb17c742baee977660517f3, type: 2}
 --- !u!1001 &906638037
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2778,7 +2829,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 238892553}
   m_Father: {fileID: 213082977}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2796,8 +2848,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Document: {fileID: 213082978}
   elementName: CombatBarUI
-  elementStartedEvent: {fileID: 0}
-  elementEndedEvent: {fileID: 0}
+  elementStartedEvent: {fileID: 11400000, guid: dec536726da473644bc82f138dc6a9fe,
+    type: 2}
+  elementEndedEvent: {fileID: 11400000, guid: 54bdfc0acad46fd4b97edc1671df22ae, type: 2}
+  BicksHolder: {fileID: 0}
   yellowBrick: {fileID: 9197481963319205126, guid: d688eeb05c3b1c240bc10a06db02dc87,
     type: 3}
   greenBrick: {fileID: 9197481963319205126, guid: b10966f7f772b924ea07f292f0da84e5,
@@ -2805,8 +2859,8 @@ MonoBehaviour:
   redBrick: {fileID: 9197481963319205126, guid: acfcb37113622454eb1dc0874628fe22,
     type: 3}
   pointerVelocity: 80
-  minTimeToSpawnBrick: 3
-  maxTimeSpawnBrick: 6
+  minTimeToSpawnBrick: 1
+  maxTimeSpawnBrick: 4
   timeToSpawnBrick: 5
   timerSpawn: 0
   touchBrickEventsHolder: {fileID: 11400000, guid: f6379521581245248af5ce73dcc16d7b,

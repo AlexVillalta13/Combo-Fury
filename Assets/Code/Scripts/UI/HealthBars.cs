@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -16,10 +17,32 @@ public class HealthBars : GameplayUIElement
         base.Awake();
     }
 
+    private void OnEnable()
+    {
+        CombatController.onChangePlayerHealth += ChangePlayerHealth;
+        CombatController.onChangeEnemyHealth += ChangeEnemyHealth;
+    }
+
+    private void OnDisable()
+    {
+        CombatController.onChangePlayerHealth -= ChangePlayerHealth;
+        CombatController.onChangeEnemyHealth -= ChangeEnemyHealth;
+    }
+
     public override void SetElementsReferences()
     {
         base.SetElementsReferences();
         playerBar = m_UIElement.Query<VisualElement>(name: playerBarReference);
         enemyBar = m_UIElement.Query<VisualElement>(name: enemyBarReference);
+    }
+
+    public void ChangePlayerHealth(int newHealth, int maxHealt, int attackIncome)
+    {
+        playerBar.style.width = Length.Percent(newHealth * 100 / maxHealt);
+    }
+
+    public void ChangeEnemyHealth(int newHealth, int maxHealt, int attackIncome)
+    {
+        enemyBar.style.width = Length.Percent(newHealth * 100 / maxHealt);
     }
 }

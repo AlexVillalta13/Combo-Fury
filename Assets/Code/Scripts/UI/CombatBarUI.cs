@@ -13,11 +13,13 @@ public class CombatBarUI : GameplayUIElement
     const string enemyUSSClassName = "enemyBrick";
     const string playerUSSClassName = "playerBrick";
 
-    //UIDocument combatBarDocument;
     // visual elements references
     VisualElement pointerCombatBar;
     VisualElement enemyBricksElement;
     VisualElement playerBrickElement;
+
+    [Header("Bricks Holder")]
+    [SerializeField] GameObject BicksHolder;
 
     [Header("Brick UI Assets")]
     [SerializeField] VisualTreeAsset yellowBrick;
@@ -39,7 +41,6 @@ public class CombatBarUI : GameplayUIElement
 
     public override void Awake()
     {
-        //combatBarDocument = GetComponent<UIDocument>();
         base.Awake();
 
         timeToSpawnBrick = UnityEngine.Random.Range(minTimeToSpawnBrick, maxTimeSpawnBrick);
@@ -100,6 +101,11 @@ public class CombatBarUI : GameplayUIElement
         brickVisualElementToAdd.style.left = UnityEngine.Random.Range(visualElementToParentWith.resolvedStyle.left, visualElementToParentWith.resolvedStyle.left + visualElementToParentWith.resolvedStyle.width - brickVisualElementToAdd.resolvedStyle.width);
 
         bricksInBarDict.Add(brickVisualElementToAdd, brickScriptToSpawn);
+
+        if(brickScriptToSpawn.GetTimeToAutoDelete() > 0f)
+        {
+            StartCoroutine(brickScriptToSpawn.AutoDestroyBrickElement());
+        }
     }
 
     private void MovePointer()

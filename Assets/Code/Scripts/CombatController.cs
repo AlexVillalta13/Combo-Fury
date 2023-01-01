@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -15,22 +16,53 @@ public class CombatController : MonoBehaviour
     public int enemyCurrentHealth = 100;
     public int enemyAttackPower = 13;
 
+    [Header("Events")]
+    [SerializeField] GameEvent playerDeathEvent;
+    [SerializeField] GameEvent playerWinEvent;
+
+    public static Action<int, int, int> onChangePlayerHealth;
+    public static Action<int, int, int> onChangeEnemyHealth;
+
+    private void Start()
+    {
+        StartCombat();
+    }
+
+    public void StartCombat()
+    {
+        onChangeEnemyHealth?.Invoke(enemyCurrentHealth, enemyMaxHealth, 0);
+        onChangePlayerHealth?.Invoke(playerCurrentHealth, playerMaxHealth, 0);
+    }
+
     public void PlayerAttacks()
     {
         enemyCurrentHealth -= playerAttackPower;
-        Debug.Log("Player Normal attack");
+        onChangeEnemyHealth?.Invoke(enemyCurrentHealth, enemyMaxHealth, playerAttackPower);
     }
 
     public void PlayerCriticalAttack()
     {
-        enemyCurrentHealth -= (10 * playerAttackPower / 100) + playerAttackPower;
-        Debug.Log("Player Crit attack: " + (10 * playerAttackPower / 100) + playerAttackPower);
+        int criticalDamage = (10 * playerAttackPower / 100) + playerAttackPower;
+        enemyCurrentHealth -= criticalDamage;
+        
+        if(enemyCurrentHealth < 0)
+        {
+            playerWinEvent.Raise();
+        }
+
+        onChangeEnemyHealth?.Invoke(enemyCurrentHealth, enemyMaxHealth, playerAttackPower);
     }
 
     public void EnemyAttacks()
     {
         int attackIncome = Mathf.Clamp(enemyAttackPower - playerDefense, 0, enemyAttackPower);
         playerCurrentHealth -= attackIncome;
-        Debug.Log("Enemy attacks");
+
+        if(playerCurrentHealth < 0)
+        {
+            playerDeathEvent.Raise();
+        }
+
+        onChangePlayerHealth?.Invoke(playerCurrentHealth, playerMaxHealth, attackIncome);
     }
 }

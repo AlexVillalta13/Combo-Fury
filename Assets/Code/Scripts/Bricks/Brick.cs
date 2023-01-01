@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UIElements;
 
-public class Brick: MonoBehaviour
+public class Brick
 {
     protected TouchBrickEventsSO brickEventsHolder;
     protected VisualElement brickElementAttached;
@@ -14,6 +14,11 @@ public class Brick: MonoBehaviour
     {
         this.brickElementAttached = UIElement;
         this.brickEventsHolder = brickEventsHolder;
+    }
+
+    public float GetTimeToAutoDelete()
+    {
+        return timeToAutoDelete;
     }
 
     public virtual void EffectWithTouch()
@@ -31,18 +36,19 @@ public class Brick: MonoBehaviour
         brickElementAttached.RemoveFromHierarchy();
     }
 
-    public void AutoDestroyBrickElement()
+    public IEnumerator AutoDestroyBrickElement()
     {
-        RemoveBrickElement();
+        yield return new WaitForSeconds(timeToAutoDelete);
+        if(timeToAutoDelete > 0f)
+        {
+            RemoveBrickElement();
+        }
     }
 }
 public class RedBrick : Brick
 {
     public RedBrick(VisualElement UIElement, TouchBrickEventsSO brickEventsHolder) : base(UIElement, brickEventsHolder)
     {
-
-        timeToAutoDelete = 20f;
-        //Invoke(nameof(AutoDestroyBrickElement), timeToAutoDelete);
     }
 
     public override void EffectWithTouch()
@@ -52,16 +58,12 @@ public class RedBrick : Brick
         brickEventsHolder.GetPlayerBlockEvent().Raise();
         RemoveBrickElement();
     }
-
-
 }
 public class GreenBrick : Brick
 {
     public GreenBrick(VisualElement UIElement, TouchBrickEventsSO brickEventsHolder) : base(UIElement, brickEventsHolder)
     {
         timeToAutoDelete = 10f;
-        //Invoke(nameof(AutoDestroyBrickElement), timeToAutoDelete);
-
     }
 
     public override void EffectWithTouch()
@@ -71,15 +73,12 @@ public class GreenBrick : Brick
         brickEventsHolder.GetPlayerCriticalAttackEvent().Raise();
         RemoveBrickElement();
     }
-
 }
 public class YellowBrick : Brick
 {
     public YellowBrick(VisualElement UIElement, TouchBrickEventsSO brickEventsHolder) : base(UIElement, brickEventsHolder)
     {
         timeToAutoDelete = 15f;
-        //Invoke(nameof(AutoDestroyBrickElement), timeToAutoDelete);
-
     }
 
     public override void EffectWithTouch()
@@ -89,5 +88,4 @@ public class YellowBrick : Brick
         brickEventsHolder.GetPlayerAttackEvent().Raise();
         RemoveBrickElement();
     }
-
 }
