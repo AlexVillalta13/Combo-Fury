@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UIElements;
 
-public class HealthBars : GameplayUIElement
+public class HealthBars : UIComponent
 {
     const string playerBarReference = "PlayerBar";
     const string enemyBarReference = "EnemyBar";

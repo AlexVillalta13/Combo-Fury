@@ -1,0 +1,9 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <ui:VisualElement style="bottom: 0; height: 100%; flex-direction: column; justify-content: space-around; align-items: center;">
+        <ui:VisualElement name="LevelSelectedContainer" style="width: 681px; height: 591px; align-items: center; justify-content: center;">
+            <ui:Label text="Nivel 1" display-tooltip-when-elided="true" name="LevelName" style="flex-grow: 0; width: 100%; -unity-text-align: middle-center; -unity-font: url(&apos;project://database/Assets/Art/Fonts/LilitaOne-Regular.ttf?fileID=12800000&amp;guid=c16eb7d7c3953489db00312b8b09df4b&amp;type=3#LilitaOne-Regular&apos;); font-size: 118px;" />
+            <ui:VisualElement name="LevelImage" style="flex-grow: 1; width: 100%; background-image: url(&apos;project://database/Assets/Art/Sprites/SwordInRock.png?fileID=2800000&amp;guid=cfd25ca1202338d46af425397e0c6acc&amp;type=3#SwordInRock&apos;); -unity-background-scale-mode: scale-to-fit; background-color: rgba(0, 0, 0, 255);" />
+        </ui:VisualElement>
+        <ui:Button text="PLAY" display-tooltip-when-elided="true" name="PlayButton" style="bottom: 0; width: 487px; height: 165px; align-items: auto; justify-content: flex-start; -unity-font: url(&apos;project://database/Assets/Art/Fonts/LilitaOne-Regular.ttf?fileID=12800000&amp;guid=c16eb7d7c3953489db00312b8b09df4b&amp;type=3#LilitaOne-Regular&apos;); font-size: 119px; padding-left: 53px; padding-right: 53px; padding-top: 53px; padding-bottom: 53px; margin-bottom: 88px;" />
+    </ui:VisualElement>
+</ui:UXML>

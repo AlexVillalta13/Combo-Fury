@@ -1,4 +1,6 @@
 <ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
     <ui:Template name="MenuTagsUI" src="project://database/Assets/Level/UI/MenuTagsUI.uxml?fileID=9197481963319205126&amp;guid=966f933570c32204ab2c13bdd1457c63&amp;type=3#MenuTagsUI" />
+    <ui:Template name="PlayLevelUI" src="project://database/Assets/Level/UI/PlayLevelUI.uxml?fileID=9197481963319205126&amp;guid=d64a731f93ced1547856668c18512fdf&amp;type=3#PlayLevelUI" />
     <ui:Instance template="MenuTagsUI" name="MenuTagsUI" style="position: absolute; width: 100%; bottom: 0;" />
+    <ui:Instance template="PlayLevelUI" name="PlayLevelUI" style="flex-grow: 1;" />
 </ui:UXML>

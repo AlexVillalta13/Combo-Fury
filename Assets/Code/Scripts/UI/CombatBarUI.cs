@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UIElements;
 
-public class CombatBarUI : GameplayUIElement
+public class CombatBarUI : UIComponent
 {
     // string references
     const string pointerCombarBarReferfence = "PointerCombatBar";

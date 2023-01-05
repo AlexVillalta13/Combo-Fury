@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UIElements;
 
-public class GameplayUIElement : MonoBehaviour
+public class UIComponent : MonoBehaviour
 {
     [Header("References")]
     [SerializeField] protected UIDocument m_Document;
