@@ -55,6 +55,12 @@ public class CombatController : MonoBehaviour
     public void PlayerAttacks()
     {
         enemyCurrentHealth -= playerAttackPower;
+
+        if (enemyCurrentHealth <= 0)
+        {
+            playerWinEvent.Raise();
+        }
+
         onChangeEnemyHealth?.Invoke(enemyCurrentHealth, enemyMaxHealth, playerAttackPower);
     }
 
@@ -63,7 +69,7 @@ public class CombatController : MonoBehaviour
         int criticalDamage = (10 * playerAttackPower / 100) + playerAttackPower;
         enemyCurrentHealth -= criticalDamage;
         
-        if(enemyCurrentHealth < 0)
+        if(enemyCurrentHealth <= 0)
         {
             playerWinEvent.Raise();
         }
