@@ -13,6 +13,8 @@ public class LevelSO : ScriptableObject
 [System.Serializable]
 public class Enemy
 {
-    public int health;
-    public int attack;
+    [SerializeField] int health;
+    public int Health { get { return health; }}
+    [SerializeField] int attack;
+    public int Attack { get { return attack; }}
 }

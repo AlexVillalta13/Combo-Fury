@@ -6,15 +6,15 @@ using UnityEngine;
 public class CombatController : MonoBehaviour
 {
     [Header("Player Stats")]
-    public int playerMaxHealth = 100;
-    public int playerCurrentHealth = 100;
-    public int playerAttackPower = 6;
-    public int playerDefense = 2;
+    [SerializeField] int playerMaxHealth = 100;
+    [SerializeField] int playerCurrentHealth = 100;
+    [SerializeField] int playerAttackPower = 6;
+    [SerializeField] int playerDefense = 2;
 
     [Header("Enemy Stats")]
-    public int enemyMaxHealth = 100;
-    public int enemyCurrentHealth = 100;
-    public int enemyAttackPower = 13;
+    [SerializeField] int enemyMaxHealth = 100;
+    [SerializeField] int enemyCurrentHealth = 100;
+    [SerializeField] int enemyAttackPower = 13;
 
     [Header("Events")]
     [SerializeField] GameEvent playerDeathEvent;
@@ -23,15 +23,30 @@ public class CombatController : MonoBehaviour
     [Header("Level")]
     [SerializeField] LevelSO levelSO;
 
+    // current health, max heath, attack income
     public static Action<int, int, int> onChangePlayerHealth;
     public static Action<int, int, int> onChangeEnemyHealth;
 
-    private void Start()
+    // states
+    private int currentEnemy = 0;
+
+    public void StartGame()
     {
-        StartCombat();
+        currentEnemy = 0;
+        playerCurrentHealth = playerMaxHealth;
+
+        SetupEnemy();
+        UpdateHealthUI();
     }
 
-    public void StartCombat()
+    private void SetupEnemy()
+    {
+        enemyMaxHealth = levelSO.Enemies[currentEnemy].Health;
+        enemyCurrentHealth = enemyMaxHealth;
+        enemyAttackPower = levelSO.Enemies[currentEnemy].Attack;
+    }
+
+    public void UpdateHealthUI()
     {
         onChangeEnemyHealth?.Invoke(enemyCurrentHealth, enemyMaxHealth, 0);
         onChangePlayerHealth?.Invoke(playerCurrentHealth, playerMaxHealth, 0);

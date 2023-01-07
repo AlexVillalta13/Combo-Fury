@@ -13,23 +13,23 @@ MonoBehaviour:
   m_Name: Level01
   m_EditorClassIdentifier: 
   enemies:
-  - health: 0
-    attack: 0
-  - health: 0
-    attack: 0
-  - health: 0
-    attack: 0
-  - health: 0
-    attack: 0
-  - health: 0
-    attack: 0
-  - health: 0
-    attack: 0
-  - health: 0
-    attack: 0
-  - health: 0
-    attack: 0
-  - health: 0
-    attack: 0
-  - health: 0
-    attack: 0
+  - health: 50
+    attack: 10
+  - health: 60
+    attack: 13
+  - health: 70
+    attack: 15
+  - health: 80
+    attack: 17
+  - health: 90
+    attack: 20
+  - health: 100
+    attack: 23
+  - health: 110
+    attack: 25
+  - health: 120
+    attack: 27
+  - health: 130
+    attack: 30
+  - health: 140
+    attack: 33
