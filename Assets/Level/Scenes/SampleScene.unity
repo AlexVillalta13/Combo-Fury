@@ -1088,6 +1088,7 @@ Transform:
   - {fileID: 1013728464}
   - {fileID: 900821403}
   - {fileID: 872684314}
+  - {fileID: 874313423}
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1242,37 +1243,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 229825808}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &238892552
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 238892553}
-  m_Layer: 5
-  m_Name: Bricks Holder
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &238892553
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 238892552}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1013728464}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &266259204
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4234,6 +4204,85 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!1 &874313422
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 874313423}
+  - component: {fileID: 874313424}
+  - component: {fileID: 874313425}
+  m_Layer: 0
+  m_Name: Choose Upgrade UI
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &874313423
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 874313422}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 213082977}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &874313424
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 874313422}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b93ce97297d012244b0d294c43bed60c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Document: {fileID: 213082978}
+  elementName: ChooseUpgradeUI
+  elementStartedEvent: {fileID: 0}
+  elementEndedEvent: {fileID: 0}
+  continueWalkingEvent: {fileID: 11400000, guid: 835bcbb138a7e98488158d634f3c6384,
+    type: 2}
+--- !u!114 &874313425
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 874313422}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb953a8383db9fc45943e75de88733bb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameEvent: {fileID: 11400000, guid: 0d0ea66dcf3b8784ca138a5c111a2ba7, type: 2}
+  unityEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 874313424}
+        m_TargetAssemblyTypeName: UIComponent, Assembly-CSharp
+        m_MethodName: ShowGameplayElement
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1001 &875387955
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4765,6 +4814,7 @@ GameObject:
   - component: {fileID: 1013728466}
   - component: {fileID: 1013728467}
   - component: {fileID: 1013728468}
+  - component: {fileID: 1013728469}
   m_Layer: 5
   m_Name: Combat Bar UI
   m_TagString: Untagged
@@ -4783,8 +4833,7 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 238892553}
+  m_Children: []
   m_Father: {fileID: 213082977}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -4805,7 +4854,6 @@ MonoBehaviour:
   elementStartedEvent: {fileID: 11400000, guid: dec536726da473644bc82f138dc6a9fe,
     type: 2}
   elementEndedEvent: {fileID: 11400000, guid: 54bdfc0acad46fd4b97edc1671df22ae, type: 2}
-  BicksHolder: {fileID: 0}
   yellowBrick: {fileID: 9197481963319205126, guid: d688eeb05c3b1c240bc10a06db02dc87,
     type: 3}
   greenBrick: {fileID: 9197481963319205126, guid: b10966f7f772b924ea07f292f0da84e5,
@@ -4888,6 +4936,34 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameEvent: {fileID: 11400000, guid: 796d861396c5ed24fb45316dc73e8abb, type: 2}
+  unityEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1013728465}
+        m_TargetAssemblyTypeName: CombatBarUI, Assembly-CSharp
+        m_MethodName: FinishCombat
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &1013728469
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1013728462}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb953a8383db9fc45943e75de88733bb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameEvent: {fileID: 11400000, guid: 0d0ea66dcf3b8784ca138a5c111a2ba7, type: 2}
   unityEvent:
     m_PersistentCalls:
       m_Calls:

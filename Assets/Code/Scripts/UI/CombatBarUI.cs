@@ -21,9 +21,6 @@ public class CombatBarUI : UIComponent
     // states
     bool inCombat = false;
 
-    [Header("Bricks Holder")]
-    [SerializeField] GameObject BicksHolder;
-
     [Header("Brick UI Assets")]
     [SerializeField] VisualTreeAsset yellowBrick;
     [SerializeField] VisualTreeAsset greenBrick;
