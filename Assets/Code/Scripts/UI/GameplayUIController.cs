@@ -8,9 +8,12 @@ public class GameplayUIController : MonoBehaviour
     [SerializeField] UIDocument gameplayUIDocument;
     VisualElement m_gameplayRoot;
 
+    // Gameplay UI Components
     [SerializeField] CombatBarUI combatBar;
     [SerializeField] HealthBars healthBars;
     List<UIComponent> gameplayUIElements = new List<UIComponent>();
+
+    // 
 
 
     private void Awake()
@@ -26,5 +29,10 @@ public class GameplayUIController : MonoBehaviour
     public void PlayGame()
     {
         m_gameplayRoot.style.display = DisplayStyle.Flex;
+    }
+
+    public void ReturnToMainMenu()
+    {
+        m_gameplayRoot.style.display = DisplayStyle.None;
     }
 }

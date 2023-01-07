@@ -20,6 +20,9 @@ public class CombatController : MonoBehaviour
     [SerializeField] GameEvent playerDeathEvent;
     [SerializeField] GameEvent playerWinEvent;
 
+    [Header("Level")]
+    [SerializeField] LevelSO levelSO;
+
     public static Action<int, int, int> onChangePlayerHealth;
     public static Action<int, int, int> onChangeEnemyHealth;
 

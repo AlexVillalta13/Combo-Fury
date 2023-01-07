@@ -18,6 +18,9 @@ public class CombatBarUI : UIComponent
     VisualElement enemyBricksElement;
     VisualElement playerBrickElement;
 
+    // states
+    bool inCombat = false;
+
     [Header("Bricks Holder")]
     [SerializeField] GameObject BicksHolder;
 
@@ -56,28 +59,31 @@ public class CombatBarUI : UIComponent
 
     void Update()
     {
-        MovePointer();
-
-        timerSpawn += Time.deltaTime;
-        if(timerSpawn > timeToSpawnBrick)
+        if(inCombat == true)
         {
-            timerSpawn = 0f;
-            timeToSpawnBrick = UnityEngine.Random.Range(minTimeToSpawnBrick, maxTimeSpawnBrick);
+            MovePointer();
 
-            // TO DO: RANDOM SPAWN SYSTEM
+            timerSpawn += Time.deltaTime;
+            if (timerSpawn > timeToSpawnBrick)
+            {
+                timerSpawn = 0f;
+                timeToSpawnBrick = UnityEngine.Random.Range(minTimeToSpawnBrick, maxTimeSpawnBrick);
 
-            int randomBrickNumber = UnityEngine.Random.Range(0, 3);
-            if(randomBrickNumber == 0)
-            {
-                SpawnBrick(new RedBrick(redBrick.Instantiate(), touchBrickEventsHolder), enemyBricksElement, enemyUSSClassName);
-            }
-            else if(randomBrickNumber == 1)
-            {
-                SpawnBrick(new GreenBrick(greenBrick.Instantiate(), touchBrickEventsHolder), playerBrickElement, playerUSSClassName);
-            }
-            else if(randomBrickNumber == 2)
-            {
-                SpawnBrick(new YellowBrick(yellowBrick.Instantiate(), touchBrickEventsHolder), playerBrickElement, playerUSSClassName);
+                // TO DO: RANDOM SPAWN SYSTEM
+
+                int randomBrickNumber = UnityEngine.Random.Range(0, 3);
+                if (randomBrickNumber == 0)
+                {
+                    SpawnBrick(new RedBrick(redBrick.Instantiate(), touchBrickEventsHolder), enemyBricksElement, enemyUSSClassName);
+                }
+                else if (randomBrickNumber == 1)
+                {
+                    SpawnBrick(new GreenBrick(greenBrick.Instantiate(), touchBrickEventsHolder), playerBrickElement, playerUSSClassName);
+                }
+                else if (randomBrickNumber == 2)
+                {
+                    SpawnBrick(new YellowBrick(yellowBrick.Instantiate(), touchBrickEventsHolder), playerBrickElement, playerUSSClassName);
+                }
             }
         }
     }
@@ -127,44 +133,65 @@ public class CombatBarUI : UIComponent
 
     public void Touch()
     {
-        float pointerPos = pointerCombatBar.resolvedStyle.left + pointerCombatBar.resolvedStyle.width/2f;
-        List<VisualElement> enemyBricksList = new List<VisualElement>();
-        enemyBricksList = enemyBricksElement.Query<VisualElement>(className: enemyUSSClassName).ToList();
-        List<VisualElement> playerBricksList = new List<VisualElement>();
-        playerBricksList = playerBrickElement.Query<VisualElement>(className: playerUSSClassName).ToList();
-        List<VisualElement> bricksInPosition = new List<VisualElement>();
-        foreach (VisualElement element in enemyBricksList)
+        if(inCombat == true)
         {
-            if (pointerPos > element.resolvedStyle.left && pointerPos < element.resolvedStyle.left + element.resolvedStyle.width)
-            {
-                bricksInPosition.Add(element);
-            }
-        }
-        if(bricksInPosition.Count == 0)
-        {
-            foreach (VisualElement element in playerBricksList)
+            float pointerPos = pointerCombatBar.resolvedStyle.left + pointerCombatBar.resolvedStyle.width / 2f;
+            List<VisualElement> enemyBricksList = new List<VisualElement>();
+            enemyBricksList = enemyBricksElement.Query<VisualElement>(className: enemyUSSClassName).ToList();
+            List<VisualElement> playerBricksList = new List<VisualElement>();
+            playerBricksList = playerBrickElement.Query<VisualElement>(className: playerUSSClassName).ToList();
+            List<VisualElement> bricksInPosition = new List<VisualElement>();
+            foreach (VisualElement element in enemyBricksList)
             {
                 if (pointerPos > element.resolvedStyle.left && pointerPos < element.resolvedStyle.left + element.resolvedStyle.width)
                 {
                     bricksInPosition.Add(element);
                 }
             }
-        }
-
-        if (bricksInPosition.Count == 0)
-        {
-            touchBrickEventsHolder.GetPlayerIsHitEvent().Raise();
-            return;
-        }
-
-        VisualElement brickToBreack = bricksInPosition[0];
-        foreach (VisualElement element in bricksInPosition)
-        {
-            if (element.parent.hierarchy.IndexOf(element) > element.parent.hierarchy.IndexOf(brickToBreack))
+            if (bricksInPosition.Count == 0)
             {
-                brickToBreack = element;
+                foreach (VisualElement element in playerBricksList)
+                {
+                    if (pointerPos > element.resolvedStyle.left && pointerPos < element.resolvedStyle.left + element.resolvedStyle.width)
+                    {
+                        bricksInPosition.Add(element);
+                    }
+                }
             }
+
+            if (bricksInPosition.Count == 0)
+            {
+                touchBrickEventsHolder.GetPlayerIsHitEvent().Raise();
+                return;
+            }
+
+            VisualElement brickToBreack = bricksInPosition[0];
+            foreach (VisualElement element in bricksInPosition)
+            {
+                if (element.parent.hierarchy.IndexOf(element) > element.parent.hierarchy.IndexOf(brickToBreack))
+                {
+                    brickToBreack = element;
+                }
+            }
+            bricksInBarDict[brickToBreack].EffectWithTouch();
         }
-        bricksInBarDict[brickToBreack].EffectWithTouch();
+    }
+
+    public void InCombat()
+    {
+        inCombat = true;
+    }
+
+    public void FinishCombat()
+    {
+        inCombat = false;
+
+        pointerPercentPosition = 0f;
+
+        foreach(Brick brick in bricksInBarDict.Values)
+        {
+            brick.RemoveBrickElement();
+        }
+        bricksInBarDict.Clear();
     }
 }

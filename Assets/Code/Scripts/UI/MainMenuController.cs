@@ -26,4 +26,9 @@ public class MainMenuController : MonoBehaviour
     {
         m_mainMenuRoot.style.display = DisplayStyle.None;
     }
+
+    public void EnterMainMenu()
+    {
+        m_mainMenuRoot.style.display = DisplayStyle.Flex;
+    }
 }

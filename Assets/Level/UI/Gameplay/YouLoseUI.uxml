@@ -1,0 +1,8 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <ui:VisualElement name="AlphaBackground" style="position: absolute; width: 100%; height: 100%; align-items: center; justify-content: center; background-color: rgba(0, 0, 0, 0.28);">
+        <ui:VisualElement name="DeathScreenContainer" style="width: 749px; height: 499px; align-items: center; justify-content: space-around; background-color: rgb(0, 0, 0);">
+            <ui:Label text="YOU LOSE" display-tooltip-when-elided="true" style="font-size: 81px; -unity-font: url(&apos;project://database/Assets/Art/Fonts/LilitaOne-Regular.ttf?fileID=12800000&amp;guid=c16eb7d7c3953489db00312b8b09df4b&amp;type=3#LilitaOne-Regular&apos;); -unity-font-definition: none;" />
+            <ui:Button text="Return" display-tooltip-when-elided="true" name="ReturnButton" style="font-size: 67px;" />
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>
