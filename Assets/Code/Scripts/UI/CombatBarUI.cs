@@ -19,7 +19,7 @@ public class CombatBarUI : UIComponent
     VisualElement playerBrickElement;
 
     // states
-    bool inCombat = false;
+    [SerializeField] bool inCombat = false;
 
     [Header("Brick UI Assets")]
     [SerializeField] VisualTreeAsset yellowBrick;
@@ -52,6 +52,8 @@ public class CombatBarUI : UIComponent
         pointerCombatBar = m_UIElement.Query<VisualElement>(pointerCombarBarReferfence);
         enemyBricksElement = m_UIElement.Query<VisualElement>(enemyBricksElementReference);
         playerBrickElement = m_UIElement.Query<VisualElement>(playerBrickElementReference);
+
+        pointerCombatBar.style.left = Length.Percent(pointerPercentPosition);
     }
 
     void Update()
@@ -176,13 +178,14 @@ public class CombatBarUI : UIComponent
 
     public void InCombat()
     {
+        Debug.Log("InCombat() enter");
         inCombat = true;
     }
 
     public void FinishCombat()
     {
         inCombat = false;
-
+        Debug.Log(inCombat);
         pointerPercentPosition = 0f;
 
         foreach(Brick brick in bricksInBarDict.Values)

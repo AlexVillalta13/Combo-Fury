@@ -7,10 +7,14 @@ public class PlayerPrefabController : MonoBehaviour
     private Rigidbody m_rigidbody;
     [SerializeField] float walkingVelocity = 5f;
     float currentVelocity = 0f;
+    float nextPositionToGO = 0f;
+
+    [SerializeField] GameEvent enemyEncountered;
 
     private void Awake()
     {
         m_rigidbody = GetComponent<Rigidbody>();
+        nextPositionToGO = transform.position.x + 10f;
     }
 
     private void OnEnable()
@@ -29,6 +33,12 @@ public class PlayerPrefabController : MonoBehaviour
         float yVel = m_rigidbody.velocity.y;
         vel.y = yVel;
         m_rigidbody.velocity = vel;
+        if(transform.position.x >= nextPositionToGO)
+        {
+            StopWalk();
+            enemyEncountered.Raise();
+            UpdateNextPositionToGo();
+        }
     }
 
     public void StartWalk()
@@ -39,5 +49,10 @@ public class PlayerPrefabController : MonoBehaviour
     public void StopWalk()
     {
         currentVelocity = 0f;
+    }
+
+    public void UpdateNextPositionToGo()
+    {
+        nextPositionToGO += 10f;
     }
 }
