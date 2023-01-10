@@ -842,7 +842,13 @@ PlayerSettings:
   XboxOneOverrideIdentityName: 
   XboxOneOverrideIdentityPublisher: 
   vrEditorSettings: {}
-  cloudServicesEnabled: {}
+  cloudServicesEnabled:
+    Build: 0
+    Collab: 0
+    Game Performance: 0
+    Purchasing: 0
+    UDP: 0
+    Unity Ads: 0
   luminIcon:
     m_Name: 
     m_ModelFolderPath: 
@@ -856,11 +862,11 @@ PlayerSettings:
     m_VersionName: 
   apiCompatibilityLevel: 6
   activeInputHandler: 2
-  cloudProjectId: c03ed326-dcfc-4e92-b48a-a0c40b800599
+  cloudProjectId: 8dc9b5a8-ff97-46cf-b81d-2f30e07aadd5
   framebufferDepthMemorylessMode: 0
   qualitySettingsNames: []
-  projectName: 
-  organizationId: 
+  projectName: Combo Fury
+  organizationId: alex_13
   cloudEnabled: 0
   legacyClampBlendShapeWeights: 0
   playerDataPath: 
