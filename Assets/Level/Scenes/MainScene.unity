@@ -4822,6 +4822,7 @@ MonoBehaviour:
   elementStartedEvent: {fileID: 11400000, guid: dec536726da473644bc82f138dc6a9fe,
     type: 2}
   elementEndedEvent: {fileID: 11400000, guid: 54bdfc0acad46fd4b97edc1671df22ae, type: 2}
+  inCombat: 0
   yellowBrick: {fileID: 9197481963319205126, guid: d688eeb05c3b1c240bc10a06db02dc87,
     type: 3}
   greenBrick: {fileID: 9197481963319205126, guid: b10966f7f772b924ea07f292f0da84e5,
@@ -9126,7 +9127,6 @@ GameObject:
   - component: {fileID: 1989140988}
   - component: {fileID: 1989140987}
   - component: {fileID: 1989140986}
-  - component: {fileID: 1989140985}
   m_Layer: 0
   m_Name: Water Plane
   m_TagString: Untagged
@@ -9134,20 +9134,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!64 &1989140985
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1989140984}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!23 &1989140986
 MeshRenderer:
   m_ObjectHideFlags: 0
