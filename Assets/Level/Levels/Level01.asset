@@ -18,7 +18,11 @@ MonoBehaviour:
     attack: 10
     enemyBricks:
     - brickType: 0
-      probability: 0
+      probability: 40
+    - brickType: 1
+      probability: 40
+    - brickType: 2
+      probability: 20
   - health: 60
     attack: 13
     enemyBricks: []

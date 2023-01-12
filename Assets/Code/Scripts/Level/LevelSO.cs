@@ -25,11 +25,26 @@ public class Enemy
 
     public BrickTypeEnum GetRandomBrick()
     {
-        return BrickTypeEnum.YellowBrick;
-    }
+        float maxRange = 0f;
+        foreach(BrickProbability brickProbability in enemyBricks)
+        {
+            maxRange += brickProbability.Probability;
+        }
 
-    // Hacer el swicht aquí y hacer una funcion que devuelva un Brick y se fabrique aquí
-    
+        float randomNumber = UnityEngine.Random.Range(0f, maxRange);
+        float rangeNumberToSpawn = 0f;
+        foreach(BrickProbability brickProbability in enemyBricks)
+        {
+            if(rangeNumberToSpawn < randomNumber && (rangeNumberToSpawn + brickProbability.Probability) > randomNumber)
+            {
+                return brickProbability.BrickType;
+            }
+            rangeNumberToSpawn += brickProbability.Probability;
+        }
+
+        Debug.LogError("LevelSo: No random brick selected");
+        return BrickTypeEnum.Redbrick;
+    }
 }
 
 [System.Serializable]
