@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1edc520f4d029fd4c9fef3a7bc3894cf, type: 3}
   m_Name: Level01
   m_EditorClassIdentifier: 
+  brickTypes: {fileID: 11400000, guid: 1de6bd5f177d50540a03449e4f318d9e, type: 2}
   enemies:
   - health: 50
     attack: 10

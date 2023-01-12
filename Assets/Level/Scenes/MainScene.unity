@@ -4912,7 +4912,6 @@ MonoBehaviour:
   elementStartedEvent: {fileID: 11400000, guid: dec536726da473644bc82f138dc6a9fe,
     type: 2}
   elementEndedEvent: {fileID: 11400000, guid: 54bdfc0acad46fd4b97edc1671df22ae, type: 2}
-  inCombat: 0
   yellowBrick: {fileID: 9197481963319205126, guid: d688eeb05c3b1c240bc10a06db02dc87,
     type: 3}
   greenBrick: {fileID: 9197481963319205126, guid: b10966f7f772b924ea07f292f0da84e5,
@@ -4926,6 +4925,8 @@ MonoBehaviour:
   timerSpawn: 0
   touchBrickEventsHolder: {fileID: 11400000, guid: f6379521581245248af5ce73dcc16d7b,
     type: 2}
+  levelSO: {fileID: 11400000, guid: 60256b58ddcf298439ec4d18cb8576da, type: 2}
+  brickTypesSO: {fileID: 11400000, guid: 1de6bd5f177d50540a03449e4f318d9e, type: 2}
 --- !u!114 &1013728466
 MonoBehaviour:
   m_ObjectHideFlags: 0

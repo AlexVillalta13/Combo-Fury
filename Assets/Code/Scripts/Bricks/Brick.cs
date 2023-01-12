@@ -3,30 +3,60 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UIElements;
 
-public enum BrickType
+public enum BrickTypeEnum
 {
     Redbrick,
     YellowBrick,
     Greenbrick
 }
 
+public enum BrickHolder
+{
+    PlayerBrick,
+    EnemyBrick
+}
+
 public class Brick
 {
+    protected BrickHolder brickHolder = BrickHolder.EnemyBrick;
+
     protected TouchBrickEventsSO brickEventsHolder;
     protected VisualElement brickElementAttached;
+    protected VisualElement m_elementParent;
 
     protected float timeToAutoDelete = 0f;
 
-    public Brick(VisualElement UIElement, TouchBrickEventsSO brickEventsHolder)
+    public Brick()
     {
-        this.brickElementAttached = UIElement;
-        this.brickEventsHolder = brickEventsHolder;
+
     }
 
-    public void SetupBrick(VisualElement UIElement, TouchBrickEventsSO brickEventsHolder)
+    public void SetupBrick(VisualElement brickElementAttached, VisualElement playerElementParent, string playerClassName, VisualElement enemyElementParent, string enemyClassName, TouchBrickEventsSO brickEventsHolder)
     {
-        this.brickElementAttached = UIElement;
+        this.brickElementAttached = brickElementAttached;
         this.brickEventsHolder = brickEventsHolder;
+
+        if(brickHolder == BrickHolder.PlayerBrick)
+        {
+            this.m_elementParent = playerElementParent;
+            brickElementAttached.AddToClassList(playerClassName);
+        }
+        else if(brickHolder == BrickHolder.EnemyBrick)
+        {
+            this.m_elementParent = enemyElementParent;
+            brickElementAttached.AddToClassList(enemyClassName);
+        }
+
+        brickElementAttached.style.visibility = Visibility.Hidden;
+        m_elementParent.Add(brickElementAttached);
+        brickElementAttached.style.position = Position.Absolute;
+    }
+
+    public void PositionBrick()
+    {
+        brickElementAttached.style.visibility = Visibility.Visible;
+
+        brickElementAttached.style.left = UnityEngine.Random.Range(m_elementParent.resolvedStyle.left, m_elementParent.resolvedStyle.left + m_elementParent.resolvedStyle.width - brickElementAttached.resolvedStyle.width);
     }
 
     public float GetTimeToAutoDelete()
@@ -60,8 +90,9 @@ public class Brick
 }
 public class RedBrick : Brick
 {
-    public RedBrick(VisualElement UIElement, TouchBrickEventsSO brickEventsHolder) : base(UIElement, brickEventsHolder)
+    public RedBrick() : base()
     {
+        brickHolder = BrickHolder.EnemyBrick;
     }
 
     public override void EffectWithTouch()
@@ -74,8 +105,9 @@ public class RedBrick : Brick
 }
 public class GreenBrick : Brick
 {
-    public GreenBrick(VisualElement UIElement, TouchBrickEventsSO brickEventsHolder) : base(UIElement, brickEventsHolder)
+    public GreenBrick() : base()
     {
+        brickHolder = BrickHolder.PlayerBrick;
         timeToAutoDelete = 10f;
     }
 
@@ -89,8 +121,9 @@ public class GreenBrick : Brick
 }
 public class YellowBrick : Brick
 {
-    public YellowBrick(VisualElement UIElement, TouchBrickEventsSO brickEventsHolder) : base(UIElement, brickEventsHolder)
+    public YellowBrick() : base()
     {
+        brickHolder = BrickHolder.PlayerBrick;
         timeToAutoDelete = 15f;
     }
 
