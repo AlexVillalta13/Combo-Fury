@@ -18,11 +18,17 @@ public class ChooseUpgradeUI : UIComponent
 
     private void OnEnable()
     {
-        continueButton.clicked += continueWalkingEvent.Raise;
+        continueButton.clicked += ContinueButtonPressed;
     }
 
     private void OnDisable()
     {
-        continueButton.clicked -= continueWalkingEvent.Raise;
+        continueButton.clicked -= ContinueButtonPressed;
+    }
+
+    public void ContinueButtonPressed()
+    {
+        continueWalkingEvent.Raise();
+        HideGameplayElement();
     }
 }

@@ -19,7 +19,7 @@ public class CombatBarUI : UIComponent
     VisualElement playerBrickElement;
 
     // states
-    [SerializeField] bool inCombat = false;
+    bool inCombat = false;
 
     [Header("Brick UI Assets")]
     [SerializeField] VisualTreeAsset yellowBrick;
@@ -29,7 +29,7 @@ public class CombatBarUI : UIComponent
 
     float pointerPercentPosition = 0f;
     [Header("Combat Bar Stats")]
-    [SerializeField] float pointerVelocity = 80f;
+    [SerializeField] float pointerVelocity = 60f;
 
     [SerializeField] float minTimeToSpawnBrick = 3f;
     [SerializeField] float maxTimeSpawnBrick = 6f;
@@ -94,6 +94,7 @@ public class CombatBarUI : UIComponent
 
     private IEnumerator SpawnBrickCoroutine(Brick brickScriptToSpawn, VisualElement brickVisualElementToAdd, VisualElement visualElementToParentWith, string className)
     {
+        // Mover todo esto dentro de la clase Brick dejando solo la activación del autodestroy
         brickVisualElementToAdd.style.visibility = Visibility.Hidden;
         visualElementToParentWith.Add(brickVisualElementToAdd);
         brickVisualElementToAdd.AddToClassList(className);
@@ -178,15 +179,13 @@ public class CombatBarUI : UIComponent
 
     public void InCombat()
     {
-        Debug.Log("InCombat() enter");
         inCombat = true;
     }
 
     public void FinishCombat()
     {
         inCombat = false;
-        Debug.Log(inCombat);
-        pointerPercentPosition = 0f;
+        //pointerPercentPosition = 0f;
 
         foreach(Brick brick in bricksInBarDict.Values)
         {

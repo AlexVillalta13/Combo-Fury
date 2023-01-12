@@ -3,6 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UIElements;
 
+public enum BrickType
+{
+    Redbrick,
+    YellowBrick,
+    Greenbrick
+}
+
 public class Brick
 {
     protected TouchBrickEventsSO brickEventsHolder;
@@ -11,6 +18,12 @@ public class Brick
     protected float timeToAutoDelete = 0f;
 
     public Brick(VisualElement UIElement, TouchBrickEventsSO brickEventsHolder)
+    {
+        this.brickElementAttached = UIElement;
+        this.brickEventsHolder = brickEventsHolder;
+    }
+
+    public void SetupBrick(VisualElement UIElement, TouchBrickEventsSO brickEventsHolder)
     {
         this.brickElementAttached = UIElement;
         this.brickEventsHolder = brickEventsHolder;

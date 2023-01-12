@@ -19,6 +19,7 @@ public class CombatController : MonoBehaviour
     [Header("Events")]
     [SerializeField] GameEvent playerDeathEvent;
     [SerializeField] GameEvent playerWinEvent;
+    [SerializeField] GameEvent playerWinLevelEvent;
 
     [Header("Level")]
     [SerializeField] LevelSO levelSO;
@@ -29,10 +30,12 @@ public class CombatController : MonoBehaviour
 
     // states
     private int currentEnemy = 0;
+    private int totalEnemies = 0;
 
     public void StartGame()
     {
         currentEnemy = 0;
+        totalEnemies = levelSO.Enemies.Count - 1;
         playerCurrentHealth = playerMaxHealth;
 
         SetupEnemy();
@@ -56,10 +59,7 @@ public class CombatController : MonoBehaviour
     {
         enemyCurrentHealth -= playerAttackPower;
 
-        if (enemyCurrentHealth <= 0)
-        {
-            playerWinEvent.Raise();
-        }
+        CheckWinConditions();
 
         onChangeEnemyHealth?.Invoke(enemyCurrentHealth, enemyMaxHealth, playerAttackPower);
     }
@@ -68,13 +68,25 @@ public class CombatController : MonoBehaviour
     {
         int criticalDamage = (10 * playerAttackPower / 100) + playerAttackPower;
         enemyCurrentHealth -= criticalDamage;
-        
-        if(enemyCurrentHealth <= 0)
-        {
-            playerWinEvent.Raise();
-        }
+
+        CheckWinConditions();
 
         onChangeEnemyHealth?.Invoke(enemyCurrentHealth, enemyMaxHealth, playerAttackPower);
+    }
+
+    private void CheckWinConditions()
+    {
+        if (enemyCurrentHealth <= 0)
+        {
+            if (currentEnemy < totalEnemies)
+            {
+                playerWinEvent.Raise();
+            }
+            else if (currentEnemy == totalEnemies)
+            {
+                playerWinLevelEvent.Raise();
+            }
+        }
     }
 
     public void EnemyAttacks()
@@ -88,5 +100,12 @@ public class CombatController : MonoBehaviour
         }
 
         onChangePlayerHealth?.Invoke(playerCurrentHealth, playerMaxHealth, attackIncome);
+    }
+
+    public void FightNextEnemy()
+    {
+        currentEnemy += 1;
+        SetupEnemy();
+        UpdateHealthUI();
     }
 }

@@ -21,6 +21,8 @@ public class HealthBars : UIComponent
     {
         CombatController.onChangePlayerHealth += ChangePlayerHealth;
         CombatController.onChangeEnemyHealth += ChangeEnemyHealth;
+
+        HideEnemyBar();
     }
 
     private void OnDisable()
@@ -44,5 +46,15 @@ public class HealthBars : UIComponent
     public void ChangeEnemyHealth(int newHealth, int maxHealt, int attackIncome)
     {
         enemyBar.style.width = Length.Percent(newHealth * 100 / maxHealt);
+    }
+
+    public void ShowEnemyBar()
+    {
+        enemyBar.style.display = DisplayStyle.Flex;
+    }
+
+    public void HideEnemyBar()
+    {
+        enemyBar.style.display = DisplayStyle.None;
     }
 }

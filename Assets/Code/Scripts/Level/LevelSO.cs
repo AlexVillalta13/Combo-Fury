@@ -17,4 +17,18 @@ public class Enemy
     public int Health { get { return health; }}
     [SerializeField] int attack;
     public int Attack { get { return attack; }}
+    [SerializeField] List <BrickProbability> enemyBricks = new List<BrickProbability>();
+    public List<BrickProbability> EnemyBricks { get { return enemyBricks; } }
+
+    // Hacer el swicht aquí y hacer una funcion que devuelva un Brick y se fabrique aquí
+    
+}
+
+[System.Serializable]
+public struct BrickProbability
+{
+    [SerializeField] BrickType brickType;
+    public BrickType BrickType { get { return brickType; }}
+    [SerializeField] float probability;
+    public float Probability { get { return probability; }}
 }
