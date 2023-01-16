@@ -18,7 +18,7 @@ public class CombatController : MonoBehaviour
 
     [Header("Events")]
     [SerializeField] GameEvent playerDeathEvent;
-    [SerializeField] GameEvent playerWinEvent;
+    [SerializeField] GameEvent playerWinFightEvent;
     [SerializeField] GameEvent playerWinLevelEvent;
 
     [Header("Level")]
@@ -29,8 +29,8 @@ public class CombatController : MonoBehaviour
     public static Action<int, int, int> onChangeEnemyHealth;
 
     // states
-    private int currentEnemy = 0;
-    private int totalEnemies = 0;
+    [SerializeField] private int currentEnemy = 0;
+    [SerializeField] private int totalEnemies = 0;
 
     public void StartGame()
     {
@@ -38,7 +38,6 @@ public class CombatController : MonoBehaviour
         totalEnemies = levelSO.Enemies.Count - 1;
         playerCurrentHealth = playerMaxHealth;
 
-        SetupEnemy();
         UpdateHealthUI();
     }
 
@@ -80,12 +79,13 @@ public class CombatController : MonoBehaviour
         {
             if (currentEnemy < totalEnemies)
             {
-                playerWinEvent.Raise();
+                playerWinFightEvent.Raise();
             }
             else if (currentEnemy == totalEnemies)
             {
                 playerWinLevelEvent.Raise();
             }
+            currentEnemy += 1;
         }
     }
 
@@ -102,9 +102,8 @@ public class CombatController : MonoBehaviour
         onChangePlayerHealth?.Invoke(playerCurrentHealth, playerMaxHealth, attackIncome);
     }
 
-    public void FightNextEnemy()
+    public void EncounteredNewEnemy()
     {
-        currentEnemy += 1;
         SetupEnemy();
         UpdateHealthUI();
     }

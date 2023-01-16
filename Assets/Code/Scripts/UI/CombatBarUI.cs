@@ -42,7 +42,7 @@ public class CombatBarUI : UIComponent
     [Header("SO Data")]
     [SerializeField] LevelSO levelSO;
     [SerializeField] BrickTypesSO brickTypesSO;
-    int currentEnemy;
+    int currentEnemy = 0;
 
     
 
@@ -205,12 +205,17 @@ public class CombatBarUI : UIComponent
     public void FinishCombat()
     {
         inCombat = false;
-        //pointerPercentPosition = 0f;
+        currentEnemy++;
 
         foreach(Brick brick in bricksInBarDict.Values)
         {
             brick.RemoveBrickElement();
         }
         bricksInBarDict.Clear();
+    }
+
+    public void StartLevel()
+    {
+        currentEnemy = 0;
     }
 }

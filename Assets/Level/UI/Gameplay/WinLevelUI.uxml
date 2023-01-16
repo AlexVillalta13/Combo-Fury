@@ -1,5 +1,5 @@
 <ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
     <ui:VisualElement name="VisualElement" style="position: absolute; width: 100%; height: 100%; align-items: center; justify-content: center; background-color: rgba(0, 0, 0, 0.19);">
-        <ui:Button text="Continue" display-tooltip-when-elided="true" name="NextLevelButton" style="width: 250px; height: 250px; font-size: 50px;" />
+        <ui:Button text="Continue" display-tooltip-when-elided="true" name="ReturnToMainMenuButton" style="width: 250px; height: 250px; font-size: 50px;" />
     </ui:VisualElement>
 </ui:UXML>
