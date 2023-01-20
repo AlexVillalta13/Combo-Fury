@@ -19,7 +19,7 @@ public class CombatBarUI : UIComponent
     VisualElement playerBrickElementHolder;
 
     // states
-    bool inCombat = false;
+    [SerializeField] bool inCombat = false;
 
     [Header("Brick UI Assets")]
     [SerializeField] VisualTreeAsset yellowBrick;
