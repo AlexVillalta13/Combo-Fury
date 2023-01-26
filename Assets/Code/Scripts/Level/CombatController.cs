@@ -6,15 +6,23 @@ using UnityEngine;
 public class CombatController : MonoBehaviour
 {
     [Header("Player Stats")]
+    [SerializeField] PermanentStatsSO permanentStatsSO;
     [SerializeField] int playerMaxHealth = 100;
+    public int PlayerMaxHealth { get { return playerMaxHealth; } set { playerMaxHealth = value; } }
     [SerializeField] int playerCurrentHealth = 100;
+    public int PlayerCurrentHealth { get { return playerCurrentHealth; } set { playerCurrentHealth = value; } }
     [SerializeField] int playerAttackPower = 6;
+    public int PlayerAttackPower { get { return playerAttackPower; } set { playerAttackPower = value; } }
     [SerializeField] int playerDefense = 2;
+    public int PlayerDefense { get { return playerDefense; } set { playerDefense = value; } }
 
     [Header("Enemy Stats")]
     [SerializeField] int enemyMaxHealth = 100;
+    public int EnemyMaxHealth { get { return enemyMaxHealth; } set { enemyMaxHealth = value; } }
     [SerializeField] int enemyCurrentHealth = 100;
+    public int EnemyCurrentHealth { get { return enemyCurrentHealth; } set { enemyCurrentHealth = value; } }
     [SerializeField] int enemyAttackPower = 13;
+    public int EnemyAttackPower { get { return enemyAttackPower; } set { enemyAttackPower = value; } }
 
     [Header("Events")]
     [SerializeField] GameEvent playerDeathEvent;
@@ -92,6 +100,7 @@ public class CombatController : MonoBehaviour
     public void EnemyAttacks()
     {
         int attackIncome = Mathf.Clamp(enemyAttackPower - playerDefense, 0, enemyAttackPower);
+        enemyAttackPower = levelSO.Enemies[currentEnemy].Attack;
         playerCurrentHealth -= attackIncome;
 
         if(playerCurrentHealth < 0)

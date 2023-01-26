@@ -1,44 +1,47 @@
 <ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
     <Style src="project://database/Assets/Level/UI/Classes/SelectUpgradeClasses.uss?fileID=7433441132597879392&amp;guid=ac31d0ff9ef5714438f61001af4d49b4&amp;type=3#SelectUpgradeClasses" />
-    <ui:VisualElement style="width: 100%; height: 100%; justify-content: center; align-items: center; flex-direction: row; background-color: rgba(0, 0, 0, 0.6);">
-        <ui:VisualElement name="UpgradeContainer" class="upgradeContainer">
-            <ui:Label text="ATTACK" display-tooltip-when-elided="true" name="UpgradeName" class="nameUpgrade" />
-            <ui:VisualElement name="ImageHolder" class="imageHolder">
-                <ui:VisualElement name="ImageMover" class="imageMover">
-                    <ui:VisualElement name="UpgradeImage" class="imageUpgrade" style="background-color: rgb(0, 255, 2); position: absolute;" />
-                    <ui:VisualElement name="UpgradeImage" class="imageUpgrade" style="background-color: rgb(217, 255, 0); position: absolute; top: -250px;" />
-                    <ui:VisualElement name="UpgradeImage" class="imageUpgrade" style="background-color: rgb(217, 255, 0); position: absolute; top: -500px;" />
-                    <ui:VisualElement name="UpgradeImageToStop" class="imageUpgrade" style="background-color: rgb(255, 23, 0); position: absolute; top: -750px;" />
+    <Style src="project://database/Assets/Level/UI/Classes/GeneralControls.uss?fileID=7433441132597879392&amp;guid=60241d5d6715a5448a07eaab8185a076&amp;type=3#GeneralControls" />
+    <ui:VisualElement style="width: 100%; height: 100%; justify-content: center; align-items: center; flex-direction: column; background-color: rgba(0, 0, 0, 0.6);">
+        <ui:VisualElement name="HolderToScale" class="scaledDown" style="flex-direction: row; align-items: center; justify-content: center; width: 100%; height: 100%;">
+            <ui:VisualElement name="UpgradeContainer" class="upgradeContainer">
+                <ui:Label text="DEATH ATTACK" display-tooltip-when-elided="true" name="UpgradeName" class="nameUpgrade" />
+                <ui:VisualElement name="ImageHolder" class="imageHolder">
+                    <ui:VisualElement name="ImageMover" class="imageMover">
+                        <ui:VisualElement name="UpgradeImage" class="imageUpgrade" style="background-color: rgb(0, 255, 2); position: absolute;" />
+                        <ui:VisualElement name="UpgradeImage" class="imageUpgrade" style="background-color: rgb(217, 255, 0); position: absolute; top: -250px;" />
+                        <ui:VisualElement name="UpgradeImage" class="imageUpgrade" style="background-color: rgb(217, 255, 0); position: absolute; top: -500px;" />
+                        <ui:VisualElement name="UpgradeImage" class="imageUpgrade" style="top: -750px;" />
+                        <ui:VisualElement name="UpgradeImageToStop" class="imageUpgrade" style="background-color: rgb(255, 23, 0); position: absolute; top: -1000px;" />
+                    </ui:VisualElement>
                 </ui:VisualElement>
+                <ui:Label text="If you get x15 combo you realize an attack with extra" display-tooltip-when-elided="true" name="UpgradeDescription" class="descriptionUpgrade" />
             </ui:VisualElement>
-            <ui:Label text="Increase attack damage a little" display-tooltip-when-elided="true" name="UpgradeDescription" class="descriptionUpgrade" />
-        </ui:VisualElement>
-        <ui:VisualElement name="UpgradeContainer" class="upgradeContainer">
-            <ui:Label text="DEATH ATTACK" display-tooltip-when-elided="true" name="UpgradeName" class="nameUpgrade" />
-            <ui:VisualElement name="ImageHolder" class="imageHolder">
-                <ui:VisualElement name="ImageMover" class="imageMover">
-                    <ui:VisualElement name="UpgradeImage" class="imageUpgrade" style="background-color: rgb(0, 255, 2); position: absolute;" />
-                    <ui:VisualElement name="UpgradeImage" class="imageUpgrade" style="background-color: rgb(217, 255, 0); position: absolute; top: -250px;" />
-                    <ui:VisualElement name="UpgradeImage" class="imageUpgrade" style="background-color: rgb(217, 255, 0); position: absolute; top: -500px;" />
-                    <ui:VisualElement name="UpgradeImage" class="imageUpgrade" style="top: -750px;" />
-                    <ui:VisualElement name="UpgradeImageToStop" class="imageUpgrade" style="background-color: rgb(255, 23, 0); position: absolute; top: -1000px;" />
+            <ui:VisualElement name="UpgradeContainer" class="upgradeContainer">
+                <ui:Label text="HEALTH MAX" display-tooltip-when-elided="true" name="UpgradeName" class="nameUpgrade" />
+                <ui:VisualElement name="ImageHolder" class="imageHolder">
+                    <ui:VisualElement name="ImageMover" class="imageMover">
+                        <ui:VisualElement name="UpgradeImage" class="imageUpgrade" style="background-color: rgb(0, 255, 2); position: absolute;" />
+                        <ui:VisualElement name="UpgradeImage" class="imageUpgrade" style="background-color: rgb(217, 255, 0); position: absolute; top: -250px;" />
+                        <ui:VisualElement name="UpgradeImage" class="imageUpgrade" style="background-color: rgb(217, 255, 0); position: absolute; top: -500px;" />
+                        <ui:VisualElement name="UpgradeImage" class="imageUpgrade" style="top: -750px;" />
+                        <ui:VisualElement name="UpgradeImage" class="imageUpgrade" style="top: -1000px;" />
+                        <ui:VisualElement name="UpgradeImageToStop" class="imageUpgrade" style="background-color: rgb(255, 23, 0); position: absolute; top: -1250px;" />
+                    </ui:VisualElement>
                 </ui:VisualElement>
+                <ui:Label text="Increse the maximum health" display-tooltip-when-elided="true" name="UpgradeDescription" class="descriptionUpgrade" />
             </ui:VisualElement>
-            <ui:Label text="If you get x15 combo you realize an attack with extra" display-tooltip-when-elided="true" name="UpgradeDescription" class="descriptionUpgrade" />
-        </ui:VisualElement>
-        <ui:VisualElement name="UpgradeContainer" class="upgradeContainer">
-            <ui:Label text="HEALTH MAX" display-tooltip-when-elided="true" name="UpgradeName" class="nameUpgrade" />
-            <ui:VisualElement name="ImageHolder" class="imageHolder">
-                <ui:VisualElement name="ImageMover" class="imageMover">
-                    <ui:VisualElement name="UpgradeImage" class="imageUpgrade" style="background-color: rgb(0, 255, 2); position: absolute;" />
-                    <ui:VisualElement name="UpgradeImage" class="imageUpgrade" style="background-color: rgb(217, 255, 0); position: absolute; top: -250px;" />
-                    <ui:VisualElement name="UpgradeImage" class="imageUpgrade" style="background-color: rgb(217, 255, 0); position: absolute; top: -500px;" />
-                    <ui:VisualElement name="UpgradeImage" class="imageUpgrade" style="top: -750px;" />
-                    <ui:VisualElement name="UpgradeImage" class="imageUpgrade" style="top: -1000px;" />
-                    <ui:VisualElement name="UpgradeImageToStop" class="imageUpgrade" style="background-color: rgb(255, 23, 0); position: absolute; top: -1250px;" />
+            <ui:VisualElement name="UpgradeContainer" class="upgradeContainer">
+                <ui:Label text="ATTACK" display-tooltip-when-elided="true" name="UpgradeName" class="nameUpgrade" />
+                <ui:VisualElement name="ImageHolder" class="imageHolder">
+                    <ui:VisualElement name="ImageMover" class="imageMover">
+                        <ui:VisualElement name="UpgradeImage" class="imageUpgrade" style="background-color: rgb(0, 255, 2); position: absolute;" />
+                        <ui:VisualElement name="UpgradeImage" class="imageUpgrade" style="background-color: rgb(217, 255, 0); position: absolute; top: -250px;" />
+                        <ui:VisualElement name="UpgradeImage" class="imageUpgrade" style="background-color: rgb(217, 255, 0); position: absolute; top: -500px;" />
+                        <ui:VisualElement name="UpgradeImageToStop" class="imageUpgrade" style="background-color: rgb(255, 23, 0); position: absolute; top: -750px;" />
+                    </ui:VisualElement>
                 </ui:VisualElement>
+                <ui:Label text="Increase attack damage a little" display-tooltip-when-elided="true" name="UpgradeDescription" class="descriptionUpgrade" />
             </ui:VisualElement>
-            <ui:Label text="Increse the maximum health" display-tooltip-when-elided="true" name="UpgradeDescription" class="descriptionUpgrade" />
         </ui:VisualElement>
     </ui:VisualElement>
     <ui:Button text="CONTINUE" display-tooltip-when-elided="true" style="font-size: 112px;" />
