@@ -41,3 +41,111 @@ MonoBehaviour:
       probability: 40
     - brickType: 2
       probability: 20
+  - health: 70
+    attack: 15
+    enemyBricks:
+    - brickType: 0
+      probability: 40
+    - brickType: 1
+      probability: 40
+    - brickType: 2
+      probability: 20
+  - health: 70
+    attack: 15
+    enemyBricks:
+    - brickType: 0
+      probability: 40
+    - brickType: 1
+      probability: 40
+    - brickType: 2
+      probability: 20
+  - health: 70
+    attack: 15
+    enemyBricks:
+    - brickType: 0
+      probability: 40
+    - brickType: 1
+      probability: 40
+    - brickType: 2
+      probability: 20
+  - health: 70
+    attack: 15
+    enemyBricks:
+    - brickType: 0
+      probability: 40
+    - brickType: 1
+      probability: 40
+    - brickType: 2
+      probability: 20
+  - health: 70
+    attack: 15
+    enemyBricks:
+    - brickType: 0
+      probability: 40
+    - brickType: 1
+      probability: 40
+    - brickType: 2
+      probability: 20
+  - health: 70
+    attack: 15
+    enemyBricks:
+    - brickType: 0
+      probability: 40
+    - brickType: 1
+      probability: 40
+    - brickType: 2
+      probability: 20
+  - health: 70
+    attack: 15
+    enemyBricks:
+    - brickType: 0
+      probability: 40
+    - brickType: 1
+      probability: 40
+    - brickType: 2
+      probability: 20
+  - health: 70
+    attack: 15
+    enemyBricks:
+    - brickType: 0
+      probability: 40
+    - brickType: 1
+      probability: 40
+    - brickType: 2
+      probability: 20
+  - health: 70
+    attack: 15
+    enemyBricks:
+    - brickType: 0
+      probability: 40
+    - brickType: 1
+      probability: 40
+    - brickType: 2
+      probability: 20
+  - health: 70
+    attack: 15
+    enemyBricks:
+    - brickType: 0
+      probability: 40
+    - brickType: 1
+      probability: 40
+    - brickType: 2
+      probability: 20
+  - health: 70
+    attack: 15
+    enemyBricks:
+    - brickType: 0
+      probability: 40
+    - brickType: 1
+      probability: 40
+    - brickType: 2
+      probability: 20
+  - health: 70
+    attack: 15
+    enemyBricks:
+    - brickType: 0
+      probability: 40
+    - brickType: 1
+      probability: 40
+    - brickType: 2
+      probability: 20

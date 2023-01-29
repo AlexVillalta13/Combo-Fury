@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: dba768de21cbebf4ba9e9a901ddbfd29, type: 3}
-  m_Name: UpgradesListSO
+  m_Name: AllUpgradesListSO
   m_EditorClassIdentifier: 
   upgradeList:
   - upgradeName: Heal
@@ -19,12 +19,18 @@ MonoBehaviour:
     levelUnlock: 0
     upgradeDescription: Heals a small amount
     getUpgradeEvent: {fileID: 11400000, guid: 16fdfc2b96ce415488ecd2f5382ad783, type: 2}
-  - upgradeName: Increase Attack
+  - upgradeName: Little Attack Increase
     image: {fileID: 0}
     canRepeat: 1
     levelUnlock: 0
     upgradeDescription: Increase attack in a small amount
     getUpgradeEvent: {fileID: 11400000, guid: c06b829dffdb67248a1f051eb96ba477, type: 2}
+  - upgradeName: Big Attack Increase
+    image: {fileID: 0}
+    canRepeat: 1
+    levelUnlock: 0
+    upgradeDescription: Increase attack in a big amount
+    getUpgradeEvent: {fileID: 11400000, guid: a738f0da08fb21d4ea9f373100bf6905, type: 2}
   - upgradeName: Shield
     image: {fileID: 0}
     canRepeat: 0

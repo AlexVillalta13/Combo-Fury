@@ -50,7 +50,9 @@ public class CombatController : MonoBehaviour
         currentEnemy = 0;
         totalEnemies = levelSO.Enemies.Count - 1;
 
-        UpdateHealthUI();
+        SetupEnemy();
+        UpdateEnemyHealthUI(0);
+        UpdatePlayerHealthUI(0);
     }
 
     private void SetupEnemy()
@@ -65,10 +67,13 @@ public class CombatController : MonoBehaviour
         enemyAttackPower = levelSO.Enemies[currentEnemy].Attack;
     }
 
-    public void UpdateHealthUI()
+    public void UpdateEnemyHealthUI(int valueDifference)
     {
-        onChangeEnemyHealth?.Invoke(enemyCurrentHealth, enemyMaxHealth, 0);
-        onChangePlayerHealth?.Invoke(playerCurrentHealth, playerMaxHealth, 0);
+        onChangeEnemyHealth?.Invoke(enemyCurrentHealth, enemyMaxHealth, valueDifference);
+    }
+    public void UpdatePlayerHealthUI(int valueDifference)
+    {
+        onChangePlayerHealth?.Invoke(playerCurrentHealth, playerMaxHealth, valueDifference);
     }
 
     public void PlayerAttacks()
@@ -77,7 +82,7 @@ public class CombatController : MonoBehaviour
 
         CheckWinConditions();
 
-        onChangeEnemyHealth?.Invoke(enemyCurrentHealth, enemyMaxHealth, playerAttackPower);
+        UpdateEnemyHealthUI(playerAttackPower);
     }
 
     public void PlayerCriticalAttack()
@@ -87,7 +92,7 @@ public class CombatController : MonoBehaviour
 
         CheckWinConditions();
 
-        onChangeEnemyHealth?.Invoke(enemyCurrentHealth, enemyMaxHealth, playerAttackPower);
+        UpdateEnemyHealthUI(playerAttackPower);
     }
 
     private void CheckWinConditions()
@@ -117,12 +122,13 @@ public class CombatController : MonoBehaviour
             playerDeathEvent.Raise();
         }
 
-        onChangePlayerHealth?.Invoke(playerCurrentHealth, playerMaxHealth, attackIncome);
+        UpdatePlayerHealthUI(attackIncome);
     }
 
     public void EncounteredNewEnemy()
     {
         SetupEnemy();
-        UpdateHealthUI();
+        UpdateEnemyHealthUI(0);
+        UpdatePlayerHealthUI(0);
     }
 }

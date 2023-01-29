@@ -6,48 +6,33 @@ using UnityEngine.UIElements;
 public class ChooseUpgradeUI : UIComponent
 {
     [SerializeField] UpgradeInLevelSO upgradeListSO;
+    [SerializeField] UpgradeInLevelSO upgradesPickupSO;
     [SerializeField] GameEvent continueWalkingEvent;
 
     VisualElement holderToScale;
-    Button continueButton;
     List<VisualElement> UpgradeContainerList = new List<VisualElement>();
     List<UpgradeInLevelSO.Upgrade> upgradesRandomlySelected = new List<UpgradeInLevelSO.Upgrade>();
 
     const string upgradeContainerClass = "upgradeContainer";
     const string upgradeNameClass = "nameUpgrade";
     const string upgradeDescriptionClass = "descriptionUpgrade";
-    const string scaleDownClass = "scaledDown";
-    const string scaleUpClass = "scaledUp";
+    const string scaleHolderElement = "HolderToScale";
 
     public override void SetElementsReferences()
     {
         base.SetElementsReferences();
 
-        holderToScale = m_UIElement.Query<VisualElement>(className: scaleDownClass);
-        continueButton = m_UIElement.Query<Button>();
+        holderToScale = m_UIElement.Query<VisualElement>(name: scaleHolderElement);
         UpgradeContainerList = m_UIElement.Query<VisualElement>(className: upgradeContainerClass).ToList();
 
         holderToScale.RegisterCallback<TransitionEndEvent>(OnChangeScaleEndEvent);
-    }
-
-    private void OnEnable()
-    {
-        continueButton.clicked += UpgradeSelected;
-    }
-
-    private void OnDisable()
-    {
-        continueButton.clicked -= UpgradeSelected;
     }
 
     public void UpgradeSelected()
     {
         continueWalkingEvent.Raise();
         ScaleDownUI();
-        //HideGameplayElement();
     }
-
-
 
     public void SelectRandomUpgrades()
     {
@@ -75,9 +60,17 @@ public class ChooseUpgradeUI : UIComponent
                 if (upgrade.CanRepeat == false)
                 {
                     // Check unlocked upgrades to see if can appear again
+                    foreach(UpgradeInLevelSO.Upgrade upgradeToCheck in upgradesPickupSO.UpgradeList)
+                    {
+                        if(upgradeToCheck.UpgradeName == upgrade.UpgradeName)
+                        {
+                            goto WhileLoop;
+                        }
+                    }
                 }
                 upgradesRandomlySelected.Add(upgrade);
             }
+
             WhileLoop:
             continue;
         }
@@ -103,7 +96,6 @@ public class ChooseUpgradeUI : UIComponent
             upgradeName.text = upgradesRandomlySelected[i].UpgradeName;
             upgradeDescription.text = upgradesRandomlySelected[i].UpgradeDescription;
         }
-        //RegisterAllEvents();
     }
 
     private void RegisterAllEvents()
@@ -123,6 +115,7 @@ public class ChooseUpgradeUI : UIComponent
     private void RegisterFirstEvent(ClickEvent evt)
     {
         upgradesRandomlySelected[0].UpgradeEvent.Raise();
+        upgradesPickupSO.UpgradeList.Add(upgradesRandomlySelected[0]);
         UpgradeSelected();
         UnregisterAllEvents();
     }
@@ -130,6 +123,7 @@ public class ChooseUpgradeUI : UIComponent
     private void RegisterSecondEvent(ClickEvent evt)
     {
         upgradesRandomlySelected[1].UpgradeEvent.Raise();
+        upgradesPickupSO.UpgradeList.Add(upgradesRandomlySelected[1]);
         UpgradeSelected();
         UnregisterAllEvents();
     }
@@ -137,9 +131,12 @@ public class ChooseUpgradeUI : UIComponent
     private void RegisterThirdEvent(ClickEvent evt)
     {
         upgradesRandomlySelected[2].UpgradeEvent.Raise();
+        upgradesPickupSO.UpgradeList.Add(upgradesRandomlySelected[2]);
         UpgradeSelected();
         UnregisterAllEvents();
     }
+
+
 
     public override void OnScaledUp()
     {

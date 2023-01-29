@@ -8,6 +8,11 @@ public class UpgradeInLevelSO : ScriptableObject
     [SerializeField] List<Upgrade> upgradeList = new List<Upgrade>();
     public List<Upgrade> UpgradeList { get { return upgradeList; } }
 
+    public void AddUpgradeToList(Upgrade upgrade)
+    {
+        upgradeList.Add(upgrade);
+    }
+
     [System.Serializable]
     public class Upgrade
     {

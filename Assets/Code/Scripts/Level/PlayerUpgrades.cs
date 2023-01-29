@@ -9,6 +9,7 @@ public class PlayerUpgrades : MonoBehaviour
     [Header("Scriptable Objects Stats")]
     [SerializeField] PermanentStatsSO PermanentStatsSO;
     [SerializeField] UpgradeInLevelSO upgradeInLevelSO;
+    [SerializeField] UpgradeInLevelSO upgradesPlayerHasSO;
 
     [Header("Upgrade Stats")]
     [SerializeField] int healPercentage = 25;
@@ -26,6 +27,7 @@ public class PlayerUpgrades : MonoBehaviour
 
     public void ResetUpgrades()
     {
+        upgradesPlayerHasSO.UpgradeList.Clear();
         hasShield = false;
     }
 
@@ -34,6 +36,7 @@ public class PlayerUpgrades : MonoBehaviour
         int amountToIncreaseMaxHealth = PermanentStatsSO.MaxHealth * maxHealthIncreasePercentage / 100;
         m_combatController.PlayerMaxHealth += amountToIncreaseMaxHealth;
         m_combatController.PlayerCurrentHealth += amountToIncreaseMaxHealth;
+        m_combatController.UpdatePlayerHealthUI(amountToIncreaseMaxHealth);
     }
 
     public void Heal()
@@ -44,11 +47,18 @@ public class PlayerUpgrades : MonoBehaviour
         {
             m_combatController.PlayerCurrentHealth = m_combatController.PlayerMaxHealth;
         }
+        m_combatController.UpdatePlayerHealthUI(amountToHeal);
     }
 
     public void IncreaseAttack()
     {
         int attackIncrease = PermanentStatsSO.Attack * littleAttackIncreasePercentage / 100;
+        m_combatController.PlayerAttackPower += attackIncrease;
+    }
+
+    public void BigAttackIncrease()
+    {
+        int attackIncrease = PermanentStatsSO.Attack * mediumAttackIncreasePercentage / 100;
         m_combatController.PlayerAttackPower += attackIncrease;
     }
 

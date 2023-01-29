@@ -44,5 +44,4 @@
             </ui:VisualElement>
         </ui:VisualElement>
     </ui:VisualElement>
-    <ui:Button text="CONTINUE" display-tooltip-when-elided="true" style="font-size: 112px;" />
 </ui:UXML>
