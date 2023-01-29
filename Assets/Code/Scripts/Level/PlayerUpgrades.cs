@@ -4,11 +4,19 @@ using UnityEngine;
 
 public class PlayerUpgrades : MonoBehaviour
 {
+    CombatController m_combatController;
+
+    [Header("Scriptable Objects Stats")]
     [SerializeField] PermanentStatsSO PermanentStatsSO;
     [SerializeField] UpgradeInLevelSO upgradeInLevelSO;
 
-    CombatController m_combatController;
+    [Header("Upgrade Stats")]
+    [SerializeField] int healPercentage = 25;
+    [SerializeField] int littleAttackIncreasePercentage = 5;
+    [SerializeField] int mediumAttackIncreasePercentage = 10;
+    [SerializeField] int maxHealthIncreasePercentage = 10;
 
+    // Properties
     bool hasShield = false;
 
     private void Awake()
@@ -23,16 +31,15 @@ public class PlayerUpgrades : MonoBehaviour
 
     public void IncreaseMaxHealth()
     {
-        Debug.Log("Max Health");
-
-        m_combatController.PlayerMaxHealth += 10;
-        m_combatController.PlayerCurrentHealth += 10;
+        int amountToIncreaseMaxHealth = PermanentStatsSO.MaxHealth * maxHealthIncreasePercentage / 100;
+        m_combatController.PlayerMaxHealth += amountToIncreaseMaxHealth;
+        m_combatController.PlayerCurrentHealth += amountToIncreaseMaxHealth;
     }
 
     public void Heal()
     {
-        Debug.Log("Heal");
-        m_combatController.PlayerCurrentHealth += 10;
+        int amountToHeal = PermanentStatsSO.MaxHealth * healPercentage / 100;
+        m_combatController.PlayerCurrentHealth += amountToHeal;
         if(m_combatController.PlayerCurrentHealth > m_combatController.PlayerMaxHealth)
         {
             m_combatController.PlayerCurrentHealth = m_combatController.PlayerMaxHealth;
@@ -41,19 +48,28 @@ public class PlayerUpgrades : MonoBehaviour
 
     public void IncreaseAttack()
     {
-        Debug.Log("Increase attack");
-
-        m_combatController.PlayerAttackPower += 8;
+        int attackIncrease = PermanentStatsSO.Attack * littleAttackIncreasePercentage / 100;
+        m_combatController.PlayerAttackPower += attackIncrease;
     }
 
     public void HasShield()
     {
         hasShield = true;
-        Debug.Log("Shield");
     }
 
     public void ActivateShield()
     {
-        m_combatController.EnemyAttackPower = 0;
+        if(hasShield)
+        {
+            m_combatController.EnemyAttackPower = 0;
+        }
+    }
+
+    public void DeactivateShield()
+    {
+        if(hasShield == true && m_combatController.EnemyAttackPower == 0)
+        {
+            m_combatController.SetEnemyAttack(); 
+        }
     }
 }

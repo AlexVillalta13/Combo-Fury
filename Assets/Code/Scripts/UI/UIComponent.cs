@@ -8,6 +8,8 @@ public class UIComponent : MonoBehaviour
     [Header("References")]
     [SerializeField] protected UIDocument m_Document;
     [SerializeField] protected string elementName;
+    const string scaleDownClass = "scaledDown";
+    const string scaleUpClass = "scaledUp";
 
     protected VisualElement m_Root;
     protected VisualElement m_UIElement;
@@ -81,4 +83,40 @@ public class UIComponent : MonoBehaviour
         ShowVisualElement(m_UIElement, false);
         // Deactivation event
     }
+
+    public virtual void ScaleUpUI()
+    {
+        VisualElement element = m_UIElement.Q<VisualElement>(className: scaleDownClass);
+        element.RemoveFromClassList(scaleDownClass);
+        element.AddToClassList(scaleUpClass);
+    }
+
+    public virtual void ScaleDownUI()
+    {
+        VisualElement element = m_UIElement.Q<VisualElement>(className: scaleUpClass);
+        element.RemoveFromClassList(scaleUpClass);
+        element.AddToClassList(scaleDownClass);
+    }
+
+    protected void OnChangeScaleEndEvent(TransitionEndEvent evt)
+    {
+        foreach(StylePropertyName transitionName in evt.stylePropertyNames)
+        {
+            if(transitionName == "scale")
+            {
+                VisualElement element = evt.currentTarget as VisualElement;
+                if (element.ClassListContains(scaleUpClass))
+                {
+                    OnScaledUp();
+                }
+                else if (element.ClassListContains(scaleDownClass))
+                {
+                    OnScaledDown();
+                }
+            }
+        }
+    }
+
+    public virtual void OnScaledUp() { }
+    public virtual void OnScaledDown() { }
 }

@@ -141,29 +141,15 @@ public class ChooseUpgradeUI : UIComponent
         UnregisterAllEvents();
     }
 
-    public void ScaleUpUI()
+    public override void OnScaledUp()
     {
-        holderToScale.RemoveFromClassList(scaleDownClass);
-        holderToScale.AddToClassList(scaleUpClass);
+        base.OnScaledUp();
+        RegisterAllEvents();
     }
 
-    public void ScaleDownUI()
+    public override void OnScaledDown()
     {
-        holderToScale.RemoveFromClassList(scaleUpClass);
-        holderToScale.AddToClassList(scaleDownClass);
-    }
-
-    private void OnChangeScaleEndEvent(TransitionEndEvent evt)
-    {
-        if (holderToScale.ClassListContains(scaleUpClass))
-        {
-            // Has scaled up
-            RegisterAllEvents();
-        }
-        else if(holderToScale.ClassListContains(scaleDownClass))
-        {
-            // Has scaled down
-            HideGameplayElement();
-        }
+        base.OnScaledDown();
+        HideGameplayElement();
     }
 }

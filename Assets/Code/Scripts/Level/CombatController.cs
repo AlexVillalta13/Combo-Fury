@@ -42,9 +42,13 @@ public class CombatController : MonoBehaviour
 
     public void StartGame()
     {
+        playerMaxHealth = permanentStatsSO.MaxHealth;
+        playerAttackPower = permanentStatsSO.Attack;
+        playerDefense = permanentStatsSO.Defense;
+        playerCurrentHealth = playerMaxHealth;
+
         currentEnemy = 0;
         totalEnemies = levelSO.Enemies.Count - 1;
-        playerCurrentHealth = playerMaxHealth;
 
         UpdateHealthUI();
     }
@@ -53,6 +57,11 @@ public class CombatController : MonoBehaviour
     {
         enemyMaxHealth = levelSO.Enemies[currentEnemy].Health;
         enemyCurrentHealth = enemyMaxHealth;
+        SetEnemyAttack();
+    }
+
+    public void SetEnemyAttack()
+    {
         enemyAttackPower = levelSO.Enemies[currentEnemy].Attack;
     }
 
