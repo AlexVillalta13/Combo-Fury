@@ -40,6 +40,15 @@ public class CombatController : MonoBehaviour
     [SerializeField] private int currentEnemy = 0;
     [SerializeField] private int totalEnemies = 0;
 
+    private void OnEnable()
+    {
+        LevelSelectorUI.loadLevel += SetupLevel;
+    }
+    private void OnDisable()
+    {
+        LevelSelectorUI.loadLevel -= SetupLevel;
+    }
+
     public void StartGame()
     {
         playerMaxHealth = permanentStatsSO.MaxHealth;
@@ -130,5 +139,10 @@ public class CombatController : MonoBehaviour
         SetupEnemy();
         UpdateEnemyHealthUI(0);
         UpdatePlayerHealthUI(0);
+    }
+
+    private void SetupLevel(LevelSO level)
+    {
+        levelSO = level;
     }
 }

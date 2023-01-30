@@ -6,6 +6,9 @@ using UnityEngine.UIElements;
 [CreateAssetMenu(fileName = "New Level")]
 public class LevelSO : ScriptableObject
 {
+    [SerializeField] SceneEnum environment = SceneEnum.AlpineWoods;
+    [SerializeField] int initialPosition = 0;
+
     [SerializeField] BrickTypesSO brickTypes;
 
     [SerializeField] List<Enemy> enemies = new List<Enemy>();

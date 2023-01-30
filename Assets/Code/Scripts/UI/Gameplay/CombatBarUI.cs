@@ -44,8 +44,14 @@ public class CombatBarUI : UIComponent
     [SerializeField] BrickTypesSO brickTypesSO;
     int currentEnemy = 0;
 
-    
-
+    private void OnEnable()
+    {
+        LevelSelectorUI.loadLevel += SetupLevel;
+    }
+    private void OnDisable()
+    {
+        LevelSelectorUI.loadLevel -= SetupLevel;
+    }
 
     public override void Awake()
     {
@@ -217,5 +223,10 @@ public class CombatBarUI : UIComponent
     public void StartLevel()
     {
         currentEnemy = 0;
+    }
+
+    private void SetupLevel(LevelSO level)
+    {
+        this.levelSO = level;
     }
 }

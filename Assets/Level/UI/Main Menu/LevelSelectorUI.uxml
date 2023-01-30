@@ -1,7 +1,7 @@
 <ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
     <Style src="project://database/Assets/Level/UI/Classes/GeneralControls.uss?fileID=7433441132597879392&amp;guid=60241d5d6715a5448a07eaab8185a076&amp;type=3#GeneralControls" />
     <Style src="project://database/Assets/Level/UI/Classes/LevelSelectionClasses.uss?fileID=7433441132597879392&amp;guid=3cad39220a8b5e34ea8fe4f610c015f5&amp;type=3#LevelSelectionClasses" />
-    <ui:ScrollView scroll-deceleration-rate="0,135" elasticity="0,1" mode="Horizontal" touch-scroll-type="Elastic" nested-interaction-kind="StopScrolling" horizontal-scroller-visibility="Hidden" vertical-scroller-visibility="Hidden">
+    <ui:ScrollView scroll-deceleration-rate="0,135" elasticity="0,1" mode="Horizontal" touch-scroll-type="Elastic" nested-interaction-kind="ForwardScrolling" horizontal-scroller-visibility="Hidden" vertical-scroller-visibility="Hidden">
         <ui:VisualElement name="LevelHolder" class="levelHolder">
             <ui:Label text="Level 1" display-tooltip-when-elided="true" name="LevelName" class="levelName" />
             <ui:VisualElement name="Image" class="levelImage" />
