@@ -12,10 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1edc520f4d029fd4c9fef3a7bc3894cf, type: 3}
   m_Name: Level 01
   m_EditorClassIdentifier: 
+  environment: 0
+  initialPosition: 0
   brickTypes: {fileID: 11400000, guid: 1de6bd5f177d50540a03449e4f318d9e, type: 2}
   enemies:
-  - health: 50
-    attack: 10
+  - health: 20
+    attack: 20
     enemyBricks:
     - brickType: 0
       probability: 20
@@ -23,8 +25,8 @@ MonoBehaviour:
       probability: 40
     - brickType: 2
       probability: 20
-  - health: 60
-    attack: 13
+  - health: 25
+    attack: 21
     enemyBricks:
     - brickType: 0
       probability: 30
@@ -32,8 +34,8 @@ MonoBehaviour:
       probability: 40
     - brickType: 2
       probability: 20
-  - health: 70
-    attack: 15
+  - health: 35
+    attack: 22
     enemyBricks:
     - brickType: 0
       probability: 40
@@ -41,8 +43,8 @@ MonoBehaviour:
       probability: 40
     - brickType: 2
       probability: 20
-  - health: 70
-    attack: 15
+  - health: 46
+    attack: 23
     enemyBricks:
     - brickType: 0
       probability: 40
@@ -50,8 +52,8 @@ MonoBehaviour:
       probability: 40
     - brickType: 2
       probability: 20
-  - health: 70
-    attack: 15
+  - health: 58
+    attack: 24
     enemyBricks:
     - brickType: 0
       probability: 40
@@ -59,8 +61,8 @@ MonoBehaviour:
       probability: 40
     - brickType: 2
       probability: 20
-  - health: 70
-    attack: 15
+  - health: 71
+    attack: 26
     enemyBricks:
     - brickType: 0
       probability: 40

@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Permanent Stats SO
   m_EditorClassIdentifier: 
   maxHealth: 100
-  attack: 100
-  defense: 5
+  attack: 10
+  defense: 10
