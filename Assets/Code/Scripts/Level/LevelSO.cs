@@ -23,6 +23,10 @@ public class Enemy
     public int Health { get { return health; }}
     [SerializeField] int attack;
     public int Attack { get { return attack; }}
+    [SerializeField] float minTimeToSpawnBrick;
+    public float MinTimeToSpawnBrick { get { return minTimeToSpawnBrick; }}
+    [SerializeField] float maxTimeToSpawnBrick;
+    public float MaxTimeToSpawnBrick { get { return maxTimeToSpawnBrick; }}
     [SerializeField] List <BrickProbability> enemyBricks = new List<BrickProbability>();
     public List<BrickProbability> EnemyBricks { get { return enemyBricks; } }
 

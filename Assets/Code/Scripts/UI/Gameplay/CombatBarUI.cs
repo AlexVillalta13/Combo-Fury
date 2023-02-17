@@ -56,8 +56,6 @@ public class CombatBarUI : UIComponent
     public override void Awake()
     {
         base.Awake();
-
-        timeToSpawnBrick = UnityEngine.Random.Range(minTimeToSpawnBrick, maxTimeSpawnBrick);
     }
 
     public override void SetElementsReferences()
@@ -80,7 +78,7 @@ public class CombatBarUI : UIComponent
             if (timerSpawn > timeToSpawnBrick)
             {
                 timerSpawn = 0f;
-                timeToSpawnBrick = UnityEngine.Random.Range(minTimeToSpawnBrick, maxTimeSpawnBrick);
+                CreateRandomTimeToSpawnBrick();
 
                 GetRandomBrickFromSO();
             }
@@ -206,6 +204,7 @@ public class CombatBarUI : UIComponent
     public void InCombat()
     {
         inCombat = true;
+        CreateRandomTimeToSpawnBrick();
     }
 
     public void FinishCombat()
@@ -223,6 +222,15 @@ public class CombatBarUI : UIComponent
     public void StartLevel()
     {
         currentEnemy = 0;
+        //timeToSpawnBrick = UnityEngine.Random.Range(minTimeToSpawnBrick, maxTimeSpawnBrick);
+        CreateRandomTimeToSpawnBrick();
+    }
+
+    private void CreateRandomTimeToSpawnBrick()
+    {
+        minTimeToSpawnBrick = levelSO.Enemies[currentEnemy].MinTimeToSpawnBrick;
+        maxTimeSpawnBrick = levelSO.Enemies[currentEnemy].MaxTimeToSpawnBrick;
+        timeToSpawnBrick = UnityEngine.Random.Range(levelSO.Enemies[currentEnemy].MinTimeToSpawnBrick, levelSO.Enemies[currentEnemy].MaxTimeToSpawnBrick);
     }
 
     private void SetupLevel(LevelSO level)
