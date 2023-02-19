@@ -74,7 +74,7 @@ public class CombatController : MonoBehaviour
     {
         enemyMaxHealth = levelSO.Enemies[currentEnemy].Health;
         enemyCurrentHealth = enemyMaxHealth;
-        SetEnemyAttack();
+        //SetEnemyAttack();
     }
 
     public void SetEnemyAttack()
@@ -128,6 +128,8 @@ public class CombatController : MonoBehaviour
 
     public void EnemyAttacks()
     {
+        // Animation event when receive damage
+
         int attackIncome = Mathf.Clamp(enemyAttackPower - playerDefense, 0, enemyAttackPower);
         enemyAttackPower = levelSO.Enemies[currentEnemy].Attack;
         playerCurrentHealth -= attackIncome;
@@ -138,6 +140,10 @@ public class CombatController : MonoBehaviour
         }
 
         UpdatePlayerHealthUI(attackIncome);
+        if(enemyAttackPower == 0)
+        {
+            SetEnemyAttack();
+        }
     }
 
     public void EncounteredNewEnemy()

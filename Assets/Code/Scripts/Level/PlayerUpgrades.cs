@@ -69,6 +69,7 @@ public class PlayerUpgrades : MonoBehaviour
 
     public void ActivateShield()
     {
+        Debug.Log("Activate shield");
         if(hasShield)
         {
             m_combatController.EnemyAttackPower = 0;
@@ -77,9 +78,10 @@ public class PlayerUpgrades : MonoBehaviour
 
     public void DeactivateShield()
     {
-        if(hasShield == true && m_combatController.EnemyAttackPower == 0)
-        {
-            m_combatController.SetEnemyAttack(); 
-        }
+        //Debug.Log("Deactivate shield");
+        //if (hasShield == true && m_combatController.EnemyAttackPower == 0)
+        //{
+        //    m_combatController.SetEnemyAttack(); 
+        //}
     }
 }
