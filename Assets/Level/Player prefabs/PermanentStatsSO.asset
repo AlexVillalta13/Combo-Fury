@@ -16,4 +16,4 @@ MonoBehaviour:
   currentHealth: 100
   attack: 10
   defense: 0
-  criticalAttackChance: 15
+  criticalAttackChance: 20
