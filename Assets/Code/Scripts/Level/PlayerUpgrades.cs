@@ -7,7 +7,7 @@ public class PlayerUpgrades : MonoBehaviour
     CombatController m_combatController;
 
     [Header("Scriptable Objects Stats")]
-    [SerializeField] PermanentStatsSO PermanentStatsSO;
+    [SerializeField] PlayerStatsSO PermanentStatsSO;
     [SerializeField] UpgradeInLevelSO upgradeInLevelSO;
     [SerializeField] UpgradeInLevelSO upgradesPlayerHasSO;
 

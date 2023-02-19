@@ -6,7 +6,8 @@ using UnityEngine;
 public class CombatController : MonoBehaviour
 {
     [Header("Player Stats")]
-    [SerializeField] PermanentStatsSO permanentStatsSO;
+    [SerializeField] PlayerStatsSO permanentStatsSO;
+    [SerializeField] PlayerStatsSO inCombatStatsSO;
     [SerializeField] int playerMaxHealth = 100;
     public int PlayerMaxHealth { get { return playerMaxHealth; } set { playerMaxHealth = value; } }
     [SerializeField] int playerCurrentHealth = 100;
@@ -51,6 +52,11 @@ public class CombatController : MonoBehaviour
 
     public void StartGame()
     {
+        inCombatStatsSO.MaxHealth = permanentStatsSO.MaxHealth;
+        inCombatStatsSO.Attack = permanentStatsSO.Attack;
+        inCombatStatsSO.Defense = permanentStatsSO.Defense;
+        inCombatStatsSO.CriticalAttackChance = permanentStatsSO.CriticalAttackChance;
+
         playerMaxHealth = permanentStatsSO.MaxHealth;
         playerAttackPower = permanentStatsSO.Attack;
         playerDefense = permanentStatsSO.Defense;

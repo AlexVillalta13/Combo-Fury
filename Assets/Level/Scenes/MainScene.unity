@@ -2225,6 +2225,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   permanentStatsSO: {fileID: 11400000, guid: 8120f6d6bf3f9f748a579a116d9ed62d, type: 2}
+  inCombatStatsSO: {fileID: 11400000, guid: aa73bdaa80e88ab4e8e2f1d00b7c5e66, type: 2}
   playerMaxHealth: 100
   playerCurrentHealth: 100
   playerAttackPower: 100

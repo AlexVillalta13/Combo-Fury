@@ -6,6 +6,7 @@ using UnityEngine.UIElements;
 [CreateAssetMenu(fileName = "New Level")]
 public class LevelSO : ScriptableObject
 {
+    [SerializeField] PlayerStatsSO inCombatStatsSO;
     [SerializeField] SceneEnum environment = SceneEnum.AlpineWoods;
     [SerializeField] int initialPosition = 0;
 
