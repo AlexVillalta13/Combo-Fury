@@ -15,39 +15,75 @@ public class LevelSO : ScriptableObject
     [SerializeField] List<Enemy> enemies = new List<Enemy>();
 
     public List<Enemy> Enemies { get { return enemies; } }
+
+    private void OnEnable()
+    {
+        foreach(Enemy enemy in Enemies)
+        {
+            if(enemy != null)
+            {
+                enemy.InCombatStatsSO = inCombatStatsSO;
+            }
+        }
+    }
 }
 
 [System.Serializable]
 public class Enemy
 {
-    [SerializeField] int health;
+    public PlayerStatsSO InCombatStatsSO { get; set; }
+
+    [SerializeField] int health = 100;
     public int Health { get { return health; }}
-    [SerializeField] int attack;
+    [SerializeField] int attack = 5;
     public int Attack { get { return attack; }}
-    [SerializeField] float minTimeToSpawnBrick;
+    [SerializeField] float minTimeToSpawnBrick = 1f;
     public float MinTimeToSpawnBrick { get { return minTimeToSpawnBrick; }}
-    [SerializeField] float maxTimeToSpawnBrick;
+    [SerializeField] float maxTimeToSpawnBrick = 3f;
     public float MaxTimeToSpawnBrick { get { return maxTimeToSpawnBrick; }}
+    [SerializeField] float chanceOfPlayerBrick = 60f;
+    [SerializeField] float chanceOfEnemyBrick = 40f;
     [SerializeField] List <BrickProbability> enemyBricks = new List<BrickProbability>();
     public List<BrickProbability> EnemyBricks { get { return enemyBricks; } }
 
     public BrickTypeEnum GetRandomBrick()
     {
-        float maxRange = 0f;
-        foreach(BrickProbability brickProbability in enemyBricks)
-        {
-            maxRange += brickProbability.Probability;
-        }
-
+        float maxRange = chanceOfPlayerBrick + chanceOfEnemyBrick;
         float randomNumber = UnityEngine.Random.Range(0f, maxRange);
         float rangeNumberToSpawn = 0f;
-        foreach(BrickProbability brickProbability in enemyBricks)
+        if (rangeNumberToSpawn < randomNumber && (rangeNumberToSpawn + chanceOfPlayerBrick) > randomNumber)
         {
-            if(rangeNumberToSpawn < randomNumber && (rangeNumberToSpawn + brickProbability.Probability) > randomNumber)
+            //Player Brick
+            randomNumber = Random.Range(0f, 100f);
+            if (randomNumber < InCombatStatsSO.CriticalAttackChance)
             {
-                return brickProbability.BrickType;
+                return BrickTypeEnum.Greenbrick;
             }
-            rangeNumberToSpawn += brickProbability.Probability;
+            else
+            {
+                return BrickTypeEnum.YellowBrick;
+            }
+        }
+        else
+        {
+            //Enemy Brick
+            maxRange = 0f;
+            foreach (BrickProbability brickProbability in enemyBricks)
+            {
+                maxRange += brickProbability.Probability;
+            }
+
+            randomNumber = UnityEngine.Random.Range(0f, maxRange);
+            rangeNumberToSpawn = 0f;
+            foreach (BrickProbability brickProbability in enemyBricks)
+            {
+                if (rangeNumberToSpawn < randomNumber && (rangeNumberToSpawn + brickProbability.Probability) > randomNumber)
+                {
+                    return brickProbability.BrickType;
+                }
+                rangeNumberToSpawn += brickProbability.Probability;
+            }
+            Debug.LogError("LevelSo: No random Enemy brick selected");
         }
 
         Debug.LogError("LevelSo: No random brick selected");
