@@ -43,3 +43,15 @@ MonoBehaviour:
     levelUnlock: 0
     upgradeDescription: Increase the max heath
     getUpgradeEvent: {fileID: 11400000, guid: f667a2f609fa6e44e929bf7d9ff1fef5, type: 2}
+  - upgradeName: Increase Critical Chance
+    image: {fileID: 0}
+    canRepeat: 1
+    levelUnlock: 0
+    upgradeDescription: Increase chance of appearing green bricks
+    getUpgradeEvent: {fileID: 11400000, guid: fe3c3c5d870108145a5c505948697bef, type: 2}
+  - upgradeName: Increase Defense
+    image: {fileID: 0}
+    canRepeat: 1
+    levelUnlock: 0
+    upgradeDescription: Increase defense in a small amount
+    getUpgradeEvent: {fileID: 11400000, guid: 96f0242b4ae759045a1a3303c8744de2, type: 2}

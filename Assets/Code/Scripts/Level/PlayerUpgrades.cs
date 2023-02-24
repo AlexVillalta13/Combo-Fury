@@ -7,7 +7,8 @@ public class PlayerUpgrades : MonoBehaviour
     CombatController m_combatController;
 
     [Header("Scriptable Objects Stats")]
-    [SerializeField] PlayerStatsSO PermanentStatsSO;
+    [SerializeField] PlayerStatsSO PermanentPlayerStatsSO;
+    [SerializeField] PlayerStatsSO inCombatPlayerStatsSO;
     [SerializeField] UpgradeInLevelSO upgradeInLevelSO;
     [SerializeField] UpgradeInLevelSO upgradesPlayerHasSO;
 
@@ -15,7 +16,9 @@ public class PlayerUpgrades : MonoBehaviour
     [SerializeField] int healPercentage = 25;
     [SerializeField] int littleAttackIncreasePercentage = 5;
     [SerializeField] int mediumAttackIncreasePercentage = 10;
+    [SerializeField] int mediumDefenseIncreasePercentage = 10;
     [SerializeField] int maxHealthIncreasePercentage = 10;
+    [SerializeField] float criticalChanceIncrease = 5f;
 
     // Properties
     bool hasShield = false;
@@ -33,33 +36,55 @@ public class PlayerUpgrades : MonoBehaviour
 
     public void IncreaseMaxHealth()
     {
-        int amountToIncreaseMaxHealth = PermanentStatsSO.MaxHealth * maxHealthIncreasePercentage / 100;
-        m_combatController.PlayerMaxHealth += amountToIncreaseMaxHealth;
-        m_combatController.PlayerCurrentHealth += amountToIncreaseMaxHealth;
-        m_combatController.UpdatePlayerHealthUI(amountToIncreaseMaxHealth);
+        int amountToIncreaseMaxHealth = PermanentPlayerStatsSO.MaxHealth * maxHealthIncreasePercentage / 100;
+        inCombatPlayerStatsSO.MaxHealth += amountToIncreaseMaxHealth;
+        inCombatPlayerStatsSO.CurrentHealth += amountToIncreaseMaxHealth;
+
+        CombatController.onChangePlayerHealth(inCombatPlayerStatsSO.CurrentHealth, inCombatPlayerStatsSO.MaxHealth, amountToIncreaseMaxHealth);
     }
 
     public void Heal()
     {
-        int amountToHeal = PermanentStatsSO.MaxHealth * healPercentage / 100;
-        m_combatController.PlayerCurrentHealth += amountToHeal;
-        if(m_combatController.PlayerCurrentHealth > m_combatController.PlayerMaxHealth)
-        {
-            m_combatController.PlayerCurrentHealth = m_combatController.PlayerMaxHealth;
-        }
-        m_combatController.UpdatePlayerHealthUI(amountToHeal);
+        int amountToHeal = PermanentPlayerStatsSO.MaxHealth * healPercentage / 100;
+        inCombatPlayerStatsSO.CurrentHealth += amountToHeal;
+        inCombatPlayerStatsSO.CurrentHealth = Mathf.Clamp(inCombatPlayerStatsSO.CurrentHealth, 0, inCombatPlayerStatsSO.MaxHealth);
+
+        CombatController.onChangePlayerHealth(inCombatPlayerStatsSO.CurrentHealth, inCombatPlayerStatsSO.MaxHealth, amountToHeal);
     }
 
     public void IncreaseAttack()
     {
-        int attackIncrease = PermanentStatsSO.Attack * littleAttackIncreasePercentage / 100;
-        m_combatController.PlayerAttackPower += attackIncrease;
+        int attackIncrease = PermanentPlayerStatsSO.Attack * littleAttackIncreasePercentage / 100;
+        if(attackIncrease < 1)
+        {
+            attackIncrease = 1;
+        }
+        inCombatPlayerStatsSO.Attack += attackIncrease;
     }
 
     public void BigAttackIncrease()
     {
-        int attackIncrease = PermanentStatsSO.Attack * mediumAttackIncreasePercentage / 100;
-        m_combatController.PlayerAttackPower += attackIncrease;
+        int attackIncrease = PermanentPlayerStatsSO.Attack * mediumAttackIncreasePercentage / 100;
+        if(attackIncrease < 2)
+        {
+            attackIncrease = 2;
+        }
+        inCombatPlayerStatsSO.Attack += attackIncrease;
+    }
+
+    public void DefenseIncrease()
+    {
+        int defenseIncrease = PermanentPlayerStatsSO.Attack * mediumDefenseIncreasePercentage / 100;
+        if(defenseIncrease < 2)
+        {
+            defenseIncrease = 2;
+        }
+        inCombatPlayerStatsSO.Defense += defenseIncrease;
+    }
+
+    public void IncreaseCriticalChance()
+    {
+        inCombatPlayerStatsSO.CriticalAttackChance += criticalChanceIncrease;
     }
 
     public void HasShield()
@@ -69,7 +94,6 @@ public class PlayerUpgrades : MonoBehaviour
 
     public void ActivateShield()
     {
-        Debug.Log("Activate shield");
         if(hasShield)
         {
             m_combatController.EnemyAttackPower = 0;

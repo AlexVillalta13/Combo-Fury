@@ -6,16 +6,16 @@ using UnityEngine;
 public class CombatController : MonoBehaviour
 {
     [Header("Player Stats")]
-    [SerializeField] PlayerStatsSO permanentStatsSO;
-    [SerializeField] PlayerStatsSO inCombatStatsSO;
-    [SerializeField] int playerMaxHealth = 100;
-    public int PlayerMaxHealth { get { return playerMaxHealth; } set { playerMaxHealth = value; } }
-    [SerializeField] int playerCurrentHealth = 100;
-    public int PlayerCurrentHealth { get { return playerCurrentHealth; } set { playerCurrentHealth = value; } }
-    [SerializeField] int playerAttackPower = 6;
-    public int PlayerAttackPower { get { return playerAttackPower; } set { playerAttackPower = value; } }
-    [SerializeField] int playerDefense = 2;
-    public int PlayerDefense { get { return playerDefense; } set { playerDefense = value; } }
+    [SerializeField] PlayerStatsSO permanentPlayerStatsSO;
+    [SerializeField] PlayerStatsSO inCombatPlayerStatsSO;
+    //[SerializeField] int playerMaxHealth = 100;
+    //public int PlayerMaxHealth { get { return playerMaxHealth; } set { playerMaxHealth = value; } }
+    //[SerializeField] int playerCurrentHealth = 100;
+    //public int PlayerCurrentHealth { get { return playerCurrentHealth; } set { playerCurrentHealth = value; } }
+    //[SerializeField] int playerAttackPower = 6;
+    //public int PlayerAttackPower { get { return playerAttackPower; } set { playerAttackPower = value; } }
+    //[SerializeField] int playerDefense = 2;
+    //public int PlayerDefense { get { return playerDefense; } set { playerDefense = value; } }
 
     [Header("Enemy Stats")]
     [SerializeField] int enemyMaxHealth = 100;
@@ -52,15 +52,11 @@ public class CombatController : MonoBehaviour
 
     public void StartGame()
     {
-        inCombatStatsSO.MaxHealth = permanentStatsSO.MaxHealth;
-        inCombatStatsSO.Attack = permanentStatsSO.Attack;
-        inCombatStatsSO.Defense = permanentStatsSO.Defense;
-        inCombatStatsSO.CriticalAttackChance = permanentStatsSO.CriticalAttackChance;
-
-        playerMaxHealth = permanentStatsSO.MaxHealth;
-        playerAttackPower = permanentStatsSO.Attack;
-        playerDefense = permanentStatsSO.Defense;
-        playerCurrentHealth = playerMaxHealth;
+        inCombatPlayerStatsSO.MaxHealth = permanentPlayerStatsSO.MaxHealth;
+        inCombatPlayerStatsSO.Attack = permanentPlayerStatsSO.Attack;
+        inCombatPlayerStatsSO.Defense = permanentPlayerStatsSO.Defense;
+        inCombatPlayerStatsSO.CriticalAttackChance = permanentPlayerStatsSO.CriticalAttackChance;
+        inCombatPlayerStatsSO.CurrentHealth = inCombatPlayerStatsSO.MaxHealth;
 
         currentEnemy = 0;
         totalEnemies = levelSO.Enemies.Count - 1;
@@ -88,26 +84,26 @@ public class CombatController : MonoBehaviour
     }
     public void UpdatePlayerHealthUI(int valueDifference)
     {
-        onChangePlayerHealth?.Invoke(playerCurrentHealth, playerMaxHealth, valueDifference);
+        onChangePlayerHealth?.Invoke(inCombatPlayerStatsSO.CurrentHealth, inCombatPlayerStatsSO.MaxHealth, valueDifference);
     }
 
     public void PlayerAttacks()
     {
-        enemyCurrentHealth -= playerAttackPower;
+        enemyCurrentHealth -= inCombatPlayerStatsSO.Attack;
 
         CheckWinConditions();
 
-        UpdateEnemyHealthUI(playerAttackPower);
+        UpdateEnemyHealthUI(inCombatPlayerStatsSO.Attack);
     }
 
     public void PlayerCriticalAttack()
     {
-        int criticalDamage = (10 * playerAttackPower / 100) + playerAttackPower;
+        int criticalDamage = (10 * inCombatPlayerStatsSO.Attack / 100) + inCombatPlayerStatsSO.Attack;
         enemyCurrentHealth -= criticalDamage;
 
         CheckWinConditions();
 
-        UpdateEnemyHealthUI(playerAttackPower);
+        UpdateEnemyHealthUI(inCombatPlayerStatsSO.Attack);
     }
 
     private void CheckWinConditions()
@@ -130,11 +126,11 @@ public class CombatController : MonoBehaviour
     {
         // Animation event when receive damage
 
-        int attackIncome = Mathf.Clamp(enemyAttackPower - playerDefense, 0, enemyAttackPower);
+        int attackIncome = Mathf.Clamp(enemyAttackPower - inCombatPlayerStatsSO.Defense, 0, enemyAttackPower);
         enemyAttackPower = levelSO.Enemies[currentEnemy].Attack;
-        playerCurrentHealth -= attackIncome;
+        inCombatPlayerStatsSO.CurrentHealth -= attackIncome;
 
-        if(playerCurrentHealth < 0)
+        if(inCombatPlayerStatsSO.CurrentHealth < 0)
         {
             playerDeathEvent.Raise();
         }

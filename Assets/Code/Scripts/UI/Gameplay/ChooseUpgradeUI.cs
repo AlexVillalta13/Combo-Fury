@@ -5,8 +5,10 @@ using UnityEngine.UIElements;
 
 public class ChooseUpgradeUI : UIComponent
 {
+    [Header("Upgrades Lists SO")]
     [SerializeField] UpgradeInLevelSO upgradeListSO;
     [SerializeField] UpgradeInLevelSO upgradesPickupSO;
+    [Header("Events")]
     [SerializeField] GameEvent continueWalkingEvent;
 
     VisualElement holderToScale;
@@ -43,6 +45,19 @@ public class ChooseUpgradeUI : UIComponent
             z++;
             int i = Random.Range(0, upgradeListSO.UpgradeList.Count);
             UpgradeInLevelSO.Upgrade upgrade = upgradeListSO.UpgradeList[i];
+
+            if (upgrade.CanRepeat == false)
+            {
+                // Check unlocked upgrades to see if can appear again
+                foreach (UpgradeInLevelSO.Upgrade upgradeToCheck in upgradesPickupSO.UpgradeList)
+                {
+                    if (upgradeToCheck.UpgradeName == upgrade.UpgradeName)
+                    {
+                        goto WhileLoop;
+                    }
+                }
+            }
+
             if (upgradesRandomlySelected.Count == 0)
             {
                 upgradesRandomlySelected.Add(upgrade);
@@ -57,17 +72,6 @@ public class ChooseUpgradeUI : UIComponent
                     }
                 }
 
-                if (upgrade.CanRepeat == false)
-                {
-                    // Check unlocked upgrades to see if can appear again
-                    foreach(UpgradeInLevelSO.Upgrade upgradeToCheck in upgradesPickupSO.UpgradeList)
-                    {
-                        if(upgradeToCheck.UpgradeName == upgrade.UpgradeName)
-                        {
-                            goto WhileLoop;
-                        }
-                    }
-                }
                 upgradesRandomlySelected.Add(upgrade);
             }
 

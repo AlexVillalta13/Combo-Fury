@@ -9,11 +9,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 97c8b5a721767ec478e07dc0e56c8227, type: 3}
-  m_Name: InCombatStatsSO
+  m_Script: {fileID: 11500000, guid: ea829609fb5076f43855933695f2849d, type: 3}
+  m_Name: IncreaseCriticalChanceEvent
   m_EditorClassIdentifier: 
-  maxHealth: 100
-  currentHealth: 100
-  attack: 10
-  defense: 0
-  criticalAttackChance: 15

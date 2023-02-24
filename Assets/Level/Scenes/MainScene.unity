@@ -2224,12 +2224,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b6959c8a5e9e07e479f4783aef57a556, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  permanentStatsSO: {fileID: 11400000, guid: 8120f6d6bf3f9f748a579a116d9ed62d, type: 2}
-  inCombatStatsSO: {fileID: 11400000, guid: aa73bdaa80e88ab4e8e2f1d00b7c5e66, type: 2}
-  playerMaxHealth: 100
-  playerCurrentHealth: 100
-  playerAttackPower: 100
-  playerDefense: 5
+  permanentPlayerStatsSO: {fileID: 11400000, guid: 8120f6d6bf3f9f748a579a116d9ed62d,
+    type: 2}
+  inCombatPlayerStatsSO: {fileID: 11400000, guid: aa73bdaa80e88ab4e8e2f1d00b7c5e66,
+    type: 2}
   enemyMaxHealth: 100
   enemyCurrentHealth: 100
   enemyAttackPower: 13
@@ -7463,6 +7461,8 @@ GameObject:
   - component: {fileID: 1413975149}
   - component: {fileID: 1413975148}
   - component: {fileID: 1413975150}
+  - component: {fileID: 1413975151}
+  - component: {fileID: 1413975152}
   m_Layer: 0
   m_Name: Player Upgrades
   m_TagString: Untagged
@@ -7482,14 +7482,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 491d4b6a249b6dc40b13a02ba2f1b4dd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PermanentStatsSO: {fileID: 11400000, guid: 8120f6d6bf3f9f748a579a116d9ed62d, type: 2}
+  PermanentPlayerStatsSO: {fileID: 11400000, guid: 8120f6d6bf3f9f748a579a116d9ed62d,
+    type: 2}
+  inCombatPlayerStatsSO: {fileID: 11400000, guid: aa73bdaa80e88ab4e8e2f1d00b7c5e66,
+    type: 2}
   upgradeInLevelSO: {fileID: 11400000, guid: 2fe6ed74f613b034f98e9f0a6f0a9641, type: 2}
   upgradesPlayerHasSO: {fileID: 11400000, guid: 5385b99843f7c7b4ab8374b2098dedcc,
     type: 2}
   healPercentage: 25
   littleAttackIncreasePercentage: 5
   mediumAttackIncreasePercentage: 10
+  mediumDefenseIncreasePercentage: 10
   maxHealthIncreasePercentage: 10
+  criticalChanceIncrease: 5
 --- !u!4 &1413975142
 Transform:
   m_ObjectHideFlags: 0
@@ -7720,6 +7725,62 @@ MonoBehaviour:
       - m_Target: {fileID: 1413975141}
         m_TargetAssemblyTypeName: PlayerUpgrades, Assembly-CSharp
         m_MethodName: BigAttackIncrease
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &1413975151
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1413975140}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb953a8383db9fc45943e75de88733bb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameEvent: {fileID: 11400000, guid: fe3c3c5d870108145a5c505948697bef, type: 2}
+  unityEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1413975141}
+        m_TargetAssemblyTypeName: PlayerUpgrades, Assembly-CSharp
+        m_MethodName: IncreaseCriticalChance
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &1413975152
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1413975140}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb953a8383db9fc45943e75de88733bb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameEvent: {fileID: 11400000, guid: 96f0242b4ae759045a1a3303c8744de2, type: 2}
+  unityEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1413975141}
+        m_TargetAssemblyTypeName: PlayerUpgrades, Assembly-CSharp
+        m_MethodName: DefenseIncrease
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
