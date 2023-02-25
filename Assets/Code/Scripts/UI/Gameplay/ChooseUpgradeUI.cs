@@ -39,10 +39,9 @@ public class ChooseUpgradeUI : UIComponent
     public void SelectRandomUpgrades()
     {
         upgradesRandomlySelected.Clear();
-        int z = 0;
+
         while(upgradesRandomlySelected.Count < 3)
         {
-            z++;
             int i = Random.Range(0, upgradeListSO.UpgradeList.Count);
             UpgradeInLevelSO.Upgrade upgrade = upgradeListSO.UpgradeList[i];
 

@@ -19,19 +19,34 @@ public class PlayerUpgrades : MonoBehaviour
     [SerializeField] int mediumDefenseIncreasePercentage = 10;
     [SerializeField] int maxHealthIncreasePercentage = 10;
     [SerializeField] float criticalChanceIncrease = 5f;
+    [SerializeField] int healthPercentageToActivateRage = 30;
+    [SerializeField] int extraRageAttack = 20;
 
     // Properties
-    bool hasShield = false;
+    bool hasRageUpgrade = false;
+    bool hasRageState = false;
 
     private void Awake()
     {
         m_combatController = FindObjectOfType<CombatController>();
     }
 
+    private void OnEnable()
+    {
+        CombatController.onChangePlayerHealth += CheckRageCondition;
+    }
+
+    private void OnDisable()
+    {
+        CombatController.onChangePlayerHealth -= CheckRageCondition;
+    }
+
     public void ResetUpgrades()
     {
         upgradesPlayerHasSO.UpgradeList.Clear();
         hasShield = false;
+        hasRageUpgrade = false;
+        hasRageState = false;
     }
 
     public void IncreaseMaxHealth()
@@ -87,25 +102,35 @@ public class PlayerUpgrades : MonoBehaviour
         inCombatPlayerStatsSO.CriticalAttackChance += criticalChanceIncrease;
     }
 
-    public void HasShield()
+    private void CheckRageCondition(int playerCurrentHealth, int playerMaxHealth, int healthDifference)
     {
-        hasShield = true;
-    }
-
-    public void ActivateShield()
-    {
-        if(hasShield)
+        if(hasRageUpgrade == true)
         {
-            m_combatController.EnemyAttackPower = 0;
+            if(hasRageState == false)
+            {
+                int healthLimitToRage = playerMaxHealth * healthPercentageToActivateRage / 100;
+                if (playerCurrentHealth <= healthLimitToRage)
+                {
+                    int attackToIncrease = inCombatPlayerStatsSO.Attack * extraRageAttack / 100;
+                    inCombatPlayerStatsSO.Attack += attackToIncrease;
+                    hasRageState = true;
+                }
+            }
+            else if(hasRageState == true)
+            {
+                int healthLimitToRage = playerMaxHealth * healthPercentageToActivateRage / 100;
+                if (playerCurrentHealth > healthLimitToRage)
+                {
+                    int attackToIncrease = inCombatPlayerStatsSO.Attack * extraRageAttack / 100;
+                    inCombatPlayerStatsSO.Attack -= attackToIncrease;
+                    hasRageState = false;
+                }
+            }
         }
     }
 
-    public void DeactivateShield()
+    public void HasRageUpgrade()
     {
-        //Debug.Log("Deactivate shield");
-        //if (hasShield == true && m_combatController.EnemyAttackPower == 0)
-        //{
-        //    m_combatController.SetEnemyAttack(); 
-        //}
+        hasRageUpgrade = true;
     }
 }

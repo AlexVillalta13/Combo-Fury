@@ -13,6 +13,18 @@ public class UpgradeInLevelSO : ScriptableObject
         upgradeList.Add(upgrade);
     }
 
+    public bool HasUpgrade(string upgradeName)
+    {
+        foreach (Upgrade upgrade in upgradeList)
+        {
+            if (upgrade.UpgradeName == upgradeName)
+            {
+                return true;
+            }
+        }
+        return false;
+    }
+
     [System.Serializable]
     public class Upgrade
     {

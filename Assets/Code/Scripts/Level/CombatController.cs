@@ -8,14 +8,7 @@ public class CombatController : MonoBehaviour
     [Header("Player Stats")]
     [SerializeField] PlayerStatsSO permanentPlayerStatsSO;
     [SerializeField] PlayerStatsSO inCombatPlayerStatsSO;
-    //[SerializeField] int playerMaxHealth = 100;
-    //public int PlayerMaxHealth { get { return playerMaxHealth; } set { playerMaxHealth = value; } }
-    //[SerializeField] int playerCurrentHealth = 100;
-    //public int PlayerCurrentHealth { get { return playerCurrentHealth; } set { playerCurrentHealth = value; } }
-    //[SerializeField] int playerAttackPower = 6;
-    //public int PlayerAttackPower { get { return playerAttackPower; } set { playerAttackPower = value; } }
-    //[SerializeField] int playerDefense = 2;
-    //public int PlayerDefense { get { return playerDefense; } set { playerDefense = value; } }
+    [SerializeField] UpgradeInLevelSO upgradesSelected;
 
     [Header("Enemy Stats")]
     [SerializeField] int enemyMaxHealth = 100;
@@ -40,6 +33,7 @@ public class CombatController : MonoBehaviour
     // states
     [SerializeField] private int currentEnemy = 0;
     [SerializeField] private int totalEnemies = 0;
+    [SerializeField] bool shieldActivated = false;
 
     private void OnEnable()
     {
@@ -70,7 +64,18 @@ public class CombatController : MonoBehaviour
     {
         enemyMaxHealth = levelSO.Enemies[currentEnemy].Health;
         enemyCurrentHealth = enemyMaxHealth;
-        //SetEnemyAttack();
+        SetEnemyAttack();
+
+        ActivateShield();
+    }
+
+    private void ActivateShield()
+    {
+        if(upgradesSelected.HasUpgrade("Shield") && shieldActivated == false)
+        {
+            shieldActivated = true;
+            //Shield animation
+        }
     }
 
     public void SetEnemyAttack()
@@ -125,9 +130,15 @@ public class CombatController : MonoBehaviour
     public void EnemyAttacks()
     {
         // Animation event when receive damage
+        if (shieldActivated == true)
+        {
+            shieldActivated = false;
+            UpdatePlayerHealthUI(0);
+            return;
+        }
 
-        int attackIncome = Mathf.Clamp(enemyAttackPower - inCombatPlayerStatsSO.Defense, 0, enemyAttackPower);
-        enemyAttackPower = levelSO.Enemies[currentEnemy].Attack;
+
+        int attackIncome = Mathf.Clamp(enemyAttackPower - inCombatPlayerStatsSO.Defense, 1, enemyAttackPower);
         inCombatPlayerStatsSO.CurrentHealth -= attackIncome;
 
         if(inCombatPlayerStatsSO.CurrentHealth < 0)
@@ -136,10 +147,7 @@ public class CombatController : MonoBehaviour
         }
 
         UpdatePlayerHealthUI(attackIncome);
-        if(enemyAttackPower == 0)
-        {
-            SetEnemyAttack();
-        }
+
     }
 
     public void EncounteredNewEnemy()
