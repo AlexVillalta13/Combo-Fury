@@ -44,7 +44,6 @@ public class PlayerUpgrades : MonoBehaviour
     public void ResetUpgrades()
     {
         upgradesPlayerHasSO.UpgradeList.Clear();
-        hasShield = false;
         hasRageUpgrade = false;
         hasRageState = false;
     }
