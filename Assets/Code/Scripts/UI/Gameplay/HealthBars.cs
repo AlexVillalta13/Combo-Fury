@@ -38,12 +38,12 @@ public class HealthBars : UIComponent
         enemyBar = m_UIElement.Query<VisualElement>(name: enemyBarReference);
     }
 
-    public void ChangePlayerHealth(int newHealth, int maxHealt, int attackIncome)
+    public void ChangePlayerHealth(float newHealth, float maxHealt, float attackIncome)
     {
         playerBar.style.width = Length.Percent(newHealth * 100 / maxHealt);
     }
 
-    public void ChangeEnemyHealth(int newHealth, int maxHealt, int attackIncome)
+    public void ChangeEnemyHealth(float newHealth, float maxHealt, float attackIncome)
     {
         enemyBar.style.width = Length.Percent(newHealth * 100 / maxHealt);
     }

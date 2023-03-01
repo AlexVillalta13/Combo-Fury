@@ -13,14 +13,14 @@ public class PlayerUpgrades : MonoBehaviour
     [SerializeField] UpgradeInLevelSO upgradesPlayerHasSO;
 
     [Header("Upgrade Stats")]
-    [SerializeField] int healPercentage = 25;
-    [SerializeField] int littleAttackIncreasePercentage = 5;
-    [SerializeField] int mediumAttackIncreasePercentage = 10;
-    [SerializeField] int mediumDefenseIncreasePercentage = 10;
-    [SerializeField] int maxHealthIncreasePercentage = 10;
+    [SerializeField] float healPercentage = 25;
+    [SerializeField] float littleAttackIncreasePercentage = 5;
+    [SerializeField] float mediumAttackIncreasePercentage = 10;
+    [SerializeField] float mediumDefenseIncreasePercentage = 10;
+    [SerializeField] float maxHealthIncreasePercentage = 10;
     [SerializeField] float criticalChanceIncrease = 5f;
-    [SerializeField] int healthPercentageToActivateRage = 30;
-    [SerializeField] int extraRageAttack = 20;
+    [SerializeField] float healthPercentageToActivateRage = 30;
+    [SerializeField] float extraRageAttack = 20;
 
     // Properties
     bool hasRageUpgrade = false;
@@ -50,7 +50,7 @@ public class PlayerUpgrades : MonoBehaviour
 
     public void IncreaseMaxHealth()
     {
-        int amountToIncreaseMaxHealth = PermanentPlayerStatsSO.MaxHealth * maxHealthIncreasePercentage / 100;
+        float amountToIncreaseMaxHealth = PermanentPlayerStatsSO.MaxHealth * maxHealthIncreasePercentage / 100;
         inCombatPlayerStatsSO.MaxHealth += amountToIncreaseMaxHealth;
         inCombatPlayerStatsSO.CurrentHealth += amountToIncreaseMaxHealth;
 
@@ -59,7 +59,7 @@ public class PlayerUpgrades : MonoBehaviour
 
     public void Heal()
     {
-        int amountToHeal = PermanentPlayerStatsSO.MaxHealth * healPercentage / 100;
+        float amountToHeal = PermanentPlayerStatsSO.MaxHealth * healPercentage / 100;
         inCombatPlayerStatsSO.CurrentHealth += amountToHeal;
         inCombatPlayerStatsSO.CurrentHealth = Mathf.Clamp(inCombatPlayerStatsSO.CurrentHealth, 0, inCombatPlayerStatsSO.MaxHealth);
 
@@ -68,7 +68,7 @@ public class PlayerUpgrades : MonoBehaviour
 
     public void IncreaseAttack()
     {
-        int attackIncrease = PermanentPlayerStatsSO.Attack * littleAttackIncreasePercentage / 100;
+        float attackIncrease = PermanentPlayerStatsSO.Attack * littleAttackIncreasePercentage / 100;
         if(attackIncrease < 1)
         {
             attackIncrease = 1;
@@ -78,7 +78,7 @@ public class PlayerUpgrades : MonoBehaviour
 
     public void BigAttackIncrease()
     {
-        int attackIncrease = PermanentPlayerStatsSO.Attack * mediumAttackIncreasePercentage / 100;
+        float attackIncrease = PermanentPlayerStatsSO.Attack * mediumAttackIncreasePercentage / 100;
         if(attackIncrease < 2)
         {
             attackIncrease = 2;
@@ -88,7 +88,7 @@ public class PlayerUpgrades : MonoBehaviour
 
     public void DefenseIncrease()
     {
-        int defenseIncrease = PermanentPlayerStatsSO.Attack * mediumDefenseIncreasePercentage / 100;
+        float defenseIncrease = PermanentPlayerStatsSO.Attack * mediumDefenseIncreasePercentage / 100;
         if(defenseIncrease < 2)
         {
             defenseIncrease = 2;
@@ -101,26 +101,26 @@ public class PlayerUpgrades : MonoBehaviour
         inCombatPlayerStatsSO.CriticalAttackChance += criticalChanceIncrease;
     }
 
-    private void CheckRageCondition(int playerCurrentHealth, int playerMaxHealth, int healthDifference)
+    private void CheckRageCondition(float playerCurrentHealth, float playerMaxHealth, float healthDifference)
     {
         if(hasRageUpgrade == true)
         {
             if(hasRageState == false)
             {
-                int healthLimitToRage = playerMaxHealth * healthPercentageToActivateRage / 100;
+                float healthLimitToRage = playerMaxHealth * healthPercentageToActivateRage / 100;
                 if (playerCurrentHealth <= healthLimitToRage)
                 {
-                    int attackToIncrease = inCombatPlayerStatsSO.Attack * extraRageAttack / 100;
+                    float attackToIncrease = inCombatPlayerStatsSO.Attack * extraRageAttack / 100;
                     inCombatPlayerStatsSO.Attack += attackToIncrease;
                     hasRageState = true;
                 }
             }
             else if(hasRageState == true)
             {
-                int healthLimitToRage = playerMaxHealth * healthPercentageToActivateRage / 100;
+                float healthLimitToRage = playerMaxHealth * healthPercentageToActivateRage / 100;
                 if (playerCurrentHealth > healthLimitToRage)
                 {
-                    int attackToIncrease = inCombatPlayerStatsSO.Attack * extraRageAttack / 100;
+                    float attackToIncrease = inCombatPlayerStatsSO.Attack * extraRageAttack / 100;
                     inCombatPlayerStatsSO.Attack -= attackToIncrease;
                     hasRageState = false;
                 }

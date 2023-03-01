@@ -20,6 +20,7 @@ public class GameEventListener : MonoBehaviour
 
     public void OnEventRaised()
     {
+        //Debug.Log(": " + gameEvent.name);
         unityEvent.Invoke();
     }
 }

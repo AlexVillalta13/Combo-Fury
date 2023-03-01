@@ -11,24 +11,25 @@ public class CombatController : MonoBehaviour
     [SerializeField] UpgradeInLevelSO upgradesSelected;
 
     [Header("Enemy Stats")]
-    [SerializeField] int enemyMaxHealth = 100;
-    public int EnemyMaxHealth { get { return enemyMaxHealth; } set { enemyMaxHealth = value; } }
-    [SerializeField] int enemyCurrentHealth = 100;
-    public int EnemyCurrentHealth { get { return enemyCurrentHealth; } set { enemyCurrentHealth = value; } }
-    [SerializeField] int enemyAttackPower = 13;
-    public int EnemyAttackPower { get { return enemyAttackPower; } set { enemyAttackPower = value; } }
+    [SerializeField] float enemyMaxHealth = 100;
+    public float EnemyMaxHealth { get { return enemyMaxHealth; } set { enemyMaxHealth = value; } }
+    [SerializeField] float enemyCurrentHealth = 100;
+    public float EnemyCurrentHealth { get { return enemyCurrentHealth; } set { enemyCurrentHealth = value; } }
+    [SerializeField] float enemyAttackPower = 13;
+    public float EnemyAttackPower { get { return enemyAttackPower; } set { enemyAttackPower = value; } }
 
     [Header("Events")]
     [SerializeField] GameEvent playerDeathEvent;
     [SerializeField] GameEvent playerWinFightEvent;
+    [SerializeField] GameEvent showUpgradeToChoose;
     [SerializeField] GameEvent playerWinLevelEvent;
 
     [Header("Level")]
     [SerializeField] LevelSO levelSO;
 
     // current health, max heath, attack income
-    public static Action<int, int, int> onChangePlayerHealth;
-    public static Action<int, int, int> onChangeEnemyHealth;
+    public static Action<float, float, float> onChangePlayerHealth;
+    public static Action<float, float, float> onChangeEnemyHealth;
 
     // states
     [SerializeField] private int currentEnemy = 0;
@@ -83,11 +84,11 @@ public class CombatController : MonoBehaviour
         enemyAttackPower = levelSO.Enemies[currentEnemy].Attack;
     }
 
-    public void UpdateEnemyHealthUI(int valueDifference)
+    public void UpdateEnemyHealthUI(float valueDifference)
     {
         onChangeEnemyHealth?.Invoke(enemyCurrentHealth, enemyMaxHealth, valueDifference);
     }
-    public void UpdatePlayerHealthUI(int valueDifference)
+    public void UpdatePlayerHealthUI(float valueDifference)
     {
         onChangePlayerHealth?.Invoke(inCombatPlayerStatsSO.CurrentHealth, inCombatPlayerStatsSO.MaxHealth, valueDifference);
     }
@@ -103,7 +104,7 @@ public class CombatController : MonoBehaviour
 
     public void PlayerCriticalAttack()
     {
-        int criticalDamage = (10 * inCombatPlayerStatsSO.Attack / 100) + inCombatPlayerStatsSO.Attack;
+        float criticalDamage = (10 * inCombatPlayerStatsSO.Attack / 100) + inCombatPlayerStatsSO.Attack;
         enemyCurrentHealth -= criticalDamage;
 
         CheckWinConditions();
@@ -118,6 +119,7 @@ public class CombatController : MonoBehaviour
             if (currentEnemy < totalEnemies)
             {
                 playerWinFightEvent.Raise();
+                StartCoroutine(ShowUpgrades());
             }
             else if (currentEnemy == totalEnemies)
             {
@@ -125,6 +127,12 @@ public class CombatController : MonoBehaviour
             }
             currentEnemy += 1;
         }
+    }
+
+    private IEnumerator ShowUpgrades()
+    {
+        yield return new WaitForSeconds(1f);
+        showUpgradeToChoose.Raise();
     }
 
     public void EnemyAttacks()
@@ -138,7 +146,7 @@ public class CombatController : MonoBehaviour
         }
 
 
-        int attackIncome = Mathf.Clamp(enemyAttackPower - inCombatPlayerStatsSO.Defense, 1, enemyAttackPower);
+        float attackIncome = Mathf.Clamp(enemyAttackPower - inCombatPlayerStatsSO.Defense, 1, enemyAttackPower);
         inCombatPlayerStatsSO.CurrentHealth -= attackIncome;
 
         if(inCombatPlayerStatsSO.CurrentHealth < 0)

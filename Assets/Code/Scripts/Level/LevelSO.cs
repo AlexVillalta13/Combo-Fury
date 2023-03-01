@@ -33,10 +33,10 @@ public class Enemy
 {
     public PlayerStatsSO InCombatStatsSO { get; set; }
 
-    [SerializeField] int health = 100;
-    public int Health { get { return health; }}
-    [SerializeField] int attack = 5;
-    public int Attack { get { return attack; }}
+    [SerializeField] float health = 100;
+    public float Health { get { return health; }}
+    [SerializeField] float attack = 5;
+    public float Attack { get { return attack; }}
     [SerializeField] float minTimeToSpawnBrick = 1f;
     public float MinTimeToSpawnBrick { get { return minTimeToSpawnBrick; }}
     [SerializeField] float maxTimeToSpawnBrick = 3f;
