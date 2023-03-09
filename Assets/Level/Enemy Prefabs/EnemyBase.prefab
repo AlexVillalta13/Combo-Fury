@@ -83,6 +83,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5e379621ef01e0646b59c6e0db98c017, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_GetHitParticleSystem: {fileID: 1467850792462028969}
   attackAnimations:
   - Attack1
   - Attack2
@@ -318,6 +319,12 @@ PrefabInstance:
 --- !u!4 &1467850792442562823 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 492736, guid: 14bb13abe3804f242b49ffc7f2604227,
+    type: 3}
+  m_PrefabInstance: {fileID: 1467850792442990023}
+  m_PrefabAsset: {fileID: 0}
+--- !u!198 &1467850792462028969 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 19832174, guid: 14bb13abe3804f242b49ffc7f2604227,
     type: 3}
   m_PrefabInstance: {fileID: 1467850792442990023}
   m_PrefabAsset: {fileID: 0}

@@ -5,7 +5,8 @@ using UnityEngine;
 public class AnimationsController : MonoBehaviour
 {
     Animator m_animator;
-    ParticleSystem m_ParticleSystem;
+    [SerializeField] ParticleSystem m_GetHitParticleSystem;
+    [SerializeField] ParticleSystem m_EnemyDeathParticleSystem;
 
     [SerializeField] List<string> attackAnimations = new List<string>();
     [SerializeField] List<string> criticalAttackAnimations = new List<string>();
@@ -16,7 +17,6 @@ public class AnimationsController : MonoBehaviour
     private void Awake()
     {
         m_animator = GetComponentInChildren<Animator>();
-        m_ParticleSystem = GetComponentInChildren<ParticleSystem>();
     }
 
     public void SelectRandomAttackAnimation()
@@ -34,7 +34,7 @@ public class AnimationsController : MonoBehaviour
     public void GetHitAnimation()
     {
         m_animator.SetTrigger(getHitAnimation);
-        m_ParticleSystem.Play();
+        m_GetHitParticleSystem.Play();
     }
 
     public void EnemyDeathAnimation()
