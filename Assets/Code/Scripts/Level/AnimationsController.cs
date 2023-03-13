@@ -6,6 +6,7 @@ public class AnimationsController : MonoBehaviour
 {
     Animator m_animator;
     [SerializeField] ParticleSystem m_GetHitParticleSystem;
+    [SerializeField] ParticleSystem m_GetCriticalHitParticleSystem;
     [SerializeField] ParticleSystem m_EnemyDeathParticleSystem;
 
     [SerializeField] List<string> attackAnimations = new List<string>();
@@ -35,6 +36,12 @@ public class AnimationsController : MonoBehaviour
     {
         m_animator.SetTrigger(getHitAnimation);
         m_GetHitParticleSystem.Play();
+    }
+
+    public void GetCriticalHitAnimation()
+    {
+        m_animator.SetTrigger(getHitAnimation);
+        m_GetCriticalHitParticleSystem.Play();
     }
 
     public void EnemyDeathAnimation()
