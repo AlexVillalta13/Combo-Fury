@@ -1,3 +1,4 @@
 <ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
-    <ui:VisualElement name="YellowBrickVisualElement" style="width: 100px; height: 100px; background-color: rgb(232, 255, 0);" />
+    <Style src="project://database/Assets/Level/UI/Classes/CombatBarUIClasses.uss?fileID=7433441132597879392&amp;guid=5fa1baaeb8a4759478e2db747c99efb9&amp;type=3#CombatBarUIClasses" />
+    <ui:VisualElement name="YellowBrickVisualElement" class="brick" style="background-color: rgb(232, 255, 0);" />
 </ui:UXML>

@@ -107,3 +107,5 @@ MonoBehaviour:
     enemyBricks:
     - brickType: 0
       probability: 40
+    - brickType: 3
+      probability: 60

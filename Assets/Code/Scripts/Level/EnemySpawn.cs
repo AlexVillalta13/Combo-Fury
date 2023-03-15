@@ -8,11 +8,6 @@ public class EnemySpawn : MonoBehaviour
 
     GameObject instantiateEnemy;
 
-    private void OnEnable()
-    {
-        instantiateEnemy = Instantiate(SelectRandomEnemy(), transform.position, transform.rotation);
-    }
-
     private void OnDisable()
     {
         Destroy(instantiateEnemy);
@@ -21,5 +16,18 @@ public class EnemySpawn : MonoBehaviour
     private GameObject SelectRandomEnemy()
     {
         return enemyPrefabsList[Random.Range(0, enemyPrefabsList.Count)];
+    }
+
+    public void ActivateEnemy(bool state)
+    {
+        if(state == true)
+        {
+            instantiateEnemy = Instantiate(SelectRandomEnemy(), transform.position, transform.rotation);
+        }
+        else if(state == false)
+        {
+            Debug.Log("Deactivate: " + gameObject.name);
+            instantiateEnemy.SetActive(state);
+        }
     }
 }

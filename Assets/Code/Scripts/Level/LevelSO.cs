@@ -92,7 +92,7 @@ public class Enemy
 }
 
 [System.Serializable]
-public struct BrickProbability
+public class BrickProbability
 {
     [SerializeField] BrickTypeEnum brickType;
     public BrickTypeEnum BrickType { get { return brickType; }}

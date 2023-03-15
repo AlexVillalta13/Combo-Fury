@@ -18,16 +18,14 @@ public class CombatBarUI : UIComponent
     VisualElement enemyBricksElementHolder;
     VisualElement playerBrickElementHolder;
 
+    Dictionary<VisualElement, Brick> bricksInBarDict = new Dictionary<VisualElement, Brick>();
+
+
     // states
     [SerializeField] bool inCombat = false;
 
-    [Header("Brick UI Assets")]
-    [SerializeField] VisualTreeAsset yellowBrick;
-    [SerializeField] VisualTreeAsset greenBrick;
-    [SerializeField] VisualTreeAsset redBrick;
-    Dictionary<VisualElement, Brick> bricksInBarDict = new Dictionary<VisualElement, Brick>();
 
-    float pointerPercentPosition = 0f;
+
     [Header("Combat Bar Stats")]
     [SerializeField] float pointerVelocity = 60f;
 
@@ -35,6 +33,8 @@ public class CombatBarUI : UIComponent
     [SerializeField] float maxTimeSpawnBrick = 6f;
     [SerializeField] float timeToSpawnBrick = 5f;
     [SerializeField] float timerSpawn = 0f;
+
+    float pointerPercentPosition = 0f;
 
     [Header("Touch Event")]
     [SerializeField] TouchBrickEventsSO touchBrickEventsHolder;
@@ -114,6 +114,9 @@ public class CombatBarUI : UIComponent
             case BrickTypeEnum.Greenbrick:
                 SpawnBrick(new GreenBrick(), visualElement);
                 break;
+            case BrickTypeEnum.BlackBrick:
+                SpawnBrick(new BlackBrick(), visualElement);
+                break;
 
         }
     }
@@ -125,7 +128,7 @@ public class CombatBarUI : UIComponent
 
     private IEnumerator SpawnBrickCoroutine(Brick brickScriptToSpawn, VisualElement brickUIElement)
     {
-        brickScriptToSpawn.SetupBrick(brickUIElement, playerBrickElementHolder, playerUSSClassName, enemyBricksElementHolder, enemyUSSClassName, touchBrickEventsHolder);
+        brickScriptToSpawn.SetupBrick(brickUIElement, playerBrickElementHolder, playerUSSClassName, enemyBricksElementHolder, enemyUSSClassName, touchBrickEventsHolder, brickTypesSO);
 
         yield return new WaitForEndOfFrame();
 
@@ -160,11 +163,11 @@ public class CombatBarUI : UIComponent
         if(inCombat == true)
         {
             float pointerPos = pointerCombatBar.resolvedStyle.left + pointerCombatBar.resolvedStyle.width / 2f;
-            List<VisualElement> enemyBricksList = new List<VisualElement>();
-            enemyBricksList = enemyBricksElementHolder.Query<VisualElement>(className: enemyUSSClassName).ToList();
-            List<VisualElement> playerBricksList = new List<VisualElement>();
-            playerBricksList = playerBrickElementHolder.Query<VisualElement>(className: playerUSSClassName).ToList();
+
+            List<VisualElement> enemyBricksList = enemyBricksElementHolder.Query<VisualElement>(className: enemyUSSClassName).ToList();
+            List<VisualElement> playerBricksList = playerBrickElementHolder.Query<VisualElement>(className: playerUSSClassName).ToList();
             List<VisualElement> bricksInPosition = new List<VisualElement>();
+
             foreach (VisualElement element in enemyBricksList)
             {
                 if (pointerPos > element.resolvedStyle.left && pointerPos < element.resolvedStyle.left + element.resolvedStyle.width)
@@ -222,7 +225,6 @@ public class CombatBarUI : UIComponent
     public void StartLevel()
     {
         currentEnemy = 0;
-        //timeToSpawnBrick = UnityEngine.Random.Range(minTimeToSpawnBrick, maxTimeSpawnBrick);
         CreateRandomTimeToSpawnBrick();
     }
 

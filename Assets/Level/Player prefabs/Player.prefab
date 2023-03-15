@@ -2765,6 +2765,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   walkingVelocity: 5
   enemyEncountered: {fileID: 11400000, guid: 078c794f0e1ea8147b53855298fba2ed, type: 2}
+  beginWalkEvent: {fileID: 11400000, guid: 835bcbb138a7e98488158d634f3c6384, type: 2}
 --- !u!114 &2389783665035642450
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2778,6 +2779,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_GetHitParticleSystem: {fileID: 0}
+  m_GetCriticalHitParticleSystem: {fileID: 0}
   m_EnemyDeathParticleSystem: {fileID: 0}
   attackAnimations:
   - NormalAttack1

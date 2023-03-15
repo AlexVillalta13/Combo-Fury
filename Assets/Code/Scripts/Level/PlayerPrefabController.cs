@@ -10,6 +10,7 @@ public class PlayerPrefabController : MonoBehaviour
     float nextPositionToGO = 0f;
 
     [SerializeField] GameEvent enemyEncountered;
+    [SerializeField] GameEvent beginWalkEvent;
 
     private void Awake()
     {
@@ -17,10 +18,10 @@ public class PlayerPrefabController : MonoBehaviour
         nextPositionToGO = transform.position.x + 10f;
     }
 
-    private void OnEnable()
-    {
-        StartWalk();
-    }
+    //private void OnEnable()
+    //{
+    //    beginWalkEvent.Raise();
+    //}
 
     private void Update()
     {
