@@ -26,7 +26,6 @@ public class EnemySpawn : MonoBehaviour
         }
         else if(state == false)
         {
-            Debug.Log("Deactivate: " + gameObject.name);
             instantiateEnemy.SetActive(state);
         }
     }

@@ -7,6 +7,9 @@ public class PlayerUpgrades : MonoBehaviour
     CombatController m_combatController;
 
     [Header("Scriptable Objects Stats")]
+    [SerializeField] GameEvent onPlayerChangeInCombatStat;
+
+    [Header("Scriptable Objects Stats")]
     [SerializeField] PlayerStatsSO PermanentPlayerStatsSO;
     [SerializeField] PlayerStatsSO inCombatPlayerStatsSO;
     [SerializeField] UpgradeInLevelSO upgradeInLevelSO;
@@ -74,6 +77,7 @@ public class PlayerUpgrades : MonoBehaviour
             attackIncrease = 1;
         }
         inCombatPlayerStatsSO.Attack += attackIncrease;
+        onPlayerChangeInCombatStat.Raise();
     }
 
     public void BigAttackIncrease()
@@ -84,6 +88,7 @@ public class PlayerUpgrades : MonoBehaviour
             attackIncrease = 2;
         }
         inCombatPlayerStatsSO.Attack += attackIncrease;
+        onPlayerChangeInCombatStat.Raise();
     }
 
     public void DefenseIncrease()
@@ -94,11 +99,13 @@ public class PlayerUpgrades : MonoBehaviour
             defenseIncrease = 2;
         }
         inCombatPlayerStatsSO.Defense += defenseIncrease;
+        onPlayerChangeInCombatStat.Raise();
     }
 
     public void IncreaseCriticalChance()
     {
         inCombatPlayerStatsSO.CriticalAttackChance += criticalChanceIncrease;
+        onPlayerChangeInCombatStat.Raise();
     }
 
     private void CheckRageCondition(float playerCurrentHealth, float playerMaxHealth, float healthDifference)

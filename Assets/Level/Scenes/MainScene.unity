@@ -2232,6 +2232,8 @@ MonoBehaviour:
   enemyMaxHealth: 100
   enemyCurrentHealth: 100
   enemyAttackPower: 13
+  onPlayerChangeInCombatStat: {fileID: 11400000, guid: 8c856264bbbcf87439bde5c22477ab7c,
+    type: 2}
   playerDeathEvent: {fileID: 11400000, guid: 796d861396c5ed24fb45316dc73e8abb, type: 2}
   playerWinFightEvent: {fileID: 11400000, guid: 0d0ea66dcf3b8784ca138a5c111a2ba7,
     type: 2}
@@ -4566,6 +4568,7 @@ GameObject:
   - component: {fileID: 900821404}
   - component: {fileID: 900821406}
   - component: {fileID: 900821405}
+  - component: {fileID: 900821407}
   m_Layer: 0
   m_Name: HealthBars
   m_TagString: Untagged
@@ -4605,6 +4608,7 @@ MonoBehaviour:
   elementStartedEvent: {fileID: 11400000, guid: 277fc347f3c8c8c4999eb930f0d4ea9c,
     type: 2}
   elementEndedEvent: {fileID: 11400000, guid: 22b035737cb17c742baee977660517f3, type: 2}
+  inCombatStatsSO: {fileID: 11400000, guid: aa73bdaa80e88ab4e8e2f1d00b7c5e66, type: 2}
 --- !u!114 &900821405
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4652,6 +4656,34 @@ MonoBehaviour:
       - m_Target: {fileID: 900821404}
         m_TargetAssemblyTypeName: HealthBars, Assembly-CSharp
         m_MethodName: HideEnemyBar
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &900821407
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 900821402}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb953a8383db9fc45943e75de88733bb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameEvent: {fileID: 11400000, guid: 8c856264bbbcf87439bde5c22477ab7c, type: 2}
+  unityEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 900821404}
+        m_TargetAssemblyTypeName: HealthBars, Assembly-CSharp
+        m_MethodName: ChangePlayerStats
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -5123,12 +5155,6 @@ MonoBehaviour:
     type: 2}
   elementEndedEvent: {fileID: 11400000, guid: 54bdfc0acad46fd4b97edc1671df22ae, type: 2}
   inCombat: 0
-  yellowBrick: {fileID: 9197481963319205126, guid: d688eeb05c3b1c240bc10a06db02dc87,
-    type: 3}
-  greenBrick: {fileID: 9197481963319205126, guid: b10966f7f772b924ea07f292f0da84e5,
-    type: 3}
-  redBrick: {fileID: 9197481963319205126, guid: acfcb37113622454eb1dc0874628fe22,
-    type: 3}
   pointerVelocity: 60
   minTimeToSpawnBrick: 1
   maxTimeSpawnBrick: 4
@@ -7485,6 +7511,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 491d4b6a249b6dc40b13a02ba2f1b4dd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  onPlayerChangeInCombatStat: {fileID: 11400000, guid: 8c856264bbbcf87439bde5c22477ab7c,
+    type: 2}
   PermanentPlayerStatsSO: {fileID: 11400000, guid: 8120f6d6bf3f9f748a579a116d9ed62d,
     type: 2}
   inCombatPlayerStatsSO: {fileID: 11400000, guid: aa73bdaa80e88ab4e8e2f1d00b7c5e66,

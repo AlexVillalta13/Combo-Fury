@@ -1,0 +1,27 @@
+.healthTextPosition {
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+}
+
+.regularText {
+    -unity-font-definition: resource('Fonts & Materials/LilitaOne-Regular SDF');
+    font-size: 70px;
+    color: rgba(255, 255, 255, 255);
+    -unity-text-align: middle-center;
+    white-space: nowrap;
+    -unity-text-outline-width: 15px;
+    -unity-text-outline-color: rgba(0, 0, 0, 255);
+    text-shadow: 0 9px 0 rgba(0, 0, 0, 255);
+}
+
+.statsTextSize {
+    font-size: 60px;
+}
+
+.icon {
+    width: 80px;
+    height: 80px;
+}

@@ -19,6 +19,7 @@ public class CombatController : MonoBehaviour
     public float EnemyAttackPower { get { return enemyAttackPower; } set { enemyAttackPower = value; } }
 
     [Header("Events")]
+    [SerializeField] GameEvent onPlayerChangeInCombatStat;
     [SerializeField] GameEvent playerDeathEvent;
     [SerializeField] GameEvent playerWinFightEvent;
     [SerializeField] GameEvent showUpgradeToChoose;
@@ -27,9 +28,12 @@ public class CombatController : MonoBehaviour
     [Header("Level")]
     [SerializeField] LevelSO levelSO;
 
+    // Events
     // current health, max heath, attack income
     public static Action<float, float, float> onChangePlayerHealth;
     public static Action<float, float, float> onChangeEnemyHealth;
+    public static Action<float, float> onChangePlayerStat;
+    public static Action<float> onChangeEnemyAttack;
 
     // states
     [SerializeField] private int currentEnemy = 0;
@@ -52,6 +56,8 @@ public class CombatController : MonoBehaviour
         inCombatPlayerStatsSO.Defense = permanentPlayerStatsSO.Defense;
         inCombatPlayerStatsSO.CriticalAttackChance = permanentPlayerStatsSO.CriticalAttackChance;
         inCombatPlayerStatsSO.CurrentHealth = inCombatPlayerStatsSO.MaxHealth;
+
+        onPlayerChangeInCombatStat.Raise();
 
         currentEnemy = 0;
         totalEnemies = levelSO.Enemies.Count - 1;
@@ -82,6 +88,7 @@ public class CombatController : MonoBehaviour
     public void SetEnemyAttack()
     {
         enemyAttackPower = levelSO.Enemies[currentEnemy].Attack;
+        onChangeEnemyAttack?.Invoke(enemyAttackPower);
     }
 
     public void UpdateEnemyHealthUI(float valueDifference)

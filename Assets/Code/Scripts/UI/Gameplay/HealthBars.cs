@@ -8,9 +8,23 @@ public class HealthBars : UIComponent
 {
     const string playerBarReference = "PlayerBar";
     const string enemyBarReference = "EnemyBar";
+    const string playerHealthTextReference = "PlayerHealthText";
+    const string enemyHealthTextReference = "EnemyHealthText";
+    const string playerAttackTextReference = "PlayerAttack";
+    const string playerDefenseTextReference = "PlayerDefense";
+    const string enemyAttackTextReference = "EnemyAttack";
 
     VisualElement playerBar;
     VisualElement enemyBar;
+
+    Label playerHealthText;
+    Label enemyHealthText;
+    Label playerAttackText;
+    Label playerDefenseText;
+    Label enemyAttackText;
+
+    [SerializeField] PlayerStatsSO inCombatStatsSO;
+
 
     public override void Awake()
     {
@@ -22,6 +36,8 @@ public class HealthBars : UIComponent
         CombatController.onChangePlayerHealth += ChangePlayerHealth;
         CombatController.onChangeEnemyHealth += ChangeEnemyHealth;
 
+        CombatController.onChangeEnemyAttack += ChangeEnemyAttack;
+
         HideEnemyBar();
     }
 
@@ -29,6 +45,8 @@ public class HealthBars : UIComponent
     {
         CombatController.onChangePlayerHealth -= ChangePlayerHealth;
         CombatController.onChangeEnemyHealth -= ChangeEnemyHealth;
+
+        CombatController.onChangeEnemyAttack -= ChangeEnemyAttack;
     }
 
     public override void SetElementsReferences()
@@ -36,16 +54,36 @@ public class HealthBars : UIComponent
         base.SetElementsReferences();
         playerBar = m_UIElement.Query<VisualElement>(name: playerBarReference);
         enemyBar = m_UIElement.Query<VisualElement>(name: enemyBarReference);
+
+        playerHealthText = m_UIElement.Query<Label>(name: playerHealthTextReference);
+        enemyHealthText = m_UIElement.Query<Label>(name: enemyHealthTextReference);
+
+        playerAttackText = m_UIElement.Query<Label>(name: playerAttackTextReference);
+        playerDefenseText = m_UIElement.Query<Label>(name: playerDefenseTextReference);
+        enemyAttackText = m_UIElement.Query<Label>(name: enemyAttackTextReference);
     }
 
     public void ChangePlayerHealth(float newHealth, float maxHealt, float attackIncome)
     {
         playerBar.style.width = Length.Percent(newHealth * 100 / maxHealt);
+        playerHealthText.text = Mathf.Clamp(newHealth, 0f, maxHealt).ToString("0") + "/" + maxHealt.ToString("0");
     }
 
     public void ChangeEnemyHealth(float newHealth, float maxHealt, float attackIncome)
     {
         enemyBar.style.width = Length.Percent(newHealth * 100 / maxHealt);
+        enemyHealthText.text = Mathf.Clamp(newHealth, 0f, maxHealt).ToString("0") + "/" + maxHealt.ToString("0");
+    }
+
+    public void ChangePlayerStats()
+    {
+        playerAttackText.text = inCombatStatsSO.Attack.ToString();
+        playerDefenseText.text = inCombatStatsSO.Defense.ToString();
+    }
+
+    public void ChangeEnemyAttack(float newEnemyAttack)
+    {
+        enemyAttackText.text = newEnemyAttack.ToString("0");
     }
 
     public void ShowEnemyBar()
