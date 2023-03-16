@@ -12,14 +12,228 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1edc520f4d029fd4c9fef3a7bc3894cf, type: 3}
   m_Name: Level 02
   m_EditorClassIdentifier: 
+  inCombatStatsSO: {fileID: 11400000, guid: aa73bdaa80e88ab4e8e2f1d00b7c5e66, type: 2}
+  environment: 0
+  initialPosition: 0
   brickTypes: {fileID: 11400000, guid: 1de6bd5f177d50540a03449e4f318d9e, type: 2}
   enemies:
-  - health: 50
-    attack: 10
+  - health: 20
+    attack: 6
+    minTimeToSpawnBrick: 1
+    maxTimeToSpawnBrick: 4
+    chanceOfPlayerBrick: 70
+    chanceOfEnemyBrick: 30
     enemyBricks:
     - brickType: 0
-      probability: 20
-    - brickType: 1
-      probability: 40
-    - brickType: 2
-      probability: 20
+      probability: 70
+    - brickType: 3
+      probability: 30
+  - health: 26
+    attack: 7
+    minTimeToSpawnBrick: 1
+    maxTimeToSpawnBrick: 4
+    chanceOfPlayerBrick: 70
+    chanceOfEnemyBrick: 30
+    enemyBricks:
+    - brickType: 0
+      probability: 70
+    - brickType: 3
+      probability: 30
+  - health: 32
+    attack: 9
+    minTimeToSpawnBrick: 1
+    maxTimeToSpawnBrick: 4
+    chanceOfPlayerBrick: 65
+    chanceOfEnemyBrick: 35
+    enemyBricks:
+    - brickType: 0
+      probability: 70
+    - brickType: 3
+      probability: 30
+  - health: 38
+    attack: 11
+    minTimeToSpawnBrick: 1
+    maxTimeToSpawnBrick: 4
+    chanceOfPlayerBrick: 65
+    chanceOfEnemyBrick: 35
+    enemyBricks:
+    - brickType: 0
+      probability: 70
+    - brickType: 3
+      probability: 30
+  - health: 47
+    attack: 14
+    minTimeToSpawnBrick: 1
+    maxTimeToSpawnBrick: 3
+    chanceOfPlayerBrick: 65
+    chanceOfEnemyBrick: 35
+    enemyBricks:
+    - brickType: 0
+      probability: 70
+    - brickType: 3
+      probability: 30
+  - health: 56
+    attack: 16
+    minTimeToSpawnBrick: 1
+    maxTimeToSpawnBrick: 3
+    chanceOfPlayerBrick: 65
+    chanceOfEnemyBrick: 35
+    enemyBricks:
+    - brickType: 0
+      probability: 70
+    - brickType: 3
+      probability: 30
+  - health: 65
+    attack: 19
+    minTimeToSpawnBrick: 1
+    maxTimeToSpawnBrick: 3
+    chanceOfPlayerBrick: 60
+    chanceOfEnemyBrick: 40
+    enemyBricks:
+    - brickType: 0
+      probability: 70
+    - brickType: 3
+      probability: 30
+  - health: 74
+    attack: 22
+    minTimeToSpawnBrick: 1
+    maxTimeToSpawnBrick: 3
+    chanceOfPlayerBrick: 60
+    chanceOfEnemyBrick: 40
+    enemyBricks:
+    - brickType: 0
+      probability: 70
+    - brickType: 3
+      probability: 30
+  - health: 83
+    attack: 25
+    minTimeToSpawnBrick: 1
+    maxTimeToSpawnBrick: 3
+    chanceOfPlayerBrick: 60
+    chanceOfEnemyBrick: 40
+    enemyBricks:
+    - brickType: 0
+      probability: 70
+    - brickType: 3
+      probability: 30
+  - health: 188
+    attack: 32
+    minTimeToSpawnBrick: 1
+    maxTimeToSpawnBrick: 2
+    chanceOfPlayerBrick: 50
+    chanceOfEnemyBrick: 50
+    enemyBricks:
+    - brickType: 0
+      probability: 50
+    - brickType: 3
+      probability: 50
+  - health: 190
+    attack: 34
+    minTimeToSpawnBrick: 1
+    maxTimeToSpawnBrick: 3
+    chanceOfPlayerBrick: 50
+    chanceOfEnemyBrick: 50
+    enemyBricks:
+    - brickType: 0
+      probability: 70
+    - brickType: 3
+      probability: 30
+  - health: 191
+    attack: 36
+    minTimeToSpawnBrick: 1
+    maxTimeToSpawnBrick: 2
+    chanceOfPlayerBrick: 50
+    chanceOfEnemyBrick: 50
+    enemyBricks:
+    - brickType: 0
+      probability: 70
+    - brickType: 3
+      probability: 30
+  - health: 194
+    attack: 38
+    minTimeToSpawnBrick: 0.5
+    maxTimeToSpawnBrick: 2
+    chanceOfPlayerBrick: 50
+    chanceOfEnemyBrick: 50
+    enemyBricks:
+    - brickType: 0
+      probability: 70
+    - brickType: 3
+      probability: 30
+  - health: 205
+    attack: 40
+    minTimeToSpawnBrick: 0.5
+    maxTimeToSpawnBrick: 2
+    chanceOfPlayerBrick: 50
+    chanceOfEnemyBrick: 50
+    enemyBricks:
+    - brickType: 0
+      probability: 70
+    - brickType: 3
+      probability: 30
+  - health: 217
+    attack: 42
+    minTimeToSpawnBrick: 0.5
+    maxTimeToSpawnBrick: 2
+    chanceOfPlayerBrick: 50
+    chanceOfEnemyBrick: 50
+    enemyBricks:
+    - brickType: 0
+      probability: 70
+    - brickType: 3
+      probability: 30
+  - health: 228
+    attack: 44
+    minTimeToSpawnBrick: 0.5
+    maxTimeToSpawnBrick: 2
+    chanceOfPlayerBrick: 50
+    chanceOfEnemyBrick: 50
+    enemyBricks:
+    - brickType: 0
+      probability: 70
+    - brickType: 3
+      probability: 30
+  - health: 240
+    attack: 46
+    minTimeToSpawnBrick: 0.5
+    maxTimeToSpawnBrick: 2
+    chanceOfPlayerBrick: 50
+    chanceOfEnemyBrick: 50
+    enemyBricks:
+    - brickType: 0
+      probability: 70
+    - brickType: 3
+      probability: 30
+  - health: 251
+    attack: 48
+    minTimeToSpawnBrick: 0.5
+    maxTimeToSpawnBrick: 2
+    chanceOfPlayerBrick: 50
+    chanceOfEnemyBrick: 50
+    enemyBricks:
+    - brickType: 0
+      probability: 70
+    - brickType: 3
+      probability: 30
+  - health: 264
+    attack: 50
+    minTimeToSpawnBrick: 0.5
+    maxTimeToSpawnBrick: 2
+    chanceOfPlayerBrick: 50
+    chanceOfEnemyBrick: 50
+    enemyBricks:
+    - brickType: 0
+      probability: 70
+    - brickType: 3
+      probability: 30
+  - health: 507
+    attack: 74
+    minTimeToSpawnBrick: 0.5
+    maxTimeToSpawnBrick: 2
+    chanceOfPlayerBrick: 50
+    chanceOfEnemyBrick: 50
+    enemyBricks:
+    - brickType: 0
+      probability: 50
+    - brickType: 3
+      probability: 50

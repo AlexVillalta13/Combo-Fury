@@ -24,6 +24,8 @@ public class CombatController : MonoBehaviour
     [SerializeField] GameEvent playerWinFightEvent;
     [SerializeField] GameEvent showUpgradeToChoose;
     [SerializeField] GameEvent playerWinLevelEvent;
+    [SerializeField] GameEvent ActivateShieldVFX;
+    [SerializeField] GameEvent DeactivateShieldVFX;
 
     [Header("Level")]
     [SerializeField] LevelSO levelSO;
@@ -32,7 +34,6 @@ public class CombatController : MonoBehaviour
     // current health, max heath, attack income
     public static Action<float, float, float> onChangePlayerHealth;
     public static Action<float, float, float> onChangeEnemyHealth;
-    public static Action<float, float> onChangePlayerStat;
     public static Action<float> onChangeEnemyAttack;
 
     // states
@@ -81,6 +82,7 @@ public class CombatController : MonoBehaviour
         if(upgradesSelected.HasUpgrade("Shield") && shieldActivated == false)
         {
             shieldActivated = true;
+            ActivateShieldVFX.Raise();
             //Shield animation
         }
     }
@@ -148,6 +150,7 @@ public class CombatController : MonoBehaviour
         if (shieldActivated == true)
         {
             shieldActivated = false;
+            DeactivateShieldVFX.Raise();
             UpdatePlayerHealthUI(0);
             return;
         }
