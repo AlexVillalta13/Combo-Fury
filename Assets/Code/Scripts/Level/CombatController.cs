@@ -20,6 +20,7 @@ public class CombatController : MonoBehaviour
 
     [Header("Events")]
     [SerializeField] GameEvent onPlayerChangeInCombatStat;
+    [SerializeField] GameEvent playerGetsHitAnimation;
     [SerializeField] GameEvent playerDeathEvent;
     [SerializeField] GameEvent playerWinFightEvent;
     [SerializeField] GameEvent showUpgradeToChoose;
@@ -83,7 +84,6 @@ public class CombatController : MonoBehaviour
         {
             shieldActivated = true;
             ActivateShieldVFX.Raise();
-            //Shield animation
         }
     }
 
@@ -146,7 +146,6 @@ public class CombatController : MonoBehaviour
 
     public void EnemyAttacks()
     {
-        // Animation event when receive damage
         if (shieldActivated == true)
         {
             shieldActivated = false;
@@ -158,6 +157,7 @@ public class CombatController : MonoBehaviour
 
         float attackIncome = Mathf.Clamp(enemyAttackPower - inCombatPlayerStatsSO.Defense, 1, enemyAttackPower);
         inCombatPlayerStatsSO.CurrentHealth -= attackIncome;
+        playerGetsHitAnimation.Raise();
 
         if(inCombatPlayerStatsSO.CurrentHealth < 0)
         {

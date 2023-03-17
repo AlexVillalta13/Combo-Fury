@@ -77,8 +77,8 @@ public class HealthBars : UIComponent
 
     public void ChangePlayerStats()
     {
-        playerAttackText.text = inCombatStatsSO.Attack.ToString();
-        playerDefenseText.text = inCombatStatsSO.Defense.ToString();
+        playerAttackText.text = inCombatStatsSO.Attack.ToString("0");
+        playerDefenseText.text = inCombatStatsSO.Defense.ToString("0");
     }
 
     public void ChangeEnemyAttack(float newEnemyAttack)

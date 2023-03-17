@@ -1,6 +1,6 @@
 <ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
     <Style src="project://database/Assets/Level/UI/Classes/CombatBarUIClasses.uss?fileID=7433441132597879392&amp;guid=5fa1baaeb8a4759478e2db747c99efb9&amp;type=3#CombatBarUIClasses" />
     <ui:VisualElement name="BlackBrickVisualElement" class="brick" style="background-color: rgb(58, 58, 58); align-items: center; justify-content: center;">
-        <ui:VisualElement style="background-image: url(&apos;project://database/Assets/Art/Sprites/Icon_PictoIcon_Boss_Stage_f.png?fileID=2800000&amp;guid=df0ff6463f531fd4faf3951646f4a498&amp;type=3#Icon_PictoIcon_Boss_Stage_f&apos;); width: 98px; height: 103px; -unity-background-scale-mode: scale-to-fit;" />
+        <ui:VisualElement style="background-image: url(&apos;project://database/Assets/Art/Sprites/Icon_PictoIcon_Boss_Stage_f.png?fileID=2800000&amp;guid=df0ff6463f531fd4faf3951646f4a498&amp;type=3#Icon_PictoIcon_Boss_Stage_f&apos;); width: 98px; height: 103px; -unity-background-scale-mode: scale-to-fit; margin-left: 7px; margin-right: 7px; margin-top: 7px; margin-bottom: 7px;" />
     </ui:VisualElement>
 </ui:UXML>

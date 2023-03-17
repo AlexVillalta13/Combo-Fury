@@ -6,8 +6,10 @@ public class PlayerUpgrades : MonoBehaviour
 {
     CombatController m_combatController;
 
-    [Header("Scriptable Objects Stats")]
+    [Header("Game Events")]
     [SerializeField] GameEvent onPlayerChangeInCombatStat;
+    [SerializeField] GameEvent activateRageVFX;
+    [SerializeField] GameEvent deactivateRageVFX;
 
     [Header("Scriptable Objects Stats")]
     [SerializeField] PlayerStatsSO PermanentPlayerStatsSO;
@@ -28,6 +30,7 @@ public class PlayerUpgrades : MonoBehaviour
     // Properties
     bool hasRageUpgrade = false;
     bool hasRageState = false;
+    public float attackPreviousToRage;
 
     private void Awake()
     {
@@ -49,6 +52,7 @@ public class PlayerUpgrades : MonoBehaviour
         upgradesPlayerHasSO.UpgradeList.Clear();
         hasRageUpgrade = false;
         hasRageState = false;
+        attackPreviousToRage = PermanentPlayerStatsSO.Attack;
     }
 
     public void IncreaseMaxHealth()
@@ -77,6 +81,7 @@ public class PlayerUpgrades : MonoBehaviour
             attackIncrease = 1;
         }
         inCombatPlayerStatsSO.Attack += attackIncrease;
+        attackPreviousToRage += attackIncrease;
         onPlayerChangeInCombatStat.Raise();
     }
 
@@ -88,6 +93,7 @@ public class PlayerUpgrades : MonoBehaviour
             attackIncrease = 2;
         }
         inCombatPlayerStatsSO.Attack += attackIncrease;
+        attackPreviousToRage += attackIncrease;
         onPlayerChangeInCombatStat.Raise();
     }
 
@@ -117,9 +123,11 @@ public class PlayerUpgrades : MonoBehaviour
                 float healthLimitToRage = playerMaxHealth * healthPercentageToActivateRage / 100;
                 if (playerCurrentHealth <= healthLimitToRage)
                 {
-                    float attackToIncrease = inCombatPlayerStatsSO.Attack * extraRageAttack / 100;
-                    inCombatPlayerStatsSO.Attack += attackToIncrease;
+                    float attackToIncrease = attackPreviousToRage * extraRageAttack / 100;
+                    inCombatPlayerStatsSO.Attack = attackPreviousToRage + attackToIncrease;
                     hasRageState = true;
+                    activateRageVFX.Raise();
+                    onPlayerChangeInCombatStat.Raise();
                 }
             }
             else if(hasRageState == true)
@@ -127,9 +135,10 @@ public class PlayerUpgrades : MonoBehaviour
                 float healthLimitToRage = playerMaxHealth * healthPercentageToActivateRage / 100;
                 if (playerCurrentHealth > healthLimitToRage)
                 {
-                    float attackToIncrease = inCombatPlayerStatsSO.Attack * extraRageAttack / 100;
-                    inCombatPlayerStatsSO.Attack -= attackToIncrease;
+                    inCombatPlayerStatsSO.Attack = attackPreviousToRage;
                     hasRageState = false;
+                    deactivateRageVFX.Raise();
+                    onPlayerChangeInCombatStat.Raise();
                 }
             }
         }
