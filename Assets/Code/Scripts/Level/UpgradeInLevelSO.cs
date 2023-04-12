@@ -31,8 +31,11 @@ public class UpgradeInLevelSO : ScriptableObject
         [SerializeField] string upgradeName;
         public string UpgradeName { get { return upgradeName; } }
 
-        [SerializeField] Texture image;
-        public Texture Image { get { return image; } }
+        [SerializeField] string upgradeId;
+        public string UpgradeId { get { return upgradeId; } }
+
+        [SerializeField] Sprite image;
+        public Sprite Image { get { return image; } }
 
         [SerializeField] bool canRepeat;
         public bool CanRepeat { get { return canRepeat; } }

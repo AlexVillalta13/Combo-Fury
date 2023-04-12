@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class PlayerUpgrades : MonoBehaviour
 {
-    CombatController m_combatController;
-
     [Header("Game Events")]
     [SerializeField] GameEvent onPlayerChangeInCombatStat;
     [SerializeField] GameEvent activateRageVFX;
@@ -18,24 +16,19 @@ public class PlayerUpgrades : MonoBehaviour
     [SerializeField] UpgradeInLevelSO upgradesPlayerHasSO;
 
     [Header("Upgrade Stats")]
-    [SerializeField] float healPercentage = 25;
-    [SerializeField] float littleAttackIncreasePercentage = 5;
-    [SerializeField] float mediumAttackIncreasePercentage = 10;
-    [SerializeField] float mediumDefenseIncreasePercentage = 10;
-    [SerializeField] float maxHealthIncreasePercentage = 10;
+    [SerializeField] float healPercentage = 25f;
+    [SerializeField] float littleAttackIncreasePercentage = 5f;
+    [SerializeField] float mediumAttackIncreasePercentage = 10f;
+    [SerializeField] float mediumDefenseIncreasePercentage = 10f;
+    [SerializeField] float maxHealthIncreasePercentage = 10f;
     [SerializeField] float criticalChanceIncrease = 5f;
-    [SerializeField] float healthPercentageToActivateRage = 30;
-    [SerializeField] float extraRageAttack = 20;
+    [SerializeField] float healthPercentageToActivateRage = 30f;
+    [SerializeField] float extraRageAttack = 20f;
 
     // Properties
     bool hasRageUpgrade = false;
     bool hasRageState = false;
     public float attackPreviousToRage;
-
-    private void Awake()
-    {
-        m_combatController = FindObjectOfType<CombatController>();
-    }
 
     private void OnEnable()
     {

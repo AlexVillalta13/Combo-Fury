@@ -5,9 +5,11 @@
         <ui:VisualElement name="HolderToScale" class="scaledDown" style="flex-direction: row; align-items: center; justify-content: center; width: 100%; height: 100%;">
             <ui:VisualElement name="UpgradeContainer" class="upgradeContainer">
                 <ui:Label text="DEATH ATTACK" display-tooltip-when-elided="true" name="UpgradeName" class="nameUpgrade" />
-                <ui:VisualElement name="ImageHolder" class="imageHolder">
+                <ui:VisualElement name="ImageHolder" class="imageHolder" style="background-color: rgb(0, 0, 0);">
                     <ui:VisualElement name="ImageMover" class="imageMover">
-                        <ui:VisualElement name="UpgradeImage" class="imageUpgrade" style="background-color: rgb(0, 255, 2); position: absolute;" />
+                        <ui:VisualElement name="UpgradeImage" class="imageUpgrade" style="position: absolute;">
+                            <ui:VisualElement name="IconImage" style="flex-grow: 1; background-image: url(&apos;project://database/Assets/Art/Sprites/Upgrade%20icons/Pictoicon_Attack.Png?fileID=2800000&amp;guid=087129c45f1ade545aca68f3d81bdcd8&amp;type=3#Pictoicon_Attack&apos;);" />
+                        </ui:VisualElement>
                         <ui:VisualElement name="UpgradeImage" class="imageUpgrade" style="background-color: rgb(217, 255, 0); position: absolute; top: -250px;" />
                         <ui:VisualElement name="UpgradeImage" class="imageUpgrade" style="background-color: rgb(217, 255, 0); position: absolute; top: -500px;" />
                         <ui:VisualElement name="UpgradeImage" class="imageUpgrade" style="top: -750px;" />
@@ -20,7 +22,9 @@
                 <ui:Label text="HEALTH MAX" display-tooltip-when-elided="true" name="UpgradeName" class="nameUpgrade" />
                 <ui:VisualElement name="ImageHolder" class="imageHolder">
                     <ui:VisualElement name="ImageMover" class="imageMover">
-                        <ui:VisualElement name="UpgradeImage" class="imageUpgrade" style="background-color: rgb(0, 255, 2); position: absolute;" />
+                        <ui:VisualElement name="UpgradeImage" class="imageUpgrade" style="background-color: rgb(0, 0, 0); position: absolute;">
+                            <ui:VisualElement name="IconImage" style="flex-grow: 1; background-image: url(&apos;project://database/Assets/Art/Sprites/Upgrade%20icons/Pictoicon_Attack.Png?fileID=2800000&amp;guid=087129c45f1ade545aca68f3d81bdcd8&amp;type=3#Pictoicon_Attack&apos;);" />
+                        </ui:VisualElement>
                         <ui:VisualElement name="UpgradeImage" class="imageUpgrade" style="background-color: rgb(217, 255, 0); position: absolute; top: -250px;" />
                         <ui:VisualElement name="UpgradeImage" class="imageUpgrade" style="background-color: rgb(217, 255, 0); position: absolute; top: -500px;" />
                         <ui:VisualElement name="UpgradeImage" class="imageUpgrade" style="top: -750px;" />
@@ -34,7 +38,9 @@
                 <ui:Label text="ATTACK" display-tooltip-when-elided="true" name="UpgradeName" class="nameUpgrade" />
                 <ui:VisualElement name="ImageHolder" class="imageHolder">
                     <ui:VisualElement name="ImageMover" class="imageMover">
-                        <ui:VisualElement name="UpgradeImage" class="imageUpgrade" style="background-color: rgb(0, 255, 2); position: absolute;" />
+                        <ui:VisualElement name="UpgradeImage" class="imageUpgrade" style="background-color: rgb(0, 0, 0); position: absolute;">
+                            <ui:VisualElement name="IconImage" style="flex-grow: 1; background-image: url(&apos;project://database/Assets/Art/Sprites/Upgrade%20icons/Pictoicon_Attack.Png?fileID=2800000&amp;guid=087129c45f1ade545aca68f3d81bdcd8&amp;type=3#Pictoicon_Attack&apos;);" />
+                        </ui:VisualElement>
                         <ui:VisualElement name="UpgradeImage" class="imageUpgrade" style="background-color: rgb(217, 255, 0); position: absolute; top: -250px;" />
                         <ui:VisualElement name="UpgradeImage" class="imageUpgrade" style="background-color: rgb(217, 255, 0); position: absolute; top: -500px;" />
                         <ui:VisualElement name="UpgradeImageToStop" class="imageUpgrade" style="background-color: rgb(255, 23, 0); position: absolute; top: -750px;" />

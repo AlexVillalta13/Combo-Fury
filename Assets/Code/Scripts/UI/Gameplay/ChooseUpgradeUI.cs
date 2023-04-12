@@ -17,6 +17,7 @@ public class ChooseUpgradeUI : UIComponent
 
     const string upgradeContainerClass = "upgradeContainer";
     const string upgradeNameClass = "nameUpgrade";
+    const string iconImageName = "IconImage";
     const string upgradeDescriptionClass = "descriptionUpgrade";
     const string scaleHolderElement = "HolderToScale";
 
@@ -89,14 +90,17 @@ public class ChooseUpgradeUI : UIComponent
         }
 
         Label upgradeName;
+        VisualElement iconImage;
         Label upgradeDescription;
 
         for(int i = 0; i < upgradesRandomlySelected.Count; i++)
         {
             upgradeName = UpgradeContainerList[i].Query<Label>(className: upgradeNameClass);
+            iconImage = UpgradeContainerList[i].Query<VisualElement>(name: iconImageName);
             upgradeDescription = UpgradeContainerList[i].Query<Label> (className: upgradeDescriptionClass);
 
             upgradeName.text = upgradesRandomlySelected[i].UpgradeName;
+            iconImage.style.backgroundImage = new StyleBackground(upgradesRandomlySelected[i].Image);
             upgradeDescription.text = upgradesRandomlySelected[i].UpgradeDescription;
         }
     }

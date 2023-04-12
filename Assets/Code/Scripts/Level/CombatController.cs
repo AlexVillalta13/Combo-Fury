@@ -27,6 +27,8 @@ public class CombatController : MonoBehaviour
     [SerializeField] GameEvent playerWinLevelEvent;
     [SerializeField] GameEvent ActivateShieldVFX;
     [SerializeField] GameEvent DeactivateShieldVFX;
+    [SerializeField] GameEvent ActivateFireVFX;
+    [SerializeField] GameEvent DeactivaFireVFX;
 
     [Header("Level")]
     [SerializeField] LevelSO levelSO;
@@ -41,6 +43,14 @@ public class CombatController : MonoBehaviour
     [SerializeField] private int currentEnemy = 0;
     [SerializeField] private int totalEnemies = 0;
     [SerializeField] bool shieldActivated = false;
+
+    [SerializeField] float fireDamagePercentage = 10f;
+    [SerializeField] float timeToDamageFire = 3f;
+    float timerFireDamage = 0f;
+    [SerializeField] float timeToTurnOffFire = 10f;
+    float timerToTurnOffFire = 0f;
+    int fireLevel = 0;
+    bool enemyInFire = false;
 
     private void OnEnable()
     {
@@ -61,6 +71,11 @@ public class CombatController : MonoBehaviour
 
         onPlayerChangeInCombatStat.Raise();
 
+        shieldActivated = false;
+
+        fireLevel = 0;
+        enemyInFire = false;
+
         currentEnemy = 0;
         totalEnemies = levelSO.Enemies.Count - 1;
 
@@ -78,15 +93,6 @@ public class CombatController : MonoBehaviour
         ActivateShield();
     }
 
-    private void ActivateShield()
-    {
-        if(upgradesSelected.HasUpgrade("Shield") && shieldActivated == false)
-        {
-            shieldActivated = true;
-            ActivateShieldVFX.Raise();
-        }
-    }
-
     public void SetEnemyAttack()
     {
         enemyAttackPower = levelSO.Enemies[currentEnemy].Attack;
@@ -102,8 +108,67 @@ public class CombatController : MonoBehaviour
         onChangePlayerHealth?.Invoke(inCombatPlayerStatsSO.CurrentHealth, inCombatPlayerStatsSO.MaxHealth, valueDifference);
     }
 
+    private void Update()
+    {
+        if (enemyInFire == true)
+        {
+            timerFireDamage += Time.deltaTime;
+            timerToTurnOffFire += Time.deltaTime;
+            if (timerFireDamage >= timeToDamageFire)
+            {
+                FireDamage();
+            }
+
+            if (timerToTurnOffFire >= timeToTurnOffFire)
+            {
+                TurnOffEnemyFire();
+            }
+        }
+    }
+
+    public void FireUpgradeSelected()
+    {
+        fireLevel++;
+    }
+
+    public void SetEnemyInFire()
+    {
+        enemyInFire = true;
+        timerToTurnOffFire = 0f;
+        ActivateFireVFX.Raise();
+    }
+
+    private void FireDamage()
+    {
+        timerFireDamage = 0f;
+        float damage = inCombatPlayerStatsSO.Attack * 10 / 100 + fireLevel;
+        Debug.Log(damage);
+        enemyCurrentHealth -= damage;
+        UpdateEnemyHealthUI(damage);
+    }
+
+    private void TurnOffEnemyFire()
+    {
+        enemyInFire = false;
+        DeactivaFireVFX.Raise();
+    }
+
+    private void ActivateShield()
+    {
+        if(upgradesSelected.HasUpgrade("Shield") && shieldActivated == false)
+        {
+            shieldActivated = true;
+            ActivateShieldVFX.Raise();
+        }
+    }
+
     public void PlayerAttacks()
     {
+        if (fireLevel > 0)
+        {
+            SetEnemyInFire();
+        }
+
         enemyCurrentHealth -= inCombatPlayerStatsSO.Attack;
 
         CheckWinConditions();
@@ -113,6 +178,11 @@ public class CombatController : MonoBehaviour
 
     public void PlayerCriticalAttack()
     {
+        if(fireLevel > 0)
+        {
+            SetEnemyInFire();
+        }
+
         float criticalDamage = (10 * inCombatPlayerStatsSO.Attack / 100) + inCombatPlayerStatsSO.Attack;
         enemyCurrentHealth -= criticalDamage;
 
@@ -127,21 +197,17 @@ public class CombatController : MonoBehaviour
         {
             if (currentEnemy < totalEnemies)
             {
+                TurnOffEnemyFire();
                 playerWinFightEvent.Raise();
                 StartCoroutine(ShowUpgrades());
             }
             else if (currentEnemy == totalEnemies)
             {
+                TurnOffEnemyFire();
                 playerWinLevelEvent.Raise();
             }
             currentEnemy += 1;
         }
-    }
-
-    private IEnumerator ShowUpgrades()
-    {
-        yield return new WaitForSeconds(1f);
-        showUpgradeToChoose.Raise();
     }
 
     public void EnemyAttacks()
@@ -154,7 +220,6 @@ public class CombatController : MonoBehaviour
             return;
         }
 
-
         float attackIncome = Mathf.Clamp(enemyAttackPower - inCombatPlayerStatsSO.Defense, 1, enemyAttackPower);
         inCombatPlayerStatsSO.CurrentHealth -= attackIncome;
         playerGetsHitAnimation.Raise();
@@ -164,8 +229,14 @@ public class CombatController : MonoBehaviour
             playerDeathEvent.Raise();
         }
 
-        UpdatePlayerHealthUI(attackIncome);
+        UpdatePlayerHealthUI(-attackIncome);
 
+    }
+
+    private IEnumerator ShowUpgrades()
+    {
+        yield return new WaitForSeconds(1f);
+        showUpgradeToChoose.Raise();
     }
 
     public void EncounteredNewEnemy()
