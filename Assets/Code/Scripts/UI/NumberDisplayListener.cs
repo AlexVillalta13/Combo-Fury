@@ -80,5 +80,7 @@ public class NumberDisplayListener : MonoBehaviour
         numberLocalStartPosition.z = randomZ;
         number.transform.position = transform.TransformPoint(numberLocalStartPosition);
         number.text = healthDifference.ToString();
+
+        number.transform.SetParent(transform);
     }
 }

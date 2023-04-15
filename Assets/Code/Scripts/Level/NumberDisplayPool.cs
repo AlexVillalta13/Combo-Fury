@@ -38,6 +38,7 @@ public class NumberDisplayPool : MonoBehaviour
 
     private void OnReturnObjectToPool(TextMeshPro numberText)
     {
+        numberText.transform.SetParent(null);
         numberText.gameObject.SetActive(false);
     }
 }
