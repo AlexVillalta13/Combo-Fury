@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UIElements;
 
@@ -8,7 +9,8 @@ public enum BrickTypeEnum
     Redbrick,
     YellowBrick,
     Greenbrick,
-    BlackBrick
+    BlackBrick,
+    SpeedBrick
 }
 
 public enum BrickHolder
@@ -71,14 +73,10 @@ public class Brick
         }
     }
 
-    public void PositionBrick()
+    public virtual void PositionBrick()
     {
-        //float randomWidht = Random.Range(minWidth, maxWidth);
-        //brickElementAttached.style.width = randomWidht;
-
         brickElementAttached.style.visibility = Visibility.Visible;
-        //float randomWidht = Random.Range(minWidth, maxWidth);
-        //brickElementAttached.style.width = randomWidht;
+
         brickElementAttached.style.left = UnityEngine.Random.Range(m_elementParent.resolvedStyle.left, m_elementParent.resolvedStyle.left + m_elementParent.resolvedStyle.width - brickElementAttached.resolvedStyle.width);
     }
 
@@ -179,6 +177,31 @@ public class BlackBrick : Brick
         base.EffectWithTouch();
 
         brickEventsHolder.GetPlayerIsHitEvent().Raise();
+        RemoveBrickElement();
+    }
+}
+
+public class SpeedBrick: Brick
+{
+    public SpeedBrick() : base()
+    {
+        brickHolder = BrickHolder.EnemyBrick;
+        brickType = BrickTypeEnum.SpeedBrick;
+    }
+
+    public override void PositionBrick()
+    {
+        brickElementAttached.style.visibility = Visibility.Visible;
+
+        brickElementAttached.style.left = m_elementParent.resolvedStyle.left + m_elementParent.resolvedStyle.width - brickElementAttached.resolvedStyle.width;
+    }
+
+    
+    public override void EffectWithTouch()
+    {
+        base.EffectWithTouch();
+
+        brickEventsHolder.GetPlayerBlockEvent().Raise();
         RemoveBrickElement();
     }
 }

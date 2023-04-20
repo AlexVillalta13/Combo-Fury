@@ -117,6 +117,9 @@ public class CombatBarUI : UIComponent
             case BrickTypeEnum.BlackBrick:
                 SpawnBrick(new BlackBrick(), visualElement);
                 break;
+            case BrickTypeEnum.SpeedBrick:
+                SpawnBrick(new SpeedBrick(), visualElement);
+                break;
 
         }
     }

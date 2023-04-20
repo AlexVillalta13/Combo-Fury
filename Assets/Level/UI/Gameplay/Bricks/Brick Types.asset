@@ -16,7 +16,7 @@ MonoBehaviour:
   - brickType: 0
     brickUIAsset: {fileID: 9197481963319205126, guid: acfcb37113622454eb1dc0874628fe22,
       type: 3}
-    timeToAutoDelete: 0
+    timeToAutoDelete: 30
     minWidth: 80
     maxWidth: 130
   - brickType: 1
@@ -35,5 +35,11 @@ MonoBehaviour:
     brickUIAsset: {fileID: 9197481963319205126, guid: 9362279fb442b5344841383457f0ef21,
       type: 3}
     timeToAutoDelete: 10
+    minWidth: 80
+    maxWidth: 120
+  - brickType: 4
+    brickUIAsset: {fileID: 9197481963319205126, guid: b69375abcf1276747a4e218ebac82461,
+      type: 3}
+    timeToAutoDelete: 0
     minWidth: 80
     maxWidth: 120
