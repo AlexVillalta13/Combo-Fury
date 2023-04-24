@@ -20,6 +20,8 @@ public class CombatBarUI : UIComponent
 
     Dictionary<VisualElement, Brick> bricksInBarDict = new Dictionary<VisualElement, Brick>();
 
+    // Object references
+    BricksPool bricksPool;
 
     // states
     [SerializeField] bool inCombat = false;
@@ -29,8 +31,7 @@ public class CombatBarUI : UIComponent
     [Header("Combat Bar Stats")]
     [SerializeField] float pointerVelocity = 60f;
 
-    [SerializeField] float minTimeToSpawnBrick = 3f;
-    [SerializeField] float maxTimeSpawnBrick = 6f;
+
     [SerializeField] float timeToSpawnBrick = 5f;
     [SerializeField] float timerSpawn = 0f;
 
@@ -56,6 +57,7 @@ public class CombatBarUI : UIComponent
     public override void Awake()
     {
         base.Awake();
+        bricksPool = FindObjectOfType<BricksPool>();
     }
 
     public override void SetElementsReferences()
@@ -90,11 +92,14 @@ public class CombatBarUI : UIComponent
         BrickTypeEnum brickTypeToSpawn = levelSO.Enemies[currentEnemy].GetRandomBrick();
 
         VisualElement visualElement = null;
+        //Brick newBrick;
         foreach (BrickTypes brickTypeInSO in brickTypesSO.BrickTypes)
         {
             if (brickTypeInSO.BrickType == brickTypeToSpawn)
             {
                 visualElement = brickTypeInSO.BrickUIAsset.Instantiate();
+                //newBrick = Instantiate(brickTypeInSO.BrickPrefab);
+                //SpawnBrick(newBrick, visualElement);
                 break;
             }
         }
@@ -106,21 +111,20 @@ public class CombatBarUI : UIComponent
         switch (brickTypeToSpawn)
         {
             case BrickTypeEnum.Redbrick:
-                SpawnBrick(new RedBrick(), visualElement);
+                SpawnBrick(bricksPool.RedBrickPool.Get(), visualElement);
                 break;
             case BrickTypeEnum.YellowBrick:
-                SpawnBrick(new YellowBrick(), visualElement);
+                SpawnBrick(bricksPool.YellowBrickPool.Get(), visualElement);
                 break;
             case BrickTypeEnum.Greenbrick:
-                SpawnBrick(new GreenBrick(), visualElement);
+                SpawnBrick(bricksPool.GreenBrickPool.Get(), visualElement);
                 break;
             case BrickTypeEnum.BlackBrick:
-                SpawnBrick(new BlackBrick(), visualElement);
+                SpawnBrick(bricksPool.BlackBrickPool.Get(), visualElement);
                 break;
             case BrickTypeEnum.SpeedBrick:
-                SpawnBrick(new SpeedBrick(), visualElement);
+                SpawnBrick(bricksPool.SpeedBrickPool.Get(), visualElement);
                 break;
-
         }
     }
 
@@ -131,17 +135,12 @@ public class CombatBarUI : UIComponent
 
     private IEnumerator SpawnBrickCoroutine(Brick brickScriptToSpawn, VisualElement brickUIElement)
     {
-        brickScriptToSpawn.SetupBrick(brickUIElement, playerBrickElementHolder, playerUSSClassName, enemyBricksElementHolder, enemyUSSClassName, touchBrickEventsHolder, brickTypesSO);
+        brickScriptToSpawn.SetupBrick(brickUIElement, playerBrickElementHolder, playerUSSClassName, enemyBricksElementHolder, enemyUSSClassName);
 
         yield return new WaitForEndOfFrame();
 
         brickScriptToSpawn.PositionBrick();
         bricksInBarDict.Add(brickUIElement, brickScriptToSpawn);
-
-        if(brickScriptToSpawn.GetTimeToAutoDelete() > 0f)
-        {
-            StartCoroutine(brickScriptToSpawn.AutoDestroyBrickElement());
-        }
     }
 
     private void MovePointer()
@@ -203,7 +202,10 @@ public class CombatBarUI : UIComponent
                     brickToBreack = element;
                 }
             }
-            bricksInBarDict[brickToBreack].EffectWithTouch();
+            Brick brickTouched = bricksInBarDict[brickToBreack];
+            bricksInBarDict.Remove(brickToBreack);
+            brickTouched.EffectWithTouch();
+
         }
     }
 
@@ -233,8 +235,6 @@ public class CombatBarUI : UIComponent
 
     private void CreateRandomTimeToSpawnBrick()
     {
-        minTimeToSpawnBrick = levelSO.Enemies[currentEnemy].MinTimeToSpawnBrick;
-        maxTimeSpawnBrick = levelSO.Enemies[currentEnemy].MaxTimeToSpawnBrick;
         timeToSpawnBrick = UnityEngine.Random.Range(levelSO.Enemies[currentEnemy].MinTimeToSpawnBrick, levelSO.Enemies[currentEnemy].MaxTimeToSpawnBrick);
     }
 

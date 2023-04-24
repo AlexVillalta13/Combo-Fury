@@ -14,12 +14,12 @@ public class BrickTypes
 {
     [SerializeField] BrickTypeEnum brickType;
     public BrickTypeEnum BrickType { get { return brickType; } }
+
+
     [SerializeField] VisualTreeAsset brickUIAsset;
     public VisualTreeAsset BrickUIAsset { get { return brickUIAsset; } }
-    [SerializeField] float timeToAutoDelete;
-    public float TimeToAutoDelete { get { return timeToAutoDelete; } }
-    [SerializeField] float minWidth;
-    public float MinWidth { get { return minWidth; } }
-    [SerializeField] float maxWidth;
-    public float MaxWidth { get { return maxWidth; } }
+
+
+    [SerializeField] Brick brickPrefab;
+    public Brick BrickPrefab { get { return brickPrefab; } }
 }

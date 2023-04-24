@@ -19,30 +19,31 @@ public enum BrickHolder
     EnemyBrick
 }
 
-public class Brick
+public class Brick: MonoBehaviour
 {
     protected BrickHolder brickHolder = BrickHolder.EnemyBrick;
     protected BrickTypeEnum brickType = BrickTypeEnum.Redbrick;
 
-    protected BrickTypesSO brickTypesSO;
-    protected TouchBrickEventsSO brickEventsHolder;
+    [SerializeField] protected BrickTypesSO brickTypesSO;
+    [SerializeField] protected TouchBrickEventsSO brickEventsHolder;
+    [SerializeField] protected VisualTreeAsset brickUIElement;
+    [SerializeField] protected BricksPool bricksPool;
+
     protected VisualElement brickElementAttached;
     protected VisualElement m_elementParent;
 
-    protected float timeToAutoDelete = 0f;
-    protected float minWidth;
-    protected float maxWidth;
+    [SerializeField] protected float timeToAutoDelete = 0f;
+    [SerializeField] protected float minWidth;
+    [SerializeField] protected float maxWidth;
 
     public Brick()
     {
 
     }
 
-    public void SetupBrick(VisualElement brickElementAttached, VisualElement playerElementParent, string playerClassName, VisualElement enemyElementParent, string enemyClassName, TouchBrickEventsSO brickEventsHolder, BrickTypesSO brickTypesSO)
+    public void SetupBrick(VisualElement brickElementAttached, VisualElement playerElementParent, string playerClassName, VisualElement enemyElementParent, string enemyClassName)
     {
         this.brickElementAttached = brickElementAttached;
-        this.brickEventsHolder = brickEventsHolder;
-        this.brickTypesSO = brickTypesSO;
 
         if(brickHolder == BrickHolder.PlayerBrick)
         {
@@ -59,18 +60,8 @@ public class Brick
         m_elementParent.Add(brickElementAttached);
         brickElementAttached.style.position = Position.Absolute;
 
-        foreach(BrickTypes element in brickTypesSO.BrickTypes)
-        {
-            if(element.BrickType == brickType)
-            {
-                this.timeToAutoDelete = element.TimeToAutoDelete;
-                this.minWidth = element.MinWidth;
-                this.maxWidth = element.MaxWidth;
-                float randomWidht = Random.Range(minWidth, maxWidth);
-                brickElementAttached.style.width = randomWidht;
-                break;
-            }
-        }
+        float randomWidht = Random.Range(minWidth, maxWidth);
+        brickElementAttached.style.width = randomWidht;
     }
 
     public virtual void PositionBrick()
@@ -78,6 +69,16 @@ public class Brick
         brickElementAttached.style.visibility = Visibility.Visible;
 
         brickElementAttached.style.left = UnityEngine.Random.Range(m_elementParent.resolvedStyle.left, m_elementParent.resolvedStyle.left + m_elementParent.resolvedStyle.width - brickElementAttached.resolvedStyle.width);
+
+        if(timeToAutoDelete > 0f)
+        {
+            StartCoroutine(AutoDestroyBrickElement());
+        }
+    }
+
+    public void SetPool(BricksPool brickPool)
+    {
+        this.bricksPool = brickPool;
     }
 
     public float GetTimeToAutoDelete()
@@ -95,7 +96,7 @@ public class Brick
         return brickElementAttached;
     }
 
-    public void RemoveBrickElement()
+    public virtual void RemoveBrickElement()
     {
         brickElementAttached.RemoveFromHierarchy();
     }
@@ -103,105 +104,6 @@ public class Brick
     public IEnumerator AutoDestroyBrickElement()
     {
         yield return new WaitForSeconds(timeToAutoDelete);
-        if(timeToAutoDelete > 0f)
-        {
-            RemoveBrickElement();
-        }
-    }
-}
-public class RedBrick : Brick
-{
-    public RedBrick() : base()
-    {
-        brickHolder = BrickHolder.EnemyBrick;
-        brickType = BrickTypeEnum.Redbrick;
-    }
-
-    public override void EffectWithTouch()
-    {
-        base.EffectWithTouch();
-
-        brickEventsHolder.GetPlayerBlockEvent().Raise();
-        RemoveBrickElement();
-    }
-}
-public class GreenBrick : Brick
-{
-    public GreenBrick() : base()
-    {
-        brickHolder = BrickHolder.PlayerBrick;
-        brickType = BrickTypeEnum.Greenbrick;
-
-        //timeToAutoDelete = 10f;
-    }
-
-    public override void EffectWithTouch()
-    {
-        base.EffectWithTouch();
-
-        brickEventsHolder.GetPlayerCriticalAttackEvent().Raise();
-        RemoveBrickElement();
-    }
-}
-public class YellowBrick : Brick
-{
-    public YellowBrick() : base()
-    {
-        brickHolder = BrickHolder.PlayerBrick;
-        brickType = BrickTypeEnum.YellowBrick;
-
-        //timeToAutoDelete = 15f;
-    }
-
-    public override void EffectWithTouch()
-    {
-        base.EffectWithTouch();
-
-        brickEventsHolder.GetPlayerAttackEvent().Raise();
-        RemoveBrickElement();
-    }
-}
-
-public class BlackBrick : Brick
-{
-    public BlackBrick() : base()
-    {
-        brickHolder = BrickHolder.EnemyBrick;
-        brickType = BrickTypeEnum.BlackBrick;
-
-        //timeToAutoDelete = 10f;
-    }
-
-    public override void EffectWithTouch()
-    {
-        base.EffectWithTouch();
-
-        brickEventsHolder.GetPlayerIsHitEvent().Raise();
-        RemoveBrickElement();
-    }
-}
-
-public class SpeedBrick: Brick
-{
-    public SpeedBrick() : base()
-    {
-        brickHolder = BrickHolder.EnemyBrick;
-        brickType = BrickTypeEnum.SpeedBrick;
-    }
-
-    public override void PositionBrick()
-    {
-        brickElementAttached.style.visibility = Visibility.Visible;
-
-        brickElementAttached.style.left = m_elementParent.resolvedStyle.left + m_elementParent.resolvedStyle.width - brickElementAttached.resolvedStyle.width;
-    }
-
-    
-    public override void EffectWithTouch()
-    {
-        base.EffectWithTouch();
-
-        brickEventsHolder.GetPlayerBlockEvent().Raise();
         RemoveBrickElement();
     }
 }

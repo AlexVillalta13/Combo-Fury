@@ -16,30 +16,25 @@ MonoBehaviour:
   - brickType: 0
     brickUIAsset: {fileID: 9197481963319205126, guid: acfcb37113622454eb1dc0874628fe22,
       type: 3}
-    timeToAutoDelete: 30
-    minWidth: 80
-    maxWidth: 130
+    brickPrefab: {fileID: 6014339879886659586, guid: 76746847be76c254ba4e8c532d1e6743,
+      type: 3}
   - brickType: 1
     brickUIAsset: {fileID: 9197481963319205126, guid: d688eeb05c3b1c240bc10a06db02dc87,
       type: 3}
-    timeToAutoDelete: 15
-    minWidth: 80
-    maxWidth: 140
+    brickPrefab: {fileID: 3522736107176572543, guid: c3762e7093b5d6543b1f7d57499f43d8,
+      type: 3}
   - brickType: 2
     brickUIAsset: {fileID: 9197481963319205126, guid: b10966f7f772b924ea07f292f0da84e5,
       type: 3}
-    timeToAutoDelete: 10
-    minWidth: 60
-    maxWidth: 90
+    brickPrefab: {fileID: 5453749469693241581, guid: ef01ec5398895c649a474073d657fd2f,
+      type: 3}
   - brickType: 3
     brickUIAsset: {fileID: 9197481963319205126, guid: 9362279fb442b5344841383457f0ef21,
       type: 3}
-    timeToAutoDelete: 10
-    minWidth: 80
-    maxWidth: 120
+    brickPrefab: {fileID: 7784317271797167709, guid: e779b17aecf2031409210709b7384a5a,
+      type: 3}
   - brickType: 4
     brickUIAsset: {fileID: 9197481963319205126, guid: b69375abcf1276747a4e218ebac82461,
       type: 3}
-    timeToAutoDelete: 0
-    minWidth: 80
-    maxWidth: 120
+    brickPrefab: {fileID: 3074133138731469370, guid: cf8562a0db945854190d316e2a007db0,
+      type: 3}
