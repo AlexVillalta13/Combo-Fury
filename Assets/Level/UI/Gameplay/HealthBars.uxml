@@ -1,10 +1,24 @@
 <ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
     <Style src="project://database/Assets/Level/UI/Classes/HealthBarsClasses.uss?fileID=7433441132597879392&amp;guid=dce97fdfa09e83944bc72890332e7584&amp;type=3#HealthBarsClasses" />
     <ui:VisualElement>
-        <ui:VisualElement name="HealthBarsHolder" style="height: 92px; flex-direction: row; align-items: center; justify-content: space-between; margin-left: 100px; margin-right: 100px; margin-top: 100px; margin-bottom: 14px;">
-            <ui:VisualElement name="PlayerBarHolder" style="width: 400px; height: 100px; flex-direction: row; background-image: url(&apos;project://database/Assets/Art/Sprites/Slider13_Frame.png?fileID=21300000&amp;guid=276d3dfe5b01135458b223c29060718e&amp;type=3#Slider13_Frame&apos;); align-items: stretch; padding-left: 4px; padding-right: 4px; padding-top: 4px; padding-bottom: 4px;">
-                <ui:VisualElement name="PlayerBar" style="width: 278px; flex-direction: column; align-items: flex-end; justify-content: center; background-image: url(&apos;project://database/Assets/Art/Sprites/Slider13_Fill.png?fileID=21300000&amp;guid=97aab3820169a604da413ae8dae8d954&amp;type=3#Slider13_Fill&apos;); -unity-background-scale-mode: stretch-to-fill;" />
-                <ui:Label text="999/999" display-tooltip-when-elided="true" name="PlayerHealthText" class="healthTextPosition regularText" />
+        <ui:VisualElement name="HealthBarsHolder" style="height: 92px; flex-direction: row; align-items: center; justify-content: center; margin-left: 100px; margin-right: 100px; margin-top: 213px; margin-bottom: 81px;">
+            <ui:VisualElement style="flex-grow: 1; background-color: rgba(0, 0, 0, 0); height: 220px; align-items: flex-start; justify-content: center;">
+                <ui:VisualElement name="PlayerStatsHolder" style="background-color: rgba(0, 0, 0, 0); background-image: url(&apos;project://database/Assets/Art/Sprites/User_Player1_Frame2.png?fileID=21300000&amp;guid=0f127548bf25f8c4eab686bd98871ffb&amp;type=3#User_Player1_Frame2&apos;); height: 40%; width: 100%; flex-direction: row;">
+                    <ui:VisualElement name="PlayerAttackStatsHolder" style="flex-direction: row; width: 404px; align-items: center; justify-content: flex-start; left: 0;">
+                        <ui:VisualElement name="SwordIcon" class="icon" style="background-image: url(&apos;project://database/Assets/Art/Sprites/Icon_Sword.Png?fileID=2800000&amp;guid=27da16010847ee44597da32f926827db&amp;type=3#Icon_Sword&apos;); -unity-background-scale-mode: scale-to-fit;" />
+                        <ui:Label text="99" display-tooltip-when-elided="true" name="PlayerAttack" class="regularText statsTextSize" />
+                    </ui:VisualElement>
+                    <ui:VisualElement name="PlayerStatsHolder" style="flex-direction: row; width: 404px; align-items: center; justify-content: flex-start; left: 0;">
+                        <ui:VisualElement name="ShieldIcon" class="icon" style="background-image: url(&apos;project://database/Assets/Art/Sprites/Icon_Shield.Png?fileID=2800000&amp;guid=e60ea47ba2ecff54a83d9a20cce58da1&amp;type=3#Icon_Shield&apos;); -unity-background-scale-mode: scale-to-fit;" />
+                        <ui:Label text="99" display-tooltip-when-elided="true" name="PlayerDefense" class="regularText statsTextSize" />
+                    </ui:VisualElement>
+                </ui:VisualElement>
+                <ui:VisualElement name="VisualElement" style="background-color: rgba(0, 0, 0, 0); background-image: url(&apos;project://database/Assets/Art/Sprites/User_Player1_Frame1.png?fileID=594774929&amp;guid=25bb792a8068b5846b039fbf54ea2147&amp;type=3#User_Player1_Frame1_0&apos;); width: 439px; height: 60%; justify-content: center; -unity-background-scale-mode: stretch-to-fill; -unity-slice-left: 6; -unity-slice-right: 26; align-items: center; -unity-background-image-tint-color: rgb(0, 0, 0); padding-bottom: 20px; padding-left: 10px; padding-right: 10px; padding-top: 10px;">
+                    <ui:VisualElement name="PlayerBarHolder" style="width: 100%; height: 100%; flex-direction: row; background-image: url(&apos;project://database/Assets/Art/Sprites/Slider13_Frame.png?fileID=21300000&amp;guid=276d3dfe5b01135458b223c29060718e&amp;type=3#Slider13_Frame&apos;); align-items: stretch;">
+                        <ui:VisualElement name="PlayerBar" style="width: 278px; flex-direction: column; align-items: flex-end; justify-content: center; background-image: url(&apos;project://database/Assets/Art/Sprites/Slider13_Fill.png?fileID=21300000&amp;guid=97aab3820169a604da413ae8dae8d954&amp;type=3#Slider13_Fill&apos;); -unity-background-scale-mode: stretch-to-fill;" />
+                        <ui:Label text="999/999" display-tooltip-when-elided="true" name="PlayerHealthText" class="healthTextPosition regularText" />
+                    </ui:VisualElement>
+                </ui:VisualElement>
             </ui:VisualElement>
             <ui:VisualElement name="EnemyBarHolder" style="width: 400px; height: 100px; flex-direction: row-reverse; background-image: url(&apos;project://database/Assets/Art/Sprites/Slider13_Frame.png?fileID=21300000&amp;guid=276d3dfe5b01135458b223c29060718e&amp;type=3#Slider13_Frame&apos;); align-self: center; align-items: center; justify-content: flex-start; overflow: visible; padding-left: 5px; padding-right: 5px; padding-top: 5px; padding-bottom: 5px; scale: -1 1;">
                 <ui:VisualElement style="scale: -1 1; width: 100%; height: 100%; flex-direction: row-reverse;">
@@ -14,16 +28,7 @@
             </ui:VisualElement>
         </ui:VisualElement>
         <ui:VisualElement style="margin-left: 13%; margin-right: 13%; flex-direction: row; justify-content: space-between;">
-            <ui:VisualElement style="flex-grow: 0; background-color: rgba(0, 0, 0, 0); flex-direction: row; justify-content: center; align-items: stretch; width: 349px;">
-                <ui:VisualElement name="PlayerAttackStatsHolder" style="flex-direction: row; width: 404px; align-items: center; justify-content: flex-start; left: 0;">
-                    <ui:VisualElement name="SwordIcon" class="icon" style="background-image: url(&apos;project://database/Assets/Art/Sprites/Icon_Sword.Png?fileID=2800000&amp;guid=27da16010847ee44597da32f926827db&amp;type=3#Icon_Sword&apos;); -unity-background-scale-mode: scale-to-fit;" />
-                    <ui:Label text="99" display-tooltip-when-elided="true" name="PlayerAttack" class="regularText statsTextSize" />
-                </ui:VisualElement>
-                <ui:VisualElement name="PlayerStatsHolder" style="flex-direction: row; width: 404px; align-items: center; justify-content: flex-start; left: 0;">
-                    <ui:VisualElement name="ShieldIcon" class="icon" style="background-image: url(&apos;project://database/Assets/Art/Sprites/Icon_Shield.Png?fileID=2800000&amp;guid=e60ea47ba2ecff54a83d9a20cce58da1&amp;type=3#Icon_Shield&apos;); -unity-background-scale-mode: scale-to-fit;" />
-                    <ui:Label text="99" display-tooltip-when-elided="true" name="PlayerDefense" class="regularText statsTextSize" />
-                </ui:VisualElement>
-            </ui:VisualElement>
+            <ui:VisualElement style="flex-grow: 0; background-color: rgba(0, 0, 0, 0); flex-direction: row; justify-content: center; align-items: stretch; width: 349px;" />
             <ui:VisualElement name="EnemyAttackStatsHolder" style="flex-direction: row-reverse; align-items: center; justify-content: flex-start;">
                 <ui:VisualElement name="SwordIcon" class="icon" style="background-image: url(&apos;project://database/Assets/Art/Sprites/Icon_Sword.Png?fileID=2800000&amp;guid=27da16010847ee44597da32f926827db&amp;type=3#Icon_Sword&apos;); -unity-background-scale-mode: scale-to-fit;" />
                 <ui:Label text="99" display-tooltip-when-elided="true" name="EnemyAttack" class="regularText statsTextSize" />

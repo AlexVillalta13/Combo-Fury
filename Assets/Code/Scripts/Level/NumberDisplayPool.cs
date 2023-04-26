@@ -8,7 +8,6 @@ public class NumberDisplayPool : MonoBehaviour
 {
     private ObjectPool<TextMeshPro> numberMeshPool;
     [SerializeField] TextMeshPro numberDisplayPrefab;
-    [SerializeField] int initialNumbersToLoad = 10;
     public ObjectPool<TextMeshPro> NumberMeshPool 
     { 
         get 
@@ -20,7 +19,7 @@ public class NumberDisplayPool : MonoBehaviour
     {
         if(numberMeshPool == null)
         {
-            numberMeshPool = new ObjectPool<TextMeshPro>(CreatePoolItem, OnTakeItemFromPool, OnReturnObjectToPool);
+            numberMeshPool = new ObjectPool<TextMeshPro>(CreatePoolItem, OnTakeItemFromPool, OnReturnObjectToPool, defaultCapacity: 10);
         }
     }
 

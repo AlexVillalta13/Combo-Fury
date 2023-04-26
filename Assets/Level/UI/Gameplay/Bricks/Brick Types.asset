@@ -38,3 +38,8 @@ MonoBehaviour:
       type: 3}
     brickPrefab: {fileID: 3074133138731469370, guid: cf8562a0db945854190d316e2a007db0,
       type: 3}
+  - brickType: 5
+    brickUIAsset: {fileID: 9197481963319205126, guid: 64a1906d9e075a249abc33bade15ccc4,
+      type: 3}
+    brickPrefab: {fileID: 4946787962681193312, guid: af5703731cf03b245bd9f8f7ed2033a6,
+      type: 3}

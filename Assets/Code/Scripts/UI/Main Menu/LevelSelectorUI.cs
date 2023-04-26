@@ -7,6 +7,7 @@ using UnityEngine.UIElements;
 public class LevelSelectorUI : UIComponent
 {
     [SerializeField] List<LevelSO> m_Levels;
+    [SerializeField] LevelSO testLevel;
 
     List<VisualElement> levelContainersList = new List<VisualElement>();
 
@@ -21,6 +22,14 @@ public class LevelSelectorUI : UIComponent
 
         levelContainersList = m_UIElement.Query<VisualElement>(className: levelHolderReference).ToList();
         SetTouchCallbacks();
+    }
+
+    private void Start()
+    {
+        if(testLevel != null)
+        {
+            loadLevel?.Invoke(testLevel);
+        }
     }
 
     private void SetTouchCallbacks()

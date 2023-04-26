@@ -92,14 +92,11 @@ public class CombatBarUI : UIComponent
         BrickTypeEnum brickTypeToSpawn = levelSO.Enemies[currentEnemy].GetRandomBrick();
 
         VisualElement visualElement = null;
-        //Brick newBrick;
         foreach (BrickTypes brickTypeInSO in brickTypesSO.BrickTypes)
         {
             if (brickTypeInSO.BrickType == brickTypeToSpawn)
             {
                 visualElement = brickTypeInSO.BrickUIAsset.Instantiate();
-                //newBrick = Instantiate(brickTypeInSO.BrickPrefab);
-                //SpawnBrick(newBrick, visualElement);
                 break;
             }
         }
@@ -111,35 +108,29 @@ public class CombatBarUI : UIComponent
         switch (brickTypeToSpawn)
         {
             case BrickTypeEnum.Redbrick:
-                SpawnBrick(bricksPool.RedBrickPool.Get(), visualElement);
+                InitializeBrick(bricksPool.RedBrickPool.Get(), visualElement);
                 break;
             case BrickTypeEnum.YellowBrick:
-                SpawnBrick(bricksPool.YellowBrickPool.Get(), visualElement);
+                InitializeBrick(bricksPool.YellowBrickPool.Get(), visualElement);
                 break;
             case BrickTypeEnum.Greenbrick:
-                SpawnBrick(bricksPool.GreenBrickPool.Get(), visualElement);
+                InitializeBrick(bricksPool.GreenBrickPool.Get(), visualElement);
                 break;
             case BrickTypeEnum.BlackBrick:
-                SpawnBrick(bricksPool.BlackBrickPool.Get(), visualElement);
+                InitializeBrick(bricksPool.BlackBrickPool.Get(), visualElement);
                 break;
             case BrickTypeEnum.SpeedBrick:
-                SpawnBrick(bricksPool.SpeedBrickPool.Get(), visualElement);
+                InitializeBrick(bricksPool.SpeedBrickPool.Get(), visualElement);
+                break;
+            case BrickTypeEnum.ShieldBrick:
+                InitializeBrick(bricksPool.ShieldBrickPool.Get(), visualElement);
                 break;
         }
     }
 
-    private void SpawnBrick(Brick brickScriptToSpawn, VisualElement brickUIElement)
-    {
-        StartCoroutine(SpawnBrickCoroutine(brickScriptToSpawn, brickUIElement));
-    }
-
-    private IEnumerator SpawnBrickCoroutine(Brick brickScriptToSpawn, VisualElement brickUIElement)
+    private void InitializeBrick(Brick brickScriptToSpawn, VisualElement brickUIElement)
     {
         brickScriptToSpawn.SetupBrick(brickUIElement, playerBrickElementHolder, playerUSSClassName, enemyBricksElementHolder, enemyUSSClassName);
-
-        yield return new WaitForEndOfFrame();
-
-        brickScriptToSpawn.PositionBrick();
         bricksInBarDict.Add(brickUIElement, brickScriptToSpawn);
     }
 
