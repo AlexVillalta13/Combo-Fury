@@ -18,7 +18,7 @@
 }
 
 .statsTextSize {
-    font-size: 60px;
+    font-size: 55px;
 }
 
 .icon {

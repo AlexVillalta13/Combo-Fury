@@ -6,8 +6,8 @@ using UnityEngine.UIElements;
 
 public class HealthBars : UIComponent
 {
-    const string playerBarReference = "PlayerBar";
-    const string enemyBarReference = "EnemyBar";
+    const string playerBarReference = "PlayerFillBar";
+    const string enemyBarReference = "EnemyFillBar";
     const string playerHealthTextReference = "PlayerHealthText";
     const string enemyHealthTextReference = "EnemyHealthText";
     const string playerAttackTextReference = "PlayerAttack";
