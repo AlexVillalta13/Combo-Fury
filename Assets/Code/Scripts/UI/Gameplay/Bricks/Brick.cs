@@ -30,6 +30,8 @@ public class Brick: MonoBehaviour
     [SerializeField] protected VisualTreeAsset brickUIElement;
     [SerializeField] protected BricksPool bricksPool;
 
+    protected CombatBarUI combatBarUI;
+
     protected VisualElement brickElementAttached;
     protected VisualElement m_elementParent;
 
@@ -42,8 +44,9 @@ public class Brick: MonoBehaviour
 
     }
 
-    public void SetupBrick(VisualElement brickElementAttached, VisualElement playerElementParent, string playerClassName, VisualElement enemyElementParent, string enemyClassName)
+    public void SetupBrick(CombatBarUI combatBarUI, VisualElement brickElementAttached, VisualElement playerElementParent, string playerClassName, VisualElement enemyElementParent, string enemyClassName)
     {
+        this.combatBarUI = combatBarUI;
         this.brickElementAttached = brickElementAttached;
 
         if(brickHolder == BrickHolder.PlayerBrick)

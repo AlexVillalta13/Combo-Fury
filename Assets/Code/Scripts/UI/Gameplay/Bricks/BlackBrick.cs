@@ -21,6 +21,9 @@ public class BlackBrick : Brick
     public override void RemoveBrickElement()
     {
         base.RemoveBrickElement();
-        bricksPool.BlackBrickPool.Release(this);
+        if (gameObject.activeSelf == true)
+        {
+            bricksPool.BlackBrickPool.Release(this);
+        }
     }
 }

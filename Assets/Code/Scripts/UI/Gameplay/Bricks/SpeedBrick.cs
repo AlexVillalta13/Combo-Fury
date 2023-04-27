@@ -60,6 +60,9 @@ public class SpeedBrick : Brick
     public override void RemoveBrickElement()
     {
         base.RemoveBrickElement();
-        bricksPool.SpeedBrickPool.Release(this);
+        if (gameObject.activeSelf == true)
+        {
+            bricksPool.SpeedBrickPool.Release(this);
+        }
     }
 }

@@ -23,7 +23,9 @@ public class YellowBrick : Brick
     public override void RemoveBrickElement()
     {
         base.RemoveBrickElement();
-        bricksPool.YellowBrickPool.Release(this);
-        //Destroy(gameObject);
+        if (gameObject.activeSelf == true)
+        {
+            bricksPool.YellowBrickPool.Release(this);
+        }
     }
 }

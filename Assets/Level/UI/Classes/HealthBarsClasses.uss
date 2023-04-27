@@ -25,3 +25,21 @@
     width: 80px;
     height: 80px;
 }
+
+.statsHolder {
+    width: 70%;
+    height: 45%;
+    background-image: url('project://database/Assets/Art/Sprites/User_Player1_Frame2.png?fileID=21300000&guid=0f127548bf25f8c4eab686bd98871ffb&type=3#User_Player1_Frame2');
+}
+
+.healthBarHolder {
+    width: 100%;
+    height: 60%;
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-top: 15px;
+    padding-bottom: 25px;
+    background-image: url('project://database/Assets/Art/Sprites/User_Player1_Frame1.png?fileID=594774929&guid=25bb792a8068b5846b039fbf54ea2147&type=3#User_Player1_Frame1_0');
+    -unity-slice-left: 6;
+    -unity-slice-right: 26;
+}

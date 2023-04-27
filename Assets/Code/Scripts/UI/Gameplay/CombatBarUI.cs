@@ -1,3 +1,4 @@
+using Sirenix.OdinInspector;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -130,7 +131,7 @@ public class CombatBarUI : UIComponent
 
     private void InitializeBrick(Brick brickScriptToSpawn, VisualElement brickUIElement)
     {
-        brickScriptToSpawn.SetupBrick(brickUIElement, playerBrickElementHolder, playerUSSClassName, enemyBricksElementHolder, enemyUSSClassName);
+        brickScriptToSpawn.SetupBrick(this, brickUIElement, playerBrickElementHolder, playerUSSClassName, enemyBricksElementHolder, enemyUSSClassName);
         bricksInBarDict.Add(brickUIElement, brickScriptToSpawn);
     }
 
@@ -193,11 +194,14 @@ public class CombatBarUI : UIComponent
                     brickToBreack = element;
                 }
             }
-            Brick brickTouched = bricksInBarDict[brickToBreack];
-            bricksInBarDict.Remove(brickToBreack);
-            brickTouched.EffectWithTouch();
 
+            bricksInBarDict[brickToBreack].EffectWithTouch();
         }
+    }
+
+    public void RemoveBrickFromDict(VisualElement brick)
+    {
+        bricksInBarDict.Remove(brick);
     }
 
     public void InCombat()
@@ -206,15 +210,18 @@ public class CombatBarUI : UIComponent
         CreateRandomTimeToSpawnBrick();
     }
 
-    public void FinishCombat()
+    public void OutOfCombat()
     {
         inCombat = false;
         currentEnemy++;
+    }
 
-        foreach(Brick brick in bricksInBarDict.Values)
-        {
-            brick.RemoveBrickElement();
-        }
+    public void DeleteAllBricks()
+    {
+        //foreach (Brick brick in bricksInBarDict.Values)
+        //{
+        //    brick.RemoveBrickElement();
+        //}
         bricksInBarDict.Clear();
     }
 

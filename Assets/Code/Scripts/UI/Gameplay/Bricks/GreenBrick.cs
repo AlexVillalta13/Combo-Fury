@@ -23,6 +23,9 @@ public class GreenBrick : Brick
     public override void RemoveBrickElement()
     {
         base.RemoveBrickElement();
-        bricksPool.GreenBrickPool.Release(this);
+        if (gameObject.activeSelf == true)
+        {
+            bricksPool.GreenBrickPool.Release(this);
+        }
     }
 }

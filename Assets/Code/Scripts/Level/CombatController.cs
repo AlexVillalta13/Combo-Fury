@@ -235,7 +235,7 @@ public class CombatController : MonoBehaviour
 
     private IEnumerator ShowUpgrades()
     {
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(2f);
         showUpgradeToChoose.Raise();
     }
 

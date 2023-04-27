@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7272011277159681492}
   - component: {fileID: 4946787962681193312}
+  - component: {fileID: -5441945446845622861}
   m_Layer: 0
   m_Name: ShieldBrick
   m_TagString: Untagged
@@ -53,5 +54,32 @@ MonoBehaviour:
   minWidth: 80
   maxWidth: 130
   hits: 3
-  icon2WithHits: {fileID: 0}
-  icon1WithHit: {fileID: 0}
+  icon2WithHits: {fileID: 21300000, guid: 4996dab5658ba364bb0c5f3ff63dc482, type: 3}
+--- !u!114 &-5441945446845622861
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2388105171859789921}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb953a8383db9fc45943e75de88733bb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameEvent: {fileID: 11400000, guid: f0d1579af981dff4693918f4c212b65a, type: 2}
+  unityEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 4946787962681193312}
+        m_TargetAssemblyTypeName: ShieldBrick, Assembly-CSharp
+        m_MethodName: RemoveBrickElement
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
