@@ -61,7 +61,9 @@ MonoBehaviour:
     chanceOfEnemyBrick: 35
     enemyBricks:
     - brickType: 0
-      probability: 40
+      probability: 80
+    - brickType: 3
+      probability: 20
   - health: 56
     attack: 11
     minTimeToSpawnBrick: 1
@@ -70,7 +72,9 @@ MonoBehaviour:
     chanceOfEnemyBrick: 35
     enemyBricks:
     - brickType: 0
-      probability: 40
+      probability: 80
+    - brickType: 3
+      probability: 20
   - health: 65
     attack: 12
     minTimeToSpawnBrick: 1
@@ -79,7 +83,9 @@ MonoBehaviour:
     chanceOfEnemyBrick: 40
     enemyBricks:
     - brickType: 0
-      probability: 40
+      probability: 70
+    - brickType: 3
+      probability: 30
   - health: 74
     attack: 13
     minTimeToSpawnBrick: 1
@@ -88,7 +94,9 @@ MonoBehaviour:
     chanceOfEnemyBrick: 40
     enemyBricks:
     - brickType: 0
-      probability: 40
+      probability: 70
+    - brickType: 3
+      probability: 30
   - health: 83
     attack: 14
     minTimeToSpawnBrick: 1
@@ -97,7 +105,9 @@ MonoBehaviour:
     chanceOfEnemyBrick: 40
     enemyBricks:
     - brickType: 0
-      probability: 40
+      probability: 70
+    - brickType: 3
+      probability: 30
   - health: 188
     attack: 15
     minTimeToSpawnBrick: 1
@@ -106,6 +116,6 @@ MonoBehaviour:
     chanceOfEnemyBrick: 50
     enemyBricks:
     - brickType: 0
-      probability: 40
-    - brickType: 3
       probability: 60
+    - brickType: 3
+      probability: 40

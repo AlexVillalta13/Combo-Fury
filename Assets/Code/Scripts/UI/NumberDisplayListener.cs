@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class NumberDisplayListener : MonoBehaviour
@@ -53,10 +54,11 @@ public class NumberDisplayListener : MonoBehaviour
 
     private void ShowNumber(float currentHealth, float maxHealth, float healthDifference)
     {
-        if(healthDifference == 0) { return; }
+        if (healthDifference == 0) { return; }
 
         TextMeshPro number = pool.NumberMeshPool.Get();
-        if(isPlayer == false)
+        number.fontSize = 5;
+        if (isPlayer == false)
         {
             number.color = enemyHitColor;
         }
@@ -66,21 +68,40 @@ public class NumberDisplayListener : MonoBehaviour
             {
                 number.color = playerHealsColor;
             }
-            else if(healthDifference < 0)
+            else if (healthDifference < 0)
             {
                 number.color = playerHitColor;
                 healthDifference *= -1;
             }
         }
 
+        PositionText(number);
 
+        number.text = healthDifference.ToString();
+
+        number.transform.SetParent(transform);
+    }
+
+    private void PositionText(TextMeshPro number)
+    {
         float randomY = Random.Range(minY, maxY);
         float randomZ = Random.Range(minZ, maxZ);
         numberLocalStartPosition.y = randomY;
         numberLocalStartPosition.z = randomZ;
         number.transform.position = transform.TransformPoint(numberLocalStartPosition);
-        number.text = healthDifference.ToString();
+    }
 
-        number.transform.SetParent(transform);
+    public void ShowText(string textToShow)
+    {
+        if (isPlayer == true)
+        {
+            TextMeshPro textMesh = pool.NumberMeshPool.Get();
+            textMesh.color = Color.white;
+
+            PositionText(textMesh);
+
+            textMesh.text = textToShow;
+            textMesh.fontSize = 3;
+        }
     }
 }

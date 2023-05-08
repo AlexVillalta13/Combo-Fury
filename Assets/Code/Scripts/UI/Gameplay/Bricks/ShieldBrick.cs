@@ -13,6 +13,10 @@ public class ShieldBrick : Brick
     {
         brickHolder = BrickHolder.EnemyBrick;
         brickType = BrickTypeEnum.ShieldBrick;
+    }
+
+    private void OnEnable()
+    {
         hits = 3;
     }
 
