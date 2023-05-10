@@ -43,3 +43,18 @@
     -unity-slice-left: 6;
     -unity-slice-right: 26;
 }
+
+.comboNumber {
+    -unity-font-definition: resource('Fonts & Materials/LilitaOne-Regular SDF');
+    font-size: 86px;
+    color: rgb(255, 0, 0);
+    -unity-text-outline-width: 17px;
+    -unity-text-outline-color: rgb(255, 255, 255);
+    align-self: flex-start;
+}
+
+.comboTitle {
+    -unity-font-definition: resource('Fonts & Materials/LilitaOne-Regular SDF');
+    font-size: 47px;
+    color: rgb(255, 0, 0);
+}

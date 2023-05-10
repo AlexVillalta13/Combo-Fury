@@ -1,3 +1,4 @@
+using Sirenix.OdinInspector;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -38,12 +39,14 @@ public class CombatController : MonoBehaviour
     public static Action<float, float, float> onChangePlayerHealth;
     public static Action<float, float, float> onChangeEnemyHealth;
     public static Action<float> onChangeEnemyAttack;
+    public static Action<int> onChangeComboNumber;
 
     // states
     [SerializeField] private int currentEnemy = 0;
     [SerializeField] private int totalEnemies = 0;
-    [SerializeField] bool shieldActivated = false;
+    [SerializeField] int currentComboNumber = 0;
 
+    [Title("Upgrades Stats")]
     [SerializeField] float fireDamagePercentage = 10f;
     [SerializeField] float timeToDamageFire = 3f;
     float timerFireDamage = 0f;
@@ -51,6 +54,8 @@ public class CombatController : MonoBehaviour
     float timerToTurnOffFire = 0f;
     int fireLevel = 0;
     bool enemyInFire = false;
+    bool shieldActivated = false;
+
 
     private void OnEnable()
     {
@@ -78,6 +83,9 @@ public class CombatController : MonoBehaviour
 
         currentEnemy = 0;
         totalEnemies = levelSO.Enemies.Count - 1;
+
+        currentComboNumber = 0;
+        onChangeComboNumber(currentComboNumber);
 
         SetupEnemy();
         UpdateEnemyHealthUI(0);
@@ -164,6 +172,9 @@ public class CombatController : MonoBehaviour
 
     public void PlayerAttacks()
     {
+        currentComboNumber++;
+        onChangeComboNumber(currentComboNumber);
+
         if (fireLevel > 0)
         {
             SetEnemyInFire();
@@ -178,7 +189,10 @@ public class CombatController : MonoBehaviour
 
     public void PlayerCriticalAttack()
     {
-        if(fireLevel > 0)
+        currentComboNumber++;
+        onChangeComboNumber(currentComboNumber);
+
+        if (fireLevel > 0)
         {
             SetEnemyInFire();
         }
@@ -219,6 +233,9 @@ public class CombatController : MonoBehaviour
             UpdatePlayerHealthUI(0);
             return;
         }
+
+        currentComboNumber = 0;
+        onChangeComboNumber(currentComboNumber);
 
         float attackIncome = Mathf.Clamp(enemyAttackPower - inCombatPlayerStatsSO.Defense, 1, enemyAttackPower);
         inCombatPlayerStatsSO.CurrentHealth -= attackIncome;

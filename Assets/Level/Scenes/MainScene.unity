@@ -2291,7 +2291,7 @@ MonoBehaviour:
   levelSO: {fileID: 11400000, guid: 60256b58ddcf298439ec4d18cb8576da, type: 2}
   currentEnemy: 0
   totalEnemies: 0
-  shieldActivated: 0
+  currentComboNumber: 0
   fireDamagePercentage: 10
   timeToDamageFire: 3
   timeToTurnOffFire: 10
@@ -6918,8 +6918,8 @@ MonoBehaviour:
   upgradesPlayerHasSO: {fileID: 11400000, guid: 5385b99843f7c7b4ab8374b2098dedcc,
     type: 2}
   healPercentage: 25
-  littleAttackIncreasePercentage: 5
-  mediumAttackIncreasePercentage: 10
+  littleAttackIncreasePercentage: 15
+  mediumAttackIncreasePercentage: 30
   mediumDefenseIncreasePercentage: 10
   maxHealthIncreasePercentage: 10
   criticalChanceIncrease: 5
@@ -10552,12 +10552,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 466332603018625416, guid: ead8e5754861aa446941f858e275b3a8,
-        type: 3}
-      propertyPath: testLevel
-      value: 
-      objectReference: {fileID: 11400000, guid: 6c97fe8f1763322488d9a249fa288798,
-        type: 2}
     - target: {fileID: 466332603169764320, guid: ead8e5754861aa446941f858e275b3a8,
         type: 3}
       propertyPath: m_RootOrder
@@ -10617,11 +10611,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Main Menu UI
-      objectReference: {fileID: 0}
-    - target: {fileID: 466332603169764327, guid: ead8e5754861aa446941f858e275b3a8,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

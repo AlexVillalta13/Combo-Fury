@@ -1,6 +1,7 @@
 <ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <ui:Template name="ComboNumber" src="project://database/Assets/Level/UI/Gameplay/ComboNumberUI.uxml?fileID=9197481963319205126&amp;guid=5aec4cd341e502d4aad5dcc87cecbb1d&amp;type=3#ComboNumberUI" />
     <Style src="project://database/Assets/Level/UI/Classes/HealthBarsClasses.uss?fileID=7433441132597879392&amp;guid=dce97fdfa09e83944bc72890332e7584&amp;type=3#HealthBarsClasses" />
-    <ui:VisualElement name="HealthBarsHolder" style="flex-direction: row; margin-top: 146px; margin-bottom: 252px; padding-left: 100px; padding-right: 100px; justify-content: space-between; width: 100%;">
+    <ui:VisualElement name="HealthBarsHolder" style="flex-direction: row; margin-top: 146px; margin-bottom: 50px; padding-left: 100px; padding-right: 100px; justify-content: space-between; width: 100%;">
         <ui:VisualElement name="PlayerHolder" style="height: 220px; width: 100%; padding-right: 30px;">
             <ui:VisualElement name="PlayerStatsHolder" class="statsHolder" style="flex-direction: row; padding-left: 10px; padding-right: 10px;">
                 <ui:VisualElement name="PlayerAttackStatsHolder" style="flex-direction: row; width: 404px; align-items: center; justify-content: flex-start; left: 0;">
@@ -36,4 +37,5 @@
             </ui:VisualElement>
         </ui:VisualElement>
     </ui:VisualElement>
+    <ui:Instance template="ComboNumber" name="ComboNumberUI" />
 </ui:UXML>

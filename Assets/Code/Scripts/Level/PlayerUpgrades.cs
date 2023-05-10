@@ -50,7 +50,7 @@ public class PlayerUpgrades : MonoBehaviour
 
     public void IncreaseMaxHealth()
     {
-        float amountToIncreaseMaxHealth = PermanentPlayerStatsSO.MaxHealth * maxHealthIncreasePercentage / 100;
+        float amountToIncreaseMaxHealth = Mathf.Round(PermanentPlayerStatsSO.MaxHealth * maxHealthIncreasePercentage / 100);
         inCombatPlayerStatsSO.MaxHealth += amountToIncreaseMaxHealth;
         inCombatPlayerStatsSO.CurrentHealth += amountToIncreaseMaxHealth;
 
@@ -59,7 +59,7 @@ public class PlayerUpgrades : MonoBehaviour
 
     public void Heal()
     {
-        float amountToHeal = PermanentPlayerStatsSO.MaxHealth * healPercentage / 100;
+        float amountToHeal = Mathf.Round(PermanentPlayerStatsSO.MaxHealth * healPercentage / 100);
         inCombatPlayerStatsSO.CurrentHealth += amountToHeal;
         inCombatPlayerStatsSO.CurrentHealth = Mathf.Clamp(inCombatPlayerStatsSO.CurrentHealth, 0, inCombatPlayerStatsSO.MaxHealth);
 
@@ -68,7 +68,7 @@ public class PlayerUpgrades : MonoBehaviour
 
     public void IncreaseAttack()
     {
-        float attackIncrease = PermanentPlayerStatsSO.Attack * littleAttackIncreasePercentage / 100;
+        float attackIncrease = Mathf.Round(PermanentPlayerStatsSO.Attack * littleAttackIncreasePercentage / 100);
         if(attackIncrease < 1)
         {
             attackIncrease = 1;
@@ -80,7 +80,7 @@ public class PlayerUpgrades : MonoBehaviour
 
     public void BigAttackIncrease()
     {
-        float attackIncrease = PermanentPlayerStatsSO.Attack * mediumAttackIncreasePercentage / 100;
+        float attackIncrease = Mathf.Round(PermanentPlayerStatsSO.Attack * mediumAttackIncreasePercentage / 100);
         if(attackIncrease < 2)
         {
             attackIncrease = 2;
@@ -92,7 +92,7 @@ public class PlayerUpgrades : MonoBehaviour
 
     public void DefenseIncrease()
     {
-        float defenseIncrease = PermanentPlayerStatsSO.Attack * mediumDefenseIncreasePercentage / 100;
+        float defenseIncrease = Mathf.Round(PermanentPlayerStatsSO.Attack * mediumDefenseIncreasePercentage / 100);
         if(defenseIncrease < 2)
         {
             defenseIncrease = 2;
@@ -116,7 +116,7 @@ public class PlayerUpgrades : MonoBehaviour
                 float healthLimitToRage = playerMaxHealth * healthPercentageToActivateRage / 100;
                 if (playerCurrentHealth <= healthLimitToRage)
                 {
-                    float attackToIncrease = attackPreviousToRage * extraRageAttack / 100;
+                    float attackToIncrease = Mathf.Round(attackPreviousToRage * extraRageAttack / 100);
                     inCombatPlayerStatsSO.Attack = attackPreviousToRage + attackToIncrease;
                     hasRageState = true;
                     activateRageVFX.Raise();

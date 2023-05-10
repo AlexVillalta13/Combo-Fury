@@ -77,7 +77,7 @@ public class NumberDisplayListener : MonoBehaviour
 
         PositionText(number);
 
-        number.text = healthDifference.ToString();
+        number.text = healthDifference.ToString("0");
 
         number.transform.SetParent(transform);
     }
