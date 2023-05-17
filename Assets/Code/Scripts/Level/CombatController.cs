@@ -182,7 +182,7 @@ public class CombatController : MonoBehaviour
 
         if (fireLevel > 0)
         {
-            if (currentComboNumber % 3 == 0)
+            if (currentComboNumber % 10 == 0)
             {
                 SetEnemyInFire();
             }
@@ -207,7 +207,7 @@ public class CombatController : MonoBehaviour
 
         if (fireLevel > 0)
         {
-            if (currentComboNumber % 3 == 0)
+            if (currentComboNumber % 10 == 0)
             {
                 SetEnemyInFire();
             }
