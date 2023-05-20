@@ -2243,7 +2243,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 460723270}
         m_TargetAssemblyTypeName: CombatController, Assembly-CSharp
-        m_MethodName: PlayerAttacks
+        m_MethodName: CalculatePlayerNormalAttack
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2314,7 +2314,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 460723270}
         m_TargetAssemblyTypeName: CombatController, Assembly-CSharp
-        m_MethodName: PlayerCriticalAttack
+        m_MethodName: CalculatePlayerCriticalAttack
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

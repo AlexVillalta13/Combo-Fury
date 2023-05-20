@@ -46,16 +46,22 @@ public class CombatController : MonoBehaviour
     [SerializeField] private int totalEnemies = 0;
     [SerializeField] int currentComboNumber = 0;
 
-    [Title("Upgrades Stats")]
+    [Title("Upgrades Stats",TitleAlignment = TitleAlignments.Centered)]
+    [Title("Fire", HorizontalLine = false, TitleAlignment = TitleAlignments.Centered)]
     [SerializeField] float fireDamagePercentage = 10f;
     [SerializeField] float timeToDamageFire = 1f;
     float timerFireDamage = 0f;
     [SerializeField] float timeToTurnOffFire = 10f;
+    [SerializeField] float comboToFire = 10f;
     float timerToTurnOffFire = 0f;
     int fireLevel = 0;
     bool enemyInFire = false;
     bool shieldActivated = false;
     bool hasHyperAttackUpgrade = false;
+    [Title("Hyper Attack", HorizontalLine = false, TitleAlignment = TitleAlignments.Centered)]
+    [SerializeField] float hyperAttackMultiplier = 3f;
+    [SerializeField] float comboToHyperAttack = 20f;
+
 
 
     private void OnEnable()
@@ -152,7 +158,7 @@ public class CombatController : MonoBehaviour
     private void FireDamage()
     {
         timerFireDamage = 0f;
-        float damage = inCombatPlayerStatsSO.Attack * 10 / 100 + fireLevel;
+        float damage = inCombatPlayerStatsSO.Attack * fireDamagePercentage / 100 + fireLevel;
         Debug.Log(damage);
         enemyCurrentHealth -= damage;
         UpdateEnemyHealthUI(damage);
@@ -173,24 +179,36 @@ public class CombatController : MonoBehaviour
         }
     }
 
-    public void PlayerAttacks()
+    public void CalculatePlayerNormalAttack()
     {
         float attackPower = inCombatPlayerStatsSO.Attack;
 
+        PlayerAttacks(attackPower);
+    }
+
+    public void CalculatePlayerCriticalAttack()
+    {
+        float criticalDamage = (10 * inCombatPlayerStatsSO.Attack / 100) + inCombatPlayerStatsSO.Attack;
+
+        PlayerAttacks(criticalDamage);
+    }
+
+    private void PlayerAttacks(float attackPower)
+    {
         currentComboNumber++;
         onChangeComboNumber(currentComboNumber);
 
         if (fireLevel > 0)
         {
-            if (currentComboNumber % 10 == 0)
+            if (currentComboNumber % comboToFire == 0)
             {
                 SetEnemyInFire();
             }
         }
 
-        if(hasHyperAttackUpgrade == true && currentComboNumber % 20 == 0)
+        if (hasHyperAttackUpgrade == true && currentComboNumber % comboToHyperAttack == 0)
         {
-            attackPower = attackPower * 3f;
+            attackPower = attackPower * hyperAttackMultiplier;
         }
 
         enemyCurrentHealth -= attackPower;
@@ -198,33 +216,6 @@ public class CombatController : MonoBehaviour
         CheckWinConditions();
 
         UpdateEnemyHealthUI(attackPower);
-    }
-
-    public void PlayerCriticalAttack()
-    {
-        currentComboNumber++;
-        onChangeComboNumber(currentComboNumber);
-
-        if (fireLevel > 0)
-        {
-            if (currentComboNumber % 10 == 0)
-            {
-                SetEnemyInFire();
-            }
-        }
-
-        float criticalDamage = (10 * inCombatPlayerStatsSO.Attack / 100) + inCombatPlayerStatsSO.Attack;
-
-        if (hasHyperAttackUpgrade == true && currentComboNumber % 20 == 0)
-        {
-            criticalDamage = criticalDamage * 3f;
-        }
-
-        enemyCurrentHealth -= criticalDamage;
-
-        CheckWinConditions();
-
-        UpdateEnemyHealthUI(criticalDamage);
     }
 
     private void CheckWinConditions()
