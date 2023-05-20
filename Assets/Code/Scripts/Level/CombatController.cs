@@ -6,35 +6,37 @@ using UnityEngine;
 
 public class CombatController : MonoBehaviour
 {
-    [Header("Player Stats")]
+    [Header("Player Stats SO")]
     [SerializeField] PlayerStatsSO permanentPlayerStatsSO;
     [SerializeField] PlayerStatsSO inCombatPlayerStatsSO;
     [SerializeField] UpgradeInLevelSO upgradesSelected;
 
-    [Header("Enemy Stats")]
-    [SerializeField] float enemyMaxHealth = 100;
-    public float EnemyMaxHealth { get { return enemyMaxHealth; } set { enemyMaxHealth = value; } }
-    [SerializeField] float enemyCurrentHealth = 100;
-    public float EnemyCurrentHealth { get { return enemyCurrentHealth; } set { enemyCurrentHealth = value; } }
-    [SerializeField] float enemyAttackPower = 13;
-    public float EnemyAttackPower { get { return enemyAttackPower; } set { enemyAttackPower = value; } }
+    [Header("Level")]
+    [SerializeField] LevelSO levelSO;
 
-    [Header("Events")]
+    // Enemy Stats
+    float enemyMaxHealth = 100;
+    float enemyCurrentHealth = 100;
+    float enemyAttackPower = 13;
+
+    [Title("Events", TitleAlignment = TitleAlignments.Centered)]
+    [Title("Player", HorizontalLine = false, TitleAlignment = TitleAlignments.Centered)]
     [SerializeField] GameEvent onPlayerChangeInCombatStat;
     [SerializeField] GameEvent playerGetsHitAnimation;
+    [Title("Level Flow", HorizontalLine = false, TitleAlignment = TitleAlignments.Centered)]
     [SerializeField] GameEvent playerDeathEvent;
     [SerializeField] GameEvent playerWinFightEvent;
     [SerializeField] GameEvent showUpgradeToChoose;
     [SerializeField] GameEvent playerWinLevelEvent;
+    [Title("VFX Activation", HorizontalLine = false, TitleAlignment = TitleAlignments.Centered)]
     [SerializeField] GameEvent ActivateShieldVFX;
     [SerializeField] GameEvent DeactivateShieldVFX;
     [SerializeField] GameEvent ActivateFireVFX;
     [SerializeField] GameEvent DeactivaFireVFX;
+    [SerializeField] GameEvent ActivateRevengeVFX;
+    [SerializeField] GameEvent DeactivaRevengeVFX;
 
-    [Header("Level")]
-    [SerializeField] LevelSO levelSO;
-
-    // Events
+    // Actions
     // current health, max heath, attack income
     public static Action<float, float, float> onChangePlayerHealth;
     public static Action<float, float, float> onChangeEnemyHealth;
@@ -42,9 +44,9 @@ public class CombatController : MonoBehaviour
     public static Action<int> onChangeComboNumber;
 
     // states
-    [SerializeField] private int currentEnemy = 0;
-    [SerializeField] private int totalEnemies = 0;
-    [SerializeField] int currentComboNumber = 0;
+    private int currentEnemy = 0;
+    private int totalEnemies = 0;
+    int currentComboNumber = 0;
 
     [Title("Upgrades Stats",TitleAlignment = TitleAlignments.Centered)]
     [Title("Fire", HorizontalLine = false, TitleAlignment = TitleAlignments.Centered)]
@@ -57,10 +59,13 @@ public class CombatController : MonoBehaviour
     int fireLevel = 0;
     bool enemyInFire = false;
     bool shieldActivated = false;
-    bool hasHyperAttackUpgrade = false;
     [Title("Hyper Attack", HorizontalLine = false, TitleAlignment = TitleAlignments.Centered)]
     [SerializeField] float hyperAttackMultiplier = 3f;
     [SerializeField] float comboToHyperAttack = 20f;
+    [Title("Hyper Attack", HorizontalLine = false, TitleAlignment = TitleAlignments.Centered)]
+    bool revengeCharged = false;
+    [SerializeField] float furyDamageMultiplier = 2f;
+
 
 
 
@@ -88,7 +93,8 @@ public class CombatController : MonoBehaviour
         fireLevel = 0;
         enemyInFire = false;
 
-        hasHyperAttackUpgrade = false;
+        revengeCharged = false;
+        DeactivaRevengeVFX.Raise();
 
         currentEnemy = 0;
         totalEnemies = levelSO.Enemies.Count - 1;
@@ -143,10 +149,7 @@ public class CombatController : MonoBehaviour
         }
     }
 
-    public void FireUpgradeSelected()
-    {
-        fireLevel++;
-    }
+
 
     public void SetEnemyInFire()
     {
@@ -206,9 +209,16 @@ public class CombatController : MonoBehaviour
             }
         }
 
-        if (hasHyperAttackUpgrade == true && currentComboNumber % comboToHyperAttack == 0)
+        if(revengeCharged)
         {
-            attackPower = attackPower * hyperAttackMultiplier;
+            attackPower *= furyDamageMultiplier;
+            revengeCharged = false;
+            DeactivaRevengeVFX.Raise();
+        }
+
+        if (upgradesSelected.HasUpgrade("HyperAttack") && currentComboNumber % comboToHyperAttack == 0)
+        {
+            attackPower *= hyperAttackMultiplier;
         }
 
         enemyCurrentHealth -= attackPower;
@@ -247,6 +257,12 @@ public class CombatController : MonoBehaviour
             return;
         }
 
+        if (upgradesSelected.HasUpgrade("Revenge"))
+        {
+            revengeCharged = true;
+            ActivateRevengeVFX.Raise();
+        }
+
         currentComboNumber = 0;
         onChangeComboNumber(currentComboNumber);
 
@@ -261,11 +277,6 @@ public class CombatController : MonoBehaviour
 
         UpdatePlayerHealthUI(-attackIncome);
 
-    }
-
-    public void UnlockHyperAttack()
-    {
-        hasHyperAttackUpgrade = true;
     }
 
     private IEnumerator ShowUpgrades()
@@ -284,5 +295,10 @@ public class CombatController : MonoBehaviour
     private void SetupLevel(LevelSO level)
     {
         levelSO = level;
+    }
+
+    public void FireUpgradeSelected()
+    {
+        fireLevel++;
     }
 }

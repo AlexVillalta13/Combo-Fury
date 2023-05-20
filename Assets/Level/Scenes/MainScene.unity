@@ -2289,6 +2289,8 @@ MonoBehaviour:
     type: 2}
   ActivateFireVFX: {fileID: 11400000, guid: 8c4dc8a7db141134698b7e3b883eacbe, type: 2}
   DeactivaFireVFX: {fileID: 11400000, guid: 445614cb590c80b4ebb57a3ca8cd21ca, type: 2}
+  ActivateRevengeVFX: {fileID: 11400000, guid: aaefaf7289a44ac4cab46855016724c8, type: 2}
+  DeactivaRevengeVFX: {fileID: 11400000, guid: bcdbda890a9615c4e8dc0c4e653e833a, type: 2}
   levelSO: {fileID: 11400000, guid: 60256b58ddcf298439ec4d18cb8576da, type: 2}
   currentEnemy: 0
   totalEnemies: 0
@@ -2296,6 +2298,10 @@ MonoBehaviour:
   fireDamagePercentage: 10
   timeToDamageFire: 1
   timeToTurnOffFire: 10
+  comboToFire: 10
+  hyperAttackMultiplier: 3
+  comboToHyperAttack: 20
+  furyDamageMultiplier: 2
 --- !u!114 &460723271
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10654,6 +10660,12 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2907522589711961960, guid: 278fb225d7c913449abe6a0eeb1a7055,
+        type: 3}
+      propertyPath: upgradeListSO
+      value: 
+      objectReference: {fileID: 11400000, guid: fc299778adbd71a42be164e59fe002fd,
+        type: 2}
     - target: {fileID: 2907522590658206424, guid: 278fb225d7c913449abe6a0eeb1a7055,
         type: 3}
       propertyPath: m_Name

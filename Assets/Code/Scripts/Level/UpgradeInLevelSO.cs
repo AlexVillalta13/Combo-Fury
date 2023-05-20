@@ -13,11 +13,11 @@ public class UpgradeInLevelSO : ScriptableObject
         upgradeList.Add(upgrade);
     }
 
-    public bool HasUpgrade(string upgradeName)
+    public bool HasUpgrade(string upgradeId)
     {
         foreach (Upgrade upgrade in upgradeList)
         {
-            if (upgrade.UpgradeName == upgradeName)
+            if (upgrade.UpgradeId == upgradeId)
             {
                 return true;
             }
