@@ -1,0 +1,107 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d2128155c9ea9ae42a5a1c43ae139546, type: 3}
+  m_Name: Level
+  m_EditorClassIdentifier: 
+  tables:
+  - {fileID: 4900000, guid: 60eacfb890fc40d48997d22ae5fe7269, type: 3}
+  level:
+  - maxHealth: 20
+    attack: 6
+    playerChance: 70
+  - maxHealth: 26
+    attack: 7
+    playerChance: 70
+  - maxHealth: 32
+    attack: 8
+    playerChance: 65
+  - maxHealth: 38
+    attack: 9
+    playerChance: 65
+  - maxHealth: 47
+    attack: 10
+    playerChance: 65
+  - maxHealth: 56
+    attack: 11
+    playerChance: 65
+  - maxHealth: 65
+    attack: 12
+    playerChance: 60
+  - maxHealth: 74
+    attack: 13
+    playerChance: 60
+  - maxHealth: 83
+    attack: 14
+    playerChance: 55
+  - maxHealth: 133
+    attack: 19
+    playerChance: 50
+  - maxHealth: 73
+    attack: 11
+    playerChance: 60
+  - maxHealth: 74
+    attack: 13
+    playerChance: 60
+  - maxHealth: 77
+    attack: 15
+    playerChance: 60
+  - maxHealth: 88
+    attack: 17
+    playerChance: 60
+  - maxHealth: 100
+    attack: 19
+    playerChance: 60
+  - maxHealth: 111
+    attack: 21
+    playerChance: 60
+  - maxHealth: 123
+    attack: 23
+    playerChance: 60
+  - maxHealth: 134
+    attack: 25
+    playerChance: 60
+  - maxHealth: 147
+    attack: 27
+    playerChance: 50
+  - maxHealth: 197
+    attack: 33
+    playerChance: 50
+  - maxHealth: 137
+    attack: 25
+    playerChance: 60
+  - maxHealth: 140
+    attack: 26
+    playerChance: 60
+  - maxHealth: 143
+    attack: 28
+    playerChance: 60
+  - maxHealth: 146
+    attack: 30
+    playerChance: 60
+  - maxHealth: 149
+    attack: 32
+    playerChance: 60
+  - maxHealth: 152
+    attack: 34
+    playerChance: 50
+  - maxHealth: 155
+    attack: 36
+    playerChance: 50
+  - maxHealth: 158
+    attack: 38
+    playerChance: 50
+  - maxHealth: 161
+    attack: 40
+    playerChance: 50
+  - maxHealth: 474
+    attack: 50
+    playerChance: 40

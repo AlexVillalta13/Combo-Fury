@@ -1,0 +1,17 @@
+{
+    "name": "CSVtoSO.Tests.Classes",
+    "rootNamespace": "",
+    "references": [
+        "GUID:e8e4732a8118db642aee62759f6adb79",
+        "GUID:b488ef066644fa24b8daa868516cd250"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

@@ -1,0 +1,16 @@
+{
+    "name": "CSVtoSO.Attributes",
+    "rootNamespace": "",
+    "references": [
+        "GUID:4a50f414841c6a04498618179772b2c6"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

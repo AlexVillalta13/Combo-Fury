@@ -1,0 +1,12 @@
+{
+  "name": "com.iappo_ai.csvtoscriptableobject",
+  "version": "1.0.0",
+  "displayName": "CSV to ScriptableObject",
+  "description": "Easy to use and scalable solution for creating custom data structures and databases inside your projects. Use the tools provided by this package to speed up development and engineer your game's data through a simple and handy interface to read .csv files.",
+  "unity": "2019.1",
+  "author": {
+    "name": "Alessandro Iapà",
+    "email": "alessandro.iapo99@gmail.com",
+    "url": "https://alessandroiapo99.wixsite.com/gameprogrammer"
+  }
+}

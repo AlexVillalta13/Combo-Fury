@@ -1,0 +1,19 @@
+{
+    "name": "CSVtoSO.Editor",
+    "rootNamespace": "",
+    "references": [
+        "GUID:b488ef066644fa24b8daa868516cd250",
+        "GUID:4a50f414841c6a04498618179772b2c6"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

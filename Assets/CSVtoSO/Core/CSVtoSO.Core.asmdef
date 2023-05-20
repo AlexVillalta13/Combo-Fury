@@ -1,0 +1,17 @@
+{
+    "name": "CSVtoSO.Core",
+    "rootNamespace": "",
+    "references": [
+        "GUID:4a50f414841c6a04498618179772b2c6",
+        "GUID:e8e4732a8118db642aee62759f6adb79"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
