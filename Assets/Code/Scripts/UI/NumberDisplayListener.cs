@@ -71,7 +71,7 @@ public class NumberDisplayListener : MonoBehaviour
             else if (healthDifference < 0)
             {
                 number.color = playerHitColor;
-                healthDifference *= -1;
+                //healthDifference *= -1;
             }
         }
 

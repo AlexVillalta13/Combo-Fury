@@ -16,7 +16,7 @@ public class CombatController : MonoBehaviour
 
     // Enemy Stats
     float enemyMaxHealth = 100;
-    float enemyCurrentHealth = 100;
+    [SerializeField] float enemyCurrentHealth = 100;
     float enemyAttackPower = 13;
 
     [Title("Events", TitleAlignment = TitleAlignments.Centered)]
@@ -48,7 +48,7 @@ public class CombatController : MonoBehaviour
     private int totalEnemies = 0;
     int currentComboNumber = 0;
 
-    [Title("Upgrades Stats",TitleAlignment = TitleAlignments.Centered)]
+    [Title("Upgrades Stats", TitleAlignment = TitleAlignments.Centered)]
     [Title("Fire", HorizontalLine = false, TitleAlignment = TitleAlignments.Centered)]
     [SerializeField] float fireDamagePercentage = 10f;
     [SerializeField] float timeToDamageFire = 1f;
@@ -58,15 +58,24 @@ public class CombatController : MonoBehaviour
     float timerToTurnOffFire = 0f;
     int fireLevel = 0;
     bool enemyInFire = false;
+    const string fireId = "Fire";
+
     bool shieldActivated = false;
+    const string shieldId = "Shield";
+
     [Title("Hyper Attack", HorizontalLine = false, TitleAlignment = TitleAlignments.Centered)]
     [SerializeField] float hyperAttackMultiplier = 3f;
     [SerializeField] float comboToHyperAttack = 20f;
-    [Title("Hyper Attack", HorizontalLine = false, TitleAlignment = TitleAlignments.Centered)]
+    const string hyperAttackId = "HyperAttack";
+
+    [Title("Revenge", HorizontalLine = false, TitleAlignment = TitleAlignments.Centered)]
+    [SerializeField] float revengeDamageMultiplier = 2f;
     bool revengeCharged = false;
-    [SerializeField] float furyDamageMultiplier = 2f;
+    const string revengeId = "Revenge";
 
-
+    [Title("Spines", HorizontalLine = false, TitleAlignment = TitleAlignments.Centered)]
+    [SerializeField] float spinesDamageMultiplier = 0.5f;
+    const string spinesId = "Spines";
 
 
     private void OnEnable()
@@ -162,9 +171,8 @@ public class CombatController : MonoBehaviour
     {
         timerFireDamage = 0f;
         float damage = inCombatPlayerStatsSO.Attack * fireDamagePercentage / 100 + fireLevel;
-        Debug.Log(damage);
         enemyCurrentHealth -= damage;
-        UpdateEnemyHealthUI(damage);
+        UpdateEnemyHealthUI(-damage);
     }
 
     private void TurnOffEnemyFire()
@@ -175,7 +183,7 @@ public class CombatController : MonoBehaviour
 
     private void ActivateShield()
     {
-        if(upgradesSelected.HasUpgrade("Shield") && shieldActivated == false)
+        if(upgradesSelected.HasUpgrade(shieldId) && shieldActivated == false)
         {
             shieldActivated = true;
             ActivateShieldVFX.Raise();
@@ -184,9 +192,7 @@ public class CombatController : MonoBehaviour
 
     public void CalculatePlayerNormalAttack()
     {
-        float attackPower = inCombatPlayerStatsSO.Attack;
-
-        PlayerAttacks(attackPower);
+        PlayerAttacks(inCombatPlayerStatsSO.Attack);
     }
 
     public void CalculatePlayerCriticalAttack()
@@ -209,23 +215,28 @@ public class CombatController : MonoBehaviour
             }
         }
 
-        if(revengeCharged)
+        if (revengeCharged)
         {
-            attackPower *= furyDamageMultiplier;
+            attackPower *= revengeDamageMultiplier;
             revengeCharged = false;
             DeactivaRevengeVFX.Raise();
         }
 
-        if (upgradesSelected.HasUpgrade("HyperAttack") && currentComboNumber % comboToHyperAttack == 0)
+        if (upgradesSelected.HasUpgrade(hyperAttackId) && currentComboNumber % comboToHyperAttack == 0)
         {
             attackPower *= hyperAttackMultiplier;
         }
 
+        EnemyReceivesDamage(attackPower);
+    }
+
+    private void EnemyReceivesDamage(float attackPower)
+    {
         enemyCurrentHealth -= attackPower;
 
         CheckWinConditions();
 
-        UpdateEnemyHealthUI(attackPower);
+        UpdateEnemyHealthUI(-attackPower);
     }
 
     private void CheckWinConditions()
@@ -257,7 +268,7 @@ public class CombatController : MonoBehaviour
             return;
         }
 
-        if (upgradesSelected.HasUpgrade("Revenge"))
+        if (upgradesSelected.HasUpgrade(revengeId))
         {
             revengeCharged = true;
             ActivateRevengeVFX.Raise();
@@ -270,7 +281,12 @@ public class CombatController : MonoBehaviour
         inCombatPlayerStatsSO.CurrentHealth -= attackIncome;
         playerGetsHitAnimation.Raise();
 
-        if(inCombatPlayerStatsSO.CurrentHealth < 0)
+        if (upgradesSelected.HasUpgrade(spinesId))
+        {
+            EnemyReceivesDamage(inCombatPlayerStatsSO.Attack * spinesDamageMultiplier);
+        }
+
+        if (inCombatPlayerStatsSO.CurrentHealth < 0)
         {
             playerDeathEvent.Raise();
         }
@@ -282,7 +298,10 @@ public class CombatController : MonoBehaviour
     private IEnumerator ShowUpgrades()
     {
         yield return new WaitForSeconds(2f);
-        showUpgradeToChoose.Raise();
+        if(inCombatPlayerStatsSO.CurrentHealth > 0)
+        {
+            showUpgradeToChoose.Raise();
+        }
     }
 
     public void EncounteredNewEnemy()

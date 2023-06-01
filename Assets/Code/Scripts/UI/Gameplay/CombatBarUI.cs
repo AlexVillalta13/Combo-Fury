@@ -218,7 +218,6 @@ public class CombatBarUI : UIComponent
 
     public void DeleteAllBricks()
     {
-        Debug.Log("Delete bricks");
         //foreach (Brick brick in bricksInBarDict.Values)
         //{
         //    brick.RemoveBrickElement();

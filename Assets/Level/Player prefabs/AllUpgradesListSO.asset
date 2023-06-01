@@ -78,8 +78,22 @@ MonoBehaviour:
     getUpgradeEvent: {fileID: 11400000, guid: 576484e810212e34c8ea5c977b9609b9, type: 2}
   - upgradeName: Revenge
     upgradeId: Revenge
-    image: {fileID: 0}
+    image: {fileID: 21300000, guid: bcc23c600fa9d24479bbbf5397b26619, type: 3}
     canRepeat: 0
     levelUnlock: 0
     upgradeDescription: Attack after getting damage is 200%
     getUpgradeEvent: {fileID: 11400000, guid: 925281e8b7f210947b4d04bee1cf7fbc, type: 2}
+  - upgradeName: Spines
+    upgradeId: Spines
+    image: {fileID: 21300000, guid: bd01f87ce1918974b855a1620aa83485, type: 3}
+    canRepeat: 0
+    levelUnlock: 0
+    upgradeDescription: Enemy receives damage if you get hit
+    getUpgradeEvent: {fileID: 11400000, guid: a95c0356e6a074b44b8bc080f7bff8a4, type: 2}
+  - upgradeName: Adrenaline
+    upgradeId: Adrenaline
+    image: {fileID: 21300000, guid: e9d42cf13bcd99d40ba614509e5c78da, type: 3}
+    canRepeat: 0
+    levelUnlock: 0
+    upgradeDescription: Increase chance of dodge if health <30%
+    getUpgradeEvent: {fileID: 11400000, guid: 216040ef1cb20c346b8202ad26f158ea, type: 2}
