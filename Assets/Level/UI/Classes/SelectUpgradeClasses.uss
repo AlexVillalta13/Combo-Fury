@@ -1,11 +1,12 @@
 .nameUpgrade {
-    width: 250px;
+    width: 280px;
     height: 200px;
-    font-size: 54px;
+    font-size: 48px;
     color: rgb(255, 255, 255);
     -unity-text-align: lower-center;
     white-space: normal;
     margin-bottom: 35px;
+    text-overflow: clip;
 }
 
 .descriptionUpgrade {

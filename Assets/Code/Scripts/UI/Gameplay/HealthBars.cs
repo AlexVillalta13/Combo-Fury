@@ -13,6 +13,7 @@ public class HealthBars : UIComponent
     const string playerAttackTextReference = "PlayerAttack";
     const string playerDefenseTextReference = "PlayerDefense";
     const string enemyAttackTextReference = "EnemyAttack";
+    const string enemyCountTextReference = "EnemyCount";
 
     VisualElement playerBar;
     VisualElement enemyBar;
@@ -22,6 +23,8 @@ public class HealthBars : UIComponent
     Label playerAttackText;
     Label playerDefenseText;
     Label enemyAttackText;
+
+    Label enemyCountText;
 
     [SerializeField] PlayerStatsSO inCombatStatsSO;
 
@@ -38,6 +41,8 @@ public class HealthBars : UIComponent
 
         CombatController.onChangeEnemyAttack += ChangeEnemyAttack;
 
+        CombatController.onChangeCurrentEnemy += ChangeEnemyCount;
+
         HideEnemyBar();
     }
 
@@ -47,6 +52,8 @@ public class HealthBars : UIComponent
         CombatController.onChangeEnemyHealth -= ChangeEnemyHealth;
 
         CombatController.onChangeEnemyAttack -= ChangeEnemyAttack;
+
+        CombatController.onChangeCurrentEnemy -= ChangeEnemyCount;
     }
 
     public override void SetElementsReferences()
@@ -61,6 +68,8 @@ public class HealthBars : UIComponent
         playerAttackText = m_UIElement.Query<Label>(name: playerAttackTextReference);
         playerDefenseText = m_UIElement.Query<Label>(name: playerDefenseTextReference);
         enemyAttackText = m_UIElement.Query<Label>(name: enemyAttackTextReference);
+
+        enemyCountText = m_UIElement.Query<Label>(name: enemyCountTextReference);
     }
 
     public void ChangePlayerHealth(float newHealth, float maxHealt, float attackIncome)
@@ -94,5 +103,10 @@ public class HealthBars : UIComponent
     public void HideEnemyBar()
     {
         enemyBar.style.display = DisplayStyle.None;
+    }
+
+    public void ChangeEnemyCount(int currentEnemy,  int enemyCount)
+    {
+        enemyCountText.text = currentEnemy.ToString("0") + "/" + enemyCount.ToString("0");
     }
 }

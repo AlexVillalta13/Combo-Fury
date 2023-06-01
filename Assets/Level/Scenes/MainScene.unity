@@ -2425,6 +2425,8 @@ MonoBehaviour:
   comboToHyperAttack: 20
   revengeDamageMultiplier: 2
   spinesDamageMultiplier: 0.25
+  adrenalineHealthToActivate: 30
+  adrenalineChance: 20
 --- !u!114 &460723271
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5926,6 +5928,7 @@ MonoBehaviour:
   m_Dithering: 0
   m_ClearDepth: 1
   m_AllowXRRendering: 1
+  m_AllowHDROutput: 1
   m_UseScreenCoordOverride: 0
   m_ScreenSizeOverride: {x: 0, y: 0, z: 0, w: 0}
   m_ScreenCoordScaleBias: {x: 0, y: 0, z: 0, w: 0}
@@ -6216,6 +6219,7 @@ MonoBehaviour:
   m_Dithering: 0
   m_ClearDepth: 1
   m_AllowXRRendering: 1
+  m_AllowHDROutput: 1
   m_UseScreenCoordOverride: 0
   m_ScreenSizeOverride: {x: 0, y: 0, z: 0, w: 0}
   m_ScreenCoordScaleBias: {x: 0, y: 0, z: 0, w: 0}

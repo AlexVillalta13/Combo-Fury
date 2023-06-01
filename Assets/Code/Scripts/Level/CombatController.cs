@@ -42,6 +42,7 @@ public class CombatController : MonoBehaviour
     public static Action<float, float, float> onChangeEnemyHealth;
     public static Action<float> onChangeEnemyAttack;
     public static Action<int> onChangeComboNumber;
+    public static Action<int, int> onChangeCurrentEnemy;
 
     // states
     private int currentEnemy = 0;
@@ -77,6 +78,11 @@ public class CombatController : MonoBehaviour
     [SerializeField] float spinesDamageMultiplier = 0.5f;
     const string spinesId = "Spines";
 
+    [Title("Adrenaline", HorizontalLine = false, TitleAlignment = TitleAlignments.Centered)]
+    [SerializeField] float adrenalineHealthToActivate = 30f;
+    [SerializeField] float adrenalineChance = 20f;
+    const string adrenalineId = "Adrenaline";
+
 
     private void OnEnable()
     {
@@ -107,6 +113,7 @@ public class CombatController : MonoBehaviour
 
         currentEnemy = 0;
         totalEnemies = levelSO.Enemies.Count - 1;
+        onChangeCurrentEnemy(currentEnemy + 1, levelSO.Enemies.Count);
 
         currentComboNumber = 0;
         onChangeComboNumber(currentComboNumber);
@@ -255,11 +262,21 @@ public class CombatController : MonoBehaviour
                 playerWinLevelEvent.Raise();
             }
             currentEnemy += 1;
+            onChangeCurrentEnemy(currentEnemy + 1, levelSO.Enemies.Count);
         }
     }
 
     public void EnemyAttacks()
     {
+        if(upgradesSelected.HasUpgrade(adrenalineId))
+        {
+            if(UnityEngine.Random.Range(0f, 100f) < adrenalineChance)
+            {
+                Debug.Log("Dodge");
+                return;
+            }
+        }
+
         if (shieldActivated == true)
         {
             shieldActivated = false;

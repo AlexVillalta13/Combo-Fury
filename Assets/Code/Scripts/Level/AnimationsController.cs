@@ -46,19 +46,16 @@ public class AnimationsController : MonoBehaviour
 
     public void EnemyDeathAnimation()
     {
-        Debug.Log("Enemy death animation trigger");
         m_animator.SetTrigger(enemyDeathAnimation);
     }
 
     public void EnemyWinsAnimation()
     {
-        Debug.Log("Enemy wins animation trigger");
 
-        if (m_animator.GetCurrentAnimatorStateInfo(0).IsName("Base.Die"))
-        {
-            Debug.Log("Is in die animation");
-            return;
-        }
+        //if (m_animator.GetCurrentAnimatorStateInfo(0).IsName("Base.Die"))
+        //{
+        //    return;
+        //}
         m_animator.SetTrigger(enemyWinsAnimation);
     }
 }

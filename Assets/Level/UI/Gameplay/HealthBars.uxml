@@ -37,5 +37,5 @@
             </ui:VisualElement>
         </ui:VisualElement>
     </ui:VisualElement>
-    <ui:Label tabindex="-1" text="39/40" display-tooltip-when-elided="true" class="statsTextSize regularTextOutlineShadow" />
+    <ui:Label tabindex="-1" text="39/40" display-tooltip-when-elided="true" name="EnemyCount" class="statsTextSize regularTextOutlineShadow" />
 </ui:UXML>
