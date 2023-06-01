@@ -23,6 +23,7 @@ public class CombatController : MonoBehaviour
     [Title("Player", HorizontalLine = false, TitleAlignment = TitleAlignments.Centered)]
     [SerializeField] GameEvent onPlayerChangeInCombatStat;
     [SerializeField] GameEvent playerGetsHitAnimation;
+    [SerializeField] GameEvent playerDodges;
     [Title("Level Flow", HorizontalLine = false, TitleAlignment = TitleAlignments.Centered)]
     [SerializeField] GameEvent playerDeathEvent;
     [SerializeField] GameEvent playerWinFightEvent;
@@ -273,6 +274,7 @@ public class CombatController : MonoBehaviour
             if(UnityEngine.Random.Range(0f, 100f) < adrenalineChance)
             {
                 Debug.Log("Dodge");
+                playerDodges.Raise();
                 return;
             }
         }

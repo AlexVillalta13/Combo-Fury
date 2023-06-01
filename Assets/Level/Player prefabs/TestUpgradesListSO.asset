@@ -34,7 +34,7 @@ MonoBehaviour:
     levelUnlock: 0
     upgradeDescription: Increase the max heath
     getUpgradeEvent: {fileID: 11400000, guid: f667a2f609fa6e44e929bf7d9ff1fef5, type: 2}
-  - upgradeName: ADRENALINE
+  - upgradeName: Adrenaline
     upgradeId: Adrenaline
     image: {fileID: 21300000, guid: bd01f87ce1918974b855a1620aa83485, type: 3}
     canRepeat: 0

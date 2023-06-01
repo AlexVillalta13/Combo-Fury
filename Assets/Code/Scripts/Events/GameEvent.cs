@@ -5,8 +5,9 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "Game event")]
 public class GameEvent : ScriptableObject
 {
-    private readonly List<GameEventListener> gameEventsList = new List<GameEventListener>();
+    [ShowInInspector] private readonly List<GameEventListener> gameEventsList = new List<GameEventListener>();
 
+    [Button(ButtonSizes.Medium)]
     public void Raise ()
     {
         for(int i = gameEventsList.Count - 1; i >= 0; i--)
