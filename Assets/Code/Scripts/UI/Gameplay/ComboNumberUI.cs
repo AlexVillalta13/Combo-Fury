@@ -28,6 +28,6 @@ public class ComboNumberUI : UIComponent
 
     private void UpdateComboNumber(int number)
     {
-        comboNumber.text = number.ToString();
+        comboNumber.text = "Combo " + number.ToString();
     }
 }

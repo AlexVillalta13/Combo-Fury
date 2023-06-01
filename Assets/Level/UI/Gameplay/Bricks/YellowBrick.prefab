@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 7908305873986999786}
   - component: {fileID: 3522736107176572543}
   - component: {fileID: -8358437324178168192}
+  - component: {fileID: -1754570381196561783}
   m_Layer: 0
   m_Name: YellowBrick
   m_TagString: Untagged
@@ -66,6 +67,34 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameEvent: {fileID: 11400000, guid: f0d1579af981dff4693918f4c212b65a, type: 2}
+  unityEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 3522736107176572543}
+        m_TargetAssemblyTypeName: YellowBrick, Assembly-CSharp
+        m_MethodName: RemoveBrickElement
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &-1754570381196561783
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3212592202747318894}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb953a8383db9fc45943e75de88733bb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameEvent: {fileID: 11400000, guid: 753a237a3ae881e4eba066f7c4814681, type: 2}
   unityEvent:
     m_PersistentCalls:
       m_Calls:

@@ -1,0 +1,14 @@
+.regularTextOutlineShadow {
+    -unity-font-definition: resource('Fonts & Materials/LilitaOne-Regular SDF');
+    color: rgb(255, 255, 255);
+    -unity-text-align: middle-center;
+    white-space: nowrap;
+    -unity-text-outline-width: 15px;
+    -unity-text-outline-color: rgb(0, 0, 0);
+    text-shadow: 0 6px 0 rgb(0, 0, 0);
+}
+
+.regularText {
+    -unity-font-definition: resource('Fonts & Materials/LilitaOne-Regular SDF');
+    color: rgb(255, 255, 255);
+}
