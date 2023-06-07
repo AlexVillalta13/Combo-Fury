@@ -271,11 +271,15 @@ public class CombatController : MonoBehaviour
     {
         if(upgradesSelected.HasUpgrade(adrenalineId))
         {
-            if(UnityEngine.Random.Range(0f, 100f) < adrenalineChance)
+            if(inCombatPlayerStatsSO.CurrentHealth < inCombatPlayerStatsSO.CurrentHealth * adrenalineHealthToActivate / 100f)
             {
-                Debug.Log("Dodge");
-                playerDodges.Raise();
-                return;
+                Debug.Log(inCombatPlayerStatsSO.CurrentHealth * adrenalineHealthToActivate / 100f);
+                if (UnityEngine.Random.Range(0f, 100f) < adrenalineChance)
+                {
+                    Debug.Log("Dodge");
+                    playerDodges.Raise();
+                    return;
+                }
             }
         }
 
