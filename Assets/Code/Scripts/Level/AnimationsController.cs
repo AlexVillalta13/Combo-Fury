@@ -35,7 +35,7 @@ public class AnimationsController : MonoBehaviour
     public void GetHitAnimation()
     {
         m_animator.SetTrigger(getHitAnimation);
-        m_GetHitParticleSystem.Play();
+        //m_GetHitParticleSystem.Play();
     }
 
     public void GetCriticalHitAnimation()
