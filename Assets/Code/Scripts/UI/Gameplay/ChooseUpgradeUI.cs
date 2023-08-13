@@ -10,6 +10,7 @@ public class ChooseUpgradeUI : UIComponent
     [SerializeField] UpgradeInLevelSO upgradesPickupSO;
     [Header("Events")]
     [SerializeField] GameEvent continueWalkingEvent;
+    [SerializeField] GameEvent upgradeChoosed;
 
     VisualElement holderToScale;
     List<VisualElement> UpgradeContainerList = new List<VisualElement>();
@@ -35,6 +36,7 @@ public class ChooseUpgradeUI : UIComponent
     {
         continueWalkingEvent.Raise();
         ScaleDownUI();
+        upgradeChoosed.Raise();
     }
 
     public void SelectRandomUpgrades()

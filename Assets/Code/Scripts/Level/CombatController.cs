@@ -185,6 +185,7 @@ public class CombatController : MonoBehaviour
         float damage = inCombatPlayerStatsSO.Attack * fireDamagePercentage / 100 + fireLevel;
         enemyCurrentHealth -= damage;
         UpdateEnemyHealthUI(-damage);
+        CheckWinConditions();
     }
 
     private void TurnOffEnemyFire()
@@ -279,7 +280,6 @@ public class CombatController : MonoBehaviour
             {
                 if (UnityEngine.Random.Range(0f, 100f) < adrenalineChance)
                 {
-                    Debug.Log("Dodge");
                     playerDodges.Raise();
                     return;
                 }
@@ -352,5 +352,16 @@ public class CombatController : MonoBehaviour
     public void FireUpgradeSelected()
     {
         fireLevel++;
+    }
+
+    // TEST FUNCTIONS
+    public void WinCombatDEBUG()
+    {
+        TurnOffEnemyFire();
+        playerWinFightEvent.Raise();
+        StartCoroutine(ShowUpgrades());
+
+        currentEnemy += 1;
+        onChangeCurrentEnemy(currentEnemy + 1, levelSO.Enemies.Count);
     }
 }
