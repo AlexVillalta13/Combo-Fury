@@ -84,6 +84,10 @@ public class CombatController : MonoBehaviour
     [SerializeField] float adrenalineChance = 20f;
     const string adrenalineId = "Adrenaline";
 
+    [Title("DEBUG", TitleAlignment = TitleAlignments.Centered)]
+    [GUIColor("red")]
+    public bool godMode = false;
+
 
     private void OnEnable()
     {
@@ -271,9 +275,8 @@ public class CombatController : MonoBehaviour
     {
         if(upgradesSelected.HasUpgrade(adrenalineId))
         {
-            if(inCombatPlayerStatsSO.CurrentHealth < inCombatPlayerStatsSO.CurrentHealth * adrenalineHealthToActivate / 100f)
+            if(inCombatPlayerStatsSO.CurrentHealth < inCombatPlayerStatsSO.MaxHealth * adrenalineHealthToActivate / 100f)
             {
-                Debug.Log(inCombatPlayerStatsSO.CurrentHealth * adrenalineHealthToActivate / 100f);
                 if (UnityEngine.Random.Range(0f, 100f) < adrenalineChance)
                 {
                     Debug.Log("Dodge");
@@ -311,7 +314,14 @@ public class CombatController : MonoBehaviour
 
         if (inCombatPlayerStatsSO.CurrentHealth < 0)
         {
-            playerDeathEvent.Raise();
+            if(godMode == true)
+            {
+                inCombatPlayerStatsSO.CurrentHealth = 1;
+            }
+            else
+            {
+                playerDeathEvent.Raise();
+            }
         }
 
         UpdatePlayerHealthUI(-attackIncome);
