@@ -1,0 +1,7 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/Level/UI/Classes/GeneralControls.uss?fileID=7433441132597879392&amp;guid=60241d5d6715a5448a07eaab8185a076&amp;type=3#GeneralControls" />
+    <Style src="project://database/Assets/Level/UI/Classes/CommonClasses.uss?fileID=7433441132597879392&amp;guid=0b7764f9735edf14583ce36e8b12d1e8&amp;type=3#CommonClasses" />
+    <ui:VisualElement style="flex-grow: 1; align-items: center; justify-content: center; position: absolute; width: 100%; height: 100%;">
+        <ui:Label tabindex="-1" text="Tap to start walking" parse-escape-sequences="true" display-tooltip-when-elided="true" class="regularTextOutlineShadow" style="-unity-font-definition: resource(&apos;Fonts &amp; Materials/LilitaOne-Regular SDF&apos;); font-size: 88px;" />
+    </ui:VisualElement>
+</ui:UXML>

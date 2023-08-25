@@ -8,6 +8,7 @@ public class PlayerPrefabSpawn : MonoBehaviour
     [SerializeField] GameEvent beginWalkEvent;
     GameObject instantiatedPlayerGameObject;
     GameplayCamera gameplayCamera;
+    bool canDoFirstWalk = false;
 
     private void Awake()
     {
@@ -18,11 +19,24 @@ public class PlayerPrefabSpawn : MonoBehaviour
     {
         instantiatedPlayerGameObject = Instantiate(PlayerPrefab, transform.position, transform.rotation);
         gameplayCamera.SetTarget(instantiatedPlayerGameObject.transform);
-        beginWalkEvent.Raise();
     }
 
     private void OnDisable()
     {
         Destroy(instantiatedPlayerGameObject);
+    }
+
+    public void CanWalk()
+    {
+        canDoFirstWalk = true;
+    }
+
+    public void BeginWalk()
+    {
+        if(canDoFirstWalk)
+        {
+            beginWalkEvent.Raise();
+            canDoFirstWalk = false;
+        }
     }
 }
