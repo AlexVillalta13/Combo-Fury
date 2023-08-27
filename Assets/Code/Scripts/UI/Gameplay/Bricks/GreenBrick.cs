@@ -16,7 +16,17 @@ public class GreenBrick : Brick
     {
         base.EffectWithTouch();
 
-        brickEventsHolder.GetPlayerCriticalAttackEvent().Raise();
+        hitsToDestroyBrick--;
+        if (hitsToDestroyBrick < 1)
+        {
+            brickEventsHolder.GetPlayerCriticalAttackEvent().Raise();
+            ScaleDownUI();
+        }
+    }
+
+    protected override void OnScaledDown()
+    {
+        base.OnScaledDown();
         RemoveBrickElement();
     }
 

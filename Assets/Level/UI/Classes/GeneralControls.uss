@@ -1,7 +1,7 @@
 .scaledDown {
     scale: 0.1 0.1;
     transition-property: scale;
-    transition-duration: 0.25s;
+    transition-duration: 0.15s;
 }
 
 .scaledUp {

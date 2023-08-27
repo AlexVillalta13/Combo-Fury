@@ -4617,24 +4617,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 668470566}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &676641140 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 466332603169764321, guid: ead8e5754861aa446941f858e275b3a8,
-    type: 3}
-  m_PrefabInstance: {fileID: 466332602982165500}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 19102, guid: 0000000000000000e000000000000000, type: 0}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!4 &676641141 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 466332603169764320, guid: ead8e5754861aa446941f858e275b3a8,
-    type: 3}
-  m_PrefabInstance: {fileID: 466332602982165500}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &678513472
 GameObject:
   m_ObjectHideFlags: 0
@@ -7433,7 +7415,7 @@ MonoBehaviour:
   m_ParentUI: {fileID: 0}
   sourceAsset: {fileID: 9197481963319205126, guid: 0462dd34a76893f45a538c195cbc3655,
     type: 3}
-  m_SortingOrder: 0
+  m_SortingOrder: 10
 --- !u!4 &1124932235
 Transform:
   m_ObjectHideFlags: 0
@@ -11277,24 +11259,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1601659636 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 2907522590658206426, guid: 278fb225d7c913449abe6a0eeb1a7055,
-    type: 3}
-  m_PrefabInstance: {fileID: 2907522590583585208}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 19102, guid: 0000000000000000e000000000000000, type: 0}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!4 &1601659637 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 2907522590658206425, guid: 278fb225d7c913449abe6a0eeb1a7055,
-    type: 3}
-  m_PrefabInstance: {fileID: 2907522590583585208}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1611553176
 GameObject:
   m_ObjectHideFlags: 0
@@ -11847,112 +11811,6 @@ Transform:
   - {fileID: 698931281}
   m_Father: {fileID: 640168354}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1747520042
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1747520043}
-  - component: {fileID: 1747520044}
-  - component: {fileID: 1747520046}
-  - component: {fileID: 1747520045}
-  m_Layer: 0
-  m_Name: Tap To Begin Walk UI
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1747520043
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1747520042}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1601659637}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1747520044
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1747520042}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a1ced1ac48cc24b47825538455b5a391, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Document: {fileID: 1601659636}
-  elementName: TapToBeginWalkUI
-  elementStartedEvent: {fileID: 0}
-  elementEndedEvent: {fileID: 0}
---- !u!114 &1747520045
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1747520042}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: eb953a8383db9fc45943e75de88733bb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  gameEvent: {fileID: 11400000, guid: 835bcbb138a7e98488158d634f3c6384, type: 2}
-  unityEvent:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1747520044}
-        m_TargetAssemblyTypeName: UIComponent, Assembly-CSharp
-        m_MethodName: HideGameplayElement
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
---- !u!114 &1747520046
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1747520042}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: eb953a8383db9fc45943e75de88733bb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  gameEvent: {fileID: 11400000, guid: 7778c4a02a2ecb84f91e6256257b70a3, type: 2}
-  unityEvent:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1747520044}
-        m_TargetAssemblyTypeName: UIComponent, Assembly-CSharp
-        m_MethodName: ShowGameplayElement
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!1001 &1747940254
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -13461,97 +13319,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 640168354}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &2018634911
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 2018634912}
-  - component: {fileID: 2018634913}
-  - component: {fileID: 2018634914}
-  m_Layer: 0
-  m_Name: Loading Level UI
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &2018634912
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2018634911}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 676641141}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2018634913
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2018634911}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 19b17ac7a52cc7e4d8127436d00bdfe8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Document: {fileID: 676641140}
-  elementName: LoadingLevelUI
-  elementStartedEvent: {fileID: 0}
-  elementEndedEvent: {fileID: 0}
-  onLevelLoadedevent: {fileID: 11400000, guid: 7778c4a02a2ecb84f91e6256257b70a3, type: 2}
-  timeToLoad: 1
---- !u!114 &2018634914
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2018634911}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: eb953a8383db9fc45943e75de88733bb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  gameEvent: {fileID: 11400000, guid: 753a237a3ae881e4eba066f7c4814681, type: 2}
-  unityEvent:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 2018634913}
-        m_TargetAssemblyTypeName: UIComponent, Assembly-CSharp
-        m_MethodName: ShowGameplayElement
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 2018634913}
-        m_TargetAssemblyTypeName: LoadingLevelUI, Assembly-CSharp
-        m_MethodName: StartDisableLoadingUICoroutine
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!1001 &2028354634
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -14327,29 +14094,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 466332603169764323, guid: ead8e5754861aa446941f858e275b3a8,
-        type: 3}
-      propertyPath: gameEvent
-      value: 
-      objectReference: {fileID: 11400000, guid: 7778c4a02a2ecb84f91e6256257b70a3,
-        type: 2}
     - target: {fileID: 466332603169764327, guid: ead8e5754861aa446941f858e275b3a8,
         type: 3}
       propertyPath: m_Name
       value: Main Menu UI
       objectReference: {fileID: 0}
-    - target: {fileID: 466332603169764327, guid: ead8e5754861aa446941f858e275b3a8,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects:
-    - targetCorrespondingSourceObject: {fileID: 466332603169764320, guid: ead8e5754861aa446941f858e275b3a8,
-        type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 2018634912}
+    m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ead8e5754861aa446941f858e275b3a8, type: 3}
 --- !u!1001 &2907522590583585208
@@ -14364,11 +14116,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Gameplay UI
-      objectReference: {fileID: 0}
-    - target: {fileID: 2907522590658206424, guid: 278fb225d7c913449abe6a0eeb1a7055,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2907522590658206425, guid: 278fb225d7c913449abe6a0eeb1a7055,
         type: 3}
@@ -14422,11 +14169,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects:
-    - targetCorrespondingSourceObject: {fileID: 2907522590658206425, guid: 278fb225d7c913449abe6a0eeb1a7055,
-        type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1747520043}
+    m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 278fb225d7c913449abe6a0eeb1a7055, type: 3}
 --- !u!1660057539 &9223372036854775807

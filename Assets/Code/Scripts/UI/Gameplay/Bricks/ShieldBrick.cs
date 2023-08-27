@@ -6,7 +6,6 @@ using UnityEngine.UIElements;
 
 public class ShieldBrick : Brick
 {
-    [SerializeField] int hits = 3;
     [SerializeField] Sprite icon2WithHits;
     //[SerializeField] Sprite icon1WithHit;
     public ShieldBrick() : base()
@@ -17,29 +16,35 @@ public class ShieldBrick : Brick
 
     private void OnEnable()
     {
-        hits = 3;
+        hitsToDestroyBrick = 3;
     }
 
     public override void EffectWithTouch()
     {
         base.EffectWithTouch();
 
-        hits--;
-        if(hits == 2)
+        hitsToDestroyBrick--;
+        if(hitsToDestroyBrick == 2)
         {
             brickEventsHolder.GetPlayerBlockEvent().Raise();
-            brickElementAttached.Query<VisualElement>(name: "Icon").First().style.backgroundImage = new StyleBackground(icon2WithHits);
+            brickRootElementAttached.Query<VisualElement>(name: "Icon").First().style.backgroundImage = new StyleBackground(icon2WithHits);
         }
-        else if(hits == 1)
+        else if(hitsToDestroyBrick == 1)
         {
             brickEventsHolder.GetPlayerBlockEvent().Raise();
-            brickElementAttached.Query<VisualElement>(name: "Icon").First().style.backgroundImage = null;
+            brickRootElementAttached.Query<VisualElement>(name: "Icon").First().style.backgroundImage = null;
         }
-        else if (hits <= 0)
+        else if (hitsToDestroyBrick <= 0)
         {
             brickEventsHolder.GetPlayerBlockEvent().Raise();
-            RemoveBrickElement();
+            ScaleDownUI();
         }
+    }
+
+    protected override void OnScaledDown()
+    {
+        base.OnScaledDown();
+        RemoveBrickElement();
     }
 
     public override void RemoveBrickElement()

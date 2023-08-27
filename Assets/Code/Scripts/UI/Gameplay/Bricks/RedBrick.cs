@@ -14,7 +14,17 @@ public class RedBrick : Brick
     {
         base.EffectWithTouch();
 
-        brickEventsHolder.GetPlayerBlockEvent().Raise();
+        hitsToDestroyBrick--;
+        if (hitsToDestroyBrick < 1)
+        {
+            brickEventsHolder.GetPlayerBlockEvent().Raise();
+            ScaleDownUI();
+        }
+    }
+
+    protected override void OnScaledDown()
+    {
+        base.OnScaledDown();
         RemoveBrickElement();
     }
 

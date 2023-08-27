@@ -23,13 +23,13 @@ public class SpeedBrick : Brick
     {
         yield return new WaitForEndOfFrame();
 
-        brickElementAttached.style.visibility = Visibility.Visible;
+        brickRootElementAttached.style.visibility = Visibility.Visible;
 
-        combatBarPosition = m_elementParent.resolvedStyle.left + m_elementParent.resolvedStyle.width - brickElementAttached.resolvedStyle.width / 2f;
-        brickElementAttached.style.left = combatBarPosition;
+        combatBarPosition = m_elementParent.resolvedStyle.left + m_elementParent.resolvedStyle.width - brickRootElementAttached.resolvedStyle.width / 2f;
+        brickRootElementAttached.style.left = combatBarPosition;
 
         float velocity = Random.Range(minVelocity, maxVelocity);
-        tween = DOTween.To(() => combatBarPosition, x => combatBarPosition = x, 0f - (brickElementAttached.resolvedStyle.width / 2f) -10f, velocity).SetEase(easeCurve);
+        tween = DOTween.To(() => combatBarPosition, x => combatBarPosition = x, 0f - (brickRootElementAttached.resolvedStyle.width / 2f) -10f, velocity).SetEase(easeCurve);
     }
 
     private void Update()
@@ -39,12 +39,12 @@ public class SpeedBrick : Brick
 
     private void TranslateBrick()
     {
-        brickElementAttached.style.left = combatBarPosition;
-        if(combatBarPosition <= 0f - (brickElementAttached.resolvedStyle.width / 2f))
+        brickRootElementAttached.style.left = combatBarPosition;
+        if(combatBarPosition <= 0f - (brickRootElementAttached.resolvedStyle.width / 2f))
         {
             tween.Kill();
             brickEventsHolder.GetPlayerIsHitEvent().Raise();
-            RemoveBrickElement();
+            ScaleDownUI();
         }
     }
 
@@ -52,8 +52,18 @@ public class SpeedBrick : Brick
     {
         base.EffectWithTouch();
 
-        tween.Kill();
-        brickEventsHolder.GetPlayerBlockEvent().Raise();
+        hitsToDestroyBrick--;
+        if (hitsToDestroyBrick < 1)
+        {
+            tween.Kill();
+            brickEventsHolder.GetPlayerBlockEvent().Raise();
+            RemoveBrickElement();
+        }
+    }
+
+    protected override void OnScaledDown()
+    {
+        base.OnScaledDown();
         RemoveBrickElement();
     }
 

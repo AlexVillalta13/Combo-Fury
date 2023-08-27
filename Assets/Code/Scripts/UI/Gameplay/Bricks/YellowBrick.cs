@@ -16,7 +16,17 @@ public class YellowBrick : Brick
     {
         base.EffectWithTouch();
 
-        brickEventsHolder.GetPlayerAttackEvent().Raise();
+        hitsToDestroyBrick--;
+        if(hitsToDestroyBrick < 1)
+        {
+            brickEventsHolder.GetPlayerAttackEvent().Raise();
+            ScaleDownUI();
+        }
+    }
+
+    protected override void OnScaledDown()
+    {
+        base.OnScaledDown();
         RemoveBrickElement();
     }
 

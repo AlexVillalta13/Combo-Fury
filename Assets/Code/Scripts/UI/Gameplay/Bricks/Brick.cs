@@ -28,15 +28,20 @@ public class Brick: MonoBehaviour
     [SerializeField] protected TouchBrickEventsSO brickEventsHolder;
     [SerializeField] protected VisualTreeAsset brickUIElement;
     [SerializeField] protected BricksPool bricksPool;
+    const string brickUSSClass = "brick";
+    const string scaleDownClass = "scaledDown";
+    const string scaleUpClass = "scaledUp";
 
     protected CombatBarUI combatBarUI;
 
-    protected VisualElement brickElementAttached;
     protected VisualElement m_elementParent;
+    protected VisualElement brickRootElementAttached;
+    protected VisualElement brickElement;
 
     [SerializeField] protected float timeToAutoDelete = 0f;
     [SerializeField] protected float minWidth;
     [SerializeField] protected float maxWidth;
+    [SerializeField] protected int hitsToDestroyBrick = 1;
 
     public Brick()
     {
@@ -46,9 +51,10 @@ public class Brick: MonoBehaviour
     public void SetupBrick(CombatBarUI combatBarUI, VisualElement brickElementAttached, VisualElement playerElementParent, string playerClassName, VisualElement enemyElementParent, string enemyClassName)
     {
         this.combatBarUI = combatBarUI;
-        this.brickElementAttached = brickElementAttached;
+        this.brickRootElementAttached = brickElementAttached;
+        this.brickElement = brickRootElementAttached.Q(className: brickUSSClass);
 
-        if(brickHolder == BrickHolder.PlayerBrick)
+        if (brickHolder == BrickHolder.PlayerBrick)
         {
             this.m_elementParent = playerElementParent;
             brickElementAttached.AddToClassList(playerClassName);
@@ -66,6 +72,8 @@ public class Brick: MonoBehaviour
         float randomWidht = Random.Range(minWidth, maxWidth);
         brickElementAttached.style.width = randomWidht;
 
+        brickElement.RegisterCallback<TransitionEndEvent>(OnChangeScaleEndEvent);
+
         StartCoroutine(PositionBrick());
     }
 
@@ -73,14 +81,16 @@ public class Brick: MonoBehaviour
     {
         yield return new WaitForEndOfFrame();
 
-        brickElementAttached.style.visibility = Visibility.Visible;
+        brickRootElementAttached.style.visibility = Visibility.Visible;
 
-        brickElementAttached.style.left = UnityEngine.Random.Range(m_elementParent.resolvedStyle.left, m_elementParent.resolvedStyle.left + m_elementParent.resolvedStyle.width - brickElementAttached.resolvedStyle.width);
+        brickRootElementAttached.style.left = UnityEngine.Random.Range(m_elementParent.resolvedStyle.left, m_elementParent.resolvedStyle.left + m_elementParent.resolvedStyle.width - brickRootElementAttached.resolvedStyle.width);
 
         if(timeToAutoDelete > 0f)
         {
             StartCoroutine(AutoDestroyBrickElement());
         }
+
+        ScaleUpUI();
     }
 
     public void SetPool(BricksPool brickPool)
@@ -100,17 +110,57 @@ public class Brick: MonoBehaviour
 
     public VisualElement GetBrickElementAttached()
     {
-        return brickElementAttached;
+        return brickRootElementAttached;
     }
 
     public virtual void RemoveBrickElement()
     {
-        brickElementAttached.RemoveFromHierarchy();
+        brickElement.UnregisterCallback<TransitionEndEvent>(OnChangeScaleEndEvent);
+        brickRootElementAttached.RemoveFromHierarchy();
     }
 
     public IEnumerator AutoDestroyBrickElement()
     {
         yield return new WaitForSeconds(timeToAutoDelete);
         RemoveBrickElement();
+    }
+
+    protected void ScaleUpUI()
+    {
+        brickElement.RemoveFromClassList(scaleDownClass);
+        brickElement.AddToClassList(scaleUpClass);
+    }
+
+    protected void ScaleDownUI()
+    {
+        brickElement.RemoveFromClassList(scaleUpClass);
+        brickElement.AddToClassList(scaleDownClass);
+    }
+
+    protected void OnChangeScaleEndEvent(TransitionEndEvent evt)
+    {
+        foreach(StylePropertyName transitionName in evt.stylePropertyNames)
+        {
+            if(transitionName == "scale")
+            {
+                VisualElement element = evt.currentTarget as VisualElement;
+                if (element.ClassListContains(scaleUpClass))
+                {
+                    OnScaledUp();
+                }
+                else if (element.ClassListContains(scaleDownClass))
+                {
+                    OnScaledDown();
+                }
+            }
+        }
+    }
+
+    protected virtual void OnScaledDown()
+    {
+    }
+
+    protected virtual void OnScaledUp()
+    {
     }
 }

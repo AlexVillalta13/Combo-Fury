@@ -14,7 +14,17 @@ public class BlackBrick : Brick
     {
         base.EffectWithTouch();
 
-        brickEventsHolder.GetPlayerIsHitEvent().Raise();
+        hitsToDestroyBrick--;
+        if (hitsToDestroyBrick < 1)
+        {
+            brickEventsHolder.GetPlayerIsHitEvent().Raise();
+            ScaleDownUI();
+        }
+    }
+
+    protected override void OnScaledDown()
+    {
+        base.OnScaledDown();
         RemoveBrickElement();
     }
 
