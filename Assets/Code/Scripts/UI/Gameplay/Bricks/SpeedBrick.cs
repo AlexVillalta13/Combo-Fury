@@ -8,7 +8,7 @@ public class SpeedBrick : Brick
 {
     Tween tween;
 
-    float combatBarPosition;
+    float speedBrickPositionInBar;
     [SerializeField] float minVelocity = 1.5f;
     [SerializeField] float maxVelocity = 1.75f;
 
@@ -25,11 +25,11 @@ public class SpeedBrick : Brick
 
         brickRootElementAttached.style.visibility = Visibility.Visible;
 
-        combatBarPosition = m_elementParent.resolvedStyle.left + m_elementParent.resolvedStyle.width - brickRootElementAttached.resolvedStyle.width / 2f;
-        brickRootElementAttached.style.left = combatBarPosition;
+        speedBrickPositionInBar = m_elementParent.resolvedStyle.left + m_elementParent.resolvedStyle.width - brickRootElementAttached.resolvedStyle.width / 2f;
+        brickRootElementAttached.style.left = speedBrickPositionInBar;
 
         float velocity = Random.Range(minVelocity, maxVelocity);
-        tween = DOTween.To(() => combatBarPosition, x => combatBarPosition = x, 0f - (brickRootElementAttached.resolvedStyle.width / 2f) -10f, velocity).SetEase(easeCurve);
+        tween = DOTween.To(() => speedBrickPositionInBar, x=> speedBrickPositionInBar = x, 0f - (brickRootElementAttached.resolvedStyle.width / 2f) -10f, velocity).SetEase(easeCurve);
     }
 
     private void Update()
@@ -39,8 +39,8 @@ public class SpeedBrick : Brick
 
     private void TranslateBrick()
     {
-        brickRootElementAttached.style.left = combatBarPosition;
-        if(combatBarPosition <= 0f - (brickRootElementAttached.resolvedStyle.width / 2f))
+        brickRootElementAttached.style.left = speedBrickPositionInBar;
+        if(speedBrickPositionInBar <= 0f - (brickRootElementAttached.resolvedStyle.width / 2f))
         {
             tween.Kill();
             brickEventsHolder.GetPlayerIsHitEvent().Raise();

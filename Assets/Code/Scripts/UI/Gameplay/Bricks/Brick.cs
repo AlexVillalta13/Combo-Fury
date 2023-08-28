@@ -93,6 +93,12 @@ public class Brick: MonoBehaviour
         }
 
         ScaleUpUI();
+        OnBrickPositioned();
+    }
+
+    protected virtual void OnBrickPositioned()
+    {
+
     }
 
     public void SetPool(BricksPool brickPool)
@@ -130,6 +136,7 @@ public class Brick: MonoBehaviour
     protected void ScaleUpUI()
     {
         brickElement.RemoveFromClassList(scaleDownClass);
+        brickElement.RemoveFromClassList(scaleDownALittleClass);
         brickElement.AddToClassList(scaleUpClass);
     }
 
@@ -140,7 +147,7 @@ public class Brick: MonoBehaviour
         brickElement.AddToClassList(scaleDownClass);
     }
 
-    protected void ScaleDownALittle()
+    protected void ScaleDownALittleUI()
     {
         brickElement.RemoveFromClassList(scaleUpClass);
         brickElement.AddToClassList(scaleDownALittleClass);
@@ -161,6 +168,10 @@ public class Brick: MonoBehaviour
                 {
                     OnScaledDown();
                 }
+                else if(element.ClassListContains(scaleDownALittleClass))
+                {
+                    OnScaleDownALittle();
+                }
             }
         }
     }
@@ -171,5 +182,10 @@ public class Brick: MonoBehaviour
 
     protected virtual void OnScaledUp()
     {
+    }
+
+    protected void OnScaleDownALittle()
+    {
+        ScaleUpUI();
     }
 }

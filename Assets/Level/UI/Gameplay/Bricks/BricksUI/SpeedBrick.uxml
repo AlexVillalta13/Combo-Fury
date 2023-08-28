@@ -1,7 +1,7 @@
 <ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
     <Style src="project://database/Assets/Level/UI/Classes/CombatBarUIClasses.uss?fileID=7433441132597879392&amp;guid=5fa1baaeb8a4759478e2db747c99efb9&amp;type=3#CombatBarUIClasses" />
     <Style src="project://database/Assets/Level/UI/Classes/GeneralControls.uss?fileID=7433441132597879392&amp;guid=60241d5d6715a5448a07eaab8185a076&amp;type=3#GeneralControls" />
-    <ui:VisualElement name="SpeedBrickVisualElement" class="brick scaledDown" style="background-color: rgb(255, 0, 0);">
+    <ui:VisualElement name="SpeedBrickVisualElement" class="brick scaledDown redBrick">
         <ui:VisualElement name="Icon" style="flex-grow: 1; background-image: url(&apos;project://database/Assets/Art/Sprites/Upgrade%20icons/Pictoicon_Arrow_Prev.Png?fileID=2800000&amp;guid=c4bd4df3c03774b4fbf311efe3e92e7b&amp;type=3#Pictoicon_Arrow_Prev&apos;); -unity-background-scale-mode: scale-to-fit;" />
     </ui:VisualElement>
 </ui:UXML>

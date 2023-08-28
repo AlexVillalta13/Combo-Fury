@@ -22,10 +22,12 @@ MonoBehaviour:
     minTimeToSpawnBrick: 1
     maxTimeToSpawnBrick: 4
     chanceOfPlayerBrick: 70
-    chanceOfEnemyBrick: 30
+    chanceOfEnemyBrick: 300
     enemyBricks:
     - brickType: 0
       probability: 20
+    - brickType: 3
+      probability: 300
   - health: 26
     attack: 7
     minTimeToSpawnBrick: 1
