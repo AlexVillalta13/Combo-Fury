@@ -19,6 +19,7 @@ public class RedBrick : Brick
         {
             brickEventsHolder.GetPlayerBlockEvent().Raise();
             ScaleDownUI();
+            brickElement.AddToClassList(brickFlashClass);
         }
     }
 

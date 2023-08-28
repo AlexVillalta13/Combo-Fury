@@ -38,6 +38,7 @@ public class ShieldBrick : Brick
         {
             brickEventsHolder.GetPlayerBlockEvent().Raise();
             ScaleDownUI();
+            brickElement.AddToClassList(brickFlashClass);
         }
     }
 

@@ -45,6 +45,7 @@ public class SpeedBrick : Brick
             tween.Kill();
             brickEventsHolder.GetPlayerIsHitEvent().Raise();
             ScaleDownUI();
+            brickElement.AddToClassList(brickFlashClass);
         }
     }
 

@@ -21,6 +21,7 @@ public class YellowBrick : Brick
         {
             brickEventsHolder.GetPlayerAttackEvent().Raise();
             ScaleDownUI();
+            brickElement.AddToClassList(brickFlashClass);
         }
     }
 

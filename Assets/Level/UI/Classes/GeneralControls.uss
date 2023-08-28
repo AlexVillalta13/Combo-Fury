@@ -4,6 +4,12 @@
     transition-duration: 0.15s;
 }
 
+.scaleDownALittle {
+    scale: 0.8 0.8;
+    transition-property: scale;
+    transition-duration: 0.15s;
+}
+
 .scaledUp {
     transition-property: scale;
     transition-duration: 0.25s;

@@ -21,6 +21,7 @@ public class GreenBrick : Brick
         {
             brickEventsHolder.GetPlayerCriticalAttackEvent().Raise();
             ScaleDownUI();
+            brickElement.AddToClassList(brickFlashClass);
         }
     }
 

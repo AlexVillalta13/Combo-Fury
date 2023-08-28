@@ -29,7 +29,9 @@ public class Brick: MonoBehaviour
     [SerializeField] protected VisualTreeAsset brickUIElement;
     [SerializeField] protected BricksPool bricksPool;
     const string brickUSSClass = "brick";
+    protected const string brickFlashClass = "brickFlash";
     const string scaleDownClass = "scaledDown";
+    const string scaleDownALittleClass = "scaleDownALittle";
     const string scaleUpClass = "scaledUp";
 
     protected CombatBarUI combatBarUI;
@@ -133,8 +135,15 @@ public class Brick: MonoBehaviour
 
     protected void ScaleDownUI()
     {
+        brickElement.RemoveFromClassList(scaleDownALittleClass);
         brickElement.RemoveFromClassList(scaleUpClass);
         brickElement.AddToClassList(scaleDownClass);
+    }
+
+    protected void ScaleDownALittle()
+    {
+        brickElement.RemoveFromClassList(scaleUpClass);
+        brickElement.AddToClassList(scaleDownALittleClass);
     }
 
     protected void OnChangeScaleEndEvent(TransitionEndEvent evt)
