@@ -13,6 +13,7 @@ public class CombatBarUI : UIComponent
     const string playerBrickElementReference = "PlayerAttacks";
     const string enemyUSSClassName = "enemyBrick";
     const string playerUSSClassName = "playerBrick";
+    const string ignoreBrickWithTouchUSSClassName = "ignoreBrickWithTouch";
 
     // visual elements references
     VisualElement pointerCombatBar;
@@ -186,16 +187,23 @@ public class CombatBarUI : UIComponent
                 return;
             }
 
-            VisualElement brickToBreack = bricksInPosition[0];
+            VisualElement brickToBreack = null;
             foreach (VisualElement element in bricksInPosition)
             {
+                if(element.ClassListContains(ignoreBrickWithTouchUSSClassName))
+                {
+                    continue;
+                }
                 if (element.parent.hierarchy.IndexOf(element) > element.parent.hierarchy.IndexOf(brickToBreack))
                 {
                     brickToBreack = element;
                 }
             }
 
-            bricksInBarDict[brickToBreack].EffectWithTouch();
+            if(brickToBreack != null) 
+            {
+                bricksInBarDict[brickToBreack].EffectWithTouch();
+            }
         }
     }
 

@@ -33,6 +33,7 @@ public class Brick: MonoBehaviour
     const string scaleDownClass = "scaledDown";
     const string scaleDownALittleClass = "scaleDownALittle";
     const string scaleUpClass = "scaledUp";
+    protected const string ignoreBrickWithTouchUSSClassName = "ignoreBrickWithTouch";
 
     protected CombatBarUI combatBarUI;
 
@@ -145,6 +146,7 @@ public class Brick: MonoBehaviour
         brickElement.RemoveFromClassList(scaleDownALittleClass);
         brickElement.RemoveFromClassList(scaleUpClass);
         brickElement.AddToClassList(scaleDownClass);
+        brickRootElementAttached.AddToClassList(ignoreBrickWithTouchUSSClassName);
     }
 
     protected void ScaleDownALittleUI()

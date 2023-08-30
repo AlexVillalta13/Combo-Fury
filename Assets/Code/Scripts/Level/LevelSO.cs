@@ -12,6 +12,9 @@ public class LevelSO : ScriptableObject
 
     [SerializeField] BrickTypesSO brickTypes;
 
+    [SerializeField] int minibossEncounterAt = 10;
+    public int MinibossEncounterAt { get { return minibossEncounterAt; } }
+
     [SerializeField] List<Enemy> enemies = new List<Enemy>();
 
     public List<Enemy> Enemies { get { return enemies; } }

@@ -19,6 +19,10 @@ public class EnemyActivator : MonoBehaviour
     private void OnDisable()
     {
         currentEnemy = -1;
+        foreach(EnemySpawn enemySpawn in spawnList)
+        {
+            enemySpawn.DeleteEnemyGameObject();
+        }
     }
 
     public void ActivateNextEnemy()

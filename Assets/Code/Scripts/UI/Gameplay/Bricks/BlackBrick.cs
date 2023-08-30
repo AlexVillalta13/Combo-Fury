@@ -24,6 +24,15 @@ public class BlackBrick : Brick
         vec3Shake.x = blackBrickPositionInBar;
     }
 
+    private void Update()
+    {
+        if (isShaking == true)
+        {
+            blackBrickPositionInBar = vec3Shake.x;
+            brickRootElementAttached.style.left = blackBrickPositionInBar;
+        }
+    }
+
     public override void EffectWithTouch()
     {
         base.EffectWithTouch();
@@ -31,33 +40,18 @@ public class BlackBrick : Brick
         hitsToDestroyBrick--;
         if (hitsToDestroyBrick < 1)
         {
+            brickRootElementAttached.AddToClassList(ignoreBrickWithTouchUSSClassName);
             brickEventsHolder.GetPlayerIsHitEvent().Raise();
             ShakeBrick();
-            //ScaleDownUI();
         }
     }
 
-    private void Update()
-    {
-        if(isShaking == true)
-        {
-            blackBrickPositionInBar = vec3Shake.x;
-            brickRootElementAttached.style.left = blackBrickPositionInBar;
-            Debug.Log(blackBrickPositionInBar);
-        }
-    }
 
     private void ShakeBrick()
     {
         tween = DOTween.Shake(() => vec3Shake, x => vec3Shake = x, 0.25f, shakeStrength, 100);
         tween.onComplete += RemoveBrickElement;
         isShaking = true;
-    }
-
-    protected override void OnScaledDown()
-    {
-        base.OnScaledDown();
-        RemoveBrickElement();
     }
 
     public override void RemoveBrickElement()

@@ -8,7 +8,7 @@ public class EnemySpawn : MonoBehaviour
 
     GameObject instantiateEnemy;
 
-    private void OnDisable()
+    public void DeleteEnemyGameObject()
     {
         Destroy(instantiateEnemy);
     }
