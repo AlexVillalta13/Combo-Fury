@@ -51,3 +51,7 @@
     font-size: 47px;
     color: rgb(255, 27, 242);
 }
+
+.bossFillBar {
+    -unity-background-image-tint-color: rgb(83, 0, 255);
+}

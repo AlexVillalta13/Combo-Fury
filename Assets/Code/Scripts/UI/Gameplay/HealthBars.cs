@@ -6,8 +6,10 @@ using UnityEngine.UIElements;
 
 public class HealthBars : UIComponent
 {
-    const string playerBarReference = "PlayerFillBar";
-    const string enemyBarReference = "EnemyFillBar";
+    const string playerFillBarReference = "PlayerFillBar";
+    const string enemyBarHolderReference = "EnemyBarHolder";
+    const string enemyFillBarReference = "EnemyFillBar";
+    const string bossFillBarUSSClassName = "bossFillBar";
     const string playerHealthTextReference = "PlayerHealthText";
     const string enemyHealthTextReference = "EnemyHealthText";
     const string playerAttackTextReference = "PlayerAttack";
@@ -15,8 +17,9 @@ public class HealthBars : UIComponent
     const string enemyAttackTextReference = "EnemyAttack";
     const string enemyCountTextReference = "EnemyCount";
 
-    VisualElement playerBar;
-    VisualElement enemyBar;
+    VisualElement playerFillBar;
+    VisualElement enemyBarHolder;
+    VisualElement enemyFillBar;
 
     Label playerHealthText;
     Label enemyHealthText;
@@ -59,8 +62,9 @@ public class HealthBars : UIComponent
     public override void SetElementsReferences()
     {
         base.SetElementsReferences();
-        playerBar = m_UIElement.Query<VisualElement>(name: playerBarReference);
-        enemyBar = m_UIElement.Query<VisualElement>(name: enemyBarReference);
+        playerFillBar = m_UIElement.Query<VisualElement>(name: playerFillBarReference);
+        enemyBarHolder = m_UIElement.Query<VisualElement>(name: enemyBarHolderReference);
+        enemyFillBar = m_UIElement.Query<VisualElement>(name: enemyFillBarReference);
 
         playerHealthText = m_UIElement.Query<Label>(name: playerHealthTextReference);
         enemyHealthText = m_UIElement.Query<Label>(name: enemyHealthTextReference);
@@ -74,13 +78,13 @@ public class HealthBars : UIComponent
 
     public void ChangePlayerHealth(float newHealth, float maxHealt, float attackIncome)
     {
-        playerBar.style.width = Length.Percent(newHealth * 100 / maxHealt);
+        playerFillBar.style.width = Length.Percent(newHealth * 100 / maxHealt);
         playerHealthText.text = Mathf.Clamp(newHealth, 0f, maxHealt).ToString("0") + "/" + maxHealt.ToString("0");
     }
 
     public void ChangeEnemyHealth(float newHealth, float maxHealt, float attackIncome)
     {
-        enemyBar.style.width = Length.Percent(newHealth * 100 / maxHealt);
+        enemyFillBar.style.width = Length.Percent(newHealth * 100 / maxHealt);
         enemyHealthText.text = Mathf.Clamp(newHealth, 0f, maxHealt).ToString("0") + "/" + maxHealt.ToString("0");
     }
 
@@ -97,16 +101,34 @@ public class HealthBars : UIComponent
 
     public void ShowEnemyBar()
     {
-        enemyBar.style.display = DisplayStyle.Flex;
+        enemyBarHolder.style.visibility = Visibility.Visible;
     }
 
     public void HideEnemyBar()
     {
-        enemyBar.style.display = DisplayStyle.None;
+        enemyBarHolder.style.visibility = Visibility.Hidden;
     }
 
     public void ChangeEnemyCount(int currentEnemy,  int enemyCount)
     {
         enemyCountText.text = currentEnemy.ToString("0") + "/" + enemyCount.ToString("0");
+        if(currentEnemy == enemyCount)
+        {
+            BossModeOn();
+        }
+        else
+        {
+            BossModeOff();
+        }
+    }
+
+    private void BossModeOn()
+    {
+        enemyFillBar.AddToClassList(bossFillBarUSSClassName);
+    }
+
+    private void BossModeOff()
+    {
+        enemyFillBar.RemoveFromClassList(bossFillBarUSSClassName);
     }
 }

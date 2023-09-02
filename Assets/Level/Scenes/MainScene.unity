@@ -10082,7 +10082,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mainMenuScene: {fileID: 1853280830}
-  alpineWoodsScene: {fileID: 1975813328}
+  alpineWoodsScene: {fileID: 1975813330}
+  currentLevelToLoad: {fileID: 0}
 --- !u!114 &1495549492
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13077,6 +13078,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1975813329}
+  - component: {fileID: 1975813330}
   m_Layer: 0
   m_Name: Alpine Wood Scene
   m_TagString: Untagged
@@ -13104,6 +13106,18 @@ Transform:
   - {fileID: 2082450242}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1975813330
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1975813328}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b8ec8cdcf411d74db9d50e2f15f396b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1976980655
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -14044,6 +14058,12 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 466332603018625416, guid: ead8e5754861aa446941f858e275b3a8,
+        type: 3}
+      propertyPath: testLevel
+      value: 
+      objectReference: {fileID: 11400000, guid: 6c97fe8f1763322488d9a249fa288798,
+        type: 2}
     - target: {fileID: 466332603169764320, guid: ead8e5754861aa446941f858e275b3a8,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -14112,6 +14132,17 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2907522589735323686, guid: 278fb225d7c913449abe6a0eeb1a7055,
+        type: 3}
+      propertyPath: gameEvent
+      value: 
+      objectReference: {fileID: 11400000, guid: f0d1579af981dff4693918f4c212b65a,
+        type: 2}
+    - target: {fileID: 2907522589735323686, guid: 278fb225d7c913449abe6a0eeb1a7055,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2907522590658206424, guid: 278fb225d7c913449abe6a0eeb1a7055,
         type: 3}
       propertyPath: m_Name

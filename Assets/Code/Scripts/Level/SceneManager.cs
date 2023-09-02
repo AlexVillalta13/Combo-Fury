@@ -5,7 +5,19 @@ using UnityEngine;
 public class SceneManager : MonoBehaviour
 {
     [SerializeField] GameObject mainMenuScene;
-    [SerializeField] GameObject alpineWoodsScene;
+    [SerializeField] SceneElementsHolder alpineWoodsScene;
+
+    [SerializeField] LevelSO currentLevelToLoad;
+
+    private void OnEnable()
+    {
+        LevelSelectorUI.loadLevel += LoadLevel;
+    }
+
+    private void OnDisable()
+    {
+        LevelSelectorUI.loadLevel -= LoadLevel;
+    }
 
     private void Start()
     {
@@ -15,7 +27,7 @@ public class SceneManager : MonoBehaviour
     public void DisableAllScenes()
     {
         mainMenuScene.SetActive(false);
-        alpineWoodsScene.SetActive(false);
+        alpineWoodsScene.gameObject.SetActive(false);
     }
 
     public void EnableMainMenu()
@@ -27,6 +39,12 @@ public class SceneManager : MonoBehaviour
     public void EnableAlpineWoodsScene()
     {
         DisableAllScenes();
-        alpineWoodsScene.SetActive(true);
+        alpineWoodsScene.gameObject.SetActive(true);
+        alpineWoodsScene.SetupLevel(currentLevelToLoad.Enemies.Count);
+    }
+
+    private void LoadLevel(LevelSO level)
+    {
+        currentLevelToLoad = level;
     }
 }

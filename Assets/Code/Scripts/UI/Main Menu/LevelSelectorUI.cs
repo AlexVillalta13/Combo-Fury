@@ -30,6 +30,10 @@ public class LevelSelectorUI : UIComponent
         {
             loadLevel?.Invoke(testLevel);
         }
+        else
+        {
+            loadLevel?.Invoke(m_Levels[0]);
+        }
     }
 
     private void SetTouchCallbacks()

@@ -6,7 +6,15 @@ public class EnemySpawn : MonoBehaviour
 {
     [SerializeField] List<GameObject> enemyPrefabsList = new List<GameObject>();
 
+    int enemyPositionInList;
+    bool enemyIsBoss = false;
     GameObject instantiateEnemy;
+
+    public void Setup(int enemyPositionInList, bool enemyIsBoss)
+    {
+        this.enemyPositionInList = enemyPositionInList;
+        this.enemyIsBoss = enemyIsBoss;
+    }
 
     public void DeleteEnemyGameObject()
     {
@@ -22,11 +30,20 @@ public class EnemySpawn : MonoBehaviour
     {
         if(state == true)
         {
-            instantiateEnemy = Instantiate(SelectRandomEnemy(), transform.position, transform.rotation);
+            InstantiateEnemyPrefab();
         }
         else if(state == false)
         {
             instantiateEnemy.SetActive(state);
+        }
+    }
+
+    private void InstantiateEnemyPrefab()
+    {
+        instantiateEnemy = Instantiate(SelectRandomEnemy(), transform.position, transform.rotation);
+        if (enemyIsBoss == true)
+        {
+            instantiateEnemy.transform.localScale = 2f * Vector3.one;
         }
     }
 }
