@@ -53,5 +53,5 @@
 }
 
 .bossFillBar {
-    -unity-background-image-tint-color: rgb(83, 0, 255);
+    -unity-background-image-tint-color: rgb(115, 67, 214);
 }

@@ -30,7 +30,7 @@
             <ui:VisualElement name="EnemyHealthBarHolder" class="healthBarHolder" style="scale: -1 1; flex-direction: row-reverse;">
                 <ui:VisualElement name="EnemyBarBackground" style="width: 100%; height: 100%; flex-direction: row-reverse; background-image: url(&apos;project://database/Assets/Art/Sprites/Slider13_Frame.png?fileID=21300000&amp;guid=276d3dfe5b01135458b223c29060718e&amp;type=3#Slider13_Frame&apos;); align-items: stretch;">
                     <ui:VisualElement name="VisualElement" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0); scale: -1 1; flex-direction: row-reverse;">
-                        <ui:VisualElement name="EnemyFillBar" style="width: 80%; flex-direction: column; align-items: flex-end; justify-content: center; background-image: url(&apos;project://database/Assets/Art/Sprites/Slider14_Fill.png?fileID=21300000&amp;guid=77986562ec7ab7f4a951cbd2522dbfd3&amp;type=3#Slider14_Fill&apos;); -unity-background-scale-mode: stretch-to-fill;" />
+                        <ui:VisualElement name="EnemyFillBar" class="bossFillBar" style="width: 80%; flex-direction: column; align-items: flex-end; justify-content: center; background-image: url(&apos;project://database/Assets/Art/Sprites/Slider14_Fill.png?fileID=21300000&amp;guid=77986562ec7ab7f4a951cbd2522dbfd3&amp;type=3#Slider14_Fill&apos;); -unity-background-scale-mode: stretch-to-fill;" />
                         <ui:Label text="999/999" display-tooltip-when-elided="true" name="EnemyHealthText" class="healthTextPosition healthTextSize regularTextOutlineShadow" />
                     </ui:VisualElement>
                 </ui:VisualElement>

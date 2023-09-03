@@ -14058,12 +14058,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 466332603018625416, guid: ead8e5754861aa446941f858e275b3a8,
-        type: 3}
-      propertyPath: testLevel
-      value: 
-      objectReference: {fileID: 11400000, guid: 6c97fe8f1763322488d9a249fa288798,
-        type: 2}
     - target: {fileID: 466332603169764320, guid: ead8e5754861aa446941f858e275b3a8,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -14132,17 +14126,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 2907522589735323686, guid: 278fb225d7c913449abe6a0eeb1a7055,
-        type: 3}
-      propertyPath: gameEvent
-      value: 
-      objectReference: {fileID: 11400000, guid: f0d1579af981dff4693918f4c212b65a,
-        type: 2}
-    - target: {fileID: 2907522589735323686, guid: 278fb225d7c913449abe6a0eeb1a7055,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 2907522590658206424, guid: 278fb225d7c913449abe6a0eeb1a7055,
         type: 3}
       propertyPath: m_Name
