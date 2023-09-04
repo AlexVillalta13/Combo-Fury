@@ -5,13 +5,8 @@ namespace CSVtoSO.Tests {
     using UnityEngine;
 
     [System.Serializable]
-    //[TableIdentifier("Levels design")]
-
     [TableIdentifier("Single Values Table")]
     public class TestSingleValuesTableDatabase : TableObject {
-        [TableColumnMapper("Max Health")] public int maxHealth;
-
-
         [TableColumnMapper("testString")] public string testString;
 
         [TableColumnMapper("testChar")] public char testChar;

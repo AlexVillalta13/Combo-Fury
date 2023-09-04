@@ -1,0 +1,155 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 69e3484f5d582114296d337847adb262, type: 3}
+  m_Name: Test Database
+  m_EditorClassIdentifier: 
+  tables:
+  - {fileID: 4900000, guid: 967283f91a6ebec4e9aaf32297da0522, type: 3}
+  - {fileID: 4900000, guid: 135b6808efb220b43b3a4fbe50d77de3, type: 3}
+  singleValuesDatabase:
+  - testString: this
+    testChar: 73
+    testSbyte: -128
+    testByte: 0
+    testShort: -32768
+    testUshort: 0
+    testInt: -2147483648
+    testUint: 0
+    testLong: -1223094988274
+    testUlong: 0
+    testFloat: -0.12981
+    testDouble: -0.0010010212
+    testBool: 1
+    testEnum: 0
+    testColor: {r: 0.1764706, g: 0.1764706, b: 0.1764706, a: 1}
+  - testString: asset
+    testChar: 97
+    testSbyte: -2
+    testByte: 2
+    testShort: -3900
+    testUshort: 657
+    testInt: 0
+    testUint: 4294967295
+    testLong: 345
+    testUlong: 12283921221876
+    testFloat: 0
+    testDouble: 123213.0088
+    testBool: 0
+    testEnum: 1
+    testColor: {r: 0.23921569, g: 0.23921569, b: 0.23921569, a: 1}
+  - testString: is
+    testChar: 109
+    testSbyte: 1
+    testByte: 3
+    testShort: 0
+    testUshort: 65535
+    testInt: 2147483647
+    testUint: 0
+    testLong: 234453
+    testUlong: 922283921223877
+    testFloat: 12565.264
+    testDouble: 0
+    testBool: 0
+    testEnum: 2
+    testColor: {r: 0.21960784, g: 0.21960784, b: 0.21960784, a: 1}
+  - testString: useful
+    testChar: 97
+    testSbyte: 2
+    testByte: 255
+    testShort: 1
+    testUshort: 0
+    testInt: 0
+    testUint: 0
+    testLong: 12283921221876
+    testUlong: 0
+    testFloat: 0
+    testDouble: 0
+    testBool: 0
+    testEnum: 0
+    testColor: {r: 0, g: 0, b: 0, a: 0}
+  - testString: keep
+    testChar: 68
+    testSbyte: 127
+    testByte: 0
+    testShort: 32767
+    testUshort: 0
+    testInt: 0
+    testUint: 0
+    testLong: 0
+    testUlong: 0
+    testFloat: 0
+    testDouble: 0
+    testBool: 0
+    testEnum: 0
+    testColor: {r: 0, g: 0, b: 0, a: 0}
+  - testString: on
+    testChar: 101
+    testSbyte: 0
+    testByte: 0
+    testShort: 0
+    testUshort: 0
+    testInt: 0
+    testUint: 0
+    testLong: 0
+    testUlong: 0
+    testFloat: 0
+    testDouble: 0
+    testBool: 0
+    testEnum: 0
+    testColor: {r: 0, g: 0, b: 0, a: 0}
+  - testString: vibin'
+    testChar: 118
+    testSbyte: 0
+    testByte: 0
+    testShort: 0
+    testUshort: 0
+    testInt: 0
+    testUint: 0
+    testLong: 0
+    testUlong: 0
+    testFloat: 0
+    testDouble: 0
+    testBool: 0
+    testEnum: 0
+    testColor: {r: 0, g: 0, b: 0, a: 0}
+  arrayValuesDatabase:
+  - testStringArray:
+    - rubber
+    - duck
+    - debugging
+    testCharArray: 720064006400
+    testSbyteArray: ff0001
+    testByteArray: 000102
+    testShortArray: 00800000ff7f
+    testUshortArray: 000001000200ffff
+    testIntArray: 00000080ffffff7f
+    testUintArray: 000000000800000010000000ffffffff
+    testLongArray: 0e92db39e3fefffff4c8c2122c0b0000
+    testUlongArray: 00040000000000000008000000000000c5b081f5cf460300
+    testFloatArray:
+    - -0.12981
+    - 0
+    - -100.345
+    - 323.89
+    testDoubleArray:
+    - -0.0010010212
+    - 123213.0088
+    testBoolArray: 01000001
+    testEnumArray: 00000000010000000000000001000000
+    testColorArray:
+    - {r: 0.1764706, g: 0.1764706, b: 0.1764706, a: 1}
+    - {r: 0.23921569, g: 0.23921569, b: 0.23921569, a: 1}
+    - {r: 0, g: 0, b: 0, a: 1}
+    testGameobjectsArray:
+    - {fileID: 864624120643266464, guid: 072f9c9de13e7ba469851b4b3f56f24a, type: 3}
+    - {fileID: 864624120643266464, guid: cb6edb66e8bbca245b9083497ca29c56, type: 3}
+    - {fileID: 864624120643266464, guid: 912bd168d8c663749aad785041be6de2, type: 3}

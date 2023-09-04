@@ -1,0 +1,11 @@
+Max Health,Attack,Extra health,Extra attack,Min Brick Spawn,Max Brick Spawn,Player Chance,Red Chance,Moving Brick,Shield Brick,Moving Fast Brick,Trap Brick
+20,6,,,1,4,70,100,,,,
+26,7,6,1,1,4,70,100,,,,
+32,8,6,1,1,4,65,100,,,,
+38,9,6,1,1,4,65,100,,,,
+47,10,9,1,1,3,65,80,,,,20
+56,11,9,1,1,3,65,80,,,,20
+65,12,9,1,1,3,60,70,,,,30
+74,13,9,1,1,3,60,70,,,,30
+83,14,9,1,1,3,60,70,,,,30
+188,15,105,1,1,2,50,60,,,,40

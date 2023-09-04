@@ -16,6 +16,7 @@ namespace CSVtoSO.Utilities {
         /// </summary>
         /// <param name="csvTable">The actual .csv file.</param>
         /// <returns>A matrix containing the representation of the .csv file.</returns>
+//#if UNITY_EDITOR
         public static IList<IList<object>> GetTableData (UnityEngine.Object csvTable) {
             string tablePath = AssetDatabase.GetAssetPath(csvTable);
 
@@ -40,5 +41,6 @@ namespace CSVtoSO.Utilities {
                 return null;
             }
         }
+//#endif
     }
 }
