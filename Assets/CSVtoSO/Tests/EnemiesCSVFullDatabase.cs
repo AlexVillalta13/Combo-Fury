@@ -6,10 +6,37 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "CSVReader/New Enemies Database", fileName = "New Enemies Database")]
 public class EnemiesCSVFullDatabase : FullDatabaseBase
 {
-    public CSVToEnemiesDatabase[] enemies;
+    public CSVToEnemiesDatabase[] enemiesData;
+    [SerializeField] LevelSO levelToExportData;
 
-    public CSVToEnemiesDatabase[] GetEnemiesDatabase()
+    public override void ExportData()
     {
-        return enemies;
+        if (levelToExportData == null)
+        {
+            Debug.LogError("levelToExportData is null");
+            return;
+        }
+
+        List<Enemy> enemiesList = new List<Enemy>();
+
+        foreach(CSVToEnemiesDatabase enemyData in enemiesData)
+        {
+            Enemy enemy = new Enemy();
+
+            enemy.SetupEnemy(
+                enemyData.enemyHealth,
+                enemyData.enemyAttack,
+                enemyData.enemyMinTimeToSpawnBrick,
+                enemyData.enemyMaxTimeToSpawnBrick,
+                enemyData.playerBrickSpawnChance,
+                enemyData.enemyRedBrickSpawnChance,
+                enemyData.enemyMovingBrickSpawnChance,
+                enemyData.enemyShieldBrickSpawnChance,
+                enemyData.enemyTrapBrickSpawnChance);
+
+            enemiesList.Add(enemy);
+        }
+
+        levelToExportData.Enemies = enemiesList;
     }
 }

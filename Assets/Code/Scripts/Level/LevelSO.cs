@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UIElements;
+using Sirenix.OdinInspector;
 
 [CreateAssetMenu(fileName = "New Level")]
 public class LevelSO : ScriptableObject
@@ -17,7 +18,7 @@ public class LevelSO : ScriptableObject
 
     [SerializeField] List<Enemy> enemies = new List<Enemy>();
 
-    public List<Enemy> Enemies { get { return enemies; } }
+    public List<Enemy> Enemies { get { return enemies; } set { enemies = value; } }
 
     private void OnEnable()
     {
@@ -92,11 +93,48 @@ public class Enemy
         Debug.LogError("LevelSo: No random brick selected");
         return BrickTypeEnum.Redbrick;
     }
+
+    public void SetupEnemy(float maxHealth, float attack, float minTimeToSpawnBrick, float maxTimeToSpawnBrick, float playerChance, float redBrickChance, float movingBrickChance, float shieldBrickChance, float trapChance)
+    {
+        this.health = maxHealth;
+        this.attack = attack;
+        this.minTimeToSpawnBrick = minTimeToSpawnBrick;
+        this.maxTimeToSpawnBrick = maxTimeToSpawnBrick;
+        this.chanceOfPlayerBrick = playerChance;
+        this.chanceOfEnemyBrick = 100f - chanceOfPlayerBrick;
+
+        enemyBricks.Clear();
+
+        CreateNewBrickProbability(BrickTypeEnum.Redbrick, redBrickChance);
+        if (movingBrickChance > 0f)
+        {
+            CreateNewBrickProbability(BrickTypeEnum.SpeedBrick, movingBrickChance);
+        }
+        if(shieldBrickChance > 0f)
+        {
+            CreateNewBrickProbability(BrickTypeEnum.ShieldBrick, shieldBrickChance);
+        }
+        if(trapChance > 0f)
+        {
+            CreateNewBrickProbability(BrickTypeEnum.BlackBrick, trapChance);
+        }
+    }
+
+    private void CreateNewBrickProbability(BrickTypeEnum brickTypeEnum, float probabilityToSpawn)
+    {
+        BrickProbability newgBrickProbability = new BrickProbability(brickTypeEnum, probabilityToSpawn);
+        enemyBricks.Add(newgBrickProbability);
+    }
 }
 
 [System.Serializable]
 public class BrickProbability
 {
+    public BrickProbability(BrickTypeEnum brickTypeEnum, float probability)
+    {
+        this.brickType = brickTypeEnum;
+        this.probability = probability;
+    }
     [SerializeField] BrickTypeEnum brickType;
     public BrickTypeEnum BrickType { get { return brickType; }}
     [SerializeField] float probability;
