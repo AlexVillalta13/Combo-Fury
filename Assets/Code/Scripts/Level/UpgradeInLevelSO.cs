@@ -40,6 +40,9 @@ public class UpgradeInLevelSO : ScriptableObject
         [SerializeField] bool canRepeat;
         public bool CanRepeat { get { return canRepeat; } }
 
+        [SerializeField] int maxLevel;
+        public int MaxLevel { get { return maxLevel; } }
+
         [SerializeField] int levelUnlock;
         public int LevelUnlock { get { return levelUnlock; } }
 
