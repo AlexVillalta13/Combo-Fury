@@ -225,6 +225,7 @@ GameObject:
   - component: {fileID: 2907522589711961975}
   - component: {fileID: 2907522589711961960}
   - component: {fileID: 2907522589711961961}
+  - component: {fileID: 2813934747265889914}
   m_Layer: 0
   m_Name: Choose Upgrade UI
   m_TagString: Untagged
@@ -264,10 +265,12 @@ MonoBehaviour:
   elementStartedEvent: {fileID: 0}
   elementEndedEvent: {fileID: 0}
   upgradeListSO: {fileID: 11400000, guid: 2fe6ed74f613b034f98e9f0a6f0a9641, type: 2}
-  upgradesPickupSO: {fileID: 11400000, guid: 5385b99843f7c7b4ab8374b2098dedcc, type: 2}
+  upgradesPlayerHasSO: {fileID: 11400000, guid: 5385b99843f7c7b4ab8374b2098dedcc,
+    type: 2}
   continueWalkingEvent: {fileID: 11400000, guid: 835bcbb138a7e98488158d634f3c6384,
     type: 2}
   upgradeChoosed: {fileID: 11400000, guid: 89524a2e7a8661445933c8f9b73b2696, type: 2}
+  upgradesThatCanBeSelected: []
 --- !u!114 &2907522589711961961
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -311,6 +314,34 @@ MonoBehaviour:
       - m_Target: {fileID: 2907522589711961960}
         m_TargetAssemblyTypeName: ChooseUpgradeUI, Assembly-CSharp
         m_MethodName: ScaleUpUI
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &2813934747265889914
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2907522589711961974}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb953a8383db9fc45943e75de88733bb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameEvent: {fileID: 11400000, guid: 753a237a3ae881e4eba066f7c4814681, type: 2}
+  unityEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2907522589711961960}
+        m_TargetAssemblyTypeName: ChooseUpgradeUI, Assembly-CSharp
+        m_MethodName: ResetUpgradesCanChooseList
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

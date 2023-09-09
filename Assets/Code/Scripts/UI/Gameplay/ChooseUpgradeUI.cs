@@ -7,13 +7,15 @@ public class ChooseUpgradeUI : UIComponent
 {
     [Header("Upgrades Lists SO")]
     [SerializeField] UpgradeInLevelSO upgradeListSO;
-    [SerializeField] UpgradeInLevelSO upgradesPickupSO;
+    [SerializeField] UpgradeInLevelSO upgradesPlayerHasSO;
     [Header("Events")]
     [SerializeField] GameEvent continueWalkingEvent;
     [SerializeField] GameEvent upgradeChoosed;
 
     VisualElement holderToScale;
     List<VisualElement> UpgradeContainerList = new List<VisualElement>();
+
+    [SerializeField] List<UpgradeInLevelSO.Upgrade> upgradesThatCanBeSelected = new List<UpgradeInLevelSO.Upgrade>();
     List<UpgradeInLevelSO.Upgrade> upgradesRandomlySelected = new List<UpgradeInLevelSO.Upgrade>();
 
     const string upgradeContainerClass = "upgradeContainer";
@@ -30,6 +32,13 @@ public class ChooseUpgradeUI : UIComponent
         UpgradeContainerList = m_UIElement.Query<VisualElement>(className: upgradeContainerClass).ToList();
 
         holderToScale.RegisterCallback<TransitionEndEvent>(OnChangeScaleEndEvent);
+
+        upgradesThatCanBeSelected = new List<UpgradeInLevelSO.Upgrade>(upgradeListSO.UpgradeList);
+    }
+
+    public void ResetUpgradesCanChooseList()
+    {
+        upgradesThatCanBeSelected = new List<UpgradeInLevelSO.Upgrade>(upgradeListSO.UpgradeList);
     }
 
     public void UpgradeSelected()
@@ -45,20 +54,8 @@ public class ChooseUpgradeUI : UIComponent
 
         while(upgradesRandomlySelected.Count < 3)
         {
-            int i = Random.Range(0, upgradeListSO.UpgradeList.Count);
-            UpgradeInLevelSO.Upgrade upgrade = upgradeListSO.UpgradeList[i];
-
-            if (upgrade.CanRepeat == false)
-            {
-                // Check unlocked upgrades to see if can appear again
-                foreach (UpgradeInLevelSO.Upgrade upgradeToCheck in upgradesPickupSO.UpgradeList)
-                {
-                    if (upgradeToCheck.UpgradeName == upgrade.UpgradeName)
-                    {
-                        goto WhileLoop;
-                    }
-                }
-            }
+            int i = Random.Range(0, upgradesThatCanBeSelected.Count);
+            UpgradeInLevelSO.Upgrade upgrade = upgradesThatCanBeSelected[i];
 
             if (upgradesRandomlySelected.Count == 0)
             {
@@ -109,42 +106,71 @@ public class ChooseUpgradeUI : UIComponent
 
     private void RegisterAllEvents()
     {
-        UpgradeContainerList[0].RegisterCallback<ClickEvent>(RegisterFirstEvent);
-        UpgradeContainerList[1].RegisterCallback<ClickEvent>(RegisterSecondEvent);
-        UpgradeContainerList[2].RegisterCallback<ClickEvent>(RegisterThirdEvent);
+        UpgradeContainerList[0].RegisterCallback<ClickEvent>(OnFirstUpgradeSelectes);
+        UpgradeContainerList[1].RegisterCallback<ClickEvent>(OnSecondUpgradeSelected);
+        UpgradeContainerList[2].RegisterCallback<ClickEvent>(OnThirdUpgradeSelected);
     }
 
     private void UnregisterAllEvents()
     {
-        UpgradeContainerList[0].UnregisterCallback<ClickEvent>(RegisterFirstEvent);
-        UpgradeContainerList[1].UnregisterCallback<ClickEvent>(RegisterSecondEvent);
-        UpgradeContainerList[2].UnregisterCallback<ClickEvent>(RegisterThirdEvent);
+        UpgradeContainerList[0].UnregisterCallback<ClickEvent>(OnFirstUpgradeSelectes);
+        UpgradeContainerList[1].UnregisterCallback<ClickEvent>(OnSecondUpgradeSelected);
+        UpgradeContainerList[2].UnregisterCallback<ClickEvent>(OnThirdUpgradeSelected);
     }
 
-    private void RegisterFirstEvent(ClickEvent evt)
+    private void OnFirstUpgradeSelectes(ClickEvent evt)
     {
         upgradesRandomlySelected[0].UpgradeEvent.Raise();
-        upgradesPickupSO.UpgradeList.Add(upgradesRandomlySelected[0]);
+        upgradesPlayerHasSO.UpgradeList.Add(upgradesRandomlySelected[0]);
         UpgradeSelected();
+        RemoveUpgradeSelectedFromList(upgradesRandomlySelected[0]);
         UnregisterAllEvents();
     }
 
-    private void RegisterSecondEvent(ClickEvent evt)
+    private void OnSecondUpgradeSelected(ClickEvent evt)
     {
         upgradesRandomlySelected[1].UpgradeEvent.Raise();
-        upgradesPickupSO.UpgradeList.Add(upgradesRandomlySelected[1]);
+        upgradesPlayerHasSO.UpgradeList.Add(upgradesRandomlySelected[1]);
         UpgradeSelected();
+        RemoveUpgradeSelectedFromList(upgradesRandomlySelected[1]);
         UnregisterAllEvents();
     }
 
-    private void RegisterThirdEvent(ClickEvent evt)
+    private void OnThirdUpgradeSelected(ClickEvent evt)
     {
         upgradesRandomlySelected[2].UpgradeEvent.Raise();
-        upgradesPickupSO.UpgradeList.Add(upgradesRandomlySelected[2]);
+        upgradesPlayerHasSO.UpgradeList.Add(upgradesRandomlySelected[2]);
         UpgradeSelected();
+        RemoveUpgradeSelectedFromList(upgradesRandomlySelected[2]);
         UnregisterAllEvents();
     }
 
+    private void RemoveUpgradeSelectedFromList(UpgradeInLevelSO.Upgrade upgrade)
+    {
+        if(upgrade.MaxLevel > 0)
+        {
+            int currentUpgradeLevel = 0;
+            foreach(UpgradeInLevelSO.Upgrade upgradeToCheck in upgradesPlayerHasSO.UpgradeList)
+            {
+                if(upgradeToCheck.UpgradeId == upgrade.UpgradeId)
+                {
+                    currentUpgradeLevel++;
+                }
+            }
+
+            if(upgrade.MaxLevel <= currentUpgradeLevel) 
+            {
+                foreach(UpgradeInLevelSO.Upgrade upgradeToCheck in upgradesThatCanBeSelected)
+                {
+                    if (upgradeToCheck.UpgradeId == upgrade.UpgradeId)
+                    {
+                        upgradesThatCanBeSelected.Remove(upgradeToCheck);
+                        return;
+                    }
+                }
+            }
+        }
+    }
 
 
     public override void OnScaledUp()
