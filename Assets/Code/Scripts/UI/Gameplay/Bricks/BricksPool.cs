@@ -6,6 +6,16 @@ using UnityEngine.Pool;
 
 public class BricksPool : MonoBehaviour
 {
+    private ObjectPool<Brick> brickPool;
+    [SerializeField] Brick brickPrefab;
+    public ObjectPool<Brick> BrickPool
+    {
+        get
+        {
+            return brickPool;
+        }
+    }
+
     private ObjectPool<Brick> redBrickPool;
     [SerializeField] Brick redBrickPrefab;
     public ObjectPool<Brick> RedBrickPool
@@ -67,6 +77,12 @@ public class BricksPool : MonoBehaviour
     }
     private void Awake()
     {
+        if (brickPool == null)
+        {
+            brickPool = new ObjectPool<Brick>(CreateBrickItem, OnTakeItemFromPool, OnReturnObjectToPool, defaultCapacity: 10);
+        }
+
+
         if (redBrickPool == null)
         {
             redBrickPool = new ObjectPool<Brick>(CreateRedBrickItem, OnTakeItemFromPool, OnReturnObjectToPool, defaultCapacity: 10);
@@ -91,6 +107,13 @@ public class BricksPool : MonoBehaviour
         {
             shieldBrickPool = new ObjectPool<Brick>(CreateShieldBrickItem, OnTakeItemFromPool, OnReturnObjectToPool, defaultCapacity: 10);
         }
+    }
+
+    private Brick CreateBrickItem()
+    {
+        Brick brickObject = Instantiate(brickPrefab);
+        brickObject.SetPool(this);
+        return brickObject;
     }
 
     private Brick CreateRedBrickItem()

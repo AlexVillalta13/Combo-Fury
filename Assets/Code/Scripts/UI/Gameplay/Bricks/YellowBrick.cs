@@ -8,8 +8,6 @@ public class YellowBrick : Brick
     {
         brickHolder = BrickHolder.PlayerBrick;
         brickType = BrickTypeEnum.YellowBrick;
-
-        //timeToAutoDelete = 15f;
     }
 
     public override void EffectWithTouch()

@@ -3357,7 +3357,6 @@ MonoBehaviour:
   fireDamagePercentage: 10
   timeToDamageFire: 1
   timeToTurnOffFire: 10
-  comboToFire: 10
   hyperAttackMultiplier: 3
   comboToHyperAttack: 20
   revengeDamageMultiplier: 2
@@ -3456,7 +3455,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 460723266}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: eb953a8383db9fc45943e75de88733bb, type: 3}
   m_Name: 

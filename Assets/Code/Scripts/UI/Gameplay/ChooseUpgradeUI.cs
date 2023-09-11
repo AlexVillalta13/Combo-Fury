@@ -149,16 +149,7 @@ public class ChooseUpgradeUI : UIComponent
     {
         if(upgrade.MaxLevel > 0)
         {
-            int currentUpgradeLevel = 0;
-            foreach(UpgradeInLevelSO.Upgrade upgradeToCheck in upgradesPlayerHasSO.UpgradeList)
-            {
-                if(upgradeToCheck.UpgradeId == upgrade.UpgradeId)
-                {
-                    currentUpgradeLevel++;
-                }
-            }
-
-            if(upgrade.MaxLevel <= currentUpgradeLevel) 
+            if(upgrade.MaxLevel <= upgradesPlayerHasSO.GetCurrentUpgradeLevel(upgrade)) 
             {
                 foreach(UpgradeInLevelSO.Upgrade upgradeToCheck in upgradesThatCanBeSelected)
                 {

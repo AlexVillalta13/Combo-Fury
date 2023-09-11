@@ -56,11 +56,9 @@ public class CombatController : MonoBehaviour
     [SerializeField] float timeToDamageFire = 1f;
     float timerFireDamage = 0f;
     [SerializeField] float timeToTurnOffFire = 10f;
-    [SerializeField] float comboToFire = 10f;
     float timerToTurnOffFire = 0f;
     int fireLevel = 0;
     bool enemyInFire = false;
-    const string fireId = "Fire";
 
     bool shieldActivated = false;
     const string shieldId = "Shield";
@@ -112,6 +110,8 @@ public class CombatController : MonoBehaviour
 
         fireLevel = 0;
         enemyInFire = false;
+        timerFireDamage = 0f;
+        timerToTurnOffFire = 0f;
 
         revengeCharged = false;
         DeactivaRevengeVFX.Raise();
@@ -190,6 +190,7 @@ public class CombatController : MonoBehaviour
 
     private void TurnOffEnemyFire()
     {
+        timerFireDamage = 0f;
         enemyInFire = false;
         DeactivaFireVFX.Raise();
     }
@@ -219,14 +220,6 @@ public class CombatController : MonoBehaviour
     {
         currentComboNumber++;
         onChangeComboNumber(currentComboNumber);
-
-        if (fireLevel > 0)
-        {
-            if (currentComboNumber % comboToFire == 0)
-            {
-                SetEnemyInFire();
-            }
-        }
 
         if (revengeCharged)
         {
@@ -258,15 +251,15 @@ public class CombatController : MonoBehaviour
         {
             if (currentEnemy < totalEnemies)
             {
-                TurnOffEnemyFire();
                 playerWinFightEvent.Raise();
                 StartCoroutine(ShowUpgrades());
             }
             else if (currentEnemy == totalEnemies)
             {
-                TurnOffEnemyFire();
                 playerWinLevelEvent.Raise();
             }
+            TurnOffEnemyFire();
+
             currentEnemy += 1;
             onChangeCurrentEnemy(currentEnemy + 1, levelSO.Enemies.Count);
         }
