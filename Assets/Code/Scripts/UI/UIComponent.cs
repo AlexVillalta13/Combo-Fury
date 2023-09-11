@@ -14,9 +14,9 @@ public class UIComponent : MonoBehaviour
     protected VisualElement m_Root;
     protected VisualElement m_UIElement;
 
-    [Header("Activation Events")]
-    [SerializeField] GameEvent elementStartedEvent;
-    [SerializeField] GameEvent elementEndedEvent;
+    //[Header("Activation Events")]
+    //[SerializeField] GameEvent elementStartedEvent;
+    //[SerializeField] GameEvent elementEndedEvent;
 
     public virtual void OnValidate()
     {

@@ -10,7 +10,8 @@ public enum BrickTypeEnum
     Greenbrick,
     BlackBrick,
     SpeedBrick,
-    ShieldBrick
+    ShieldBrick,
+    FireBrick
 }
 
 public enum BrickHolder
@@ -126,6 +127,11 @@ public class Brick: MonoBehaviour
     {
         brickElement.UnregisterCallback<TransitionEndEvent>(OnChangeScaleEndEvent);
         brickRootElementAttached.RemoveFromHierarchy();
+
+        if (gameObject.activeSelf == true)
+        {
+            bricksPool.Pool.Release(this);
+        }
     }
 
     public IEnumerator AutoDestroyBrickElement()

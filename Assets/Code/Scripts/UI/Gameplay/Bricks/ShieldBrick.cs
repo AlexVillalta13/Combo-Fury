@@ -49,13 +49,4 @@ public class ShieldBrick : Brick
         base.OnScaledDown();
         RemoveBrickElement();
     }
-
-    public override void RemoveBrickElement()
-    {
-        base.RemoveBrickElement();
-        if (gameObject.activeSelf == true)
-        {
-            bricksPool.ShieldBrickPool.Release(this);
-        }
-    }
 }

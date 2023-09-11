@@ -28,13 +28,4 @@ public class RedBrick : Brick
         base.OnScaledDown();
         RemoveBrickElement();
     }
-
-    public override void RemoveBrickElement()
-    {
-        base.RemoveBrickElement();
-        if(gameObject.activeSelf == true )
-        {
-            bricksPool.RedBrickPool.Release(this);
-        }
-    }
 }

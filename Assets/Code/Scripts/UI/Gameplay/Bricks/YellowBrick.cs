@@ -29,12 +29,12 @@ public class YellowBrick : Brick
         RemoveBrickElement();
     }
 
-    public override void RemoveBrickElement()
-    {
-        base.RemoveBrickElement();
-        if (gameObject.activeSelf == true)
-        {
-            bricksPool.YellowBrickPool.Release(this);
-        }
-    }
+    //public override void RemoveBrickElement()
+    //{
+    //    base.RemoveBrickElement();
+    //    if (gameObject.activeSelf == true)
+    //    {
+    //        bricksPool.Pool.Release(this);
+    //    }
+    //}
 }

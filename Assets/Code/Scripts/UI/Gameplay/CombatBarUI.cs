@@ -93,41 +93,9 @@ public class CombatBarUI : UIComponent
     {
         BrickTypeEnum brickTypeToSpawn = levelSO.Enemies[currentEnemy].GetRandomBrick();
 
-        VisualElement visualElement = null;
-        foreach (BrickTypes brickTypeInSO in brickTypesSO.BrickTypes)
-        {
-            if (brickTypeInSO.BrickType == brickTypeToSpawn)
-            {
-                visualElement = brickTypeInSO.BrickUIAsset.Instantiate();
-                break;
-            }
-        }
-        if (visualElement == null)
-        {
-            Debug.LogError("CombatBarUI class: brick visual element to instantiate is null");
-        }
+        VisualElement visualElement = brickTypesSO.GetBrick(brickTypeToSpawn).BrickUIAsset.Instantiate();
 
-        switch (brickTypeToSpawn)
-        {
-            case BrickTypeEnum.Redbrick:
-                InitializeBrick(bricksPool.RedBrickPool.Get(), visualElement);
-                break;
-            case BrickTypeEnum.YellowBrick:
-                InitializeBrick(bricksPool.YellowBrickPool.Get(), visualElement);
-                break;
-            case BrickTypeEnum.Greenbrick:
-                InitializeBrick(bricksPool.GreenBrickPool.Get(), visualElement);
-                break;
-            case BrickTypeEnum.BlackBrick:
-                InitializeBrick(bricksPool.BlackBrickPool.Get(), visualElement);
-                break;
-            case BrickTypeEnum.SpeedBrick:
-                InitializeBrick(bricksPool.SpeedBrickPool.Get(), visualElement);
-                break;
-            case BrickTypeEnum.ShieldBrick:
-                InitializeBrick(bricksPool.ShieldBrickPool.Get(), visualElement);
-                break;
-        }
+        InitializeBrick(brickTypesSO.GetPool(brickTypeToSpawn).Pool.Get(), visualElement);
     }
 
     private void InitializeBrick(Brick brickScriptToSpawn, VisualElement brickUIElement)

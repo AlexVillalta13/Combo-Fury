@@ -16,6 +16,7 @@ MonoBehaviour:
   environment: 0
   initialPosition: 0
   brickTypes: {fileID: 11400000, guid: 1de6bd5f177d50540a03449e4f318d9e, type: 2}
+  minibossEncounterAt: 10
   enemies:
   - health: 20
     attack: 6

@@ -31,12 +31,12 @@ public class GreenBrick : Brick
         RemoveBrickElement();
     }
 
-    public override void RemoveBrickElement()
-    {
-        base.RemoveBrickElement();
-        if (gameObject.activeSelf == true)
-        {
-            bricksPool.GreenBrickPool.Release(this);
-        }
-    }
+    //public override void RemoveBrickElement()
+    //{
+    //    base.RemoveBrickElement();
+    //    if (gameObject.activeSelf == true)
+    //    {
+    //        bricksPool.GreenBrickPool.Release(this);
+    //    }
+    //}
 }

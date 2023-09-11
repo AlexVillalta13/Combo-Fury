@@ -2178,8 +2178,14 @@ GameObject:
   m_Component:
   - component: {fileID: 315702245}
   - component: {fileID: 315702244}
+  - component: {fileID: 315702250}
+  - component: {fileID: 315702249}
+  - component: {fileID: 315702248}
+  - component: {fileID: 315702247}
+  - component: {fileID: 315702246}
+  - component: {fileID: 315702251}
   m_Layer: 0
-  m_Name: Bricks  Pool Manager
+  m_Name: Bricks Pool Manager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2197,17 +2203,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 89ae215f6d753e84d9f3da1002456fea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  redBrickPrefab: {fileID: 6014339879886659586, guid: 76746847be76c254ba4e8c532d1e6743,
-    type: 3}
-  yellowBrickPrefab: {fileID: 3522736107176572543, guid: c3762e7093b5d6543b1f7d57499f43d8,
-    type: 3}
-  greenBrickPrefab: {fileID: 5453749469693241581, guid: ef01ec5398895c649a474073d657fd2f,
-    type: 3}
-  blackBrickPrefab: {fileID: 7784317271797167709, guid: e779b17aecf2031409210709b7384a5a,
-    type: 3}
-  speedBrickPrefab: {fileID: 3074133138731469370, guid: cf8562a0db945854190d316e2a007db0,
-    type: 3}
-  shieldBrickPrefab: {fileID: 4946787962681193312, guid: af5703731cf03b245bd9f8f7ed2033a6,
+  brickTypeEnum: 0
+  BrickTypesSO: {fileID: 11400000, guid: 1de6bd5f177d50540a03449e4f318d9e, type: 2}
+  brickPrefab: {fileID: 6014339879886659586, guid: 76746847be76c254ba4e8c532d1e6743,
     type: 3}
 --- !u!4 &315702245
 Transform:
@@ -2224,6 +2222,102 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &315702246
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 315702243}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 89ae215f6d753e84d9f3da1002456fea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  brickTypeEnum: 5
+  BrickTypesSO: {fileID: 11400000, guid: 1de6bd5f177d50540a03449e4f318d9e, type: 2}
+  brickPrefab: {fileID: 4946787962681193312, guid: af5703731cf03b245bd9f8f7ed2033a6,
+    type: 3}
+--- !u!114 &315702247
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 315702243}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 89ae215f6d753e84d9f3da1002456fea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  brickTypeEnum: 4
+  BrickTypesSO: {fileID: 11400000, guid: 1de6bd5f177d50540a03449e4f318d9e, type: 2}
+  brickPrefab: {fileID: 3074133138731469370, guid: cf8562a0db945854190d316e2a007db0,
+    type: 3}
+--- !u!114 &315702248
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 315702243}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 89ae215f6d753e84d9f3da1002456fea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  brickTypeEnum: 3
+  BrickTypesSO: {fileID: 11400000, guid: 1de6bd5f177d50540a03449e4f318d9e, type: 2}
+  brickPrefab: {fileID: 7784317271797167709, guid: e779b17aecf2031409210709b7384a5a,
+    type: 3}
+--- !u!114 &315702249
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 315702243}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 89ae215f6d753e84d9f3da1002456fea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  brickTypeEnum: 2
+  BrickTypesSO: {fileID: 11400000, guid: 1de6bd5f177d50540a03449e4f318d9e, type: 2}
+  brickPrefab: {fileID: 5453749469693241581, guid: ef01ec5398895c649a474073d657fd2f,
+    type: 3}
+--- !u!114 &315702250
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 315702243}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 89ae215f6d753e84d9f3da1002456fea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  brickTypeEnum: 1
+  BrickTypesSO: {fileID: 11400000, guid: 1de6bd5f177d50540a03449e4f318d9e, type: 2}
+  brickPrefab: {fileID: 3522736107176572543, guid: c3762e7093b5d6543b1f7d57499f43d8,
+    type: 3}
+--- !u!114 &315702251
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 315702243}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 89ae215f6d753e84d9f3da1002456fea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  brickTypeEnum: 6
+  BrickTypesSO: {fileID: 11400000, guid: 1de6bd5f177d50540a03449e4f318d9e, type: 2}
+  brickPrefab: {fileID: -8700858135101346365, guid: 23d46e04296c1174f945c12d427a8b91,
+    type: 3}
 --- !u!1001 &331453867
 PrefabInstance:
   m_ObjectHideFlags: 0

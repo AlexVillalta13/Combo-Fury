@@ -58,9 +58,5 @@ public class BlackBrick : Brick
     {
         tween.Kill();
         base.RemoveBrickElement();
-        if (gameObject.activeSelf == true)
-        {
-            bricksPool.BlackBrickPool.Release(this);
-        }
     }
 }
