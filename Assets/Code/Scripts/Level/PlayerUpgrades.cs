@@ -141,4 +141,9 @@ public class PlayerUpgrades : MonoBehaviour
     {
         hasRageUpgrade = true;
     }
+
+    public void FireAttackUpgradeChoosen()
+    {
+        inCombatPlayerStatsSO.LevelUpFireAttack();
+    }
 }

@@ -28,13 +28,4 @@ public class YellowBrick : Brick
         base.OnScaledDown();
         RemoveBrickElement();
     }
-
-    //public override void RemoveBrickElement()
-    //{
-    //    base.RemoveBrickElement();
-    //    if (gameObject.activeSelf == true)
-    //    {
-    //        bricksPool.Pool.Release(this);
-    //    }
-    //}
 }

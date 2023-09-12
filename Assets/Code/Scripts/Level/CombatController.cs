@@ -98,11 +98,7 @@ public class CombatController : MonoBehaviour
 
     public void StartGame()
     {
-        inCombatPlayerStatsSO.MaxHealth = permanentPlayerStatsSO.MaxHealth;
-        inCombatPlayerStatsSO.Attack = permanentPlayerStatsSO.Attack;
-        inCombatPlayerStatsSO.Defense = permanentPlayerStatsSO.Defense;
-        inCombatPlayerStatsSO.CriticalAttackChance = permanentPlayerStatsSO.CriticalAttackChance;
-        inCombatPlayerStatsSO.CurrentHealth = inCombatPlayerStatsSO.MaxHealth;
+        inCombatPlayerStatsSO.StartGame(permanentPlayerStatsSO);
 
         onPlayerChangeInCombatStat.Raise();
 

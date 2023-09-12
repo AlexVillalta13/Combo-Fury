@@ -58,15 +58,7 @@ public class Enemy
         if (rangeNumberToSpawn < randomNumber && (rangeNumberToSpawn + chanceOfPlayerBrick) > randomNumber)
         {
             //Player Brick
-            randomNumber = Random.Range(0f, 100f);
-            if (randomNumber < InCombatStatsSO.CriticalAttackChance)
-            {
-                return BrickTypeEnum.Greenbrick;
-            }
-            else
-            {
-                return BrickTypeEnum.YellowBrick;
-            }
+            return InCombatStatsSO.GetRandomPlayerBrick();
         }
         else
         {
@@ -138,5 +130,5 @@ public class BrickProbability
     [SerializeField] BrickTypeEnum brickType;
     public BrickTypeEnum BrickType { get { return brickType; }}
     [SerializeField] float probability;
-    public float Probability { get { return probability; }}
+    public float Probability { get { return probability; } set { probability = value; } }
 }
