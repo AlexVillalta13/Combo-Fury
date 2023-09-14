@@ -29,7 +29,7 @@ public class PlayerStatsSO : ScriptableObject
     [SerializeField] float fireDamageIncrement = 10f;
     float fireChance = 0f;
     [SerializeField] float fireChanceIncrement = 10f;
-    [SerializeField] List<BrickProbability> brickProbabilityList = new List<BrickProbability>();
+    [SerializeField] List<BrickProbability> brickProbabilityList;
 
     public BrickTypeEnum GetRandomPlayerBrick()
     {
@@ -58,9 +58,25 @@ public class PlayerStatsSO : ScriptableObject
 
         this.fireLevel = permanentStatsSO.fireLevel;
         this.firePercentageDamage = permanentStatsSO.firePercentageDamage;
+        this.fireDamageIncrement = permanentStatsSO.fireDamageIncrement;
         this.fireChance = permanentStatsSO.fireChance;
+        this.fireChanceIncrement = permanentStatsSO.fireChanceIncrement;
 
-        this.brickProbabilityList = permanentStatsSO.brickProbabilityList;
+        this.brickProbabilityList = Clone(permanentStatsSO.brickProbabilityList);
+        
+    }
+
+    private List<BrickProbability> Clone(List<BrickProbability> listToClone)
+    {
+        List<BrickProbability> probabilityList = new List<BrickProbability>();
+
+        foreach(BrickProbability brickProbabilityToClone in listToClone)
+        {
+            BrickProbability newBrickProbability = new BrickProbability(brickProbabilityToClone.BrickType, brickProbabilityToClone.Probability);
+            probabilityList.Add(newBrickProbability);
+        }
+
+        return probabilityList;
     }
 
     public void LevelUpFireAttack()

@@ -17,10 +17,12 @@ MonoBehaviour:
   attack: 10
   defense: 0
   criticalAttackChance: 20
+  fireDamageIncrement: 10
+  fireChanceIncrement: 20
   brickProbabilityList:
   - brickType: 6
     probability: 0
   - brickType: 2
-    probability: 20
+    probability: 30
   - brickType: 1
     probability: 100

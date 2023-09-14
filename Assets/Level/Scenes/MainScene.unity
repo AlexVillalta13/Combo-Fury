@@ -3549,18 +3549,18 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 460723266}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: eb953a8383db9fc45943e75de88733bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameEvent: {fileID: 11400000, guid: 998b0af01f090a2409960997971c2d30, type: 2}
+  gameEvent: {fileID: 11400000, guid: c43cd9c8c4e30f44797a251ed3d2ed72, type: 2}
   unityEvent:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 460723270}
         m_TargetAssemblyTypeName: CombatController, Assembly-CSharp
-        m_MethodName: FireUpgradeSelected
+        m_MethodName: SetEnemyInFire
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

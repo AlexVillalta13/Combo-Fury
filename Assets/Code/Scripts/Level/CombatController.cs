@@ -49,6 +49,7 @@ public class CombatController : MonoBehaviour
     private int currentEnemy = 0;
     private int totalEnemies = 0;
     int currentComboNumber = 0;
+    bool inCombat = false;
 
     [Title("Upgrades Stats", TitleAlignment = TitleAlignments.Centered)]
     [Title("Fire", HorizontalLine = false, TitleAlignment = TitleAlignments.Centered)]
@@ -57,7 +58,6 @@ public class CombatController : MonoBehaviour
     float timerFireDamage = 0f;
     [SerializeField] float timeToTurnOffFire = 10f;
     float timerToTurnOffFire = 0f;
-    int fireLevel = 0;
     bool enemyInFire = false;
 
     bool shieldActivated = false;
@@ -102,9 +102,10 @@ public class CombatController : MonoBehaviour
 
         onPlayerChangeInCombatStat.Raise();
 
+        inCombat = false;
+
         shieldActivated = false;
 
-        fireLevel = 0;
         enemyInFire = false;
         timerFireDamage = 0f;
         timerToTurnOffFire = 0f;
@@ -126,6 +127,7 @@ public class CombatController : MonoBehaviour
 
     private void SetupEnemy()
     {
+        inCombat = true;
         enemyMaxHealth = levelSO.Enemies[currentEnemy].Health;
         enemyCurrentHealth = enemyMaxHealth;
         SetEnemyAttack();
@@ -170,15 +172,18 @@ public class CombatController : MonoBehaviour
 
     public void SetEnemyInFire()
     {
-        enemyInFire = true;
-        timerToTurnOffFire = 0f;
-        ActivateFireVFX.Raise();
+        if(inCombat == true)
+        {
+            enemyInFire = true;
+            timerToTurnOffFire = 0f;
+            ActivateFireVFX.Raise();
+        }
     }
 
     private void FireDamage()
     {
         timerFireDamage = 0f;
-        float damage = inCombatPlayerStatsSO.Attack * fireDamagePercentage / 100 + fireLevel;
+        float damage = inCombatPlayerStatsSO.Attack * fireDamagePercentage / 100;
         enemyCurrentHealth -= damage;
         UpdateEnemyHealthUI(-damage);
         CheckWinConditions();
@@ -245,6 +250,9 @@ public class CombatController : MonoBehaviour
     {
         if (enemyCurrentHealth <= 0)
         {
+            TurnOffEnemyFire();
+            inCombat = false;
+
             if (currentEnemy < totalEnemies)
             {
                 playerWinFightEvent.Raise();
@@ -254,7 +262,6 @@ public class CombatController : MonoBehaviour
             {
                 playerWinLevelEvent.Raise();
             }
-            TurnOffEnemyFire();
 
             currentEnemy += 1;
             onChangeCurrentEnemy(currentEnemy + 1, levelSO.Enemies.Count);
@@ -336,11 +343,6 @@ public class CombatController : MonoBehaviour
     private void SetupLevel(LevelSO level)
     {
         levelSO = level;
-    }
-
-    public void FireUpgradeSelected()
-    {
-        fireLevel++;
     }
 
     // TEST FUNCTIONS

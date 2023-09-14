@@ -13,7 +13,16 @@ MonoBehaviour:
   m_Name: InCombatPlayerStatsSO
   m_EditorClassIdentifier: 
   maxHealth: 100
-  currentHealth: -8
-  attack: 14
+  currentHealth: 100
+  attack: 10
   defense: 0
   criticalAttackChance: 20
+  fireDamageIncrement: 10
+  fireChanceIncrement: 20
+  brickProbabilityList:
+  - brickType: 6
+    probability: 70
+  - brickType: 2
+    probability: 30
+  - brickType: 1
+    probability: 100
