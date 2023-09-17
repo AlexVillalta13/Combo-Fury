@@ -1,0 +1,7 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/Level/UI/Classes/CommonClasses.uss?fileID=7433441132597879392&amp;guid=0b7764f9735edf14583ce36e8b12d1e8&amp;type=3#CommonClasses" />
+    <ui:VisualElement style="height: 1142px;" />
+    <ui:Label tabindex="-1" text="New Text" parse-escape-sequences="true" display-tooltip-when-elided="true" class="regularText" style="font-size: 120px; align-self: center;" />
+    <ui:Label tabindex="-1" text="New Text" parse-escape-sequences="true" display-tooltip-when-elided="true" class="regularTextOutlineShadow" style="font-size: 120px;" />
+    <ui:Label tabindex="-1" text="New Text" parse-escape-sequences="true" display-tooltip-when-elided="true" class="regularTextOutlineShadow" style="font-size: 120px; -unity-text-outline-width: 3px;" />
+</ui:UXML>

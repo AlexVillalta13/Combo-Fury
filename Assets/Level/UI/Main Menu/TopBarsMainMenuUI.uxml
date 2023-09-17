@@ -1,4 +1,5 @@
 <ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/Level/UI/Classes/CommonClasses.uss?fileID=7433441132597879392&amp;guid=0b7764f9735edf14583ce36e8b12d1e8&amp;type=3#CommonClasses" />
     <ui:VisualElement name="TopBarsHolder" style="height: 100px; flex-direction: row; margin-top: 20px; margin-bottom: 20px; justify-content: center; margin-left: 10px; margin-right: 10px;">
         <ui:VisualElement name="PlayerLevelBar" style="margin-left: 15px; margin-right: 15px; flex-direction: row; width: 300px; overflow: visible;">
             <ui:VisualElement name="BarHolder" style="flex-grow: 1; position: absolute; align-self: center; width: 100%; overflow: hidden; flex-direction: row; background-image: url(&apos;project://database/Assets/Art/Sprites/BackgroundBarMainMenu.png?fileID=2800000&amp;guid=38e0bd651e11dca4398887d2670f1a30&amp;type=3#BackgroundBarMainMenu&apos;); -unity-background-scale-mode: scale-to-fit; height: 100%; justify-content: space-between; align-items: center; padding-left: 10px; padding-right: 10px; padding-top: 20px; padding-bottom: 20px;">
@@ -6,7 +7,7 @@
             </ui:VisualElement>
             <ui:VisualElement name="PlayerLevelIconHolder" style="align-self: auto; align-items: center; justify-content: center; width: 87px;">
                 <ui:VisualElement name="PlayerLevelIcon" style="background-image: url(&apos;project://database/Assets/Art/Sprites/Slider05_Icon.png?fileID=21300000&amp;guid=c257852501a015d47a9b019c11ab5042&amp;type=3#Slider05_Icon&apos;); -unity-background-scale-mode: scale-to-fit; position: absolute; width: 89px; height: 133%; left: -7px; flex-direction: row; justify-content: center; align-items: center;">
-                    <ui:Label tabindex="-1" text="99" parse-escape-sequences="true" display-tooltip-when-elided="true" name="PlayerLevelLabel" style="-unity-text-align: middle-center; -unity-font-definition: resource(&apos;Fonts &amp; Materials/LilitaOne-Regular SDF&apos;); color: rgb(255, 255, 255); -unity-text-outline-width: 10px; -unity-text-outline-color: rgb(0, 0, 0); font-size: 60px; width: 62px; height: 73px; text-shadow: 0 5px 0 rgb(0, 0, 0); top: -7px;" />
+                    <ui:Label tabindex="-1" text="99" parse-escape-sequences="true" display-tooltip-when-elided="true" name="PlayerLevelLabel" class="regularTextOutlineShadow" style="-unity-text-align: middle-center; font-size: 60px; width: 62px; height: 73px; top: -7px;" />
                 </ui:VisualElement>
             </ui:VisualElement>
         </ui:VisualElement>
@@ -17,19 +18,19 @@
             <ui:VisualElement name="EnergyIconHolder" style="width: 55px;">
                 <ui:VisualElement name="EnergyIcon" style="background-image: url(&apos;project://database/Assets/Art/Sprites/Icon_Energy_Green.png?fileID=21300000&amp;guid=2dd29da543f0af743bfb99288ccb1e2a&amp;type=3#Icon_Energy_Green&apos;); -unity-background-scale-mode: scale-to-fit; position: absolute; width: 106px; align-self: center; height: 100%; left: -20px;" />
             </ui:VisualElement>
-            <ui:Label tabindex="-1" text="60/30" parse-escape-sequences="true" display-tooltip-when-elided="true" name="CurrentEnergyLabel" style="-unity-text-align: middle-center; -unity-font-definition: resource(&apos;Fonts &amp; Materials/LilitaOne-Regular SDF&apos;); font-size: 45px; flex-grow: 1; align-self: center; -unity-text-outline-width: 10px; -unity-text-outline-color: rgb(0, 0, 0); text-shadow: 0 6px 0 rgb(0, 0, 0); color: rgb(255, 255, 255); align-items: flex-start;" />
+            <ui:Label tabindex="-1" text="60/30" parse-escape-sequences="true" display-tooltip-when-elided="true" name="CurrentEnergyLabel" class="regularTextOutlineShadow" style="-unity-text-align: middle-center; font-size: 45px; flex-grow: 1; align-self: center; align-items: flex-start;" />
         </ui:VisualElement>
         <ui:VisualElement name="GoldBar" style="flex-direction: row; margin-left: 15px; margin-right: 15px; width: 300px; background-image: url(&apos;project://database/Assets/Art/Sprites/BackgroundBarMainMenu.png?fileID=2800000&amp;guid=38e0bd651e11dca4398887d2670f1a30&amp;type=3#BackgroundBarMainMenu&apos;); -unity-background-scale-mode: scale-to-fit;">
             <ui:VisualElement name="GoldIconHolder" style="width: 55px;">
                 <ui:VisualElement name="GoldIcon" style="background-image: url(&apos;project://database/Assets/Art/Sprites/Icon_Gold.png?fileID=21300000&amp;guid=68819e3b5fa2ed84d9256473823fbe28&amp;type=3#Icon_Gold&apos;); -unity-background-scale-mode: scale-to-fit; position: absolute; width: 100px; align-self: stretch; height: 100%; left: -20px;" />
             </ui:VisualElement>
-            <ui:Label tabindex="-1" text="1000" parse-escape-sequences="true" display-tooltip-when-elided="true" name="CurrentGoldLabel" style="-unity-text-align: middle-center; -unity-font-definition: resource(&apos;Fonts &amp; Materials/LilitaOne-Regular SDF&apos;); font-size: 45px; flex-grow: 1; color: rgb(255, 255, 255); -unity-text-outline-width: 10px; -unity-text-outline-color: rgb(0, 0, 0); text-shadow: 0 6px 0 rgb(0, 0, 0);" />
+            <ui:Label tabindex="-1" text="1000" parse-escape-sequences="true" display-tooltip-when-elided="true" name="CurrentGoldLabel" class="regularTextOutlineShadow" style="-unity-text-align: middle-center; font-size: 45px; flex-grow: 1;" />
         </ui:VisualElement>
         <ui:VisualElement name="GemsBar" style="margin-left: 15px; margin-right: 15px; flex-direction: row; width: 300px; background-image: url(&apos;project://database/Assets/Art/Sprites/BackgroundBarMainMenu.png?fileID=2800000&amp;guid=38e0bd651e11dca4398887d2670f1a30&amp;type=3#BackgroundBarMainMenu&apos;); -unity-background-scale-mode: scale-to-fit;">
             <ui:VisualElement name="GemIconHolder" style="width: 55px;">
                 <ui:VisualElement name="GemIcon" style="background-image: url(&apos;project://database/Assets/Art/Sprites/Icon_Gem01_Pruple.png?fileID=21300000&amp;guid=9dbf503416efaab42ab2839253a5b732&amp;type=3#Icon_Gem01_Pruple&apos;); -unity-background-scale-mode: scale-to-fit; position: absolute; width: 100px; left: -20px; height: 100%;" />
             </ui:VisualElement>
-            <ui:Label tabindex="-1" text="1000" parse-escape-sequences="true" display-tooltip-when-elided="true" name="CurrentGemsLabel" style="-unity-text-align: middle-center; -unity-font-definition: resource(&apos;Fonts &amp; Materials/LilitaOne-Regular SDF&apos;); font-size: 45px; flex-grow: 1; color: rgb(255, 255, 255); -unity-text-outline-width: 10px; -unity-text-outline-color: rgb(0, 0, 0); text-shadow: 0 6px 0 rgb(0, 0, 0);" />
+            <ui:Label tabindex="-1" text="1000" parse-escape-sequences="true" display-tooltip-when-elided="true" name="CurrentGemsLabel" class="regularTextOutlineShadow" style="-unity-text-align: middle-center; font-size: 45px; flex-grow: 1;" />
         </ui:VisualElement>
     </ui:VisualElement>
 </ui:UXML>

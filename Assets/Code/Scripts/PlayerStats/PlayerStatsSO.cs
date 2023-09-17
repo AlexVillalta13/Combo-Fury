@@ -23,12 +23,18 @@ public class PlayerStatsSO : ScriptableObject
     [SerializeField] float criticalAttackChance = 20f;
     public float CriticalAttackChance { set { criticalAttackChance = value; } get { return criticalAttackChance; } }
 
-
+    // FIRE
     int fireLevel = 0;
     float firePercentageDamage = 0f;
+    public float FirePercentageDamage { get { return fireDamageIncrement; } }
     [SerializeField] float fireDamageIncrement = 10f;
-    float fireChance = 0f;
     [SerializeField] float fireChanceIncrement = 10f;
+    [SerializeField] float timeTodoDamageFire = 1f;
+    public float TimeToDoDamageFire { get { return timeTodoDamageFire; } }
+    [SerializeField] float timeToTurnOffFire = 10f;
+    public float TimeToTurnOffFire { get { return timeToTurnOffFire; } }
+
+
     [SerializeField] List<BrickProbability> brickProbabilityList;
 
     public BrickTypeEnum GetRandomPlayerBrick()
@@ -59,7 +65,6 @@ public class PlayerStatsSO : ScriptableObject
         this.fireLevel = permanentStatsSO.fireLevel;
         this.firePercentageDamage = permanentStatsSO.firePercentageDamage;
         this.fireDamageIncrement = permanentStatsSO.fireDamageIncrement;
-        this.fireChance = permanentStatsSO.fireChance;
         this.fireChanceIncrement = permanentStatsSO.fireChanceIncrement;
 
         this.brickProbabilityList = Clone(permanentStatsSO.brickProbabilityList);

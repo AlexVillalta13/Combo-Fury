@@ -9,6 +9,7 @@ public class EnemiesCSVFullDatabase : FullDatabaseBase
     public CSVToEnemiesDatabase[] enemiesData;
     [SerializeField] LevelSO levelToExportData;
 
+#if UNITY_EDITOR
     public override void ExportData()
     {
         if (levelToExportData == null)
@@ -39,4 +40,5 @@ public class EnemiesCSVFullDatabase : FullDatabaseBase
 
         levelToExportData.Enemies = enemiesList;
     }
+#endif
 }

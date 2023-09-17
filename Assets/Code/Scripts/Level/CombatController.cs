@@ -53,10 +53,9 @@ public class CombatController : MonoBehaviour
 
     [Title("Upgrades Stats", TitleAlignment = TitleAlignments.Centered)]
     [Title("Fire", HorizontalLine = false, TitleAlignment = TitleAlignments.Centered)]
-    [SerializeField] float fireDamagePercentage = 10f;
-    [SerializeField] float timeToDamageFire = 1f;
+    float timeToDamageFire = 1f;
     float timerFireDamage = 0f;
-    [SerializeField] float timeToTurnOffFire = 10f;
+    float timeToTurnOffFire = 10f;
     float timerToTurnOffFire = 0f;
     bool enemyInFire = false;
 
@@ -156,12 +155,12 @@ public class CombatController : MonoBehaviour
         {
             timerFireDamage += Time.deltaTime;
             timerToTurnOffFire += Time.deltaTime;
-            if (timerFireDamage >= timeToDamageFire)
+            if (timerFireDamage >= inCombatPlayerStatsSO.TimeToDoDamageFire)
             {
                 FireDamage();
             }
 
-            if (timerToTurnOffFire >= timeToTurnOffFire)
+            if (timerToTurnOffFire >= inCombatPlayerStatsSO.TimeToTurnOffFire)
             {
                 TurnOffEnemyFire();
             }
@@ -183,7 +182,7 @@ public class CombatController : MonoBehaviour
     private void FireDamage()
     {
         timerFireDamage = 0f;
-        float damage = inCombatPlayerStatsSO.Attack * fireDamagePercentage / 100;
+        float damage = inCombatPlayerStatsSO.Attack * inCombatPlayerStatsSO.FirePercentageDamage / 100;
         enemyCurrentHealth -= damage;
         UpdateEnemyHealthUI(-damage);
         CheckWinConditions();
