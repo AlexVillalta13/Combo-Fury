@@ -1,9 +1,11 @@
 using System.Collections.Generic;
 using UnityEngine;
+using Sirenix.OdinInspector;
 
 [CreateAssetMenu(menuName = "PlayerStatsSO", fileName = "New Player Stats SO")]
 public class PlayerStatsSO : ScriptableObject
 {
+    [Title("Player Base Stats")]
     [SerializeField] float maxHealth = 100;
     public float MaxHealth { set { maxHealth = value; } get { return maxHealth; } }
 
@@ -23,18 +25,19 @@ public class PlayerStatsSO : ScriptableObject
     [SerializeField] float criticalAttackChance = 20f;
     public float CriticalAttackChance { set { criticalAttackChance = value; } get { return criticalAttackChance; } }
 
-    // FIRE
-    int fireLevel = 0;
-    float firePercentageDamage = 0f;
-    public float FirePercentageDamage { get { return fireDamageIncrement; } }
+    [Title("Fire Upgrade Stats")]
     [SerializeField] float fireDamageIncrement = 10f;
     [SerializeField] float fireChanceIncrement = 10f;
     [SerializeField] float timeTodoDamageFire = 1f;
+    int fireLevel = 0;
+    float firePercentageDamage = 0f;
+    public float FirePercentageDamage { get { return fireDamageIncrement; } }
+
     public float TimeToDoDamageFire { get { return timeTodoDamageFire; } }
     [SerializeField] float timeToTurnOffFire = 10f;
     public float TimeToTurnOffFire { get { return timeToTurnOffFire; } }
 
-
+    [Title("Player Bricks")]
     [SerializeField] List<BrickProbability> brickProbabilityList;
 
     public BrickTypeEnum GetRandomPlayerBrick()

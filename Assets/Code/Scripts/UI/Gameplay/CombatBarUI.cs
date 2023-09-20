@@ -22,9 +22,6 @@ public class CombatBarUI : UIComponent
 
     Dictionary<VisualElement, Brick> bricksInBarDict = new Dictionary<VisualElement, Brick>();
 
-    // Object references
-    BricksPool bricksPool;
-
     // states
     [SerializeField] bool inCombat = false;
 
@@ -59,7 +56,6 @@ public class CombatBarUI : UIComponent
     public override void Awake()
     {
         base.Awake();
-        bricksPool = FindObjectOfType<BricksPool>();
     }
 
     public override void SetElementsReferences()
@@ -194,10 +190,6 @@ public class CombatBarUI : UIComponent
 
     public void DeleteAllBricks()
     {
-        //foreach (Brick brick in bricksInBarDict.Values)
-        //{
-        //    brick.RemoveBrickElement();
-        //}
         bricksInBarDict.Clear();
     }
 

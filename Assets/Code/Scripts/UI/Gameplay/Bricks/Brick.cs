@@ -11,7 +11,8 @@ public enum BrickTypeEnum
     BlackBrick,
     SpeedBrick,
     ShieldBrick,
-    FireBrick
+    FireBrick,
+    HeavyAttackBrick
 }
 
 public enum BrickHolder
