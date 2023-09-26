@@ -9,6 +9,7 @@ public class LevelSO : ScriptableObject
 {
     [SerializeField] PlayerStatsSO inCombatStatsSO;
     [SerializeField] SceneEnum environment = SceneEnum.AlpineWoods;
+    public SceneEnum Environment { get { return environment; } }
     [SerializeField] int initialPosition = 0;
 
     [SerializeField] BrickTypesSO brickTypes;

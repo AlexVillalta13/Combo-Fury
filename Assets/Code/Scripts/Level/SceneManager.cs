@@ -6,6 +6,7 @@ public class SceneManager : MonoBehaviour
 {
     [SerializeField] GameObject mainMenuScene;
     [SerializeField] SceneElementsHolder alpineWoodsScene;
+    [SerializeField] SceneElementsHolder forestScene;
 
     [SerializeField] LevelSO currentLevelToLoad;
 
@@ -28,6 +29,7 @@ public class SceneManager : MonoBehaviour
     {
         mainMenuScene.SetActive(false);
         alpineWoodsScene.gameObject.SetActive(false);
+        forestScene.gameObject.SetActive(false);
     }
 
     public void EnableMainMenu()
@@ -36,11 +38,25 @@ public class SceneManager : MonoBehaviour
         mainMenuScene.SetActive(true);
     }
 
-    public void EnableAlpineWoodsScene()
+    public void ActivateSelectedSceneEnvironment()
     {
         DisableAllScenes();
-        alpineWoodsScene.gameObject.SetActive(true);
-        alpineWoodsScene.SetupLevel(currentLevelToLoad.Enemies.Count);
+        switch(currentLevelToLoad.Environment)
+        {
+            case SceneEnum.AlpineWoods:
+                EnableScene(alpineWoodsScene);
+                break;
+            case SceneEnum.Forest:
+                EnableScene(forestScene);
+                break;
+
+        }
+    }
+
+    private void EnableScene(SceneElementsHolder scene)
+    {
+        scene.gameObject.SetActive(true);
+        scene.SetupLevel(currentLevelToLoad.Enemies.Count);
     }
 
     private void LoadLevel(LevelSO level)

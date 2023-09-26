@@ -5,5 +5,6 @@ using UnityEngine;
 public enum SceneEnum
 {
     AlpineWoods,
+    Forest,
     Artic
 }
