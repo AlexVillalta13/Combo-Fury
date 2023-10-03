@@ -13,9 +13,10 @@ MonoBehaviour:
   m_Name: Level 02
   m_EditorClassIdentifier: 
   inCombatStatsSO: {fileID: 11400000, guid: aa73bdaa80e88ab4e8e2f1d00b7c5e66, type: 2}
-  environment: 0
+  environment: 1
   initialPosition: 0
   brickTypes: {fileID: 11400000, guid: 1de6bd5f177d50540a03449e4f318d9e, type: 2}
+  minibossEncounterAt: 10
   enemies:
   - health: 20
     attack: 6
