@@ -41,7 +41,7 @@ public class BlackBrick : Brick
         if (hitsToDestroyBrick < 1)
         {
             brickRootElementAttached.AddToClassList(ignoreBrickWithTouchUSSClassName);
-            brickEventsHolder.GetPlayerIsHitEvent().Raise();
+            brickEventsHolder.GetPlayerIsHitEvent().Raise(gameObject);
             ShakeBrick();
         }
     }

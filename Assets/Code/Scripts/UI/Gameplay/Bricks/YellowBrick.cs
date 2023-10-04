@@ -17,7 +17,7 @@ public class YellowBrick : Brick
         hitsToDestroyBrick--;
         if(hitsToDestroyBrick < 1)
         {
-            brickEventsHolder.GetPlayerAttackEvent().Raise();
+            brickEventsHolder.GetPlayerAttackEvent().Raise(gameObject);
             ScaleDownUI();
             brickElement.AddToClassList(brickFlashClass);
         }

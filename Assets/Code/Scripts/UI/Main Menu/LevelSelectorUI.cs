@@ -46,19 +46,19 @@ public class LevelSelectorUI : UIComponent
     private void LoadFirstLevelCallback(ClickEvent evt)
     {
         loadLevel?.Invoke(m_Levels[0]);
-        levelSelected.Raise();
+        levelSelected.Raise(gameObject);
         HideGameplayElement();
     }
     private void LoadSecondLevelCallback(ClickEvent evt)
     {
         loadLevel?.Invoke(m_Levels[1]);
-        levelSelected.Raise();
+        levelSelected.Raise(gameObject);
         HideGameplayElement();
     }
     private void LoadThirdLevelCallback(ClickEvent evt)
     {
         loadLevel?.Invoke(m_Levels[2]);
-        levelSelected.Raise();
+        levelSelected.Raise(gameObject);
         HideGameplayElement();
     }
 }

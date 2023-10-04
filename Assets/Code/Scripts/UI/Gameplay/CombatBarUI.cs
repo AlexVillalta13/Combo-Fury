@@ -147,7 +147,7 @@ public class CombatBarUI : UIComponent
 
             if (bricksInPosition.Count == 0)
             {
-                touchBrickEventsHolder.GetPlayerIsHitEvent().Raise();
+                touchBrickEventsHolder.GetPlayerIsHitEvent().Raise(gameObject);
                 return;
             }
 

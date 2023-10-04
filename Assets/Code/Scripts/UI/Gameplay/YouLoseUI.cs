@@ -18,11 +18,16 @@ public class YouLoseUI : UIComponent
 
     private void OnEnable()
     {
-        returnButton.clicked += returnToMainMenuEvent.Raise;
+        returnButton.RegisterCallback<ClickEvent>(RaiseReturnToMainMenuEvent);
     }
 
     private void OnDisable()
     {
-        returnButton.clicked -= returnToMainMenuEvent.Raise;
+        returnButton.UnregisterCallback<ClickEvent>(RaiseReturnToMainMenuEvent);
+    }
+
+    private void RaiseReturnToMainMenuEvent(ClickEvent evt)
+    {
+        returnToMainMenuEvent.Raise(gameObject);
     }
 }

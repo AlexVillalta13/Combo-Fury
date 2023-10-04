@@ -75,7 +75,7 @@ public class PlayerUpgrades : MonoBehaviour
         }
         inCombatPlayerStatsSO.Attack += attackIncrease;
         attackPreviousToRage += attackIncrease;
-        onPlayerChangeInCombatStat.Raise();
+        onPlayerChangeInCombatStat.Raise(gameObject);
     }
 
     public void BigAttackIncrease()
@@ -87,7 +87,7 @@ public class PlayerUpgrades : MonoBehaviour
         }
         inCombatPlayerStatsSO.Attack += attackIncrease;
         attackPreviousToRage += attackIncrease;
-        onPlayerChangeInCombatStat.Raise();
+        onPlayerChangeInCombatStat.Raise(gameObject);
     }
 
     public void DefenseIncrease()
@@ -98,13 +98,13 @@ public class PlayerUpgrades : MonoBehaviour
             defenseIncrease = 2;
         }
         inCombatPlayerStatsSO.Defense += defenseIncrease;
-        onPlayerChangeInCombatStat.Raise();
+        onPlayerChangeInCombatStat.Raise(gameObject);
     }
 
     public void IncreaseCriticalChance()
     {
         inCombatPlayerStatsSO.CriticalAttackChance += criticalChanceIncrease;
-        onPlayerChangeInCombatStat.Raise();
+        onPlayerChangeInCombatStat.Raise(gameObject);
     }
 
     private void CheckRageCondition(float playerCurrentHealth, float playerMaxHealth, float healthDifference)
@@ -119,8 +119,8 @@ public class PlayerUpgrades : MonoBehaviour
                     float attackToIncrease = Mathf.Round(attackPreviousToRage * extraRageAttack / 100);
                     inCombatPlayerStatsSO.Attack = attackPreviousToRage + attackToIncrease;
                     hasRageState = true;
-                    activateRageVFX.Raise();
-                    onPlayerChangeInCombatStat.Raise();
+                    activateRageVFX.Raise(gameObject);
+                    onPlayerChangeInCombatStat.Raise(gameObject);
                 }
             }
             else if(hasRageState == true)
@@ -130,8 +130,8 @@ public class PlayerUpgrades : MonoBehaviour
                 {
                     inCombatPlayerStatsSO.Attack = attackPreviousToRage;
                     hasRageState = false;
-                    deactivateRageVFX.Raise();
-                    onPlayerChangeInCombatStat.Raise();
+                    deactivateRageVFX.Raise(gameObject);
+                    onPlayerChangeInCombatStat.Raise(gameObject);
                 }
             }
         }

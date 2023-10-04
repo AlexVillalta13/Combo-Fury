@@ -14,6 +14,6 @@ public class LoadingLevelUI : UIComponent
     {
         yield return new WaitForSeconds(timeToLoad);
         HideGameplayElement();
-        onLevelLoadedevent.Raise();
+        onLevelLoadedevent.Raise(gameObject);
     }
 }

@@ -19,7 +19,7 @@ public class GreenBrick : Brick
         hitsToDestroyBrick--;
         if (hitsToDestroyBrick < 1)
         {
-            brickEventsHolder.GetPlayerCriticalAttackEvent().Raise();
+            brickEventsHolder.GetPlayerCriticalAttackEvent().Raise(gameObject);
             ScaleDownUI();
             brickElement.AddToClassList(brickFlashClass);
         }

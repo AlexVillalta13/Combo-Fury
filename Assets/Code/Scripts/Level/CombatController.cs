@@ -99,7 +99,7 @@ public class CombatController : MonoBehaviour
     {
         inCombatPlayerStatsSO.StartGame(permanentPlayerStatsSO);
 
-        onPlayerChangeInCombatStat.Raise();
+        onPlayerChangeInCombatStat.Raise(gameObject);
 
         inCombat = false;
 
@@ -110,7 +110,7 @@ public class CombatController : MonoBehaviour
         timerToTurnOffFire = 0f;
 
         revengeCharged = false;
-        DeactivaRevengeVFX.Raise();
+        DeactivaRevengeVFX.Raise(gameObject);
 
         currentEnemy = 0;
         totalEnemies = levelSO.Enemies.Count - 1;
@@ -175,7 +175,7 @@ public class CombatController : MonoBehaviour
         {
             enemyInFire = true;
             timerToTurnOffFire = 0f;
-            ActivateFireVFX.Raise();
+            ActivateFireVFX.Raise(gameObject);
         }
     }
 
@@ -192,7 +192,7 @@ public class CombatController : MonoBehaviour
     {
         timerFireDamage = 0f;
         enemyInFire = false;
-        DeactivaFireVFX.Raise();
+        DeactivaFireVFX.Raise(gameObject);
     }
 
     private void ActivateShield()
@@ -200,7 +200,7 @@ public class CombatController : MonoBehaviour
         if(upgradesSelected.HasUpgrade(shieldId) && shieldActivated == false)
         {
             shieldActivated = true;
-            ActivateShieldVFX.Raise();
+            ActivateShieldVFX.Raise(gameObject);
         }
     }
 
@@ -225,7 +225,7 @@ public class CombatController : MonoBehaviour
         {
             attackPower *= revengeDamageMultiplier;
             revengeCharged = false;
-            DeactivaRevengeVFX.Raise();
+            DeactivaRevengeVFX.Raise(gameObject);
         }
 
         if (upgradesSelected.HasUpgrade(hyperAttackId) && currentComboNumber % comboToHyperAttack == 0)
@@ -254,12 +254,12 @@ public class CombatController : MonoBehaviour
 
             if (currentEnemy < totalEnemies)
             {
-                playerWinFightEvent.Raise();
+                playerWinFightEvent.Raise(gameObject);
                 StartCoroutine(ShowUpgrades());
             }
             else if (currentEnemy == totalEnemies)
             {
-                playerWinLevelEvent.Raise();
+                playerWinLevelEvent.Raise(gameObject);
             }
 
             currentEnemy += 1;
@@ -275,7 +275,7 @@ public class CombatController : MonoBehaviour
             {
                 if (UnityEngine.Random.Range(0f, 100f) < adrenalineChance)
                 {
-                    playerDodges.Raise();
+                    playerDodges.Raise(gameObject);
                     return;
                 }
             }
@@ -284,7 +284,7 @@ public class CombatController : MonoBehaviour
         if (shieldActivated == true)
         {
             shieldActivated = false;
-            DeactivateShieldVFX.Raise();
+            DeactivateShieldVFX.Raise(gameObject);
             UpdatePlayerHealthUI(0);
             return;
         }
@@ -292,7 +292,7 @@ public class CombatController : MonoBehaviour
         if (upgradesSelected.HasUpgrade(revengeId))
         {
             revengeCharged = true;
-            ActivateRevengeVFX.Raise();
+            ActivateRevengeVFX.Raise(gameObject);
         }
 
         currentComboNumber = 0;
@@ -300,7 +300,7 @@ public class CombatController : MonoBehaviour
 
         float attackIncome = Mathf.Clamp(enemyAttackPower - inCombatPlayerStatsSO.Defense, 1, enemyAttackPower);
         inCombatPlayerStatsSO.CurrentHealth -= attackIncome;
-        playerGetsHitAnimation.Raise();
+        playerGetsHitAnimation.Raise(gameObject);
 
         if (upgradesSelected.HasUpgrade(spinesId))
         {
@@ -315,7 +315,7 @@ public class CombatController : MonoBehaviour
             }
             else
             {
-                playerDeathEvent.Raise();
+                playerDeathEvent.Raise(gameObject);
             }
         }
 
@@ -328,7 +328,7 @@ public class CombatController : MonoBehaviour
         yield return new WaitForSeconds(2f);
         if(inCombatPlayerStatsSO.CurrentHealth > 0)
         {
-            showUpgradeToChoose.Raise();
+            showUpgradeToChoose.Raise(gameObject);
         }
     }
 
@@ -348,7 +348,7 @@ public class CombatController : MonoBehaviour
     public void WinCombatDEBUG()
     {
         TurnOffEnemyFire();
-        playerWinFightEvent.Raise();
+        playerWinFightEvent.Raise(gameObject);
         StartCoroutine(ShowUpgrades());
 
         currentEnemy += 1;

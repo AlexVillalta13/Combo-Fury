@@ -36,11 +36,11 @@ public class PlayLevelUI : UIComponent
 
     private void PlayButtonPressed()
     {
-        onPlayButtonPressedEvent.Raise();
+        onPlayButtonPressedEvent.Raise(gameObject);
     }
 
     private void OpenLevelSelector(ClickEvent evt)
     {
-        onOpenLevelSelectorEvent.Raise();
+        onOpenLevelSelectorEvent.Raise(gameObject);
     }
 }

@@ -6,7 +6,7 @@ public class EnemySpawn : MonoBehaviour
 {
     [SerializeField] List<GameObject> enemyPrefabsList = new List<GameObject>();
 
-    int enemyPositionInList;
+    [SerializeField] int enemyPositionInList;
     bool enemyIsBoss = false;
     GameObject instantiateEnemy;
 

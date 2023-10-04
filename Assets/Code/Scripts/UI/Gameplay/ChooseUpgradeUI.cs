@@ -43,9 +43,9 @@ public class ChooseUpgradeUI : UIComponent
 
     public void UpgradeSelected()
     {
-        continueWalkingEvent.Raise();
+        continueWalkingEvent.Raise(gameObject);
         ScaleDownUI();
-        upgradeChoosed.Raise();
+        upgradeChoosed.Raise(gameObject);
     }
 
     public void SelectRandomUpgrades()
@@ -120,7 +120,7 @@ public class ChooseUpgradeUI : UIComponent
 
     private void OnFirstUpgradeSelectes(ClickEvent evt)
     {
-        upgradesRandomlySelected[0].UpgradeEvent.Raise();
+        upgradesRandomlySelected[0].UpgradeEvent.Raise(gameObject);
         upgradesPlayerHasSO.UpgradeList.Add(upgradesRandomlySelected[0]);
         UpgradeSelected();
         RemoveUpgradeSelectedFromList(upgradesRandomlySelected[0]);
@@ -129,7 +129,7 @@ public class ChooseUpgradeUI : UIComponent
 
     private void OnSecondUpgradeSelected(ClickEvent evt)
     {
-        upgradesRandomlySelected[1].UpgradeEvent.Raise();
+        upgradesRandomlySelected[1].UpgradeEvent.Raise(gameObject);
         upgradesPlayerHasSO.UpgradeList.Add(upgradesRandomlySelected[1]);
         UpgradeSelected();
         RemoveUpgradeSelectedFromList(upgradesRandomlySelected[1]);
@@ -138,7 +138,7 @@ public class ChooseUpgradeUI : UIComponent
 
     private void OnThirdUpgradeSelected(ClickEvent evt)
     {
-        upgradesRandomlySelected[2].UpgradeEvent.Raise();
+        upgradesRandomlySelected[2].UpgradeEvent.Raise(gameObject);
         upgradesPlayerHasSO.UpgradeList.Add(upgradesRandomlySelected[2]);
         UpgradeSelected();
         RemoveUpgradeSelectedFromList(upgradesRandomlySelected[2]);

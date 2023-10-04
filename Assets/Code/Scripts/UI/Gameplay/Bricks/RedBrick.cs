@@ -17,7 +17,7 @@ public class RedBrick : Brick
         hitsToDestroyBrick--;
         if (hitsToDestroyBrick < 1)
         {
-            brickEventsHolder.GetPlayerBlockEvent().Raise();
+            brickEventsHolder.GetPlayerBlockEvent().Raise(gameObject);
             ScaleDownUI();
             brickElement.AddToClassList(brickFlashClass);
         }

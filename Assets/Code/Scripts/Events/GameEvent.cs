@@ -7,9 +7,12 @@ public class GameEvent : ScriptableObject
 {
     [ShowInInspector] private readonly List<GameEventListener> gameEventsList = new List<GameEventListener>();
 
+    [ShowInInspector] private readonly List<GameObject> gameObjectAttached = new List<GameObject>();
+
     [Button(ButtonSizes.Medium)]
-    public void Raise ()
+    public void Raise (GameObject gameObjectAttached)
     {
+        this.gameObjectAttached.Add(gameObjectAttached);
         for(int i = gameEventsList.Count - 1; i >= 0; i--)
         {
             gameEventsList[i].OnEventRaised();

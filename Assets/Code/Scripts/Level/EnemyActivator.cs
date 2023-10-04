@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class EnemyActivator : MonoBehaviour
 {
-    List<EnemySpawn> spawnList = new List<EnemySpawn>();
+    [SerializeField] List<EnemySpawn> spawnList = new List<EnemySpawn>();
     int enemiesCount;
 
-    int currentEnemy = -1;
+    [SerializeField] int currentEnemy = -1;
 
     private void Awake()
     {
@@ -44,12 +44,20 @@ public class EnemyActivator : MonoBehaviour
 
     public void ActivateNextEnemy()
     {
+        if(gameObject.activeInHierarchy == false)
+        {
+            return;
+        }
         currentEnemy++;
         spawnList[currentEnemy].ActivateEnemy(true);
     }
 
     public void DeactivatePreviousEnemy()
     {
+        if (gameObject.activeInHierarchy == false)
+        {
+            return;
+        }
         if (currentEnemy - 1 >= 0)
         {
             spawnList[currentEnemy - 1].ActivateEnemy(false);

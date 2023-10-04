@@ -43,7 +43,7 @@ public class SpeedBrick : Brick
         if(speedBrickPositionInBar <= 0f - (brickRootElementAttached.resolvedStyle.width / 2f))
         {
             tween.Kill();
-            brickEventsHolder.GetPlayerIsHitEvent().Raise();
+            brickEventsHolder.GetPlayerIsHitEvent().Raise(gameObject);
             ScaleDownUI();
             brickElement.AddToClassList(brickFlashClass);
         }
@@ -57,7 +57,7 @@ public class SpeedBrick : Brick
         if (hitsToDestroyBrick < 1)
         {
             tween.Kill();
-            brickEventsHolder.GetPlayerBlockEvent().Raise();
+            brickEventsHolder.GetPlayerBlockEvent().Raise(gameObject);
             RemoveBrickElement();
         }
     }

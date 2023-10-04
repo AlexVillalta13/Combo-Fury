@@ -26,19 +26,19 @@ public class ShieldBrick : Brick
         hitsToDestroyBrick--;
         if(hitsToDestroyBrick == 2)
         {
-            brickEventsHolder.GetPlayerBlockEvent().Raise();
+            brickEventsHolder.GetPlayerBlockEvent().Raise(gameObject);
             brickRootElementAttached.Query<VisualElement>(name: "Icon").First().style.backgroundImage = new StyleBackground(icon2WithHits);
             ScaleDownALittleUI();
         }
         else if(hitsToDestroyBrick == 1)
         {
-            brickEventsHolder.GetPlayerBlockEvent().Raise();
+            brickEventsHolder.GetPlayerBlockEvent().Raise(gameObject);
             brickRootElementAttached.Query<VisualElement>(name: "Icon").First().style.backgroundImage = null;
             ScaleDownALittleUI();
         }
         else if (hitsToDestroyBrick <= 0)
         {
-            brickEventsHolder.GetPlayerBlockEvent().Raise();
+            brickEventsHolder.GetPlayerBlockEvent().Raise(gameObject);
             ScaleDownUI();
             brickElement.AddToClassList(brickFlashClass);
         }
