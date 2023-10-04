@@ -348,8 +348,15 @@ public class CombatController : MonoBehaviour
     public void WinCombatDEBUG()
     {
         TurnOffEnemyFire();
-        playerWinFightEvent.Raise(gameObject);
-        StartCoroutine(ShowUpgrades());
+        if (currentEnemy < totalEnemies)
+        {
+            playerWinFightEvent.Raise(gameObject);
+            StartCoroutine(ShowUpgrades());
+        }
+        else if (currentEnemy == totalEnemies)
+        {
+            playerWinLevelEvent.Raise(gameObject);
+        }
 
         currentEnemy += 1;
         onChangeCurrentEnemy(currentEnemy + 1, levelSO.Enemies.Count);
