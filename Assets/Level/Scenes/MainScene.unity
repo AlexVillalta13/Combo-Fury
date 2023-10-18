@@ -4029,6 +4029,7 @@ GameObject:
   - component: {fileID: 315702247}
   - component: {fileID: 315702246}
   - component: {fileID: 315702251}
+  - component: {fileID: 315702252}
   m_Layer: 0
   m_Name: Bricks Pool Manager
   m_TagString: Untagged
@@ -4162,6 +4163,22 @@ MonoBehaviour:
   brickTypeEnum: 6
   BrickTypesSO: {fileID: 11400000, guid: 1de6bd5f177d50540a03449e4f318d9e, type: 2}
   brickPrefab: {fileID: -8700858135101346365, guid: 23d46e04296c1174f945c12d427a8b91,
+    type: 3}
+--- !u!114 &315702252
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 315702243}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 89ae215f6d753e84d9f3da1002456fea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  brickTypeEnum: 7
+  BrickTypesSO: {fileID: 11400000, guid: 1de6bd5f177d50540a03449e4f318d9e, type: 2}
+  brickPrefab: {fileID: -2742039437189756684, guid: 11e8f9b50d7553443913467e0af86e35,
     type: 3}
 --- !u!1001 &316362497
 PrefabInstance:
@@ -15739,7 +15756,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1124932234
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -36,8 +36,8 @@ MonoBehaviour:
     getUpgradeEvent: {fileID: 11400000, guid: f667a2f609fa6e44e929bf7d9ff1fef5, type: 2}
   - upgradeName: FIRE ATTACK
     upgradeId: Fire
-    image: {fileID: 21300000, guid: eb2cad473f8d7254aa3f127348a0710b, type: 3}
+    image: {fileID: 21300000, guid: 9be12c18230fe2c4aa943faca8852eb2, type: 3}
     maxLevel: 3
     levelUnlock: 0
-    upgradeDescription: Unlocks fire attack
-    getUpgradeEvent: {fileID: 11400000, guid: 998b0af01f090a2409960997971c2d30, type: 2}
+    upgradeDescription: Heavy attack
+    getUpgradeEvent: {fileID: 11400000, guid: 37ce64e7e344d8440bf83e4cf6aead39, type: 2}

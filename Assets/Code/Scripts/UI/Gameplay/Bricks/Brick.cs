@@ -36,6 +36,8 @@ public class Brick: MonoBehaviour
     const string scaleDownALittleClass = "scaleDownALittle";
     const string scaleUpClass = "scaledUp";
     protected const string ignoreBrickWithTouchUSSClassName = "ignoreBrickWithTouch";
+    protected const string yellowBrickUSSClassName = "yellowBrick";
+    protected const string greenBrickUSSClassName = "greenBrick";
 
     protected CombatBarUI combatBarUI;
 

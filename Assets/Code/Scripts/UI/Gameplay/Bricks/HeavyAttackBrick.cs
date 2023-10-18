@@ -10,16 +10,24 @@ public class HeavyAttackBrick : Brick
         brickType = BrickTypeEnum.HeavyAttackBrick;
     }
 
-    [SerializeField] GameEvent fireAttackEvent;
+    [SerializeField] GameEvent heavyAttackEvent;
 
     public override void EffectWithTouch()
     {
         base.EffectWithTouch();
 
         hitsToDestroyBrick--;
-        if (hitsToDestroyBrick < 1)
+        if (hitsToDestroyBrick == 1)
         {
-            // Effect when touched
+            brickElement.RemoveFromClassList(yellowBrickUSSClassName);
+            brickElement.AddToClassList(greenBrickUSSClassName);
+            ScaleDownALittleUI();
+        }
+        else if (hitsToDestroyBrick <= 0)
+        {
+            brickEventsHolder.GetPlayerCriticalAttackEvent().Raise(gameObject);
+            ScaleDownUI();
+            brickElement.AddToClassList(brickFlashClass);
         }
     }
 
