@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [System.Serializable]
-[TableIdentifier("EnemyCSV")]
+[TableIdentifier("EnemyCSVData")]
 public class CSVToEnemiesDatabase : TableObject
 {
     [TableColumnMapper("Max Health")] public int enemyHealth;

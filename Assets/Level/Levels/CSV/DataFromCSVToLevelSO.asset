@@ -1,0 +1,108 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ccab1028e36fc5d43b7a6fe07740aeec, type: 3}
+  m_Name: DataFromCSVToLevelSO
+  m_EditorClassIdentifier: 
+  tables:
+  - {fileID: 4900000, guid: 9c5cee6be4d0c6549a313c18c910044d, type: 3}
+  enemiesData:
+  - enemyHealth: 20
+    enemyAttack: 6
+    enemyMinTimeToSpawnBrick: 1
+    enemyMaxTimeToSpawnBrick: 4
+    playerBrickSpawnChance: 70
+    enemyRedBrickSpawnChance: 100
+    enemyMovingBrickSpawnChance: 0
+    enemyShieldBrickSpawnChance: 0
+    enemyTrapBrickSpawnChance: 0
+  - enemyHealth: 26
+    enemyAttack: 7
+    enemyMinTimeToSpawnBrick: 1
+    enemyMaxTimeToSpawnBrick: 4
+    playerBrickSpawnChance: 70
+    enemyRedBrickSpawnChance: 100
+    enemyMovingBrickSpawnChance: 0
+    enemyShieldBrickSpawnChance: 0
+    enemyTrapBrickSpawnChance: 0
+  - enemyHealth: 32
+    enemyAttack: 8
+    enemyMinTimeToSpawnBrick: 1
+    enemyMaxTimeToSpawnBrick: 4
+    playerBrickSpawnChance: 65
+    enemyRedBrickSpawnChance: 100
+    enemyMovingBrickSpawnChance: 0
+    enemyShieldBrickSpawnChance: 0
+    enemyTrapBrickSpawnChance: 0
+  - enemyHealth: 38
+    enemyAttack: 9
+    enemyMinTimeToSpawnBrick: 1
+    enemyMaxTimeToSpawnBrick: 4
+    playerBrickSpawnChance: 65
+    enemyRedBrickSpawnChance: 100
+    enemyMovingBrickSpawnChance: 0
+    enemyShieldBrickSpawnChance: 0
+    enemyTrapBrickSpawnChance: 0
+  - enemyHealth: 47
+    enemyAttack: 10
+    enemyMinTimeToSpawnBrick: 1
+    enemyMaxTimeToSpawnBrick: 3
+    playerBrickSpawnChance: 65
+    enemyRedBrickSpawnChance: 80
+    enemyMovingBrickSpawnChance: 0
+    enemyShieldBrickSpawnChance: 0
+    enemyTrapBrickSpawnChance: 20
+  - enemyHealth: 56
+    enemyAttack: 11
+    enemyMinTimeToSpawnBrick: 1
+    enemyMaxTimeToSpawnBrick: 3
+    playerBrickSpawnChance: 65
+    enemyRedBrickSpawnChance: 80
+    enemyMovingBrickSpawnChance: 0
+    enemyShieldBrickSpawnChance: 0
+    enemyTrapBrickSpawnChance: 20
+  - enemyHealth: 65
+    enemyAttack: 12
+    enemyMinTimeToSpawnBrick: 1
+    enemyMaxTimeToSpawnBrick: 3
+    playerBrickSpawnChance: 60
+    enemyRedBrickSpawnChance: 70
+    enemyMovingBrickSpawnChance: 0
+    enemyShieldBrickSpawnChance: 0
+    enemyTrapBrickSpawnChance: 30
+  - enemyHealth: 74
+    enemyAttack: 13
+    enemyMinTimeToSpawnBrick: 1
+    enemyMaxTimeToSpawnBrick: 3
+    playerBrickSpawnChance: 60
+    enemyRedBrickSpawnChance: 70
+    enemyMovingBrickSpawnChance: 0
+    enemyShieldBrickSpawnChance: 0
+    enemyTrapBrickSpawnChance: 30
+  - enemyHealth: 83
+    enemyAttack: 14
+    enemyMinTimeToSpawnBrick: 1
+    enemyMaxTimeToSpawnBrick: 3
+    playerBrickSpawnChance: 60
+    enemyRedBrickSpawnChance: 70
+    enemyMovingBrickSpawnChance: 0
+    enemyShieldBrickSpawnChance: 0
+    enemyTrapBrickSpawnChance: 30
+  - enemyHealth: 188
+    enemyAttack: 15
+    enemyMinTimeToSpawnBrick: 1
+    enemyMaxTimeToSpawnBrick: 2
+    playerBrickSpawnChance: 50
+    enemyRedBrickSpawnChance: 60
+    enemyMovingBrickSpawnChance: 0
+    enemyShieldBrickSpawnChance: 0
+    enemyTrapBrickSpawnChance: 40
+  levelToExportData: {fileID: 11400000, guid: 60256b58ddcf298439ec4d18cb8576da, type: 2}
