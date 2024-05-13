@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b37f3dc5a112b3b4081b8d2ff5f58bb8, type: 3}
+  m_Name: Shield
+  m_EditorClassIdentifier: 
+  upgradeName: SHIELD
+  upgradeId: Shield
+  image: {fileID: 21300000, guid: 61228d21cbadf0747a2a267d9526badc, type: 3}
+  maxLevel: 1
+  levelUnlock: 0
+  upgradeDescription: A shield that blocks one attack
+  upgradeEvent: {fileID: 11400000, guid: 163ef11c9d4ab7e48bc0b11f967ece52, type: 2}

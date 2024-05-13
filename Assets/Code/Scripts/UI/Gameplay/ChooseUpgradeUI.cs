@@ -15,8 +15,8 @@ public class ChooseUpgradeUI : UIComponent
     VisualElement holderToScale;
     List<VisualElement> UpgradeContainerList = new List<VisualElement>();
 
-    [SerializeField] List<UpgradeInLevelSO.Upgrade> upgradesThatCanBeSelected = new List<UpgradeInLevelSO.Upgrade>();
-    List<UpgradeInLevelSO.Upgrade> upgradesRandomlySelected = new List<UpgradeInLevelSO.Upgrade>();
+    [SerializeField] List<Upgrade> upgradesThatCanBeSelected = new List<Upgrade>();
+    List<Upgrade> upgradesRandomlySelected = new List<Upgrade>();
 
     const string upgradeContainerClass = "upgradeContainer";
     const string upgradeNameClass = "nameUpgrade";
@@ -33,12 +33,12 @@ public class ChooseUpgradeUI : UIComponent
 
         holderToScale.RegisterCallback<TransitionEndEvent>(OnChangeScaleEndEvent);
 
-        upgradesThatCanBeSelected = new List<UpgradeInLevelSO.Upgrade>(upgradeListSO.UpgradeList);
+        upgradesThatCanBeSelected = new List<Upgrade>(upgradeListSO.UpgradeList);
     }
 
     public void ResetUpgradesCanChooseList()
     {
-        upgradesThatCanBeSelected = new List<UpgradeInLevelSO.Upgrade>(upgradeListSO.UpgradeList);
+        upgradesThatCanBeSelected = new List<Upgrade>(upgradeListSO.UpgradeList);
     }
 
     public void UpgradeSelected()
@@ -55,7 +55,7 @@ public class ChooseUpgradeUI : UIComponent
         while(upgradesRandomlySelected.Count < 3)
         {
             int i = Random.Range(0, upgradesThatCanBeSelected.Count);
-            UpgradeInLevelSO.Upgrade upgrade = upgradesThatCanBeSelected[i];
+            Upgrade upgrade = upgradesThatCanBeSelected[i];
 
             if (upgradesRandomlySelected.Count == 0)
             {
@@ -63,7 +63,7 @@ public class ChooseUpgradeUI : UIComponent
             }
             else
             {
-                foreach (UpgradeInLevelSO.Upgrade upgradeToCheck in upgradesRandomlySelected)
+                foreach (Upgrade upgradeToCheck in upgradesRandomlySelected)
                 {
                     if (upgradeToCheck.UpgradeName == upgrade.UpgradeName)
                     {
@@ -145,13 +145,13 @@ public class ChooseUpgradeUI : UIComponent
         UnregisterAllEvents();
     }
 
-    private void RemoveUpgradeSelectedFromList(UpgradeInLevelSO.Upgrade upgrade)
+    private void RemoveUpgradeSelectedFromList(Upgrade upgrade)
     {
         if(upgrade.MaxLevel > 0)
         {
             if(upgrade.MaxLevel <= upgradesPlayerHasSO.GetCurrentUpgradeLevel(upgrade)) 
             {
-                foreach(UpgradeInLevelSO.Upgrade upgradeToCheck in upgradesThatCanBeSelected)
+                foreach(Upgrade upgradeToCheck in upgradesThatCanBeSelected)
                 {
                     if (upgradeToCheck.UpgradeId == upgrade.UpgradeId)
                     {
