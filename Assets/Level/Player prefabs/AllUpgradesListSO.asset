@@ -13,87 +13,14 @@ MonoBehaviour:
   m_Name: AllUpgradesListSO
   m_EditorClassIdentifier: 
   upgradeList:
-  - upgradeName: MAX HEALTH
-    upgradeId: MaxHealth
-    image: {fileID: 21300000, guid: 171dd4616f6fa394099f5be78e7632bd, type: 3}
-    maxLevel: 0
-    levelUnlock: 0
-    upgradeDescription: Increase maximum heath
-    getUpgradeEvent: {fileID: 11400000, guid: f667a2f609fa6e44e929bf7d9ff1fef5, type: 2}
-  - upgradeName: HEAL
-    upgradeId: Heal
-    image: {fileID: 21300000, guid: e5fd59b35a12555459904d788b0249b8, type: 3}
-    maxLevel: 0
-    levelUnlock: 0
-    upgradeDescription: Heals a small amount
-    getUpgradeEvent: {fileID: 11400000, guid: 16fdfc2b96ce415488ecd2f5382ad783, type: 2}
-  - upgradeName: ATTACK
-    upgradeId: LittleAttack
-    image: {fileID: 21300000, guid: 087129c45f1ade545aca68f3d81bdcd8, type: 3}
-    maxLevel: 0
-    levelUnlock: 0
-    upgradeDescription: Increase attack in a small amount
-    getUpgradeEvent: {fileID: 11400000, guid: c06b829dffdb67248a1f051eb96ba477, type: 2}
-  - upgradeName: DEFENSE
-    upgradeId: Defense
-    image: {fileID: 21300000, guid: 179a40d276c4e8e43908a66d2f8412e1, type: 3}
-    maxLevel: 0
-    levelUnlock: 0
-    upgradeDescription: Increase defense in a small amount
-    getUpgradeEvent: {fileID: 11400000, guid: 96f0242b4ae759045a1a3303c8744de2, type: 2}
-  - upgradeName: CRITICAL CHANCE
-    upgradeId: CriticalChance
-    image: {fileID: 21300000, guid: e9b9019f4ea1c1f419541422744a3def, type: 3}
-    maxLevel: 3
-    levelUnlock: 0
-    upgradeDescription: Increase chance of appearing green bricks
-    getUpgradeEvent: {fileID: 11400000, guid: fe3c3c5d870108145a5c505948697bef, type: 2}
-  - upgradeName: FIRE ATTACK
-    upgradeId: Fire
-    image: {fileID: 21300000, guid: eb2cad473f8d7254aa3f127348a0710b, type: 3}
-    maxLevel: 3
-    levelUnlock: 0
-    upgradeDescription: Sets the enemy in fire every x10 combo
-    getUpgradeEvent: {fileID: 11400000, guid: 998b0af01f090a2409960997971c2d30, type: 2}
-  - upgradeName: SHIELD
-    upgradeId: Shield
-    image: {fileID: 21300000, guid: 61228d21cbadf0747a2a267d9526badc, type: 3}
-    maxLevel: 1
-    levelUnlock: 0
-    upgradeDescription: Gets a shield at the begginig of every fight
-    getUpgradeEvent: {fileID: 11400000, guid: 163ef11c9d4ab7e48bc0b11f967ece52, type: 2}
-  - upgradeName: RAGE
-    upgradeId: Rage
-    image: {fileID: 21300000, guid: f155bf39addb2f34eaa387d9ed1c71a2, type: 3}
-    maxLevel: 1
-    levelUnlock: 0
-    upgradeDescription: Increase attack if health is below 30%
-    getUpgradeEvent: {fileID: 11400000, guid: 89a193a14a41fd54eb6b9d2a062268e6, type: 2}
-  - upgradeName: HEAVY ATTACK
-    upgradeId: HeavyAttack
-    image: {fileID: 21300000, guid: 9be12c18230fe2c4aa943faca8852eb2, type: 3}
-    maxLevel: 3
-    levelUnlock: 0
-    upgradeDescription: Unlocks heavy attack bricks
-    getUpgradeEvent: {fileID: 11400000, guid: 37ce64e7e344d8440bf83e4cf6aead39, type: 2}
-  - upgradeName: REVENGE
-    upgradeId: Revenge
-    image: {fileID: 21300000, guid: bcc23c600fa9d24479bbbf5397b26619, type: 3}
-    maxLevel: 1
-    levelUnlock: 0
-    upgradeDescription: Attack after getting damage is 200%
-    getUpgradeEvent: {fileID: 11400000, guid: 925281e8b7f210947b4d04bee1cf7fbc, type: 2}
-  - upgradeName: SPINES
-    upgradeId: Spines
-    image: {fileID: 21300000, guid: bd01f87ce1918974b855a1620aa83485, type: 3}
-    maxLevel: 1
-    levelUnlock: 0
-    upgradeDescription: Enemy receives damage if you get hit
-    getUpgradeEvent: {fileID: 11400000, guid: a95c0356e6a074b44b8bc080f7bff8a4, type: 2}
-  - upgradeName: ADRENALINE
-    upgradeId: Adrenaline
-    image: {fileID: 21300000, guid: e9d42cf13bcd99d40ba614509e5c78da, type: 3}
-    maxLevel: 1
-    levelUnlock: 0
-    upgradeDescription: Increase chance of dodge if health <30%
-    getUpgradeEvent: {fileID: 11400000, guid: 216040ef1cb20c346b8202ad26f158ea, type: 2}
+  - {fileID: 11400000, guid: 8a3e6e05356adee4aa0fc805fb19701c, type: 2}
+  - {fileID: 11400000, guid: ff7cb550876a3374da6fe5887096d322, type: 2}
+  - {fileID: 11400000, guid: 8c472007a8f3a0d4fafe771c9def1f0c, type: 2}
+  - {fileID: 11400000, guid: 278683d39fa371e459d0109b6f149117, type: 2}
+  - {fileID: 11400000, guid: 87de1671213a0aa489337f69ac7f4c27, type: 2}
+  - {fileID: 11400000, guid: ac5e3978d858bc949bfcc63d0d9d505b, type: 2}
+  - {fileID: 11400000, guid: 5ba1824ffda96cd409701284d7c746af, type: 2}
+  - {fileID: 11400000, guid: e795ec5065a22fb4db0e0e3e3a7ba877, type: 2}
+  - {fileID: 11400000, guid: 01a170760e01dbe43af4850046593dd7, type: 2}
+  - {fileID: 11400000, guid: a7a46e07d38517441b6613f6590f6a03, type: 2}
+  - {fileID: 11400000, guid: 608eb71dfccccc34e92d22d023d3f40d, type: 2}

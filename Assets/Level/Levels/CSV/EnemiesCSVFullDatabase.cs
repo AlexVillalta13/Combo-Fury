@@ -1,6 +1,7 @@
 using CSVtoSO.Core;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 
 [CreateAssetMenu(menuName = "CSVReader/New Enemies Database", fileName = "New Enemies Database")]
@@ -39,6 +40,8 @@ public class EnemiesCSVFullDatabase : FullDatabaseBase
         }
 
         levelToExportData.Enemies = enemiesList;
+        EditorUtility.SetDirty(levelToExportData);
+        AssetDatabase.SaveAssets();
     }
 #endif
 }
