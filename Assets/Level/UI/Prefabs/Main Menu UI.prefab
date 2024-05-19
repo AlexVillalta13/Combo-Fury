@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 466332603018625423}
   - component: {fileID: 466332603018625416}
-  - component: {fileID: 466332603018625417}
   m_Layer: 0
   m_Name: Level Selection UI
   m_TagString: Untagged
@@ -47,31 +46,41 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Document: {fileID: 466332603169764321}
   elementName: LevelSelectorUI
-  elementStartedEvent: {fileID: 0}
-  elementEndedEvent: {fileID: 0}
   m_Levels:
   - {fileID: 11400000, guid: 60256b58ddcf298439ec4d18cb8576da, type: 2}
   - {fileID: 11400000, guid: 5b3609f91976ce244a2d53ec18ca6fef, type: 2}
   - {fileID: 11400000, guid: 16c9563d85dc68a46999f2204f143f08, type: 2}
   testLevel: {fileID: 0}
-  levelSelected: {fileID: 11400000, guid: 8ad2db030b6d28945bc198d3b6543eb6, type: 2}
---- !u!114 &466332603018625417
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 466332603018625422}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: eb953a8383db9fc45943e75de88733bb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  gameEvent: {fileID: 11400000, guid: 8e6d70acaa341f84daf2036c54848cb2, type: 2}
-  unityEvent:
+  levelSelectionClosedEvent: {fileID: 11400000, guid: 8ad2db030b6d28945bc198d3b6543eb6,
+    type: 2}
+  onLevelSelectionMenuClosed:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 466332603018625416}
+        m_TargetAssemblyTypeName: UIComponent, Assembly-CSharp
+        m_MethodName: HideGameplayElement
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 466332603403880507}
+        m_TargetAssemblyTypeName: UIComponent, Assembly-CSharp
+        m_MethodName: ShowGameplayElement
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 466332603957695913}
         m_TargetAssemblyTypeName: UIComponent, Assembly-CSharp
         m_MethodName: ShowGameplayElement
         m_Mode: 1
@@ -219,8 +228,6 @@ GameObject:
   m_Component:
   - component: {fileID: 466332603403880506}
   - component: {fileID: 466332603403880507}
-  - component: {fileID: 466332603403880500}
-  - component: {fileID: 466332603403880501}
   m_Layer: 0
   m_Name: Play Level UI
   m_TagString: Untagged
@@ -257,26 +264,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Document: {fileID: 466332603169764321}
   elementName: PlayLevelUI
-  elementStartedEvent: {fileID: 0}
-  elementEndedEvent: {fileID: 0}
-  onPlayButtonPressedEvent: {fileID: 11400000, guid: 753a237a3ae881e4eba066f7c4814681,
-    type: 2}
-  onOpenLevelSelectorEvent: {fileID: 11400000, guid: 8e6d70acaa341f84daf2036c54848cb2,
-    type: 2}
---- !u!114 &466332603403880500
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 466332603403880505}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: eb953a8383db9fc45943e75de88733bb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  gameEvent: {fileID: 11400000, guid: 8e6d70acaa341f84daf2036c54848cb2, type: 2}
-  unityEvent:
+  openLevelSelector:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 466332603403880507}
@@ -291,24 +279,20 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!114 &466332603403880501
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 466332603403880505}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: eb953a8383db9fc45943e75de88733bb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  gameEvent: {fileID: 11400000, guid: 8ad2db030b6d28945bc198d3b6543eb6, type: 2}
-  unityEvent:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 466332603403880507}
+      - m_Target: {fileID: 466332603957695913}
         m_TargetAssemblyTypeName: UIComponent, Assembly-CSharp
+        m_MethodName: HideGameplayElement
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 466332603018625416}
+        m_TargetAssemblyTypeName: LevelSelectorUI, Assembly-CSharp
         m_MethodName: ShowGameplayElement
         m_Mode: 1
         m_Arguments:
@@ -319,6 +303,10 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  onPlayButtonPressedEvent: {fileID: 11400000, guid: 753a237a3ae881e4eba066f7c4814681,
+    type: 2}
+  onOpenLevelSelectorEvent: {fileID: 11400000, guid: 8e6d70acaa341f84daf2036c54848cb2,
+    type: 2}
 --- !u!1 &466332603957695919
 GameObject:
   m_ObjectHideFlags: 0
@@ -329,8 +317,6 @@ GameObject:
   m_Component:
   - component: {fileID: 466332603957695912}
   - component: {fileID: 466332603957695913}
-  - component: {fileID: 466332603957695914}
-  - component: {fileID: 466332603957695915}
   m_Layer: 0
   m_Name: Main Menu Tags
   m_TagString: Untagged
@@ -367,64 +353,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Document: {fileID: 466332603169764321}
   elementName: MenuTagsUI
-  elementStartedEvent: {fileID: 0}
-  elementEndedEvent: {fileID: 0}
---- !u!114 &466332603957695914
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 466332603957695919}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: eb953a8383db9fc45943e75de88733bb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  gameEvent: {fileID: 11400000, guid: 8e6d70acaa341f84daf2036c54848cb2, type: 2}
-  unityEvent:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 466332603957695913}
-        m_TargetAssemblyTypeName: UIComponent, Assembly-CSharp
-        m_MethodName: HideGameplayElement
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
---- !u!114 &466332603957695915
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 466332603957695919}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: eb953a8383db9fc45943e75de88733bb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  gameEvent: {fileID: 11400000, guid: 8ad2db030b6d28945bc198d3b6543eb6, type: 2}
-  unityEvent:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 466332603957695913}
-        m_TargetAssemblyTypeName: UIComponent, Assembly-CSharp
-        m_MethodName: ShowGameplayElement
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!1 &4537690734750423732
 GameObject:
   m_ObjectHideFlags: 0
@@ -472,8 +400,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Document: {fileID: 466332603169764321}
   elementName: LoadingLevelUI
-  elementStartedEvent: {fileID: 0}
-  elementEndedEvent: {fileID: 0}
   onLevelLoadedevent: {fileID: 11400000, guid: 7778c4a02a2ecb84f91e6256257b70a3, type: 2}
   timeToLoad: 1
 --- !u!114 &3625675131112070670

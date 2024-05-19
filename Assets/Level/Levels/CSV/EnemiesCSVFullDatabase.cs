@@ -25,7 +25,7 @@ public class EnemiesCSVFullDatabase : FullDatabaseBase
         {
             Enemy enemy = new Enemy();
 
-            enemy.SetupEnemy(
+            enemy.SetEnemyData(
                 enemyData.enemyHealth,
                 enemyData.enemyAttack,
                 enemyData.enemyMinTimeToSpawnBrick,

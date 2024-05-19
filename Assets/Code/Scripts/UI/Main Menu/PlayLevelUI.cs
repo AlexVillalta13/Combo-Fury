@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.UIElements;
 
 public class PlayLevelUI : UIComponent
@@ -11,8 +12,9 @@ public class PlayLevelUI : UIComponent
     VisualElement levelSelectedImage;
     const string levelSelectorImageReference = "LevelSelectedContainer";
 
+    [SerializeField] UnityEvent openLevelSelector;
+
     [SerializeField] GameEvent onPlayButtonPressedEvent;
-    [SerializeField] GameEvent onOpenLevelSelectorEvent;
 
     public override void SetElementsReferences()
     {
@@ -41,6 +43,7 @@ public class PlayLevelUI : UIComponent
 
     private void OpenLevelSelector(ClickEvent evt)
     {
-        onOpenLevelSelectorEvent.Raise(gameObject);
+        openLevelSelector?.Invoke();
+
     }
 }

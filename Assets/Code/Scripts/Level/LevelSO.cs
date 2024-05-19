@@ -8,8 +8,13 @@ using Sirenix.OdinInspector;
 public class LevelSO : ScriptableObject
 {
     [SerializeField] PlayerStatsSO inCombatStatsSO;
+
+    [SerializeField] Sprite levelIcon;
+    public Sprite LevelIcon { get { return levelIcon; } }
+
     [SerializeField] SceneEnum environment = SceneEnum.AlpineWoods;
     public SceneEnum Environment { get { return environment; } }
+
     [SerializeField] int initialPosition = 0;
 
     [SerializeField] BrickTypesSO brickTypes;
@@ -87,7 +92,7 @@ public class Enemy
         return BrickTypeEnum.Redbrick;
     }
 
-    public void SetupEnemy(float maxHealth, float attack, float minTimeToSpawnBrick, float maxTimeToSpawnBrick, float playerChance, float redBrickChance, float movingBrickChance, float shieldBrickChance, float trapChance)
+    public void SetEnemyData(float maxHealth, float attack, float minTimeToSpawnBrick, float maxTimeToSpawnBrick, float playerChance, float redBrickChance, float movingBrickChance, float shieldBrickChance, float trapChance)
     {
         this.health = maxHealth;
         this.attack = attack;
