@@ -12,12 +12,12 @@ public class SceneManager : MonoBehaviour
 
     private void OnEnable()
     {
-        LevelSelectorUI.loadLevel += LoadLevel;
+        LevelSelectorUI.onSelectedLevelToPlay += LoadLevel;
     }
 
     private void OnDisable()
     {
-        LevelSelectorUI.loadLevel -= LoadLevel;
+        LevelSelectorUI.onSelectedLevelToPlay -= LoadLevel;
     }
 
     private void Start()

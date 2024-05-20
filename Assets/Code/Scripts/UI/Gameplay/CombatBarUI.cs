@@ -46,11 +46,11 @@ public class CombatBarUI : UIComponent
 
     private void OnEnable()
     {
-        LevelSelectorUI.loadLevel += SetupLevel;
+        LevelSelectorUI.onSelectedLevelToPlay += SetupLevel;
     }
     private void OnDisable()
     {
-        LevelSelectorUI.loadLevel -= SetupLevel;
+        LevelSelectorUI.onSelectedLevelToPlay -= SetupLevel;
     }
 
     public override void Awake()

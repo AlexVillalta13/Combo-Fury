@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,11 +7,15 @@ using UnityEngine.UIElements;
 
 public class PlayLevelUI : UIComponent
 {
-    Button playButton;
     const string playButtonReference = "PlayButton";
+    const string levelSelectedContainerImageReference = "LevelSelectedContainer";
+    const string levelSelectedImageReference = "LevelImage";
+    const string levelSelectedNameReference = "LevelName";
 
-    VisualElement levelSelectedImage;
-    const string levelSelectorImageReference = "LevelSelectedContainer";
+    Button playButton;
+    VisualElement levelImageContainer;
+    VisualElement levelImage;
+    Label levelSelectedName;
 
     [SerializeField] UnityEvent openLevelSelector;
 
@@ -21,19 +26,28 @@ public class PlayLevelUI : UIComponent
         base.SetElementsReferences();
 
         playButton = m_Root.Query<Button>(name: playButtonReference);
-        levelSelectedImage = m_Root.Query<VisualElement>(name: levelSelectorImageReference);
+        levelImageContainer = m_Root.Query<VisualElement>(name: levelSelectedContainerImageReference);
+        levelImage =levelImageContainer.Query<VisualElement>(levelSelectedImageReference);
+        levelSelectedName = levelImageContainer.Query<Label>(levelSelectedNameReference);
     }
 
     private void OnEnable()
     {
         playButton.clicked += PlayButtonPressed;
-        levelSelectedImage.RegisterCallback<ClickEvent>(OpenLevelSelector);
+        levelImageContainer.RegisterCallback<ClickEvent>(OpenLevelSelector);
+        LevelSelectorUI.onSelectedLevelToPlay += ChangeLevelSelectedImageAndName;
+    }
+
+    private void ChangeLevelSelectedImageAndName(LevelSO level)
+    {
+        levelImage.style.backgroundImage = new StyleBackground(level.LevelIcon);
+        levelSelectedName.text = level.name;
     }
 
     private void OnDisable()
     {
         playButton.clicked -= PlayButtonPressed;
-        levelSelectedImage.UnregisterCallback<ClickEvent>(OpenLevelSelector);
+        levelImageContainer.UnregisterCallback<ClickEvent>(OpenLevelSelector);
     }
 
     private void PlayButtonPressed()
@@ -44,6 +58,10 @@ public class PlayLevelUI : UIComponent
     private void OpenLevelSelector(ClickEvent evt)
     {
         openLevelSelector?.Invoke();
+    }
 
+    public void SetFocus(bool state)
+    {
+        m_UIElement.focusable = state;
     }
 }

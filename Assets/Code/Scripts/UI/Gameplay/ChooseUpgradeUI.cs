@@ -173,6 +173,6 @@ public class ChooseUpgradeUI : UIComponent
     public override void OnScaledDown()
     {
         base.OnScaledDown();
-        HideGameplayElement();
+        SetDisplayElementNone();
     }
 }

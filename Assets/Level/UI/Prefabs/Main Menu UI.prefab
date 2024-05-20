@@ -56,7 +56,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 466332603018625416}
         m_TargetAssemblyTypeName: UIComponent, Assembly-CSharp
-        m_MethodName: HideGameplayElement
+        m_MethodName: SetDisplayElementNone
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -68,7 +68,7 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 466332603403880507}
         m_TargetAssemblyTypeName: UIComponent, Assembly-CSharp
-        m_MethodName: ShowGameplayElement
+        m_MethodName: SetElementVisible
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -80,7 +80,7 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 466332603957695913}
         m_TargetAssemblyTypeName: UIComponent, Assembly-CSharp
-        m_MethodName: ShowGameplayElement
+        m_MethodName: SetDisplayElementFlex
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -92,7 +92,7 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 242205910033697007}
         m_TargetAssemblyTypeName: UIComponent, Assembly-CSharp
-        m_MethodName: ShowGameplayElement
+        m_MethodName: SetDisplayElementFlex
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -280,7 +280,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 466332603403880507}
         m_TargetAssemblyTypeName: UIComponent, Assembly-CSharp
-        m_MethodName: HideGameplayElement
+        m_MethodName: SetElementHidden
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -292,7 +292,7 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 242205910033697007}
         m_TargetAssemblyTypeName: UIComponent, Assembly-CSharp
-        m_MethodName: HideGameplayElement
+        m_MethodName: SetDisplayElementNone
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -304,7 +304,7 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 466332603957695913}
         m_TargetAssemblyTypeName: UIComponent, Assembly-CSharp
-        m_MethodName: HideGameplayElement
+        m_MethodName: SetDisplayElementNone
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -316,7 +316,7 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 466332603018625416}
         m_TargetAssemblyTypeName: LevelSelectorUI, Assembly-CSharp
-        m_MethodName: ShowGameplayElement
+        m_MethodName: SetDisplayElementFlex
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -441,7 +441,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 8681643839162426450}
         m_TargetAssemblyTypeName: UIComponent, Assembly-CSharp
-        m_MethodName: ShowGameplayElement
+        m_MethodName: SetDisplayElementFlex
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

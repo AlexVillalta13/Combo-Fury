@@ -27,7 +27,7 @@ public class WinLevelUI : UIComponent
 
     private void ReturnToMainMenu()
     {
-        HideGameplayElement();
+        SetDisplayElementNone();
         returnToMainMenuEvent.Raise(gameObject);
     }
 }

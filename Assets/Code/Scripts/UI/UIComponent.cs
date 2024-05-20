@@ -72,16 +72,26 @@ public class UIComponent : MonoBehaviour
         visualElement.style.display = state ? DisplayStyle.Flex : DisplayStyle.None;
     }
 
-    public virtual void ShowGameplayElement()
+    public virtual void SetDisplayElementFlex()
     {
         ShowVisualElement(m_UIElement, true);
         // Activation event
     }
 
-    public virtual void HideGameplayElement()
+    public virtual void SetDisplayElementNone()
     {
         ShowVisualElement(m_UIElement, false);
         // Deactivation event
+    }
+
+    public virtual void SetElementHidden()
+    {
+        m_UIElement.style.visibility = Visibility.Hidden;
+    }
+
+    public virtual void SetElementVisible()
+    {
+        m_UIElement.style.visibility = Visibility.Visible;
     }
 
     public virtual void ScaleUpUI()

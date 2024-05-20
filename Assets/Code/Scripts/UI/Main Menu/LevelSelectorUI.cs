@@ -17,7 +17,7 @@ public class LevelSelectorUI : UIComponent
     ScrollView scrollView;
     VisualElement backButton;
 
-    public static Action<LevelSO> loadLevel;
+    public static Action<LevelSO> onSelectedLevelToPlay;
     [SerializeField] UnityEvent onLevelSelectionMenuClosed;
 
     public override void SetElementsReferences()
@@ -28,55 +28,57 @@ public class LevelSelectorUI : UIComponent
         backButton = m_UIElement.Query<VisualElement>(backButtonReference);
         levelHoldersList = m_UIElement.Query<VisualElement>(className: levelHolderReference).ToList();
 
+        SetLevelImages();
         SetTouchCallbacks();
     }
+
+    private void SetLevelImages()
+    {
+        foreach (VisualElement levelHolder in levelHoldersList)
+        {
+            int levelIndex = levelHoldersList.IndexOf(levelHolder);
+            VisualElement imageElement = levelHolder.Query<VisualElement>("Image");
+            imageElement.style.backgroundImage = new StyleBackground(m_Levels[levelIndex].LevelIcon);
+        }
+    }
+
     private void SetTouchCallbacks()
     {
-        backButton.RegisterCallback<ClickEvent>(BackButtonClicked);
+        backButton.RegisterCallback<ClickEvent>(evt => GoBackToPlayLevelScreen());
 
-        levelHoldersList[0].RegisterCallback<ClickEvent>(LoadFirstLevelCallback);
-        levelHoldersList[1].RegisterCallback<ClickEvent>(LoadSecondLevelCallback);
-        levelHoldersList[2].RegisterCallback<ClickEvent>(LoadThirdLevelCallback);
+        foreach (VisualElement levelHolder in levelHoldersList)
+        {
+            int levelIndex = levelHoldersList.IndexOf(levelHolder);
+            levelHolder.RegisterCallback<ClickEvent>(evt => SelectLevelToPlay(levelIndex));
+        }
     }
-    private void BackButtonClicked(ClickEvent evt)
+    private void GoBackToPlayLevelScreen()
     {
         onLevelSelectionMenuClosed?.Invoke();
-        HideGameplayElement();
+        SetDisplayElementNone();
     }
-    private void LoadFirstLevelCallback(ClickEvent evt)
+
+    private void SelectLevelToPlay(int levelNumber)
     {
-        loadLevel?.Invoke(m_Levels[0]);
-        onLevelSelectionMenuClosed?.Invoke();
-        HideGameplayElement();
-    }
-    private void LoadSecondLevelCallback(ClickEvent evt)
-    {
-        loadLevel?.Invoke(m_Levels[1]);
-        onLevelSelectionMenuClosed?.Invoke();
-        HideGameplayElement();
-    }
-    private void LoadThirdLevelCallback(ClickEvent evt)
-    {
-        loadLevel?.Invoke(m_Levels[2]);
-        onLevelSelectionMenuClosed?.Invoke();
-        HideGameplayElement();
+        onSelectedLevelToPlay?.Invoke(m_Levels[levelNumber]);
+        GoBackToPlayLevelScreen();
     }
 
     private void Start()
     {
         if(testLevel != null)
         {
-            loadLevel?.Invoke(testLevel);
+            onSelectedLevelToPlay?.Invoke(testLevel);
         }
         else
         {
-            loadLevel?.Invoke(m_Levels[0]);
+            onSelectedLevelToPlay?.Invoke(m_Levels[0]);
         }
     }
 
-    public override void ShowGameplayElement()
+    public override void SetDisplayElementFlex()
     {
-        base.ShowGameplayElement();
+        base.SetDisplayElementFlex();
 
         StartCoroutine(CenterScrollViewOnVisualElement(levelHoldersList[0]));
     }

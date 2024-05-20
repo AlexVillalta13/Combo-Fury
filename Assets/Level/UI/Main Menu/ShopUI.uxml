@@ -1,7 +1,7 @@
 <ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
-    <ui:VisualElement style="flex-grow: 1; background-color: rgba(201, 42, 190, 0.3);">
+    <ui:VisualElement style="background-color: rgba(79, 209, 50, 0.49); width: 100%; height: 100%;">
         <ui:Label tabindex="-1" text="This is a test page" parse-escape-sequences="true" display-tooltip-when-elided="true" style="align-self: center; font-size: 94px;" />
         <ui:Button text="Button" parse-escape-sequences="true" display-tooltip-when-elided="true" style="font-size: 157px;" />
-        <ui:Label tabindex="-1" text="Player upgrades" parse-escape-sequences="true" display-tooltip-when-elided="true" style="align-self: center; font-size: 94px;" />
+        <ui:Label tabindex="-1" text="Shop" parse-escape-sequences="true" display-tooltip-when-elided="true" style="align-self: center; font-size: 94px;" />
     </ui:VisualElement>
 </ui:UXML>

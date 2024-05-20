@@ -13,7 +13,7 @@ public class LoadingLevelUI : UIComponent
     private IEnumerator DisableLoadingLevelUICoroutine() 
     {
         yield return new WaitForSeconds(timeToLoad);
-        HideGameplayElement();
+        SetDisplayElementNone();
         onLevelLoadedevent.Raise(gameObject);
     }
 }

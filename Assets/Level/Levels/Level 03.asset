@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Level 03
   m_EditorClassIdentifier: 
   inCombatStatsSO: {fileID: 11400000, guid: aa73bdaa80e88ab4e8e2f1d00b7c5e66, type: 2}
+  levelIcon: {fileID: 21300000, guid: ef9d14fe7bbfd6448b3618e04b19110e, type: 3}
   environment: 0
   initialPosition: 0
   brickTypes: {fileID: 11400000, guid: 1de6bd5f177d50540a03449e4f318d9e, type: 2}

@@ -2,18 +2,19 @@
     <ui:Template name="BackButton" src="project://database/Assets/Level/UI/Main%20Menu/BackButton.uxml?fileID=9197481963319205126&amp;guid=4ed6f04653855f64782f523357cbafe7&amp;type=3#BackButton" />
     <Style src="project://database/Assets/Level/UI/Classes/GeneralControls.uss?fileID=7433441132597879392&amp;guid=60241d5d6715a5448a07eaab8185a076&amp;type=3#GeneralControls" />
     <Style src="project://database/Assets/Level/UI/Classes/LevelSelectionClasses.uss?fileID=7433441132597879392&amp;guid=3cad39220a8b5e34ea8fe4f610c015f5&amp;type=3#LevelSelectionClasses" />
-    <ui:ScrollView scroll-deceleration-rate="0,135" elasticity="0,1" mode="Vertical" touch-scroll-type="Elastic" nested-interaction-kind="ForwardScrolling" horizontal-scroller-visibility="Hidden" vertical-scroller-visibility="Hidden" style="height: 3361px;">
+    <Style src="project://database/Assets/Level/UI/Classes/CommonClasses.uss?fileID=7433441132597879392&amp;guid=0b7764f9735edf14583ce36e8b12d1e8&amp;type=3#CommonClasses" />
+    <ui:ScrollView scroll-deceleration-rate="0,135" elasticity="0,1" mode="Vertical" touch-scroll-type="Elastic" nested-interaction-kind="ForwardScrolling" horizontal-scroller-visibility="Hidden" vertical-scroller-visibility="Hidden" style="flex-grow: 1;">
         <ui:VisualElement name="LevelHolder" class="levelHolder">
-            <ui:Label text="Level 1" display-tooltip-when-elided="true" name="LevelName" class="levelName" />
+            <ui:Label text="Level 1" display-tooltip-when-elided="true" name="LevelName" class="levelName regularTextOutlineShadow" />
             <ui:VisualElement name="Image" class="levelImage" style="background-image: url(&quot;project://database/Assets/Art/cartoon_mountain.png?fileID=21300000&amp;guid=a7fd3a654f5cb0749a5799add9744474&amp;type=3#cartoon_mountain&quot;); background-color: rgba(67, 67, 67, 0);" />
         </ui:VisualElement>
         <ui:VisualElement name="LevelHolder" class="levelHolder">
-            <ui:Label text="Level 2" display-tooltip-when-elided="true" name="LevelName" class="levelName" />
-            <ui:VisualElement name="Image" class="levelImage" style="background-image: url(&quot;project://database/Assets/Art/cartoon_forest.png?fileID=21300000&amp;guid=cdf3567649cd8a746b6ba5b04bdc98e7&amp;type=3#cartoon_forest&quot;); background-color: rgba(67, 67, 67, 0);" />
+            <ui:Label text="Level 2" display-tooltip-when-elided="true" name="LevelName" class="levelName regularTextOutlineShadow" />
+            <ui:VisualElement name="Image" class="levelImage" style="background-image: url(&quot;project://database/Assets/Art/cartoon_mountain.png?fileID=21300000&amp;guid=a7fd3a654f5cb0749a5799add9744474&amp;type=3#cartoon_mountain&quot;); background-color: rgba(67, 67, 67, 0);" />
         </ui:VisualElement>
         <ui:VisualElement name="LevelHolder" class="levelHolder">
-            <ui:Label text="Level 3" display-tooltip-when-elided="true" name="LevelName" class="levelName" />
-            <ui:VisualElement name="Image" class="levelImage" style="background-image: url(&quot;project://database/Assets/Art/cartoon_3d_desert.png?fileID=21300000&amp;guid=ef9d14fe7bbfd6448b3618e04b19110e&amp;type=3#cartoon_3d_desert&quot;); background-color: rgba(255, 255, 255, 0);" />
+            <ui:Label text="Level 3" display-tooltip-when-elided="true" name="LevelName" class="levelName regularTextOutlineShadow" />
+            <ui:VisualElement name="Image" class="levelImage" style="background-image: url(&quot;project://database/Assets/Art/cartoon_mountain.png?fileID=21300000&amp;guid=a7fd3a654f5cb0749a5799add9744474&amp;type=3#cartoon_mountain&quot;); background-color: rgba(255, 255, 255, 0);" />
         </ui:VisualElement>
     </ui:ScrollView>
     <ui:Instance template="BackButton" name="BackButton" />
