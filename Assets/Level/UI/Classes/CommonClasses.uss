@@ -11,4 +11,5 @@
 .regularText {
     -unity-font-definition: resource('Fonts & Materials/LilitaOne-Regular SDF');
     color: rgb(255, 255, 255);
+    font-size: 118px;
 }

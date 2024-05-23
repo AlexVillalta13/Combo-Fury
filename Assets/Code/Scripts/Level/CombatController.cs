@@ -228,10 +228,10 @@ public class CombatController : MonoBehaviour
             DeactivaRevengeVFX.Raise(gameObject);
         }
 
-        if (upgradesSelected.HasUpgrade(hyperAttackId) && currentComboNumber % comboToHyperAttack == 0)
-        {
-            attackPower *= hyperAttackMultiplier;
-        }
+        //if (upgradesSelected.HasUpgrade(hyperAttackId) && currentComboNumber % comboToHyperAttack == 0)
+        //{
+        //    attackPower *= hyperAttackMultiplier;
+        //}
 
         EnemyReceivesDamage(attackPower);
     }

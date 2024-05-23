@@ -5,29 +5,38 @@ using UnityEngine.UIElements;
 
 public class YouLoseUI : UIComponent
 {
-    Button returnButton;
-
     [SerializeField] GameEvent returnToMainMenuEvent;
 
     public override void SetElementsReferences()
     {
         base.SetElementsReferences();
 
-        returnButton = m_Root.Query<Button>("ReturnButton");
     }
 
-    private void OnEnable()
+    public void StartCoroutineEnableTapToReturn()
     {
-        returnButton.RegisterCallback<ClickEvent>(RaiseReturnToMainMenuEvent);
+        StartCoroutine(EnableTapToReturnToMainMenuCoroutine());
     }
 
-    private void OnDisable()
+    private IEnumerator EnableTapToReturnToMainMenuCoroutine()
     {
-        returnButton.UnregisterCallback<ClickEvent>(RaiseReturnToMainMenuEvent);
+        yield return new WaitForSeconds(1f);
+        EnableTapToReturnToMainMenu();
+    }
+
+    private void EnableTapToReturnToMainMenu()
+    {
+        m_UIElement.RegisterCallback<ClickEvent>(RaiseReturnToMainMenuEvent);
+    }
+
+    private void DisableTapToReturnToMainMenu()
+    {
+        m_UIElement.UnregisterCallback<ClickEvent>(RaiseReturnToMainMenuEvent);
     }
 
     private void RaiseReturnToMainMenuEvent(ClickEvent evt)
     {
+        DisableTapToReturnToMainMenu();
         returnToMainMenuEvent.Raise(gameObject);
     }
 }

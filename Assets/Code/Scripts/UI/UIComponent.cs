@@ -42,7 +42,7 @@ public class UIComponent : MonoBehaviour
         m_UIElement = m_Root.Query<VisualElement>(name: elementName).First();
     }
 
-    public bool IsVisble()
+    public bool IsFlex()
     {
         if(m_UIElement == null)
         {

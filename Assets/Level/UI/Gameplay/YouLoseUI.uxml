@@ -1,8 +1,31 @@
 <ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
-    <ui:VisualElement name="AlphaBackground" style="position: absolute; width: 100%; height: 100%; align-items: center; justify-content: center; background-color: rgba(0, 0, 0, 0.28);">
-        <ui:VisualElement name="DeathScreenContainer" style="width: 749px; height: 499px; align-items: center; justify-content: space-around; background-color: rgb(0, 0, 0);">
-            <ui:Label text="YOU LOSE" display-tooltip-when-elided="true" style="font-size: 81px; -unity-font: url(&apos;project://database/Assets/Art/Fonts/LilitaOne-Regular.ttf?fileID=12800000&amp;guid=c16eb7d7c3953489db00312b8b09df4b&amp;type=3#LilitaOne-Regular&apos;); -unity-font-definition: none;" />
+    <Style src="project://database/Assets/Level/UI/Classes/CommonClasses.uss?fileID=7433441132597879392&amp;guid=0b7764f9735edf14583ce36e8b12d1e8&amp;type=3#CommonClasses" />
+    <ui:VisualElement name="AlphaBackground" style="align-items: auto; justify-content: flex-start; background-color: rgb(0, 53, 109); flex-grow: 1;">
+        <ui:VisualElement name="DeathScreenContainer" style="width: 749px; height: 499px; align-items: center; justify-content: space-around; background-color: rgb(0, 0, 0); display: none;">
+            <ui:Label text="YOU LOSE" display-tooltip-when-elided="true" style="font-size: 81px; -unity-font: url(&quot;project://database/Assets/Resources/Fonts%20&amp;%20Materials/LilitaOne-Regular.ttf?fileID=12800000&amp;guid=c16eb7d7c3953489db00312b8b09df4b&amp;type=3#LilitaOne-Regular&quot;); -unity-font-definition: none;" />
             <ui:Button text="Return" display-tooltip-when-elided="true" name="ReturnButton" style="font-size: 67px;" />
+        </ui:VisualElement>
+        <ui:VisualElement style="flex-grow: 1; align-items: center; justify-content: space-between; width: 100%; margin-top: 10%; margin-bottom: 10%;">
+            <ui:VisualElement style="flex-grow: 1; background-image: url(&quot;project://database/Assets/Art/Sprites/Title_Flag01_Purple.png?fileID=21300000&amp;guid=41dba55ac33e7d44091dc21bcfd6914d&amp;type=3#Title_Flag01_Purple&quot;); align-items: center; justify-content: center; -unity-background-scale-mode: stretch-to-fill; width: 90%; margin-bottom: 79px;">
+                <ui:Label tabindex="-1" text="END OF BATTLE" parse-escape-sequences="true" display-tooltip-when-elided="true" name="EndOfBattleLabel" class="regularTextOutlineShadow" style="font-size: 120px; margin-bottom: 45px;" />
+            </ui:VisualElement>
+            <ui:Label tabindex="-1" text="Enemies beated" parse-escape-sequences="true" display-tooltip-when-elided="true" name="LevelNumberLabel" class="regularText" style="font-size: 102px;" />
+            <ui:Label tabindex="-1" text="19" parse-escape-sequences="true" display-tooltip-when-elided="true" name="LastEnemyNumberLabel" class="regularText" style="font-size: 193px;" />
+            <ui:VisualElement name="PlayerLevelBar" style="margin-left: 15px; margin-right: 15px; flex-direction: row; width: 560px; overflow: visible; height: 5%; margin-top: 53px;">
+                <ui:VisualElement name="BarHolder" style="flex-grow: 1; position: absolute; align-self: center; width: 100%; overflow: hidden; flex-direction: row; background-image: url(&quot;project://database/Assets/Art/Sprites/BackgroundBarMainMenu.png?fileID=2800000&amp;guid=38e0bd651e11dca4398887d2670f1a30&amp;type=3#BackgroundBarMainMenu&quot;); -unity-background-scale-mode: scale-and-crop; height: 100%; justify-content: space-between; align-items: center; padding-left: 1%; padding-right: 1%; padding-top: 2%; padding-bottom: 2%; -unity-background-image-tint-color: rgb(0, 0, 0);">
+                    <ui:VisualElement name="PlayerXPBar" style="background-image: url(&quot;project://database/Assets/Art/Sprites/bar.png?fileID=2800000&amp;guid=103f0e6315dcbfd42bced467e6630a2e&amp;type=3#bar&quot;); width: 82%; -unity-background-scale-mode: scale-and-crop; position: relative; left: 0; height: 100%; align-self: center; -unity-background-image-tint-color: rgb(107, 232, 70); border-top-left-radius: 30px; border-bottom-left-radius: 30px; border-top-right-radius: 30px; border-bottom-right-radius: 30px;" />
+                </ui:VisualElement>
+                <ui:VisualElement name="PlayerLevelIconHolder" style="align-self: auto; align-items: center; justify-content: center; width: 87px;">
+                    <ui:VisualElement name="PlayerLevelIcon" style="background-image: url(&quot;project://database/Assets/Art/Sprites/Slider05_Icon.png?fileID=21300000&amp;guid=c257852501a015d47a9b019c11ab5042&amp;type=3#Slider05_Icon&quot;); -unity-background-scale-mode: scale-to-fit; position: absolute; width: 89px; height: 133%; left: -7px; flex-direction: row; justify-content: center; align-items: center;">
+                        <ui:Label tabindex="-1" text="99" parse-escape-sequences="true" display-tooltip-when-elided="true" name="PlayerLevelLabel" class="regularTextOutlineShadow" style="-unity-text-align: middle-center; font-size: 60px; width: 62px; height: 73px; top: -7px;" />
+                    </ui:VisualElement>
+                </ui:VisualElement>
+            </ui:VisualElement>
+            <ui:VisualElement name="RewardsHolder" style="justify-content: space-around; height: 50%; width: 100%; align-items: center; margin-top: 69px;">
+                <ui:Label tabindex="-1" text="· · · REWARDS · · ·" parse-escape-sequences="true" display-tooltip-when-elided="true" name="RewardsLabel" class="regularText" />
+                <ui:VisualElement name="RewardsIcons" style="flex-grow: 1; background-color: rgb(1, 34, 62); width: 90%; height: 50%; border-top-left-radius: 110px; border-top-right-radius: 110px; border-bottom-right-radius: 110px; border-bottom-left-radius: 110px; flex-direction: row;" />
+            </ui:VisualElement>
+            <ui:Label tabindex="-1" text="Tap to Close" parse-escape-sequences="true" display-tooltip-when-elided="true" class="regularText" style="font-size: 51px; margin-top: 68px;" />
         </ui:VisualElement>
     </ui:VisualElement>
 </ui:UXML>
