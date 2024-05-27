@@ -1,0 +1,6 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" editor-extension-mode="False">
+    <ui:VisualElement name="RewardHolder" style="background-image: url(&quot;project://database/Assets/Art/Sprites/ItemFrame01_Single_Brown.png?fileID=21300000&amp;guid=301b0f68a6916c54e8cf64e14faa3cc4&amp;type=3#ItemFrame01_Single_Brown&quot;); -unity-background-scale-mode: scale-to-fit; height: 100%; width: 100%; align-self: flex-start; align-items: center; justify-content: center;">
+        <ui:VisualElement name="RewardIcon" style="background-image: url(&quot;project://database/Assets/Art/Sprites/Icon_Gold.png?fileID=21300000&amp;guid=68819e3b5fa2ed84d9256473823fbe28&amp;type=3#Icon_Gold&quot;); -unity-background-scale-mode: scale-to-fit; top: -3%; width: 80%; height: 80%;" />
+        <ui:Label tabindex="-1" text="x850" parse-escape-sequences="true" display-tooltip-when-elided="true" name="QuantityAcquiredLabel" class="regularTextOutlineShadow" style="position: absolute; -unity-text-align: lower-right; width: 75%; height: 75%; font-size: 38px;" />
+    </ui:VisualElement>
+</ui:UXML>

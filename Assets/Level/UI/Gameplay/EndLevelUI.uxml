@@ -1,11 +1,8 @@
 <ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <ui:Template name="RewardUI" src="project://database/Assets/Level/UI/Gameplay/RewardUI.uxml?fileID=9197481963319205126&amp;guid=6fa46a774ef499f43b0fc057a07ed6e8&amp;type=3#RewardUI" />
     <Style src="project://database/Assets/Level/UI/Classes/CommonClasses.uss?fileID=7433441132597879392&amp;guid=0b7764f9735edf14583ce36e8b12d1e8&amp;type=3#CommonClasses" />
     <ui:VisualElement name="AlphaBackground" style="align-items: auto; justify-content: flex-start; background-color: rgb(0, 53, 109); flex-grow: 1;">
-        <ui:VisualElement name="DeathScreenContainer" style="width: 749px; height: 499px; align-items: center; justify-content: space-around; background-color: rgb(0, 0, 0); display: none;">
-            <ui:Label text="YOU LOSE" display-tooltip-when-elided="true" style="font-size: 81px; -unity-font: url(&quot;project://database/Assets/Resources/Fonts%20&amp;%20Materials/LilitaOne-Regular.ttf?fileID=12800000&amp;guid=c16eb7d7c3953489db00312b8b09df4b&amp;type=3#LilitaOne-Regular&quot;); -unity-font-definition: none;" />
-            <ui:Button text="Return" display-tooltip-when-elided="true" name="ReturnButton" style="font-size: 67px;" />
-        </ui:VisualElement>
-        <ui:VisualElement style="flex-grow: 1; align-items: center; justify-content: space-between; width: 100%; margin-top: 10%; margin-bottom: 10%;">
+        <ui:VisualElement name="DeathScreenContainer" style="flex-grow: 1; align-items: center; justify-content: space-between; width: 100%; margin-top: 10%; margin-bottom: 10%;">
             <ui:VisualElement style="flex-grow: 1; background-image: url(&quot;project://database/Assets/Art/Sprites/Title_Flag01_Purple.png?fileID=21300000&amp;guid=41dba55ac33e7d44091dc21bcfd6914d&amp;type=3#Title_Flag01_Purple&quot;); align-items: center; justify-content: center; -unity-background-scale-mode: stretch-to-fill; width: 90%; margin-bottom: 79px;">
                 <ui:Label tabindex="-1" text="END OF BATTLE" parse-escape-sequences="true" display-tooltip-when-elided="true" name="EndOfBattleLabel" class="regularTextOutlineShadow" style="font-size: 120px; margin-bottom: 45px;" />
             </ui:VisualElement>
@@ -21,11 +18,14 @@
                     </ui:VisualElement>
                 </ui:VisualElement>
             </ui:VisualElement>
-            <ui:VisualElement name="RewardsHolder" style="justify-content: space-around; height: 50%; width: 100%; align-items: center; margin-top: 69px;">
+            <ui:VisualElement name="RewardsHolder" style="justify-content: flex-start; height: 50%; width: 100%; align-items: center; margin-top: 69px;">
                 <ui:Label tabindex="-1" text="· · · REWARDS · · ·" parse-escape-sequences="true" display-tooltip-when-elided="true" name="RewardsLabel" class="regularText" />
-                <ui:VisualElement name="RewardsIcons" style="flex-grow: 1; background-color: rgb(1, 34, 62); width: 90%; height: 50%; border-top-left-radius: 110px; border-top-right-radius: 110px; border-bottom-right-radius: 110px; border-bottom-left-radius: 110px; flex-direction: row;" />
+                <ui:VisualElement name="RewardsIcons" style="flex-grow: 0; background-color: rgb(1, 34, 62); width: 85%; height: 40%; border-top-left-radius: 110px; border-top-right-radius: 110px; border-bottom-right-radius: 110px; border-bottom-left-radius: 110px; flex-direction: row; flex-wrap: wrap; align-items: flex-start; padding-top: 5%; padding-right: 5%; padding-bottom: 5%; padding-left: 5%; align-self: auto;">
+                    <ui:Instance template="RewardUI" name="RewardUI" style="height: 50%; width: 20%; align-items: center; justify-content: center;" />
+                    <ui:Instance template="RewardUI" name="RewardUI" style="height: 50%; width: 20%; align-items: center; justify-content: center;" />
+                </ui:VisualElement>
             </ui:VisualElement>
-            <ui:Label tabindex="-1" text="Tap to Close" parse-escape-sequences="true" display-tooltip-when-elided="true" class="regularText" style="font-size: 51px; margin-top: 68px;" />
+            <ui:Label tabindex="-1" text="Tap to Close" parse-escape-sequences="true" display-tooltip-when-elided="true" name="TapToCloseLabel" class="regularText" style="font-size: 51px; margin-top: 68px;" />
         </ui:VisualElement>
     </ui:VisualElement>
 </ui:UXML>
