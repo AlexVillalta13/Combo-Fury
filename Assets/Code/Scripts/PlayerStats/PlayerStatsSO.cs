@@ -8,22 +8,40 @@ public class PlayerStatsSO : ScriptableObject
     [Title("Player Base Stats")]
     [SerializeField] float maxHealth = 100;
     public float MaxHealth { set { maxHealth = value; } get { return maxHealth; } }
-
-
     [SerializeField] float currentHealth = 100;
     public float CurrentHealth { set { currentHealth = value; } get { return currentHealth; } }
-
-
-    [SerializeField] float attack = 22;
+    public bool PlayerIsAlive()
+    {
+        return currentHealth > 0;
+    }
+    [SerializeField] float attack = 10f;
     public float Attack { set { attack = value; } get { return attack; } }
-
-
-    [SerializeField] float defense = 5;
+    [SerializeField] float defense = 0f;
     public float Defense { set { defense = value; } get { return defense; } }
-
-
     [SerializeField] float criticalAttackChance = 20f;
     public float CriticalAttackChance { set { criticalAttackChance = value; } get { return criticalAttackChance; } }
+    public float DodgeChance = 0f;
+
+
+    [Title("Player Upgrade Stats Increments")]
+    [SerializeField] float healPercentage = 25f;
+    public float HealPercentage { get { return healPercentage; } }
+    [SerializeField] float littleAttackIncreasePercentage = 15f;
+    public float LittleAttackIncreasePercentage { get {  return littleAttackIncreasePercentage; } }
+    [SerializeField] float mediumAttackIncreasePercentage = 30f;
+    public float MediumAttackIncreasePercentage { get { return mediumAttackIncreasePercentage; } }
+    [SerializeField] float mediumDefenseIncreasePercentage = 10f;
+    public float MediumDefenseIncreasePercentage { get { return mediumDefenseIncreasePercentage; } }
+    [SerializeField] float maxHealthIncreasePercentage = 10f;
+    public float MaxHealthIncreasePercentage { get { return maxHealthIncreasePercentage; } }
+    [SerializeField] float criticalChanceIncrease = 5f;
+    public float CriticalChanceIncrease { get {  return criticalChanceIncrease; } }
+    public float AdrenalineDodgeChance = 30f;
+    //[SerializeField] float healthPercentageToActivateRage = 30f;
+    //public float HealthPercentageToActivateRage { get {  return healthPercentageToActivateRage; } }
+    //[SerializeField] float extraRageAttack = 20f;
+    //public float ExtraRageAttack { get {  return extraRageAttack; } }
+
 
     [Title("Fire Upgrade Stats")]
     [SerializeField] float fireDamageIncrement = 10f;
@@ -64,6 +82,7 @@ public class PlayerStatsSO : ScriptableObject
         this.Defense = permanentStatsSO.Defense;
         this.CriticalAttackChance = permanentStatsSO.CriticalAttackChance;
         this.CurrentHealth = this.MaxHealth;
+        this.DodgeChance = permanentStatsSO.DodgeChance;
 
         this.fireLevel = permanentStatsSO.fireLevel;
         this.firePercentageDamage = permanentStatsSO.firePercentageDamage;

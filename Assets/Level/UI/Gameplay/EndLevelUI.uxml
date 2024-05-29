@@ -19,7 +19,7 @@
                 </ui:VisualElement>
             </ui:VisualElement>
             <ui:VisualElement name="RewardsHolder" style="justify-content: flex-start; height: 50%; width: 100%; align-items: center; margin-top: 69px;">
-                <ui:Label tabindex="-1" text="· · · REWARDS · · ·" parse-escape-sequences="true" display-tooltip-when-elided="true" name="RewardsLabel" class="regularText" />
+                <ui:Label tabindex="-1" text="· · · REWARDS · · ·" parse-escape-sequences="true" display-tooltip-when-elided="true" name="RewardsLabel" class="regularText" style="font-size: 100px;" />
                 <ui:VisualElement name="RewardsIcons" style="flex-grow: 0; background-color: rgb(1, 34, 62); width: 85%; height: 40%; border-top-left-radius: 110px; border-top-right-radius: 110px; border-bottom-right-radius: 110px; border-bottom-left-radius: 110px; flex-direction: row; flex-wrap: wrap; align-items: flex-start; padding-top: 5%; padding-right: 5%; padding-bottom: 5%; padding-left: 5%; align-self: auto;">
                     <ui:Instance template="RewardUI" name="RewardUI" style="height: 50%; width: 20%; align-items: center; justify-content: center;" />
                     <ui:Instance template="RewardUI" name="RewardUI" style="height: 50%; width: 20%; align-items: center; justify-content: center;" />

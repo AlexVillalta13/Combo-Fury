@@ -29,7 +29,8 @@ public class HealthBars : UIComponent
 
     Label enemyCountText;
 
-    [SerializeField] PlayerStatsSO inCombatStatsSO;
+    [SerializeField] PlayerStatsSO inCombatPlayerStatsSO;
+    [SerializeField] EnemyStats enemyStats;
 
 
     public override void Awake()
@@ -39,24 +40,16 @@ public class HealthBars : UIComponent
 
     private void OnEnable()
     {
-        CombatController.onChangePlayerHealth += ChangePlayerHealth;
-        CombatController.onChangeEnemyHealth += ChangeEnemyHealth;
-
-        CombatController.onChangeEnemyAttack += ChangeEnemyAttack;
-
-        CombatController.onChangeCurrentEnemy += ChangeEnemyCount;
+        PlayerHealth.onChangePlayerHealth += ChangePlayerHealthUI;
+        EnemyHealth.onChangeEnemyHealth += ChangeEnemyHealth;
 
         HideEnemyBar();
     }
 
     private void OnDisable()
     {
-        CombatController.onChangePlayerHealth -= ChangePlayerHealth;
-        CombatController.onChangeEnemyHealth -= ChangeEnemyHealth;
-
-        CombatController.onChangeEnemyAttack -= ChangeEnemyAttack;
-
-        CombatController.onChangeCurrentEnemy -= ChangeEnemyCount;
+        PlayerHealth.onChangePlayerHealth -= ChangePlayerHealthUI;
+        EnemyHealth.onChangeEnemyHealth -= ChangeEnemyHealth;
     }
 
     public override void SetElementsReferences()
@@ -76,27 +69,33 @@ public class HealthBars : UIComponent
         enemyCountText = m_UIElement.Query<Label>(name: enemyCountTextReference);
     }
 
-    public void ChangePlayerHealth(float newHealth, float maxHealt, float attackIncome)
+    public void ChangePlayerHealthUI(object sender, OnChangeHealthEventArgs eventArgs)
     {
-        playerFillBar.style.width = Length.Percent(newHealth * 100 / maxHealt);
-        playerHealthText.text = Mathf.Clamp(newHealth, 0f, maxHealt).ToString("0") + "/" + maxHealt.ToString("0");
+        float newHealth = inCombatPlayerStatsSO.CurrentHealth;
+        float maxHealth = inCombatPlayerStatsSO.MaxHealth;
+
+        playerFillBar.style.width = Length.Percent(newHealth * 100 / maxHealth);
+        playerHealthText.text = Mathf.Clamp(newHealth, 0f, maxHealth).ToString("0") + "/" + maxHealth.ToString("0");
     }
 
-    public void ChangeEnemyHealth(float newHealth, float maxHealt, float attackIncome)
+    public void ChangeEnemyHealth(object sender, OnChangeHealthEventArgs eventArgs)
     {
-        enemyFillBar.style.width = Length.Percent(newHealth * 100 / maxHealt);
-        enemyHealthText.text = Mathf.Clamp(newHealth, 0f, maxHealt).ToString("0") + "/" + maxHealt.ToString("0");
+        float newHealth = enemyStats.currentHealth;
+        float maxHealth = enemyStats.maxHealth;
+
+        enemyFillBar.style.width = Length.Percent(newHealth * 100 / maxHealth);
+        enemyHealthText.text = Mathf.Clamp(newHealth, 0f, maxHealth).ToString("0") + "/" + maxHealth.ToString("0");
     }
 
     public void ChangePlayerStats()
     {
-        playerAttackText.text = inCombatStatsSO.Attack.ToString("0");
-        playerDefenseText.text = inCombatStatsSO.Defense.ToString("0");
+        playerAttackText.text = inCombatPlayerStatsSO.Attack.ToString("0");
+        playerDefenseText.text = inCombatPlayerStatsSO.Defense.ToString("0");
     }
 
-    public void ChangeEnemyAttack(float newEnemyAttack)
+    public void ChangeEnemyAttack()
     {
-        enemyAttackText.text = newEnemyAttack.ToString("0");
+        enemyAttackText.text = enemyStats.attack.ToString("0");
     }
 
     public void ShowEnemyBar()
@@ -109,10 +108,10 @@ public class HealthBars : UIComponent
         enemyBarHolder.style.visibility = Visibility.Hidden;
     }
 
-    public void ChangeEnemyCount(int currentEnemy,  int enemyCount)
+    public void ChangeEnemyCount()
     {
-        enemyCountText.text = currentEnemy.ToString("0") + "/" + enemyCount.ToString("0");
-        if(currentEnemy == enemyCount)
+        enemyCountText.text = enemyStats.currentEnemy.ToString("0") + "/" + enemyStats.totalEnemies.ToString("0");
+        if(enemyStats.currentEnemy == enemyStats.totalEnemies)
         {
             BossModeOn();
         }

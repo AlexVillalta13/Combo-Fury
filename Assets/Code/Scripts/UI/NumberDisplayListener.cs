@@ -31,11 +31,11 @@ public class NumberDisplayListener : MonoBehaviour
     {
         if(isPlayer)
         {
-            CombatController.onChangePlayerHealth += ShowNumber;
+            PlayerHealth.onChangePlayerHealth += ShowNumber;
         }
         else
         {
-            CombatController.onChangeEnemyHealth += ShowNumber;
+            EnemyHealth.onChangeEnemyHealth += ShowNumber;
         }
     }
 
@@ -43,17 +43,17 @@ public class NumberDisplayListener : MonoBehaviour
     {
         if(isPlayer)
         {
-            CombatController.onChangePlayerHealth -= ShowNumber;
+            PlayerHealth.onChangePlayerHealth -= ShowNumber;
         }
         else
         {
-            CombatController.onChangeEnemyHealth -= ShowNumber;
+            EnemyHealth.onChangeEnemyHealth -= ShowNumber;
         }
     }
 
-    private void ShowNumber(float currentHealth, float maxHealth, float healthDifference)
+    private void ShowNumber(object sender, OnChangeHealthEventArgs eventArgs)
     {
-        if (healthDifference == 0) { return; }
+        if (eventArgs.spawnNumberTextMesh == false) { return; }
 
         TextMeshPro number = pool.NumberMeshPool.Get();
         number.fontSize = 5;
@@ -63,11 +63,11 @@ public class NumberDisplayListener : MonoBehaviour
         }
         else
         {
-            if (healthDifference > 0)
+            if (eventArgs.healthDifference > 0)
             {
                 number.color = playerHealsColor;
             }
-            else if (healthDifference < 0)
+            else if (eventArgs.healthDifference < 0)
             {
                 number.color = playerHitColor;
                 //healthDifference *= -1;
@@ -76,7 +76,7 @@ public class NumberDisplayListener : MonoBehaviour
 
         PositionText(number);
 
-        number.text = healthDifference.ToString("0");
+        number.text = eventArgs.healthDifference.ToString("0");
 
         number.transform.SetParent(transform);
     }
@@ -90,7 +90,7 @@ public class NumberDisplayListener : MonoBehaviour
         number.transform.position = transform.TransformPoint(numberLocalStartPosition);
     }
 
-    public void ShowText(string textToShow)
+    public void ShowWord(string wordToShow)
     {
         if (isPlayer == true)
         {
@@ -99,7 +99,7 @@ public class NumberDisplayListener : MonoBehaviour
 
             PositionText(textMesh);
 
-            textMesh.text = textToShow;
+            textMesh.text = wordToShow;
             textMesh.fontSize = 3;
         }
     }

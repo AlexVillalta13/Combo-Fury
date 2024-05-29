@@ -1,5 +1,6 @@
 using Sirenix.OdinInspector;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "Game event")]
@@ -12,6 +13,11 @@ public class GameEvent : ScriptableObject
     [Button(ButtonSizes.Medium)]
     public void Raise (GameObject gameObjectAttached)
     {
+        //string path = AssetDatabase.GetAssetPath(this);
+        //Debug.Log("GameObject: " + gameObjectAttached.name + ", script: " + ", SO: " + System.IO.Path.GetFileName(path));
+
+
+
         this.gameObjectAttached.Add(gameObjectAttached);
         for(int i = gameEventsList.Count - 1; i >= 0; i--)
         {

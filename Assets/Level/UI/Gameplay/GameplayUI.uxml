@@ -1,14 +1,12 @@
 <ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
     <ui:Template name="HealthBars" src="project://database/Assets/Level/UI/Gameplay/HealthBars.uxml?fileID=9197481963319205126&amp;guid=6fd24a26e8cf64f4f9818b0e78313475&amp;type=3#HealthBars" />
     <ui:Template name="CombatBar" src="project://database/Assets/Level/UI/Gameplay/CombatBarUI.uxml?fileID=9197481963319205126&amp;guid=bc31febbddacc444d8bf8548f11d0b71&amp;type=3#CombatBarUI" />
-    <ui:Template name="DeathScreen" src="project://database/Assets/Level/UI/Gameplay/YouLoseUI.uxml?fileID=9197481963319205126&amp;guid=69daab59cf0c2a2408630f74ca6d7284&amp;type=3#YouLoseUI" />
+    <ui:Template name="DeathScreen" src="project://database/Assets/Level/UI/Gameplay/EndLevelUI.uxml?fileID=9197481963319205126&amp;guid=69daab59cf0c2a2408630f74ca6d7284&amp;type=3#EndLevelUI" />
     <ui:Template name="ChooseUpgradeUI" src="project://database/Assets/Level/UI/Gameplay/ChooseUpgradeUI.uxml?fileID=9197481963319205126&amp;guid=814cca894d04801478435eb6c53dab7d&amp;type=3#ChooseUpgradeUI" />
-    <ui:Template name="WinLevelUI" src="project://database/Assets/Level/UI/Gameplay/WinLevelUI.uxml?fileID=9197481963319205126&amp;guid=4896b6e98295532429d7f3c0b3be75cd&amp;type=3#WinLevelUI" />
     <ui:Template name="TapToBeginWalkUI" src="project://database/Assets/Level/UI/Gameplay/TapToBeginWalkUI.uxml?fileID=9197481963319205126&amp;guid=84258930ff0e91f4ba43784b23566683&amp;type=3#TapToBeginWalkUI" />
     <ui:Instance template="HealthBars" name="HealthBars" style="position: absolute; top: 0; width: 100%;" />
     <ui:Instance template="CombatBar" name="CombatBarUI" style="bottom: 0; position: absolute; width: 100%;" />
-    <ui:Instance template="DeathScreen" name="YouLoseUI" style="position: absolute; width: 100%; height: 100%; display: none;" />
+    <ui:Instance template="DeathScreen" name="EndLevelUI" style="position: absolute; width: 100%; height: 100%; display: none;" />
     <ui:Instance template="ChooseUpgradeUI" name="ChooseUpgradeUI" style="position: absolute; width: 100%; height: 100%; display: none;" />
-    <ui:Instance template="WinLevelUI" name="WinLevelUI" style="width: 100%; height: 100%; display: none;" />
     <ui:Instance template="TapToBeginWalkUI" name="TapToBeginWalkUI" style="position: absolute; width: 100%; height: 100%;" />
 </ui:UXML>

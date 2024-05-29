@@ -16,11 +16,6 @@ public class PlayerUpgrades : MonoBehaviour
     [SerializeField] UpgradeInLevelSO upgradesPlayerHasSO;
 
     [Header("Upgrade Stats")]
-    [SerializeField] float healPercentage = 25f;
-    [SerializeField] float littleAttackIncreasePercentage = 5f;
-    [SerializeField] float mediumAttackIncreasePercentage = 10f;
-    [SerializeField] float mediumDefenseIncreasePercentage = 10f;
-    [SerializeField] float maxHealthIncreasePercentage = 10f;
     [SerializeField] float criticalChanceIncrease = 5f;
     [SerializeField] float healthPercentageToActivateRage = 30f;
     [SerializeField] float extraRageAttack = 20f;
@@ -46,59 +41,6 @@ public class PlayerUpgrades : MonoBehaviour
         hasRageUpgrade = false;
         hasRageState = false;
         attackPreviousToRage = PermanentPlayerStatsSO.Attack;
-    }
-
-    public void IncreaseMaxHealth()
-    {
-        float amountToIncreaseMaxHealth = Mathf.Round(PermanentPlayerStatsSO.MaxHealth * maxHealthIncreasePercentage / 100);
-        inCombatPlayerStatsSO.MaxHealth += amountToIncreaseMaxHealth;
-        inCombatPlayerStatsSO.CurrentHealth += amountToIncreaseMaxHealth;
-
-        CombatController.onChangePlayerHealth(inCombatPlayerStatsSO.CurrentHealth, inCombatPlayerStatsSO.MaxHealth, amountToIncreaseMaxHealth);
-    }
-
-    public void Heal()
-    {
-        float amountToHeal = Mathf.Round(PermanentPlayerStatsSO.MaxHealth * healPercentage / 100);
-        inCombatPlayerStatsSO.CurrentHealth += amountToHeal;
-        inCombatPlayerStatsSO.CurrentHealth = Mathf.Clamp(inCombatPlayerStatsSO.CurrentHealth, 0, inCombatPlayerStatsSO.MaxHealth);
-
-        CombatController.onChangePlayerHealth(inCombatPlayerStatsSO.CurrentHealth, inCombatPlayerStatsSO.MaxHealth, amountToHeal);
-    }
-
-    public void IncreaseAttack()
-    {
-        float attackIncrease = Mathf.Round(PermanentPlayerStatsSO.Attack * littleAttackIncreasePercentage / 100);
-        if(attackIncrease < 1)
-        {
-            attackIncrease = 1;
-        }
-        inCombatPlayerStatsSO.Attack += attackIncrease;
-        attackPreviousToRage += attackIncrease;
-        onPlayerChangeInCombatStat.Raise(gameObject);
-    }
-
-    public void BigAttackIncrease()
-    {
-        float attackIncrease = Mathf.Round(PermanentPlayerStatsSO.Attack * mediumAttackIncreasePercentage / 100);
-        if(attackIncrease < 2)
-        {
-            attackIncrease = 2;
-        }
-        inCombatPlayerStatsSO.Attack += attackIncrease;
-        attackPreviousToRage += attackIncrease;
-        onPlayerChangeInCombatStat.Raise(gameObject);
-    }
-
-    public void DefenseIncrease()
-    {
-        float defenseIncrease = Mathf.Round(PermanentPlayerStatsSO.Attack * mediumDefenseIncreasePercentage / 100);
-        if(defenseIncrease < 2)
-        {
-            defenseIncrease = 2;
-        }
-        inCombatPlayerStatsSO.Defense += defenseIncrease;
-        onPlayerChangeInCombatStat.Raise(gameObject);
     }
 
     public void IncreaseCriticalChance()

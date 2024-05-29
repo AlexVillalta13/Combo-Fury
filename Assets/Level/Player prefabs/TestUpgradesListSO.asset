@@ -13,31 +13,6 @@ MonoBehaviour:
   m_Name: TestUpgradesListSO
   m_EditorClassIdentifier: 
   upgradeList:
-  - upgradeName: Heal
-    upgradeId: Heal
-    image: {fileID: 21300000, guid: bcb23f3a9466f1844975fe607ba1540e, type: 3}
-    maxLevel: 0
-    levelUnlock: 0
-    upgradeDescription: Heals a small amount
-    getUpgradeEvent: {fileID: 11400000, guid: 16fdfc2b96ce415488ecd2f5382ad783, type: 2}
-  - upgradeName: Little Attack Increase
-    upgradeId: LittleAttack
-    image: {fileID: 21300000, guid: 087129c45f1ade545aca68f3d81bdcd8, type: 3}
-    maxLevel: 0
-    levelUnlock: 0
-    upgradeDescription: Increase attack in a small amount
-    getUpgradeEvent: {fileID: 11400000, guid: c06b829dffdb67248a1f051eb96ba477, type: 2}
-  - upgradeName: Max Health
-    upgradeId: MaxHealth
-    image: {fileID: 21300000, guid: 171dd4616f6fa394099f5be78e7632bd, type: 3}
-    maxLevel: 0
-    levelUnlock: 0
-    upgradeDescription: Increase the max heath
-    getUpgradeEvent: {fileID: 11400000, guid: f667a2f609fa6e44e929bf7d9ff1fef5, type: 2}
-  - upgradeName: FIRE ATTACK
-    upgradeId: Fire
-    image: {fileID: 21300000, guid: 9be12c18230fe2c4aa943faca8852eb2, type: 3}
-    maxLevel: 3
-    levelUnlock: 0
-    upgradeDescription: Heavy attack
-    getUpgradeEvent: {fileID: 11400000, guid: 37ce64e7e344d8440bf83e4cf6aead39, type: 2}
+  - {fileID: 11400000, guid: ac5e3978d858bc949bfcc63d0d9d505b, type: 2}
+  - {fileID: 11400000, guid: a7a46e07d38517441b6613f6590f6a03, type: 2}
+  - {fileID: 11400000, guid: 8a3e6e05356adee4aa0fc805fb19701c, type: 2}

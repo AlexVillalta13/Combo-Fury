@@ -539,7 +539,7 @@ MonoBehaviour:
             m_Calls:
             - m_Target: {fileID: 3033139718254966317}
               m_TargetAssemblyTypeName: NumberDisplayListener, Assembly-CSharp
-              m_MethodName: ShowText
+              m_MethodName: ShowWord
               m_Mode: 5
               m_Arguments:
                 m_ObjectArgument: {fileID: 0}
@@ -683,7 +683,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eb953a8383db9fc45943e75de88733bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameEvent: {fileID: 11400000, guid: 09746d9f055ef4c4ab5eb4b564b3c186, type: 2}
+  gameEvent: {fileID: 11400000, guid: 321ea5d73316d17439b3abe9e78bcba1, type: 2}
   unityEvent:
     m_PersistentCalls:
       m_Calls:
@@ -6346,7 +6346,7 @@ MonoBehaviour:
     - rid: 628144706257944576
       type: {class: MMF_Events, ns: MoreMountains.Feedbacks, asm: MoreMountains.Feedbacks}
       data:
-        Active: 1
+        Active: 0
         UniqueID: 882829321
         Label: Unity Events
         ChannelMode: 0
@@ -7661,7 +7661,7 @@ MonoBehaviour:
             m_Calls:
             - m_Target: {fileID: 3033139718254966317}
               m_TargetAssemblyTypeName: NumberDisplayListener, Assembly-CSharp
-              m_MethodName: ShowText
+              m_MethodName: ShowWord
               m_Mode: 5
               m_Arguments:
                 m_ObjectArgument: {fileID: 0}

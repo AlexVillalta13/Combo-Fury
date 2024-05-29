@@ -24,14 +24,28 @@ public class ChooseUpgradeUI : UIComponent
     const string upgradeDescriptionClass = "descriptionUpgrade";
     const string scaleHolderElement = "HolderToScale";
 
+    public void ActivateChooseUpgradeUI()
+    {
+        SelectRandomUpgrades();
+        StartCoroutine(ActivateChooseUpgradeUICoroutine());
+    }
+
+    private IEnumerator ActivateChooseUpgradeUICoroutine()
+    {
+        yield return new WaitForSeconds(2f);
+        SetDisplayElementFlex();
+        ScaleUpUI();
+    }
+
     public override void SetElementsReferences()
     {
         base.SetElementsReferences();
 
         holderToScale = m_UIElement.Query<VisualElement>(name: scaleHolderElement);
-        UpgradeContainerList = m_UIElement.Query<VisualElement>(className: upgradeContainerClass).ToList();
-
         holderToScale.RegisterCallback<TransitionEndEvent>(OnChangeScaleEndEvent);
+        ScaleDownElement(holderToScale);
+
+        UpgradeContainerList = m_UIElement.Query<VisualElement>(className: upgradeContainerClass).ToList();
 
         upgradesThatCanBeSelected = new List<Upgrade>(upgradeListSO.UpgradeList);
     }
@@ -48,11 +62,14 @@ public class ChooseUpgradeUI : UIComponent
         upgradeChoosed.Raise(gameObject);
     }
 
-    public void SelectRandomUpgrades()
+    private void SelectRandomUpgrades()
     {
         upgradesRandomlySelected.Clear();
 
-        while(upgradesRandomlySelected.Count < 3)
+        int upgradesToDisplay = 3;
+        if(upgradesThatCanBeSelected.Count < 3) { upgradesToDisplay = upgradesThatCanBeSelected.Count; }
+
+        while (upgradesRandomlySelected.Count < upgradesToDisplay)
         {
             int i = Random.Range(0, upgradesThatCanBeSelected.Count);
             Upgrade upgrade = upgradesThatCanBeSelected[i];

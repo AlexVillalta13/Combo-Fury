@@ -6,6 +6,7 @@ using UnityEngine.UIElements;
 public class EndLevelUI : UIComponent
 {
     [SerializeField] GameEvent returnToMainMenuEvent;
+    [SerializeField] float timeToShowUIAfterDeath = 1.5f;
 
     public override void SetElementsReferences()
     {
@@ -20,7 +21,8 @@ public class EndLevelUI : UIComponent
 
     private IEnumerator EnableTapToReturnToMainMenuCoroutine()
     {
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(timeToShowUIAfterDeath);
+        SetDisplayElementFlex();
         EnableTapToReturnToMainMenu();
     }
 

@@ -108,6 +108,11 @@ public class UIComponent : MonoBehaviour
         element.AddToClassList(scaleDownClass);
     }
 
+    public void ScaleDownElement(VisualElement element)
+    {
+        element.AddToClassList(scaleDownClass);
+    }
+
     protected void OnChangeScaleEndEvent(TransitionEndEvent evt)
     {
         foreach(StylePropertyName transitionName in evt.stylePropertyNames)
