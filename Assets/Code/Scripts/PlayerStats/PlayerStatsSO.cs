@@ -37,6 +37,7 @@ public class PlayerStatsSO : ScriptableObject
     [SerializeField] float criticalChanceIncrease = 5f;
     public float CriticalChanceIncrease { get {  return criticalChanceIncrease; } }
     public float AdrenalineDodgeChance = 30f;
+    public float RevengePercentageIncrease = 200f;
     //[SerializeField] float healthPercentageToActivateRage = 30f;
     //public float HealthPercentageToActivateRage { get {  return healthPercentageToActivateRage; } }
     //[SerializeField] float extraRageAttack = 20f;
