@@ -50,6 +50,9 @@ public class PlayerStatsSO : ScriptableObject
     [SerializeField] float extraRageAttack = 20f;
     public float ExtraRageAttack { get { return extraRageAttack; } }
 
+    [SerializeField] float spinesPercentageDamage = 25f;
+    public float SpinesPercentageDamage { get {  return spinesPercentageDamage; } }
+
 
     [Title("Fire Upgrade Stats")]
     [SerializeField] float fireDamageIncrement = 10f;
@@ -101,6 +104,7 @@ public class PlayerStatsSO : ScriptableObject
         this.revengePercentageIncrease = permanentStatsSO.revengePercentageIncrease;
         this.healthPercentageToActivateRage = permanentStatsSO.healthPercentageToActivateRage;
         this.extraRageAttack = permanentStatsSO.extraRageAttack;
+        this.spinesPercentageDamage = permanentStatsSO.spinesPercentageDamage;
 
         this.fireLevel = permanentStatsSO.fireLevel;
         this.firePercentageDamage = permanentStatsSO.firePercentageDamage;
