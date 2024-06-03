@@ -11,8 +11,6 @@ public class RevengeUpgrade : UpgradeBehaviour
 
     private PlayerAttacks playerAttacks;
 
-    PlayerAttacks.AttackPercentageModifier attackPercentageModifierStruct = new PlayerAttacks.AttackPercentageModifier();
-
     private bool revengeActivated = false;
 
     private void Awake()
@@ -22,27 +20,19 @@ public class RevengeUpgrade : UpgradeBehaviour
 
     private void OnEnable()
     {
-        playerAttacks.RegisterAttackPower(attackPercentageModifierStruct);
         PlayerAttacks.OnPlayerAttacks += DeactivateRevenge;
     }
 
     private void OnDisable()
     {
-        playerAttacks.UnregisterAttackPower(attackPercentageModifierStruct);
         PlayerAttacks.OnPlayerAttacks -= DeactivateRevenge;
-    }
-
-    private void CalculateRevengeDamage()
-    {
-        //attackDamageToSumAfterAttackStruct.percentageModifier = inCombatPlayerSO.Attack * inCombatPlayerSO.RevengePercentageIncrease / 100f - inCombatPlayerSO.Attack;
-        attackPercentageModifierStruct.percentageModifier = inCombatPlayerSO.RevengePercentageIncrease;
     }
 
     public void ActivateRevenge()
     {
         if(HasUpgrade() == true && revengeActivated == false)
         {
-            CalculateRevengeDamage();
+            playerAttacks.RegisterDamageModifierInDict(this, inCombatPlayerSO.RevengePercentageIncrease);
             revengeActivated = true;
             activateRevenge.Raise(gameObject);
         }
@@ -52,7 +42,7 @@ public class RevengeUpgrade : UpgradeBehaviour
     {
         if(HasUpgrade() == true && revengeActivated == true)
         {
-            attackPercentageModifierStruct.percentageModifier = 0f;
+            playerAttacks.UnregisterDamageModifierInDict(this);
             revengeActivated = false;
             deactivateRevenge.Raise(gameObject);
         }

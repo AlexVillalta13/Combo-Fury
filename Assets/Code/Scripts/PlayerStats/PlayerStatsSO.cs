@@ -6,42 +6,49 @@ using Sirenix.OdinInspector;
 public class PlayerStatsSO : ScriptableObject
 {
     [Title("Player Base Stats")]
-    [SerializeField] float maxHealth = 100;
-    public float MaxHealth { set { maxHealth = value; } get { return maxHealth; } }
-    [SerializeField] float currentHealth = 100;
-    public float CurrentHealth { set { currentHealth = value; } get { return currentHealth; } }
+    public float MaxHealth = 100f;
+    public float CurrentHealth = 100f;
     public bool PlayerIsAlive()
     {
-        return currentHealth > 0;
+        return CurrentHealth > 0;
     }
-    [SerializeField] float attack = 10f;
-    public float Attack { set { attack = value; } get { return attack; } }
-    [SerializeField] float defense = 0f;
-    public float Defense { set { defense = value; } get { return defense; } }
-    [SerializeField] float criticalAttackChance = 20f;
-    public float CriticalAttackChance { set { criticalAttackChance = value; } get { return criticalAttackChance; } }
+    public float Attack = 10f;
+    public float Defense = 0f;
+    public float CriticalAttackChance = 20f;
     public float DodgeChance = 0f;
+    public int comboCount = 0;
 
 
     [Title("Player Upgrade Stats Increments")]
     [SerializeField] float healPercentage = 25f;
     public float HealPercentage { get { return healPercentage; } }
+
     [SerializeField] float littleAttackIncreasePercentage = 15f;
     public float LittleAttackIncreasePercentage { get {  return littleAttackIncreasePercentage; } }
+
     [SerializeField] float mediumAttackIncreasePercentage = 30f;
     public float MediumAttackIncreasePercentage { get { return mediumAttackIncreasePercentage; } }
+
     [SerializeField] float mediumDefenseIncreasePercentage = 10f;
     public float MediumDefenseIncreasePercentage { get { return mediumDefenseIncreasePercentage; } }
+
     [SerializeField] float maxHealthIncreasePercentage = 10f;
     public float MaxHealthIncreasePercentage { get { return maxHealthIncreasePercentage; } }
+
     [SerializeField] float criticalChanceIncrease = 5f;
     public float CriticalChanceIncrease { get {  return criticalChanceIncrease; } }
-    public float AdrenalineDodgeChance = 30f;
-    public float RevengePercentageIncrease = 200f;
-    //[SerializeField] float healthPercentageToActivateRage = 30f;
-    //public float HealthPercentageToActivateRage { get {  return healthPercentageToActivateRage; } }
-    //[SerializeField] float extraRageAttack = 20f;
-    //public float ExtraRageAttack { get {  return extraRageAttack; } }
+
+    [SerializeField] float adrenalineDogdeChance = 30f;
+    public float AdrenalineDodgeChance { get { return adrenalineDogdeChance; } }
+
+    [SerializeField] float revengePercentageIncrease = 100f;
+    public float RevengePercentageIncrease {  get { return revengePercentageIncrease; } }
+
+    [SerializeField] float healthPercentageToActivateRage = 30f;
+    public float HealthPercentageToActivateRage { get { return healthPercentageToActivateRage; } }
+
+    [SerializeField] float extraRageAttack = 20f;
+    public float ExtraRageAttack { get { return extraRageAttack; } }
 
 
     [Title("Fire Upgrade Stats")]
@@ -84,6 +91,16 @@ public class PlayerStatsSO : ScriptableObject
         this.CriticalAttackChance = permanentStatsSO.CriticalAttackChance;
         this.CurrentHealth = this.MaxHealth;
         this.DodgeChance = permanentStatsSO.DodgeChance;
+
+        this.healPercentage = permanentStatsSO.HealPercentage;
+        this.littleAttackIncreasePercentage = permanentStatsSO.littleAttackIncreasePercentage;
+        this.mediumAttackIncreasePercentage = permanentStatsSO.mediumAttackIncreasePercentage;
+        this.maxHealthIncreasePercentage = permanentStatsSO.maxHealthIncreasePercentage;
+        this.criticalChanceIncrease = permanentStatsSO.criticalChanceIncrease;
+        this.adrenalineDogdeChance = permanentStatsSO.adrenalineDogdeChance;
+        this.revengePercentageIncrease = permanentStatsSO.revengePercentageIncrease;
+        this.healthPercentageToActivateRage = permanentStatsSO.healthPercentageToActivateRage;
+        this.extraRageAttack = permanentStatsSO.extraRageAttack;
 
         this.fireLevel = permanentStatsSO.fireLevel;
         this.firePercentageDamage = permanentStatsSO.firePercentageDamage;

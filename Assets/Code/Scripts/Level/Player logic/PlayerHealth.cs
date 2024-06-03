@@ -7,7 +7,7 @@ public class PlayerHealth : MonoBehaviour
 {
     public static EventHandler<OnChangeHealthEventArgs> onChangePlayerHealth;
 
-    [SerializeField] bool godMode = false;
+    public bool godMode = false;
 
     [SerializeField] PlayerStatsSO inCombatPlayerStatsSO;
 
@@ -36,8 +36,6 @@ public class PlayerHealth : MonoBehaviour
 
         if (ShieldUpgradeBlocksAttack() == true) { return; }
 
-        // Activate revenge
-
         //currentComboNumber = 0;
         //onChangeComboNumber(currentComboNumber);
 
@@ -46,18 +44,6 @@ public class PlayerHealth : MonoBehaviour
         // Spines
 
         CheckWinConditions();
-    }
-
-    private bool ShieldUpgradeBlocksAttack()
-    {
-        if (hasShield == true)
-        {
-            onPlayerIsHitWithoutDamage.Raise(gameObject);
-            onChangePlayerHealth(this, new OnChangeHealthEventArgs() { healthDifference = -attackIncome });
-            hasShield = false;
-            return true;
-        }
-        return false;
     }
 
     private bool PlayerDodgesThisAttack()
@@ -70,18 +56,24 @@ public class PlayerHealth : MonoBehaviour
         return false;
     }
 
+    private bool ShieldUpgradeBlocksAttack()
+    {
+        if (hasShield == true)
+        {
+            onPlayerIsHitWithoutDamage.Raise(gameObject);
+            onChangePlayerHealth(this, new OnChangeHealthEventArgs() { healthDifference = 0f });
+            hasShield = false;
+            return true;
+        }
+        return false;
+    }
+
     private void CalculateDamageIncome(EnemyAttacks.OnEnemyAttacksEventArgs eventArgs)
     {
         attackIncome = Mathf.Clamp(eventArgs.enemyAttackDamage - inCombatPlayerStatsSO.Defense, 0f, eventArgs.enemyAttackDamage);
         inCombatPlayerStatsSO.CurrentHealth -= attackIncome;
 
-        if(eventArgs.enemyAttackDamage == 0f)
-        {
-            
-        }else
-        {
-            onPlayerIsDamage.Raise(gameObject);
-        }
+        onPlayerIsDamage.Raise(gameObject);
 
         onChangePlayerHealth(this, new OnChangeHealthEventArgs() { healthDifference = -attackIncome });
     }

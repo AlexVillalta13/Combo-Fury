@@ -5,7 +5,8 @@ using UnityEngine.UIElements;
 
 public class DebugUI : MonoBehaviour
 {
-    CombatController combatController;
+    PlayerHealth healthPlayer;
+    EnemyHealth enemyHealth;
 
     UIDocument debugUIDocument;
 
@@ -18,7 +19,8 @@ public class DebugUI : MonoBehaviour
     private void Awake()
     {
         debugUIDocument = GetComponent<UIDocument>();
-        combatController = FindAnyObjectByType<CombatController>();
+        healthPlayer = FindAnyObjectByType<PlayerHealth>();
+        enemyHealth = FindAnyObjectByType<EnemyHealth>();
 
         testOptionsElement = debugUIDocument.rootVisualElement.Query<VisualElement>(name: "TestOptionsmenu");
         godModeToggle = debugUIDocument.rootVisualElement.Query<Toggle>(name: "GodModeToggle");
@@ -47,12 +49,12 @@ public class DebugUI : MonoBehaviour
 
     private void GodModeCallback(ChangeEvent<bool> evt)
     {
-        combatController.godMode = evt.newValue;
+        healthPlayer.godMode = evt.newValue;
     }
 
     private void WinCombatButtonPressed()
     {
-        combatController.WinCombatDEBUG();
+        enemyHealth.WinCombatDEBUG();
     }
 
     private void EnableDebugUI()

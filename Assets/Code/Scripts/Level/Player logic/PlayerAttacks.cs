@@ -16,7 +16,7 @@ public class PlayerAttacks : MonoBehaviour
 
     [SerializeField] PlayerStatsSO inCombatPlayerStatsSO;
 
-    private List<AttackPercentageModifier> attackExtraDamageList = new List<AttackPercentageModifier>();
+    private Dictionary<object, float> attackExtraDamageDict = new Dictionary<object, float>();
 
 
     public void CalculatePlayerNormalAttack()
@@ -44,27 +44,23 @@ public class PlayerAttacks : MonoBehaviour
     private float CalculateTotalDamageWithModifiers(float attackPower)
     {
         float totalPercentageToIncrease = 0f;
-        foreach (AttackPercentageModifier item in attackExtraDamageList) 
+
+        foreach(KeyValuePair<object, float> element in attackExtraDamageDict)
         {
-            totalPercentageToIncrease += item.percentageModifier;
+            totalPercentageToIncrease += element.Value;
         }
-
-        if (totalPercentageToIncrease <= 0f) { return attackPower; }
-        return attackPower * totalPercentageToIncrease / 100f;
+        
+        //if (totalPercentageToIncrease <= 0f) { return attackPower; }
+        return attackPower * totalPercentageToIncrease / 100f + attackPower;
     }
 
-    public void RegisterAttackPower(AttackPercentageModifier power)
+    public void RegisterDamageModifierInDict(object key, float value)
     {
-        attackExtraDamageList.Add(power);
+        attackExtraDamageDict.Add(key, value);
     }
 
-    public void UnregisterAttackPower(AttackPercentageModifier power)
+    public void UnregisterDamageModifierInDict(object key)
     {
-        attackExtraDamageList.Remove(power);
-    }
-
-    public class AttackPercentageModifier
-    {
-        public float percentageModifier;
+        attackExtraDamageDict.Remove(key);
     }
 }

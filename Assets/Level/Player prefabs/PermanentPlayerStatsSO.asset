@@ -12,13 +12,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 97c8b5a721767ec478e07dc0e56c8227, type: 3}
   m_Name: PermanentPlayerStatsSO
   m_EditorClassIdentifier: 
-  maxHealth: 100
-  currentHealth: 100
-  attack: 10
-  defense: 0
-  criticalAttackChance: 20
+  MaxHealth: 100
+  CurrentHealth: 100
+  Attack: 10
+  Defense: 0
+  CriticalAttackChance: 20
+  DodgeChance: 0
+  comboCount: 0
+  healPercentage: 25
+  littleAttackIncreasePercentage: 15
+  mediumAttackIncreasePercentage: 30
+  mediumDefenseIncreasePercentage: 10
+  maxHealthIncreasePercentage: 10
+  criticalChanceIncrease: 5
+  adrenalineDogdeChance: 30
+  revengePercentageIncrease: 100
+  healthPercentageToActivateRage: 30
+  extraRageAttack: 20
   fireDamageIncrement: 10
   fireChanceIncrement: 20
+  timeTodoDamageFire: 1
+  timeToTurnOffFire: 10
   brickProbabilityList:
   - brickType: 6
     probability: 0

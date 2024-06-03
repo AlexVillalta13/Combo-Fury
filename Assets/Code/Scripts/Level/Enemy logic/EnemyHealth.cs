@@ -50,5 +50,19 @@ public class EnemyHealth : MonoBehaviour
         }
     }
 
+    public void WinCombatDEBUG()
+    {
+        if (stats.currentEnemy < stats.totalEnemies)
+        {
+            playerWinFightEvent.Raise(gameObject);
+        }
+        else if (stats.currentEnemy == stats.totalEnemies)
+        {
+            playerWinLevelEvent.Raise(gameObject);
+        }
+
+        stats.currentEnemy += 1;
+    }
+
 
 }

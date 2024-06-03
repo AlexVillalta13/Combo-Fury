@@ -110,7 +110,7 @@ public class HealthBars : UIComponent
 
     public void ChangeEnemyCount()
     {
-        enemyCountText.text = enemyStats.currentEnemy.ToString("0") + "/" + enemyStats.totalEnemies.ToString("0");
+        enemyCountText.text = (enemyStats.currentEnemy + 1).ToString("0") + "/" + (enemyStats.totalEnemies + 1).ToString("0");
         if(enemyStats.currentEnemy == enemyStats.totalEnemies)
         {
             BossModeOn();

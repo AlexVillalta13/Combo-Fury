@@ -3731,6 +3731,37 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1021982242}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &299654868
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 299654869}
+  m_Layer: 0
+  m_Name: Spines Upgrade
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &299654869
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 299654868}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 559155421}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &301486155
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6896,10 +6927,12 @@ GameObject:
   - component: {fileID: 514451397}
   - component: {fileID: 514451396}
   - component: {fileID: 514451398}
+  - component: {fileID: 514451403}
   - component: {fileID: 514451401}
   - component: {fileID: 514451400}
   - component: {fileID: 514451399}
   - component: {fileID: 514451402}
+  - component: {fileID: 514451404}
   m_Layer: 0
   m_Name: Player Combat Behaviour
   m_TagString: Untagged
@@ -7005,6 +7038,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 514451403}
+        m_TargetAssemblyTypeName: ComboCounter, Assembly-CSharp
+        m_MethodName: ResetComboCount
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &514451400
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7024,6 +7069,18 @@ MonoBehaviour:
       - m_Target: {fileID: 514451398}
         m_TargetAssemblyTypeName: PlayerAttacks, Assembly-CSharp
         m_MethodName: CalculatePlayerCriticalAttack
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 514451403}
+        m_TargetAssemblyTypeName: ComboCounter, Assembly-CSharp
+        m_MethodName: IncreaseComboCount
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -7061,6 +7118,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 514451403}
+        m_TargetAssemblyTypeName: ComboCounter, Assembly-CSharp
+        m_MethodName: IncreaseComboCount
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &514451402
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7080,6 +7149,50 @@ MonoBehaviour:
       - m_Target: {fileID: 514451396}
         m_TargetAssemblyTypeName: PlayerHealth, Assembly-CSharp
         m_MethodName: ActivateShield
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &514451403
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 514451394}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9c2c3242c67187f44bed9928f8f3ec1f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  inCombatPlayerStatsSO: {fileID: 11400000, guid: aa73bdaa80e88ab4e8e2f1d00b7c5e66,
+    type: 2}
+  onUpdateComboNumber: {fileID: 11400000, guid: 4fd3d1db11426c74296cee282921d51c,
+    type: 2}
+--- !u!114 &514451404
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 514451394}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb953a8383db9fc45943e75de88733bb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameEvent: {fileID: 11400000, guid: f7e90204ccc58134c849a4a56bb1ac53, type: 2}
+  unityEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 514451403}
+        m_TargetAssemblyTypeName: ComboCounter, Assembly-CSharp
+        m_MethodName: ResetComboCount
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -7571,6 +7684,8 @@ Transform:
   - {fileID: 1413975142}
   - {fileID: 628673490}
   - {fileID: 1235252070}
+  - {fileID: 1038775197}
+  - {fileID: 299654869}
   m_Father: {fileID: 514451395}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &563675233 stripped
@@ -14731,6 +14846,56 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1028574703}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1038775196
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1038775197}
+  - component: {fileID: 1038775198}
+  m_Layer: 0
+  m_Name: Rage Upgrade
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1038775197
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1038775196}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 559155421}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1038775198
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1038775196}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 932fd3ac665950d4787f40773a9bfb66, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  upgradeData: {fileID: 11400000, guid: e795ec5065a22fb4db0e0e3e3a7ba877, type: 2}
+  upgradesPlayerHas: {fileID: 11400000, guid: 5385b99843f7c7b4ab8374b2098dedcc, type: 2}
+  activateRage: {fileID: 11400000, guid: 373fe5f0e55e8ea4586b8e899902f8de, type: 2}
+  deactivateRage: {fileID: 11400000, guid: f34d3c528c1c5454c9e0a1d4cda94989, type: 2}
+  inCombatPlayerStats: {fileID: 11400000, guid: aa73bdaa80e88ab4e8e2f1d00b7c5e66,
+    type: 2}
 --- !u!1001 &1040828854
 PrefabInstance:
   m_ObjectHideFlags: 0

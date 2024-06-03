@@ -63,15 +63,18 @@ public class NumberDisplayListener : MonoBehaviour
         }
         else
         {
-            if (eventArgs.healthDifference > 0)
+            if (eventArgs.healthDifference <= 0f)
+            {
+                number.color = playerHitColor;
+            }
+            else if (eventArgs.healthDifference > 0f)
             {
                 number.color = playerHealsColor;
             }
-            else if (eventArgs.healthDifference < 0)
-            {
-                number.color = playerHitColor;
-                //healthDifference *= -1;
-            }
+            //else if(eventArgs.healthDifference == 0f)
+            //{
+            //    number.color = enemyHitColor;
+            //}
         }
 
         PositionText(number);

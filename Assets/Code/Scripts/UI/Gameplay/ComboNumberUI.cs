@@ -5,6 +5,8 @@ using UnityEngine.UIElements;
 
 public class ComboNumberUI : UIComponent
 {
+    [SerializeField] PlayerStatsSO inCombatPlayerStatsSO;
+
     Label comboNumber;
 
     const string comboNumberReference = "ComboNumber";
@@ -16,18 +18,8 @@ public class ComboNumberUI : UIComponent
         comboNumber = m_UIElement.Query<Label>(name: comboNumberReference);
     }
 
-    private void OnEnable()
+    public void UpdateComboNumber()
     {
-        CombatController.onChangeComboNumber += UpdateComboNumber;
-    }
-
-    private void OnDisable()
-    {
-        CombatController.onChangeComboNumber -= UpdateComboNumber;
-    }
-
-    private void UpdateComboNumber(int number)
-    {
-        comboNumber.text = "Combo " + number.ToString();
+        comboNumber.text = "Combo " + inCombatPlayerStatsSO.comboCount.ToString();
     }
 }
