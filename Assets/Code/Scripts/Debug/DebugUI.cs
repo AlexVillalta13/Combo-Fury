@@ -14,6 +14,7 @@ public class DebugUI : MonoBehaviour
     Button closeDebugUIButton;
     VisualElement testOptionsElement;
     Toggle godModeToggle;
+    Button winLevelButton;
     Button winCombatButton;
 
     private void Awake()
@@ -26,6 +27,7 @@ public class DebugUI : MonoBehaviour
         godModeToggle = debugUIDocument.rootVisualElement.Query<Toggle>(name: "GodModeToggle");
         openDebugUIButton = debugUIDocument.rootVisualElement.Query<Button>(name: "OpenTestOptionsButton");
         closeDebugUIButton = debugUIDocument.rootVisualElement.Query<Button>(name: "CloseButton");
+        winLevelButton = debugUIDocument.rootVisualElement.Query<Button>(name: "WinLevelButton");
         winCombatButton = debugUIDocument.rootVisualElement.Query<Button>(name: "WinCombatButton");
     }
 
@@ -42,6 +44,7 @@ public class DebugUI : MonoBehaviour
     {
         openDebugUIButton.clicked -= EnableDebugUI;
         closeDebugUIButton.clicked -= DisableTestUI;
+        winLevelButton.clicked -= WinLevelButtonPressed;
         winCombatButton.clicked -= WinCombatButtonPressed;
 
         godModeToggle.UnregisterValueChangedCallback(GodModeCallback);
@@ -50,6 +53,11 @@ public class DebugUI : MonoBehaviour
     private void GodModeCallback(ChangeEvent<bool> evt)
     {
         healthPlayer.godMode = evt.newValue;
+    }
+
+    private void WinLevelButtonPressed()
+    {
+        enemyHealth.WinLevelDEBUG();
     }
 
     private void WinCombatButtonPressed()

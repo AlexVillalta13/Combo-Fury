@@ -2,7 +2,7 @@
     <Style src="project://database/Assets/Level/UI/Classes/Debug.uss?fileID=7433441132597879392&amp;guid=7215f180bb8f95549bc023623ed1d843&amp;type=3#Debug" />
     <ui:VisualElement name="TestOptionsmenu" style="background-color: rgb(0, 0, 0); height: 48%; justify-content: space-around; display: none;">
         <ui:Toggle label="GOD MODE" name="GodModeToggle" style="color: rgb(255, 255, 255); flex-grow: 1; font-size: 40px;" />
-        <ui:Button text="+5% Heal" parse-escape-sequences="true" display-tooltip-when-elided="true" name="HealButton" style="flex-grow: 1; font-size: 40px;" />
+        <ui:Button text="+5% Heal" parse-escape-sequences="true" display-tooltip-when-elided="true" name="WinLevelButton" style="flex-grow: 1; font-size: 40px;" />
         <ui:Button text="Win combat" parse-escape-sequences="true" display-tooltip-when-elided="true" name="WinCombatButton" style="flex-grow: 1; font-size: 40px;" />
         <ui:Button text="Close Window" parse-escape-sequences="true" display-tooltip-when-elided="true" name="CloseButton" style="flex-grow: 1; font-size: 40px;" />
     </ui:VisualElement>

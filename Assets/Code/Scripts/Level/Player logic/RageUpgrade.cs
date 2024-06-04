@@ -6,7 +6,6 @@ public class RageUpgrade : UpgradeBehaviour
 {
     [SerializeField] GameEvent activateRage;
     [SerializeField] GameEvent deactivateRage;
-    [SerializeField] PlayerStatsSO inCombatPlayerStats;
 
     private PlayerAttacks playerAttacks;
 
@@ -31,7 +30,7 @@ public class RageUpgrade : UpgradeBehaviour
     {
         if (PlayerHealthUnderRageCondition() == true && hasRage == false)
         {
-            playerAttacks.RegisterDamageModifierInDict(this, inCombatPlayerStats.ExtraRageAttack);
+            playerAttacks.RegisterDamageModifierInDict(this, inCombatPlayerStatsSO.ExtraRageAttack);
             activateRage.Raise(gameObject);
             hasRage = true;
         }
@@ -45,6 +44,6 @@ public class RageUpgrade : UpgradeBehaviour
 
     private bool PlayerHealthUnderRageCondition()
     {
-        return inCombatPlayerStats.CurrentHealth <= inCombatPlayerStats.HealthPercentageToActivateRage / 100f * inCombatPlayerStats.MaxHealth;
+        return inCombatPlayerStatsSO.CurrentHealth <= inCombatPlayerStatsSO.HealthPercentageToActivateRage / 100f * inCombatPlayerStatsSO.MaxHealth;
     }
 }

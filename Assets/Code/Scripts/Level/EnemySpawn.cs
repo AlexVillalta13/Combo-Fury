@@ -8,7 +8,7 @@ public class EnemySpawn : MonoBehaviour
 
     [SerializeField] int enemyPositionInList;
     bool enemyIsBoss = false;
-    GameObject instantiateEnemy;
+    GameObject instantiatedEnemy;
 
     public void Setup(int enemyPositionInList, bool enemyIsBoss)
     {
@@ -18,7 +18,7 @@ public class EnemySpawn : MonoBehaviour
 
     public void DeleteEnemyGameObject()
     {
-        Destroy(instantiateEnemy);
+        Destroy(instantiatedEnemy);
     }
 
     private GameObject SelectRandomEnemy()
@@ -28,22 +28,32 @@ public class EnemySpawn : MonoBehaviour
 
     public void ActivateEnemy(bool state)
     {
-        if(state == true)
+        //if(state == true)
+        //{
+            //InstantiateEnemyPrefab();
+        //}
+        //else if(state == false)
+        //{
+        //    instantiateEnemy.SetActive(state);
+        //}
+        instantiatedEnemy = Instantiate(SelectRandomEnemy(), transform.position, transform.rotation);
+        if (enemyIsBoss == true)
         {
-            InstantiateEnemyPrefab();
+            instantiatedEnemy.transform.localScale = 2f * Vector3.one;
         }
-        else if(state == false)
-        {
-            instantiateEnemy.SetActive(state);
-        }
+    }
+
+    public void DeactivateEnemy()
+    {
+        instantiatedEnemy.SetActive(false);
     }
 
     private void InstantiateEnemyPrefab()
     {
-        instantiateEnemy = Instantiate(SelectRandomEnemy(), transform.position, transform.rotation);
+        instantiatedEnemy = Instantiate(SelectRandomEnemy(), transform.position, transform.rotation);
         if (enemyIsBoss == true)
         {
-            instantiateEnemy.transform.localScale = 2f * Vector3.one;
+            instantiatedEnemy.transform.localScale = 2f * Vector3.one;
         }
     }
 }

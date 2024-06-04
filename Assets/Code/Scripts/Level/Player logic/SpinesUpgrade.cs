@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class SpinesUpgrade : UpgradeBehaviour
 {
-    [SerializeField] PlayerStatsSO inCombatPlayerStatsSO;
-
     public void spinesEffect()
     {
         if(HasUpgrade() == true)

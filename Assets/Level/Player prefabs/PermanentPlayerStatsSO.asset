@@ -29,9 +29,12 @@ MonoBehaviour:
   revengePercentageIncrease: 100
   healthPercentageToActivateRage: 30
   extraRageAttack: 20
-  fireDamageIncrement: 10
+  spinesPercentageDamage: 25
+  fireLevel: 0
+  firePercentageDamage: 0
+  firePercentageDamageIncrement: 10
   fireChanceIncrement: 20
-  timeTodoDamageFire: 1
+  timeToDoDamageFire: 2
   timeToTurnOffFire: 10
   brickProbabilityList:
   - brickType: 6

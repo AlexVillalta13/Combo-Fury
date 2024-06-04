@@ -6,6 +6,7 @@ public class UpgradeBehaviour : MonoBehaviour
 {
     [SerializeField] Upgrade upgradeData;
     [SerializeField] UpgradeInLevelSO upgradesPlayerHas;
+    [SerializeField] protected PlayerStatsSO inCombatPlayerStatsSO;
 
     int upgradeLevel = 0;
 

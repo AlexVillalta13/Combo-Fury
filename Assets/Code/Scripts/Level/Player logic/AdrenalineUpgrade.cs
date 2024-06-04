@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class AdrenalineUpgrade : UpgradeBehaviour
 {
-    [SerializeField] PlayerStatsSO inCombatPlayerStatsSO;
-
     private float healthPercentageToActivate = 0.3f;
 
     private void OnEnable()

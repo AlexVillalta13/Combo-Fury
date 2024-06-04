@@ -7,8 +7,6 @@ public class RevengeUpgrade : UpgradeBehaviour
     [SerializeField] GameEvent activateRevenge;
     [SerializeField] GameEvent deactivateRevenge;
 
-    [SerializeField] PlayerStatsSO inCombatPlayerSO;
-
     private PlayerAttacks playerAttacks;
 
     private bool revengeActivated = false;
@@ -32,7 +30,7 @@ public class RevengeUpgrade : UpgradeBehaviour
     {
         if(HasUpgrade() == true && revengeActivated == false)
         {
-            playerAttacks.RegisterDamageModifierInDict(this, inCombatPlayerSO.RevengePercentageIncrease);
+            playerAttacks.RegisterDamageModifierInDict(this, inCombatPlayerStatsSO.RevengePercentageIncrease);
             revengeActivated = true;
             activateRevenge.Raise(gameObject);
         }

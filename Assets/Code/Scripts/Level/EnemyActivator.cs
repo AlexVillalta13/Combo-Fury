@@ -60,7 +60,7 @@ public class EnemyActivator : MonoBehaviour
         }
         if (currentEnemy - 1 >= 0)
         {
-            spawnList[currentEnemy - 1].ActivateEnemy(false);
+            spawnList[currentEnemy - 1].DeactivateEnemy();
         }
     }
 }

@@ -38,6 +38,7 @@ public class PlayerStatsSO : ScriptableObject
     [SerializeField] float criticalChanceIncrease = 5f;
     public float CriticalChanceIncrease { get {  return criticalChanceIncrease; } }
 
+    [Title("Special Effects Upgrades")]
     [SerializeField] float adrenalineDogdeChance = 30f;
     public float AdrenalineDodgeChance { get { return adrenalineDogdeChance; } }
 
@@ -55,14 +56,19 @@ public class PlayerStatsSO : ScriptableObject
 
 
     [Title("Fire Upgrade Stats")]
-    [SerializeField] float fireDamageIncrement = 10f;
-    [SerializeField] float fireChanceIncrement = 10f;
-    [SerializeField] float timeTodoDamageFire = 1f;
-    int fireLevel = 0;
-    float firePercentageDamage = 0f;
-    public float FirePercentageDamage { get { return fireDamageIncrement; } }
+    [SerializeField] int fireLevel = 0;
 
-    public float TimeToDoDamageFire { get { return timeTodoDamageFire; } }
+    [SerializeField] float firePercentageDamage = 0f;
+    public float FirePercentageDamage { get { return firePercentageDamage; } }
+
+    [SerializeField] float firePercentageDamageIncrement = 10f;
+    public float FirePercentageDamageIncrement { get { return firePercentageDamageIncrement; } }
+
+    [SerializeField] float fireChanceIncrement = 10f;
+
+    [SerializeField] float timeToDoDamageFire = 2f;
+    public float TimeToDoDamageFire { get { return timeToDoDamageFire; } }
+
     [SerializeField] float timeToTurnOffFire = 10f;
     public float TimeToTurnOffFire { get { return timeToTurnOffFire; } }
 
@@ -108,8 +114,10 @@ public class PlayerStatsSO : ScriptableObject
 
         this.fireLevel = permanentStatsSO.fireLevel;
         this.firePercentageDamage = permanentStatsSO.firePercentageDamage;
-        this.fireDamageIncrement = permanentStatsSO.fireDamageIncrement;
+        this.firePercentageDamageIncrement = permanentStatsSO.firePercentageDamageIncrement;
         this.fireChanceIncrement = permanentStatsSO.fireChanceIncrement;
+        this.timeToDoDamageFire = permanentStatsSO.timeToDoDamageFire;
+        this.timeToTurnOffFire = permanentStatsSO.TimeToTurnOffFire;
 
         this.brickProbabilityList = Clone(permanentStatsSO.brickProbabilityList);
         
@@ -131,7 +139,7 @@ public class PlayerStatsSO : ScriptableObject
     public void LevelUpFireAttack()
     {
         fireLevel += 1;
-        firePercentageDamage += fireDamageIncrement;
+        firePercentageDamage += firePercentageDamageIncrement;
         
         foreach(BrickProbability brickProbability in brickProbabilityList)
         {

@@ -6980,7 +6980,7 @@ GameObject:
   - component: {fileID: 514451402}
   - component: {fileID: 514451404}
   m_Layer: 0
-  m_Name: Player Combat Behaviour
+  m_Name: Player Combat Logic
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -13673,10 +13673,8 @@ GameObject:
   - component: {fileID: 961019238}
   - component: {fileID: 961019239}
   - component: {fileID: 961019240}
-  - component: {fileID: 961019242}
-  - component: {fileID: 961019241}
   m_Layer: 0
-  m_Name: Enemy CombatBehaviour
+  m_Name: Enemy Combat Logic
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -13816,62 +13814,6 @@ MonoBehaviour:
       - m_Target: {fileID: 961019236}
         m_TargetAssemblyTypeName: EnemySetup, Assembly-CSharp
         m_MethodName: SetupNewEnemy
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
---- !u!114 &961019241
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 961019233}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: eb953a8383db9fc45943e75de88733bb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  gameEvent: {fileID: 11400000, guid: 09746d9f055ef4c4ab5eb4b564b3c186, type: 2}
-  unityEvent:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 961019236}
-        m_TargetAssemblyTypeName: EnemySetup, Assembly-CSharp
-        m_MethodName: SetupAttackPower
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
---- !u!114 &961019242
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 961019233}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: eb953a8383db9fc45943e75de88733bb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  gameEvent: {fileID: 11400000, guid: b08ef53ef15a2ce498868ce3b9292686, type: 2}
-  unityEvent:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 961019236}
-        m_TargetAssemblyTypeName: EnemySetup, Assembly-CSharp
-        m_MethodName: SetEnemyAttackToZero
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -14939,10 +14881,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   upgradeData: {fileID: 11400000, guid: e795ec5065a22fb4db0e0e3e3a7ba877, type: 2}
   upgradesPlayerHas: {fileID: 11400000, guid: 5385b99843f7c7b4ab8374b2098dedcc, type: 2}
+  inCombatPlayerStatsSO: {fileID: 11400000, guid: aa73bdaa80e88ab4e8e2f1d00b7c5e66,
+    type: 2}
   activateRage: {fileID: 11400000, guid: 373fe5f0e55e8ea4586b8e899902f8de, type: 2}
   deactivateRage: {fileID: 11400000, guid: f34d3c528c1c5454c9e0a1d4cda94989, type: 2}
-  inCombatPlayerStats: {fileID: 11400000, guid: aa73bdaa80e88ab4e8e2f1d00b7c5e66,
-    type: 2}
 --- !u!1001 &1040828854
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -16284,7 +16226,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1124932234
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -18199,9 +18141,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   upgradeData: {fileID: 11400000, guid: 01a170760e01dbe43af4850046593dd7, type: 2}
   upgradesPlayerHas: {fileID: 11400000, guid: 5385b99843f7c7b4ab8374b2098dedcc, type: 2}
+  inCombatPlayerStatsSO: {fileID: 11400000, guid: aa73bdaa80e88ab4e8e2f1d00b7c5e66,
+    type: 2}
   activateRevenge: {fileID: 11400000, guid: aaefaf7289a44ac4cab46855016724c8, type: 2}
   deactivateRevenge: {fileID: 11400000, guid: bcdbda890a9615c4e8dc0c4e653e833a, type: 2}
-  inCombatPlayerSO: {fileID: 11400000, guid: aa73bdaa80e88ab4e8e2f1d00b7c5e66, type: 2}
 --- !u!1001 &1239524444
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -20497,6 +20440,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   upgradeData: {fileID: 11400000, guid: a7a46e07d38517441b6613f6590f6a03, type: 2}
   upgradesPlayerHas: {fileID: 11400000, guid: 5385b99843f7c7b4ab8374b2098dedcc, type: 2}
+  inCombatPlayerStatsSO: {fileID: 11400000, guid: aa73bdaa80e88ab4e8e2f1d00b7c5e66,
+    type: 2}
   ActivateShieldVFX: {fileID: 11400000, guid: b08ef53ef15a2ce498868ce3b9292686, type: 2}
   DeactivateShieldVFX: {fileID: 11400000, guid: 09746d9f055ef4c4ab5eb4b564b3c186,
     type: 2}
@@ -21430,6 +21375,12 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1499392117}
+  - component: {fileID: 1499392118}
+  - component: {fileID: 1499392119}
+  - component: {fileID: 1499392120}
+  - component: {fileID: 1499392122}
+  - component: {fileID: 1499392121}
+  - component: {fileID: 1499392123}
   m_Layer: 0
   m_Name: Fire Upgrade
   m_TagString: Untagged
@@ -21452,6 +21403,166 @@ Transform:
   m_Children: []
   m_Father: {fileID: 559155421}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1499392118
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1499392116}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e71251bb78d7f18409b75b9dbb1cb346, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  upgradeData: {fileID: 11400000, guid: 87de1671213a0aa489337f69ac7f4c27, type: 2}
+  upgradesPlayerHas: {fileID: 11400000, guid: 5385b99843f7c7b4ab8374b2098dedcc, type: 2}
+  inCombatPlayerStatsSO: {fileID: 11400000, guid: aa73bdaa80e88ab4e8e2f1d00b7c5e66,
+    type: 2}
+  OnActivateEnemyInFire: {fileID: 11400000, guid: 8c4dc8a7db141134698b7e3b883eacbe,
+    type: 2}
+  onDeactivateEnemyInFire: {fileID: 11400000, guid: 445614cb590c80b4ebb57a3ca8cd21ca,
+    type: 2}
+--- !u!114 &1499392119
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1499392116}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb953a8383db9fc45943e75de88733bb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameEvent: {fileID: 11400000, guid: 998b0af01f090a2409960997971c2d30, type: 2}
+  unityEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1499392118}
+        m_TargetAssemblyTypeName: FireUpgrade, Assembly-CSharp
+        m_MethodName: FireUpgradeSelected
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &1499392120
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1499392116}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb953a8383db9fc45943e75de88733bb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameEvent: {fileID: 11400000, guid: c43cd9c8c4e30f44797a251ed3d2ed72, type: 2}
+  unityEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1499392118}
+        m_TargetAssemblyTypeName: FireUpgrade, Assembly-CSharp
+        m_MethodName: OnFireAttack
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &1499392121
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1499392116}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb953a8383db9fc45943e75de88733bb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameEvent: {fileID: 11400000, guid: 9c5281be4f7fd934c8e6db0029fe988d, type: 2}
+  unityEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1499392118}
+        m_TargetAssemblyTypeName: FireUpgrade, Assembly-CSharp
+        m_MethodName: TurnOffFire
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &1499392122
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1499392116}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb953a8383db9fc45943e75de88733bb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameEvent: {fileID: 11400000, guid: 0d0ea66dcf3b8784ca138a5c111a2ba7, type: 2}
+  unityEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1499392118}
+        m_TargetAssemblyTypeName: FireUpgrade, Assembly-CSharp
+        m_MethodName: TurnOffFire
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &1499392123
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1499392116}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb953a8383db9fc45943e75de88733bb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameEvent: {fileID: 11400000, guid: f0d1579af981dff4693918f4c212b65a, type: 2}
+  unityEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1499392118}
+        m_TargetAssemblyTypeName: FireUpgrade, Assembly-CSharp
+        m_MethodName: TurnOffFire
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1001 &1502329461
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -31827,7 +31938,6 @@ SceneRoots:
   - {fileID: 1853280831}
   - {fileID: 1390219402}
   - {fileID: 1642160922558076162}
-  - {fileID: 2907522590583585208}
   - {fileID: 1494851726}
   - {fileID: 961019234}
   - {fileID: 514451395}
@@ -31837,6 +31947,7 @@ SceneRoots:
   - {fileID: 13309303}
   - {fileID: 868263376}
   - {fileID: 871675181}
+  - {fileID: 2907522590583585208}
   - {fileID: 466332602982165500}
   - {fileID: 445184307}
   - {fileID: 1945404698}

@@ -64,5 +64,10 @@ public class EnemyHealth : MonoBehaviour
         stats.currentEnemy += 1;
     }
 
+    public void WinLevelDEBUG()
+    {
+        playerWinLevelEvent.Raise(gameObject);
+    }
+
 
 }
