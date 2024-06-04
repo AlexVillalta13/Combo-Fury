@@ -12,6 +12,6 @@ public class SceneElementsHolder : MonoBehaviour
 
     public void SetupLevel(int enemiesCount)
     {
-        enemyActivator.Setup(enemiesCount);
+        enemyActivator.SetIfEnemyIsBoss(enemiesCount);
     }
 }

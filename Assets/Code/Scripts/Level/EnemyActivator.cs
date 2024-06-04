@@ -5,38 +5,46 @@ using UnityEngine;
 public class EnemyActivator : MonoBehaviour
 {
     [SerializeField] List<EnemySpawn> spawnList = new List<EnemySpawn>();
-    int enemiesCount;
 
     [SerializeField] int currentEnemy = -1;
 
     private void Awake()
     {
-        foreach(Transform child in transform)
+        SetListOfEnemySpawns();
+    }
+
+    private void SetListOfEnemySpawns()
+    {
+        foreach (Transform child in transform)
         {
             spawnList.Add(child.GetComponent<EnemySpawn>());
         }
     }
 
-    public void Setup(int enemiesCount)
+    public void SetIfEnemyIsBoss(int enemiesCount)
     {
-        this.enemiesCount = enemiesCount;
         for (int i = 0; i < enemiesCount; i++)
         {
             if(i == enemiesCount - 1)
             {
-                spawnList[i].Setup(i, true);
+                spawnList[i].SetIfEnemyIsBoss(true);
             }
             else
             {
-                spawnList[i].Setup(i, false); ;
+                spawnList[i].SetIfEnemyIsBoss(false); ;
             }
         }
     }
 
     private void OnDisable()
     {
+        DeleteInstantiatedEnemies();
+    }
+
+    private void DeleteInstantiatedEnemies()
+    {
         currentEnemy = -1;
-        foreach(EnemySpawn enemySpawn in spawnList)
+        foreach (EnemySpawn enemySpawn in spawnList)
         {
             enemySpawn.DeleteEnemyGameObject();
         }
@@ -49,7 +57,7 @@ public class EnemyActivator : MonoBehaviour
             return;
         }
         currentEnemy++;
-        spawnList[currentEnemy].ActivateEnemy(true);
+        spawnList[currentEnemy].ActivateEnemy();
     }
 
     public void DeactivatePreviousEnemy()
