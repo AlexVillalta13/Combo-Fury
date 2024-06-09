@@ -1,0 +1,57 @@
+.barParent {
+    flex-direction: row;
+    width: 300px;
+    margin-right: 15px;
+    margin-left: 15px;
+}
+
+.barBackgroundTexture {
+    background-image: url("project://database/Assets/Art/Sprites/BackgroundBarMainMenu.png?fileID=2800000&guid=38e0bd651e11dca4398887d2670f1a30&type=3#BackgroundBarMainMenu");
+    -unity-background-scale-mode: scale-to-fit;
+}
+
+.fillableBarHolder {
+    flex-direction: row;
+    padding-top: 9%;
+    padding-right: 5%;
+    padding-bottom: 9%;
+    padding-left: 5%;
+    flex-grow: 1;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+
+.fillerBar {
+    left: 0;
+    width: 82%;
+    height: 100%;
+    background-image: url("project://database/Assets/Art/Sprites/bar.png?fileID=2800000&guid=103f0e6315dcbfd42bced467e6630a2e&type=3#bar");
+    -unity-background-scale-mode: scale-and-crop;
+    -unity-background-image-tint-color: rgb(107, 232, 70);
+    border-top-left-radius: 30px;
+    border-top-right-radius: 30px;
+    border-bottom-right-radius: 30px;
+    border-bottom-left-radius: 30px;
+    transition-property: width;
+    transition-duration: 0.2s;
+}
+
+.icon {
+    position: relative;
+    left: -7px;
+    justify-content: center;
+    width: 37%;
+    height: 115%;
+}
+
+.iconText {
+    top: -7px;
+    font-size: 60px;
+    -unity-text-align: upper-center;
+}
+
+.barText {
+    font-size: 45px;
+    -unity-text-align: middle-left;
+}
