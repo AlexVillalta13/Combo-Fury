@@ -30,6 +30,8 @@ MonoBehaviour:
   healthPercentageToActivateRage: 30
   extraRageAttack: 20
   spinesPercentageDamage: 25
+  HeavyAttackLevel: 0
+  HeavyAttackPercentageDamage: 250
   fireLevel: 0
   firePercentageDamage: 0
   firePercentageDamageIncrement: 10
@@ -38,6 +40,8 @@ MonoBehaviour:
   timeToTurnOffFire: 10
   brickProbabilityList:
   - brickType: 6
+    probability: 0
+  - brickType: 7
     probability: 0
   - brickType: 2
     probability: 30

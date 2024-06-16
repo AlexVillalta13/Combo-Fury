@@ -13,12 +13,12 @@ MonoBehaviour:
   m_Name: InCombatPlayerStatsSO
   m_EditorClassIdentifier: 
   MaxHealth: 100
-  CurrentHealth: 94
+  CurrentHealth: 73
   Attack: 10
   Defense: 0
   CriticalAttackChance: 20
   DodgeChance: 0
-  comboCount: 1
+  comboCount: 0
   healPercentage: 25
   littleAttackIncreasePercentage: 15
   mediumAttackIncreasePercentage: 30
@@ -30,6 +30,8 @@ MonoBehaviour:
   healthPercentageToActivateRage: 30
   extraRageAttack: 20
   spinesPercentageDamage: 25
+  HeavyAttackLevel: 3
+  HeavyAttackPercentageDamage: 250
   fireLevel: 0
   firePercentageDamage: 0
   firePercentageDamageIncrement: 10
@@ -39,6 +41,8 @@ MonoBehaviour:
   brickProbabilityList:
   - brickType: 6
     probability: 0
+  - brickType: 7
+    probability: 100
   - brickType: 2
     probability: 30
   - brickType: 1

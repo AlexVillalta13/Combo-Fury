@@ -29,7 +29,7 @@ public class Brick: MonoBehaviour
     [SerializeField] protected BrickTypesSO brickTypesSO;
     [SerializeField] protected TouchBrickEventsSO brickEventsHolder;
     [SerializeField] protected VisualTreeAsset brickUIElement;
-    [SerializeField] protected BricksPool bricksPool;
+    protected BricksPool bricksPool;
     const string brickUSSClass = "brick";
     protected const string brickFlashClass = "brickFlash";
     const string scaleDownClass = "scaledDown";
@@ -101,10 +101,7 @@ public class Brick: MonoBehaviour
         OnBrickPositioned();
     }
 
-    protected virtual void OnBrickPositioned()
-    {
-
-    }
+    protected virtual void OnBrickPositioned() { }
 
     public void SetPool(BricksPool brickPool)
     {
@@ -116,10 +113,7 @@ public class Brick: MonoBehaviour
         return timeToAutoDelete;
     }
 
-    public virtual void EffectWithTouch()
-    {
-
-    }
+    public virtual void EffectWithTouch() { }
 
     public VisualElement GetBrickElementAttached()
     {
@@ -187,13 +181,9 @@ public class Brick: MonoBehaviour
         }
     }
 
-    protected virtual void OnScaledDown()
-    {
-    }
+    protected virtual void OnScaledDown() { }
 
-    protected virtual void OnScaledUp()
-    {
-    }
+    protected virtual void OnScaledUp() { }
 
     protected void OnScaleDownALittle()
     {

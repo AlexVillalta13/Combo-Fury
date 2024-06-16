@@ -33,9 +33,6 @@ public class PlayerAttacks : MonoBehaviour
 
     private void MakeAttack(float attackPower)
     {
-        //currentComboNumber++;
-        //onChangeComboNumber(currentComboNumber);
-
         float totalDamage = CalculateTotalDamageWithModifiers(attackPower);
 
         OnPlayerAttacks?.Invoke(this, new OnPlayerAttacksEventArgs() { playerAttackDamage = totalDamage });

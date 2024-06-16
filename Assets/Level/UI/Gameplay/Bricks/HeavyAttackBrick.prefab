@@ -50,12 +50,11 @@ MonoBehaviour:
   brickEventsHolder: {fileID: 11400000, guid: f6379521581245248af5ce73dcc16d7b, type: 2}
   brickUIElement: {fileID: 9197481963319205126, guid: 1d423d7bf176c3e4bb0128ac8491ab66,
     type: 3}
-  bricksPool: {fileID: 0}
   timeToAutoDelete: 10
   minWidth: 60
   maxWidth: 110
   hitsToDestroyBrick: 2
-  fireAttackEvent: {fileID: 0}
+  heavyAttackEvent: {fileID: 11400000, guid: eff26ee830470d84e8c1a2f089e94442, type: 2}
 --- !u!114 &-8358437324178168192
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -25,7 +25,7 @@ public class HeavyAttackBrick : Brick
         }
         else if (hitsToDestroyBrick <= 0)
         {
-            brickEventsHolder.GetPlayerCriticalAttackEvent().Raise(gameObject);
+            heavyAttackEvent.Raise(gameObject);
             ScaleDownUI();
             brickElement.AddToClassList(brickFlashClass);
         }

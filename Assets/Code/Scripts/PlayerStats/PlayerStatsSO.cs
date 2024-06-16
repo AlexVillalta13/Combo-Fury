@@ -55,6 +55,11 @@ public class PlayerStatsSO : ScriptableObject
     public float SpinesPercentageDamage { get {  return spinesPercentageDamage; } }
 
 
+    [Title("Heavy Attack Upgrade Stats")]
+    public int HeavyAttackLevel = 0;
+    public float HeavyAttackPercentageDamage = 250f;
+
+
     [Title("Fire Upgrade Stats")]
     [SerializeField] int fireLevel = 0;
 
@@ -74,6 +79,7 @@ public class PlayerStatsSO : ScriptableObject
 
     [Title("Player Bricks")]
     [SerializeField] List<BrickProbability> brickProbabilityList;
+    public List<BrickProbability> BrickProbabilityList => brickProbabilityList;
 
     public BrickTypeEnum GetRandomPlayerBrick()
     {

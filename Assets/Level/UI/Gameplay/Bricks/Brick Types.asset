@@ -55,3 +55,9 @@ MonoBehaviour:
     brickPrefab: {fileID: -8700858135101346365, guid: 23d46e04296c1174f945c12d427a8b91,
       type: 3}
     brickPool: {fileID: 0}
+  - brickType: 7
+    brickUIAsset: {fileID: 9197481963319205126, guid: 1d423d7bf176c3e4bb0128ac8491ab66,
+      type: 3}
+    brickPrefab: {fileID: -2742039437189756684, guid: 11e8f9b50d7553443913467e0af86e35,
+      type: 3}
+    brickPool: {fileID: 0}
