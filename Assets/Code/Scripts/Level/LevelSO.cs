@@ -45,14 +45,22 @@ public class Enemy
 
     [SerializeField] float health = 100;
     public float Health { get { return health; }}
+
     [SerializeField] float attack = 5;
     public float Attack { get { return attack; }}
+
     [SerializeField] float minTimeToSpawnBrick = 1f;
     public float MinTimeToSpawnBrick { get { return minTimeToSpawnBrick; }}
+
     [SerializeField] float maxTimeToSpawnBrick = 3f;
     public float MaxTimeToSpawnBrick { get { return maxTimeToSpawnBrick; }}
+
     [SerializeField] float chanceOfPlayerBrick = 60f;
+    public float ChanceOfPlayerBrick => chanceOfPlayerBrick;
+
     [SerializeField] float chanceOfEnemyBrick = 40f;
+    public float ChanceOfEnemyBrick => chanceOfEnemyBrick;
+
     [SerializeField] List <BrickProbability> enemyBricks = new List<BrickProbability>();
     public List<BrickProbability> EnemyBricks { get { return enemyBricks; } }
 

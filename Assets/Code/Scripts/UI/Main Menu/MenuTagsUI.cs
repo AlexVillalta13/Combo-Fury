@@ -2,9 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Events;
 using UnityEngine.UIElements;
-using static UnityEditor.Rendering.FilterWindow;
 
 public class MenuTagsUI : UIComponent
 {

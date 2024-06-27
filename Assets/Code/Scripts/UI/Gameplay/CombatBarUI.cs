@@ -29,12 +29,11 @@ public class CombatBarUI : UIComponent
 
     [Header("Combat Bar Stats")]
     [SerializeField] float pointerVelocity = 60f;
-
-
-    [SerializeField] float timeToSpawnBrick = 5f;
-    [SerializeField] float timerSpawn = 0f;
-
     float pointerPercentPosition = 0f;
+
+    float timeToSpawnBrick = 5f;
+    float timerSpawn = 0f;
+
 
     [Header("Touch Event")]
     [SerializeField] TouchBrickEventsSO touchBrickEventsHolder;
@@ -96,7 +95,7 @@ public class CombatBarUI : UIComponent
 
     private void InitializeBrick(Brick brickScriptToSpawn, VisualElement brickUIElement)
     {
-        brickScriptToSpawn.SetupBrick(this, brickUIElement, playerBrickElementHolder, playerUSSClassName, enemyBricksElementHolder, enemyUSSClassName);
+        brickScriptToSpawn.SetupBrick(this, brickUIElement, playerBrickElementHolder, enemyBricksElementHolder);
         bricksInBarDict.Add(brickUIElement, brickScriptToSpawn);
     }
 

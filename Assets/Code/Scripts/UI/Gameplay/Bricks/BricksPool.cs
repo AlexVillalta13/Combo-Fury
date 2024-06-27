@@ -8,15 +8,11 @@ public class BricksPool : MonoBehaviour
 {
     [SerializeField] BrickTypeEnum brickTypeEnum;
     [SerializeField] BrickTypesSO BrickTypesSO;
-    private ObjectPool<Brick> pool;
     [SerializeField] Brick brickPrefab;
-    public ObjectPool<Brick> Pool
-    {
-        get
-        {
-            return pool;
-        }
-    }
+
+    private ObjectPool<Brick> pool;
+    public ObjectPool<Brick> Pool => pool;
+
     private void Awake()
     {
         if (pool == null)
@@ -24,7 +20,18 @@ public class BricksPool : MonoBehaviour
             pool = new ObjectPool<Brick>(CreateBrickItem, OnTakeItemFromPool, OnReturnObjectToPool, defaultCapacity: 10);
         }
 
-        BrickTypesSO.SetBrickPool(brickTypeEnum, this);
+        PassThisReferenceToBrickTypesSO();
+    }
+    public void PassThisReferenceToBrickTypesSO()
+    {
+        foreach (BrickTypes brickType in BrickTypesSO.BrickTypesList)
+        {
+            if (brickType.BrickType == brickTypeEnum)
+            {
+                brickType.Pool = this;
+                break;
+            }
+        }
     }
 
     private Brick CreateBrickItem()

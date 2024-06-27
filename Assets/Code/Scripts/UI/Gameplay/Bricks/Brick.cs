@@ -38,6 +38,8 @@ public class Brick: MonoBehaviour
     protected const string ignoreBrickWithTouchUSSClassName = "ignoreBrickWithTouch";
     protected const string yellowBrickUSSClassName = "yellowBrick";
     protected const string greenBrickUSSClassName = "greenBrick";
+    const string enemyUSSClassName = "enemyBrick";
+    const string playerUSSClassName = "playerBrick";
 
     protected CombatBarUI combatBarUI;
 
@@ -55,7 +57,7 @@ public class Brick: MonoBehaviour
 
     }
 
-    public void SetupBrick(CombatBarUI combatBarUI, VisualElement brickElementAttached, VisualElement playerElementParent, string playerClassName, VisualElement enemyElementParent, string enemyClassName)
+    public void SetupBrick(CombatBarUI combatBarUI, VisualElement brickElementAttached, VisualElement playerElementParent, VisualElement enemyElementParent)
     {
         this.combatBarUI = combatBarUI;
         this.brickRootElementAttached = brickElementAttached;
@@ -64,12 +66,12 @@ public class Brick: MonoBehaviour
         if (brickHolder == BrickHolder.PlayerBrick)
         {
             this.m_elementParent = playerElementParent;
-            brickElementAttached.AddToClassList(playerClassName);
+            brickElementAttached.AddToClassList(playerUSSClassName);
         }
         else if(brickHolder == BrickHolder.EnemyBrick)
         {
             this.m_elementParent = enemyElementParent;
-            brickElementAttached.AddToClassList(enemyClassName);
+            brickElementAttached.AddToClassList(enemyUSSClassName);
         }
 
         brickElementAttached.style.visibility = Visibility.Hidden;
