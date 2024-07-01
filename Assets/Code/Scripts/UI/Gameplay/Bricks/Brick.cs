@@ -57,29 +57,30 @@ public class Brick: MonoBehaviour
 
     }
 
-    public void SetupBrick(CombatBarUI combatBarUI, VisualElement brickElementAttached, VisualElement playerElementParent, VisualElement enemyElementParent)
+    public void SetupBrick(CombatBarUI combatBarUI, VisualElement playerElementParent, VisualElement enemyElementParent)
     {
+        brickRootElementAttached.style.display = DisplayStyle.Flex;
+
         this.combatBarUI = combatBarUI;
-        this.brickRootElementAttached = brickElementAttached;
         this.brickElement = brickRootElementAttached.Q(className: brickUSSClass);
 
         if (brickHolder == BrickHolder.PlayerBrick)
         {
             this.m_elementParent = playerElementParent;
-            brickElementAttached.AddToClassList(playerUSSClassName);
+            brickRootElementAttached.AddToClassList(playerUSSClassName);
         }
         else if(brickHolder == BrickHolder.EnemyBrick)
         {
             this.m_elementParent = enemyElementParent;
-            brickElementAttached.AddToClassList(enemyUSSClassName);
+            brickRootElementAttached.AddToClassList(enemyUSSClassName);
         }
 
-        brickElementAttached.style.visibility = Visibility.Hidden;
-        m_elementParent.Add(brickElementAttached);
-        brickElementAttached.style.position = Position.Absolute;
+        brickRootElementAttached.style.visibility = Visibility.Hidden;
+        m_elementParent.Add(brickRootElementAttached);
+        brickRootElementAttached.style.position = Position.Absolute;
 
         float randomWidht = Random.Range(minWidth, maxWidth);
-        brickElementAttached.style.width = randomWidht;
+        brickRootElementAttached.style.width = randomWidht;
 
         brickElement.RegisterCallback<TransitionEndEvent>(OnChangeScaleEndEvent);
 
@@ -89,6 +90,7 @@ public class Brick: MonoBehaviour
     public virtual IEnumerator PositionBrick()
     {
         yield return new WaitForEndOfFrame();
+
 
         brickRootElementAttached.style.visibility = Visibility.Visible;
 
@@ -108,6 +110,8 @@ public class Brick: MonoBehaviour
     public void SetPool(BricksPool brickPool)
     {
         this.bricksPool = brickPool;
+
+        brickRootElementAttached = brickUIElement.Instantiate();
     }
 
     public float GetTimeToAutoDelete()
@@ -125,7 +129,12 @@ public class Brick: MonoBehaviour
     public virtual void RemoveBrickElement()
     {
         brickElement.UnregisterCallback<TransitionEndEvent>(OnChangeScaleEndEvent);
-        brickRootElementAttached.RemoveFromHierarchy();
+        brickRootElementAttached.style.display = DisplayStyle.None;
+
+        brickRootElementAttached.RemoveFromClassList(ignoreBrickWithTouchUSSClassName);
+        brickElement.RemoveFromClassList(brickFlashClass);
+
+        combatBarUI.RemoveBrickFromDict(brickRootElementAttached);
 
         if (gameObject.activeSelf == true)
         {

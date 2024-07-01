@@ -31,9 +31,6 @@ public class CombatBarUI : UIComponent
     [SerializeField] float pointerVelocity = 60f;
     float pointerPercentPosition = 0f;
 
-    float timeToSpawnBrick = 5f;
-    float timerSpawn = 0f;
-
 
     [Header("Touch Event")]
     [SerializeField] TouchBrickEventsSO touchBrickEventsHolder;
@@ -41,7 +38,6 @@ public class CombatBarUI : UIComponent
     [Header("SO Data")]
     [SerializeField] LevelSO levelSO;
     [SerializeField] BrickTypesSO brickTypesSO;
-    int currentEnemy = 0;
 
     private void OnEnable()
     {
@@ -67,39 +63,13 @@ public class CombatBarUI : UIComponent
         pointerCombatBar.style.left = Length.Percent(pointerPercentPosition);
     }
 
-    void Update()
+    public void InitializeBrick(Brick brickScriptToSpawn)
     {
-        if(inCombat == true)
-        {
-            MovePointer();
-
-            timerSpawn += Time.deltaTime;
-            if (timerSpawn > timeToSpawnBrick)
-            {
-                timerSpawn = 0f;
-                CreateRandomTimeToSpawnBrick();
-
-                GetRandomBrickFromSO();
-            }
-        }
+        brickScriptToSpawn.SetupBrick(this, playerBrickElementHolder, enemyBricksElementHolder);
+        bricksInBarDict.Add(brickScriptToSpawn.GetBrickElementAttached(), brickScriptToSpawn);
     }
 
-    private void GetRandomBrickFromSO()
-    {
-        BrickTypeEnum brickTypeToSpawn = levelSO.Enemies[currentEnemy].GetRandomBrick();
-
-        VisualElement visualElement = brickTypesSO.GetBrick(brickTypeToSpawn).BrickUIAsset.Instantiate();
-
-        InitializeBrick(brickTypesSO.GetPool(brickTypeToSpawn).Pool.Get(), visualElement);
-    }
-
-    private void InitializeBrick(Brick brickScriptToSpawn, VisualElement brickUIElement)
-    {
-        brickScriptToSpawn.SetupBrick(this, brickUIElement, playerBrickElementHolder, enemyBricksElementHolder);
-        bricksInBarDict.Add(brickUIElement, brickScriptToSpawn);
-    }
-
-    private void MovePointer()
+    public void MovePointer()
     {
         pointerPercentPosition += Time.deltaTime * pointerVelocity;
         if (pointerPercentPosition > 100f)
@@ -178,29 +148,18 @@ public class CombatBarUI : UIComponent
     public void InCombat()
     {
         inCombat = true;
-        CreateRandomTimeToSpawnBrick();
+        //CreateRandomTimeToSpawnBrick();
     }
 
     public void OutOfCombat()
     {
         inCombat = false;
-        currentEnemy++;
+        //currentEnemy++;
     }
 
     public void DeleteAllBricks()
     {
         bricksInBarDict.Clear();
-    }
-
-    public void StartLevel()
-    {
-        currentEnemy = 0;
-        CreateRandomTimeToSpawnBrick();
-    }
-
-    private void CreateRandomTimeToSpawnBrick()
-    {
-        timeToSpawnBrick = UnityEngine.Random.Range(levelSO.Enemies[currentEnemy].MinTimeToSpawnBrick, levelSO.Enemies[currentEnemy].MaxTimeToSpawnBrick);
     }
 
     private void SetupLevel(LevelSO level)

@@ -7,6 +7,11 @@ using System;
 
 public class CombatBarPresenter : MonoBehaviour
 {
+    bool inCombat = false;
+
+    float timeToSpawnBrick = 5f;
+    float timerSpawn = 0f;
+
     [SerializeField] BrickTypesSO brickTypesSO;
 
     CombatBarUI combatBarUI;
@@ -39,15 +44,30 @@ public class CombatBarPresenter : MonoBehaviour
         LevelSelectorUI.onSelectedLevelToPlay -= SetupLevel;
     }
 
+    void Update()
+    {
+        if (inCombat == true)
+        {
+            combatBarUI.MovePointer();
+
+            timerSpawn += Time.deltaTime;
+            if (timerSpawn > timeToSpawnBrick)
+            {
+                timerSpawn = 0f;
+                CreateRandomTimeToSpawnBrick();
+
+                GetRandomBrickFromSO();
+            }
+        }
+    }
+
     private void GetRandomBrickFromSO()
     {
         SetupEnemyBrickProbabilityStats();
 
         BrickTypeEnum brickTypeToSpawn = ChoosePlayerOrEnemyBrick();
 
-        VisualElement visualElement = brickTypesSO.GetBrick(brickTypeToSpawn).BrickUIAsset.Instantiate();
-
-        InitializeBrick(brickTypesSO.GetPool(brickTypeToSpawn).Pool.Get(), visualElement);
+        combatBarUI.InitializeBrick(brickTypesSO.GetPool(brickTypeToSpawn).Pool.Get());
     }
     private void SetupEnemyBrickProbabilityStats()
     {
@@ -92,15 +112,24 @@ public class CombatBarPresenter : MonoBehaviour
         return BrickTypeEnum.Redbrick;
     }
 
-
-    private void InitializeBrick(Brick brickScriptToSpawn, VisualElement brickUIElement)
-    {
-        brickScriptToSpawn.SetupBrick(this, brickUIElement, playerBrickElementHolder, enemyBricksElementHolder);
-        bricksInBarDict.Add(brickUIElement, brickScriptToSpawn);
-    }
-
     private void SetupLevel(LevelSO level)
     {
         this.levelSO = level;
+    }
+
+    public void InCombat()
+    {
+        inCombat = true;
+        CreateRandomTimeToSpawnBrick();
+    }
+
+    public void OutOfCombat()
+    {
+        inCombat = false;
+    }
+
+    private void CreateRandomTimeToSpawnBrick()
+    {
+        timeToSpawnBrick = UnityEngine.Random.Range(levelSO.Enemies[EnemyStats.currentEnemy].MinTimeToSpawnBrick, levelSO.Enemies[EnemyStats.currentEnemy].MaxTimeToSpawnBrick);
     }
 }
