@@ -42,6 +42,8 @@ public class EnemySetup : MonoBehaviour
     public void SetupAttackPower()
     {
         stats.attack = currentLevel.Enemies[stats.currentEnemy].Attack;
+        stats.minAttack = currentLevel.Enemies[stats.currentEnemy].minAttack;
+        stats.maxAttack = currentLevel.Enemies[stats.currentEnemy].maxAttack;
     }
 
     public void SetEnemyAttackToZero()

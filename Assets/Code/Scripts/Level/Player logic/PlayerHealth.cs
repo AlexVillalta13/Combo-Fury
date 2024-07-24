@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class PlayerHealth : MonoBehaviour
 {
@@ -36,13 +37,8 @@ public class PlayerHealth : MonoBehaviour
 
         if (ShieldUpgradeBlocksAttack() == true) { return; }
 
-        //currentComboNumber = 0;
-        //onChangeComboNumber(currentComboNumber);
-
         CalculateDamageIncome(eventArgs);
-
-        // Spines
-
+        
         CheckWinConditions();
     }
 

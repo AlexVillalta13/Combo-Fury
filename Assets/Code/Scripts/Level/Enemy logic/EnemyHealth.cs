@@ -14,17 +14,19 @@ public class EnemyHealth : MonoBehaviour
 
     private void OnEnable()
     {
-        PlayerAttacks.OnPlayerAttacks += EnemyReceivesDamage;
+        // PlayerAttacks.OnPlayerAttacks += EnemyReceivesDamage;
+        MinMaxPlayerAttack.OnPlayerAttacks += EnemyReceivesDamage;
     }
 
     private void OnDisable()
     {
-        PlayerAttacks.OnPlayerAttacks -= EnemyReceivesDamage;
+        // PlayerAttacks.OnPlayerAttacks -= EnemyReceivesDamage;
+        MinMaxPlayerAttack.OnPlayerAttacks -= EnemyReceivesDamage;
     }
 
-    private void EnemyReceivesDamage(object sender, PlayerAttacks.OnPlayerAttacksEventArgs eventArgs)
+    private void EnemyReceivesDamage(object sender, MinMaxPlayerAttack.OnPlayerAttacksEventArgs eventArgs)
     {
-        float playerDamage = eventArgs.playerAttackDamage;
+        float playerDamage = eventArgs.PlayerAttackDamage;
 
         stats.currentHealth -= playerDamage;
 
@@ -68,6 +70,4 @@ public class EnemyHealth : MonoBehaviour
     {
         playerWinLevelEvent.Raise(gameObject);
     }
-
-
 }

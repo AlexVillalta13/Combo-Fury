@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 97c8b5a721767ec478e07dc0e56c8227, type: 3}
-  m_Name: InCombatPlayerStatsSO
+  m_Name: Procedural InCombat Stats
   m_EditorClassIdentifier: 
-  MaxHealth: 110
-  CurrentHealth: 83
-  Attack: 12
+  MaxHealth: 100
+  CurrentHealth: 100
+  Attack: 10
   MinAttack: 10
   MaxAttack: 20
   Defense: 0
@@ -32,20 +32,16 @@ MonoBehaviour:
   healthPercentageToActivateRage: 30
   extraRageAttack: 20
   spinesPercentageDamage: 25
-  HeavyAttackLevel: 3
+  HeavyAttackLevel: 0
   HeavyAttackPercentageDamage: 250
   fireLevel: 0
   firePercentageDamage: 0
   firePercentageDamageIncrement: 10
-  fireChanceIncrement: 20
+  fireChanceIncrement: 10
   timeToDoDamageFire: 2
   timeToTurnOffFire: 10
   brickProbabilityList:
-  - brickType: 6
-    probability: 0
-  - brickType: 7
-    probability: 0
   - brickType: 2
-    probability: 30
+    probability: 65
   - brickType: 1
-    probability: 100
+    probability: 35

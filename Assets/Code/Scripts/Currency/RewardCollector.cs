@@ -12,7 +12,6 @@ public class RewardCollector : MonoBehaviour
     {
         foreach (CurrencyReward reward in EnemyStats.currencyRewardList)
         {
-            Debug.Log(reward.Currency.name);
             if(reward.Currency.name == "Gold")
             {
                 goldReward += reward.Amount;

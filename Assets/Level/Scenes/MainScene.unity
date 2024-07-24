@@ -38,7 +38,6 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.94035983, g: 0.7119717, b: 0.7164891, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -8556,7 +8555,7 @@ GameObject:
   - component: {fileID: 666459921}
   - component: {fileID: 666459920}
   m_Layer: 0
-  m_Name: Comba Bar UI Presenter
+  m_Name: Combat Bar UI Presenter
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class EnemyAttacks : MonoBehaviour
 {
@@ -16,6 +17,7 @@ public class EnemyAttacks : MonoBehaviour
 
     public void EnemyDoAttack()
     {
-        OnEnemyAttacks?.Invoke(this, new OnEnemyAttacksEventArgs() { enemyAttackDamage = enemyStats.attack});
+        float attackDamage = Random.Range(enemyStats.minAttack, enemyStats.maxAttack);
+        OnEnemyAttacks?.Invoke(this, new OnEnemyAttacksEventArgs() { enemyAttackDamage = attackDamage});
     }
 }

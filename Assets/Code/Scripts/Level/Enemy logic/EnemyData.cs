@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 [System.Serializable]
 public class EnemyData
@@ -12,6 +13,8 @@ public class EnemyData
 
     [SerializeField] float attack = 5;
     public float Attack { get { return attack; } }
+    public float minAttack = 1f;
+    public float maxAttack = 3f;
 
     [SerializeField] float minTimeToSpawnBrick = 1f;
     public float MinTimeToSpawnBrick { get { return minTimeToSpawnBrick; } }

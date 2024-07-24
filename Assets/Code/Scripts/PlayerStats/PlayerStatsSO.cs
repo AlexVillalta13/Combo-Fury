@@ -13,6 +13,9 @@ public class PlayerStatsSO : ScriptableObject
         return CurrentHealth > 0;
     }
     public float Attack = 10f;
+    public float MinAttack = 10f;
+    public float MaxAttack = 20f;
+
     public float Defense = 0f;
     public float CriticalAttackChance = 20f;
     public float DodgeChance = 0f;
@@ -102,6 +105,9 @@ public class PlayerStatsSO : ScriptableObject
     {
         this.MaxHealth = permanentStatsSO.MaxHealth;
         this.Attack = permanentStatsSO.Attack;
+        this.MinAttack = permanentStatsSO.MinAttack;
+        this.MaxAttack = permanentStatsSO.MaxAttack;
+
         this.Defense = permanentStatsSO.Defense;
         this.CriticalAttackChance = permanentStatsSO.CriticalAttackChance;
         this.CurrentHealth = this.MaxHealth;
