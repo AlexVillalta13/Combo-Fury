@@ -34,6 +34,7 @@ public class EnemySetup : MonoBehaviour
     {
         stats.maxHealth = currentLevel.Enemies[stats.currentEnemy].Health;
         stats.currentHealth = stats.maxHealth;
+        stats.currencyRewardList = currentLevel.Enemies[stats.currentEnemy].CurrencyRewardsList;
         SetupAttackPower();
         EnemyHealth.onChangeEnemyHealth?.Invoke(this, new OnChangeHealthEventArgs() { spawnNumberTextMesh = false});
     }

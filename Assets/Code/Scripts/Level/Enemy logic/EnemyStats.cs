@@ -9,6 +9,8 @@ public class EnemyStats : ScriptableObject
     public float currentHealth;
     public float attack;
 
+    public List<CurrencyReward> currencyRewardList = new List<CurrencyReward>();
+
     public int currentEnemy = 0;
     public int totalEnemies = 0;
 }

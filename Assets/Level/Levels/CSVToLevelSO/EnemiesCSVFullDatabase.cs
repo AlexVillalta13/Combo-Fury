@@ -19,11 +19,11 @@ public class EnemiesCSVFullDatabase : FullDatabaseBase
             return;
         }
 
-        List<Enemy> enemiesList = new List<Enemy>();
+        List<EnemyData> enemiesList = new List<EnemyData>();
 
         foreach(CSVToEnemiesDatabase enemyData in enemiesData)
         {
-            Enemy enemy = new Enemy();
+            EnemyData enemy = new EnemyData();
 
             enemy.SetEnemyData(
                 enemyData.enemyHealth,
