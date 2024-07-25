@@ -9,13 +9,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b37f3dc5a112b3b4081b8d2ff5f58bb8, type: 3}
-  m_Name: Heal
+  m_Script: {fileID: 11500000, guid: ea829609fb5076f43855933695f2849d, type: 3}
+  m_Name: MinAttackIncreaseEvent
   m_EditorClassIdentifier: 
-  upgradeName: 
-  upgradeId: 
-  image: {fileID: 0}
-  maxLevel: 0
-  levelUnlock: 0
-  upgradeDescription: 
-  upgradeEvent: {fileID: 0}

@@ -10,6 +10,9 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/Assets/Code/Scripts/UI/Gameplay/MinMaxHealthBars.cs" root0="FORCE_HIGHLIGHTING" />
+  </component>
   <component name="ProjectColorInfo">{
   &quot;customColor&quot;: &quot;&quot;,
   &quot;associatedIndex&quot;: 3
@@ -87,6 +90,7 @@
       <workItem from="1721231684706" duration="102000" />
       <workItem from="1721846184550" duration="2507000" />
       <workItem from="1721860786234" duration="3778000" />
+      <workItem from="1721900036459" duration="2151000" />
     </task>
     <servers />
   </component>

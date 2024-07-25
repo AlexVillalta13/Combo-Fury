@@ -49,6 +49,31 @@ public class StatsUpgrade : MonoBehaviour
 
         onPlayerChangeInCombatStat.Raise(gameObject);
     }
+    
+    public void IncreaseMinAttack()
+    {
+        float attackIncrease = Mathf.Round(PermanentPlayerStatsSO.MinAttack * inCombatPlayerStatsSO.LittleAttackIncreasePercentage / 100);
+        if (attackIncrease < 1)
+        {
+            attackIncrease = 1;
+        }
+        inCombatPlayerStatsSO.MinAttack += attackIncrease;
+        inCombatPlayerStatsSO.MaxAttack += attackIncrease;
+
+        onPlayerChangeInCombatStat.Raise(gameObject);
+    }
+    
+    public void IncreaseMaxAttack()
+    {
+        float attackIncrease = Mathf.Round(PermanentPlayerStatsSO.MaxAttack * inCombatPlayerStatsSO.LittleAttackIncreasePercentage / 100);
+        if (attackIncrease < 1)
+        {
+            attackIncrease = 1;
+        }
+        inCombatPlayerStatsSO.MaxAttack += attackIncrease;
+
+        onPlayerChangeInCombatStat.Raise(gameObject);
+    }
 
     public void IncreaseCriticalChance()
     {

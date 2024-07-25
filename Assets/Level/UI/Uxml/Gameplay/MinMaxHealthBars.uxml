@@ -1,0 +1,41 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/Level/UI/USS/HealthBarsClasses.uss?fileID=7433441132597879392&amp;guid=dce97fdfa09e83944bc72890332e7584&amp;type=3#HealthBarsClasses" />
+    <Style src="project://database/Assets/Level/UI/USS/CommonClasses.uss?fileID=7433441132597879392&amp;guid=0b7764f9735edf14583ce36e8b12d1e8&amp;type=3#CommonClasses" />
+    <ui:VisualElement name="HealthBarsHolder" style="flex-direction: row; margin-top: 146px; padding-left: 100px; padding-right: 100px; justify-content: space-between; width: 100%;">
+        <ui:VisualElement name="PlayerBarHolder" style="height: 220px; width: 100%; padding-right: 30px;">
+            <ui:VisualElement name="PlayerStatsHolder" class="statsHolder" style="flex-direction: row; padding-left: 10px; padding-right: 10px;">
+                <ui:VisualElement name="PlayerAttackStatsHolder" style="flex-direction: row; width: 404px; align-items: center; justify-content: flex-start; left: 0;">
+                    <ui:VisualElement name="SwordIcon" class="icon" style="background-image: url(&quot;project://database/Assets/Art/Sprites/Icon_Sword.Png?fileID=2800000&amp;guid=27da16010847ee44597da32f926827db&amp;type=3#Icon_Sword&quot;); -unity-background-scale-mode: scale-to-fit;" />
+                    <ui:Label text="99999-999999" display-tooltip-when-elided="true" name="PlayerAttack" class="statsTextSize regularTextOutlineShadow" style="width: 60%; white-space: normal; flex-grow: 1;" />
+                </ui:VisualElement>
+                <ui:VisualElement name="PlayerDefenseStatsHolder" style="flex-direction: row; width: 404px; align-items: center; justify-content: flex-start; left: 0; display: none;">
+                    <ui:VisualElement name="ShieldIcon" class="icon" style="background-image: url(&quot;project://database/Assets/Art/Sprites/Icon_Shield.Png?fileID=2800000&amp;guid=e60ea47ba2ecff54a83d9a20cce58da1&amp;type=3#Icon_Shield&quot;); -unity-background-scale-mode: scale-to-fit;" />
+                    <ui:Label text="99" display-tooltip-when-elided="true" name="PlayerDefense" class="statsTextSize regularTextOutlineShadow" />
+                </ui:VisualElement>
+            </ui:VisualElement>
+            <ui:VisualElement name="PlayerHealthBarHolder" class="healthBarHolder" style="flex-direction: row;">
+                <ui:VisualElement name="PlayerBarBackground" style="width: 100%; height: 100%; flex-direction: row; background-image: url(&quot;project://database/Assets/Art/Sprites/Slider13_Frame.png?fileID=21300000&amp;guid=276d3dfe5b01135458b223c29060718e&amp;type=3#Slider13_Frame&quot;); align-items: stretch;">
+                    <ui:VisualElement name="PlayerFillBar" style="width: 80%; flex-direction: column; align-items: flex-end; justify-content: center; background-image: url(&quot;project://database/Assets/Art/Sprites/Slider13_Fill.png?fileID=21300000&amp;guid=97aab3820169a604da413ae8dae8d954&amp;type=3#Slider13_Fill&quot;); -unity-background-scale-mode: stretch-to-fill;" />
+                    <ui:Label text="999/999" display-tooltip-when-elided="true" name="PlayerHealthText" class="healthTextPosition healthTextSize regularTextOutlineShadow" />
+                </ui:VisualElement>
+            </ui:VisualElement>
+        </ui:VisualElement>
+        <ui:VisualElement name="EnemyBarHolder" style="height: 220px; width: 100%; padding-left: 30px; align-items: flex-end;">
+            <ui:VisualElement name="EnemyStatsHolder" class="statsHolder" style="height: 45%; width: 70%; flex-direction: row-reverse; scale: -1 1;">
+                <ui:VisualElement name="EnemyAttackStatsHolder" style="flex-direction: row-reverse; width: 100%; align-items: center; justify-content: flex-start; scale: -1 1; padding-right: 10px;">
+                    <ui:VisualElement name="SwordIcon" class="icon" style="background-image: url(&quot;project://database/Assets/Art/Sprites/Icon_Sword.Png?fileID=2800000&amp;guid=27da16010847ee44597da32f926827db&amp;type=3#Icon_Sword&quot;); -unity-background-scale-mode: scale-to-fit;" />
+                    <ui:Label text="99999-9999999" display-tooltip-when-elided="true" name="EnemyAttack" class="statsTextSize regularTextOutlineShadow" style="flex-grow: 1; white-space: normal; width: 60%;" />
+                </ui:VisualElement>
+            </ui:VisualElement>
+            <ui:VisualElement name="EnemyHealthBarHolder" class="healthBarHolder" style="scale: -1 1; flex-direction: row-reverse;">
+                <ui:VisualElement name="EnemyBarBackground" style="width: 100%; height: 100%; flex-direction: row-reverse; background-image: url(&quot;project://database/Assets/Art/Sprites/Slider13_Frame.png?fileID=21300000&amp;guid=276d3dfe5b01135458b223c29060718e&amp;type=3#Slider13_Frame&quot;); align-items: stretch;">
+                    <ui:VisualElement name="VisualElement" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0); scale: -1 1; flex-direction: row-reverse;">
+                        <ui:VisualElement name="EnemyFillBar" class="bossFillBar" style="width: 80%; flex-direction: column; align-items: flex-end; justify-content: center; background-image: url(&quot;project://database/Assets/Art/Sprites/Slider14_Fill.png?fileID=21300000&amp;guid=77986562ec7ab7f4a951cbd2522dbfd3&amp;type=3#Slider14_Fill&quot;); -unity-background-scale-mode: stretch-to-fill;" />
+                        <ui:Label text="999/999" display-tooltip-when-elided="true" name="EnemyHealthText" class="healthTextPosition healthTextSize regularTextOutlineShadow" />
+                    </ui:VisualElement>
+                </ui:VisualElement>
+            </ui:VisualElement>
+        </ui:VisualElement>
+    </ui:VisualElement>
+    <ui:Label tabindex="-1" text="39/40" display-tooltip-when-elided="true" name="EnemyCount" class="statsTextSize regularTextOutlineShadow" />
+</ui:UXML>

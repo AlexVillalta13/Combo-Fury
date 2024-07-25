@@ -13,14 +13,7 @@ MonoBehaviour:
   m_Name: ProceduralLevelUpgrades
   m_EditorClassIdentifier: 
   upgradeList:
-  - {fileID: 11400000, guid: 8a3e6e05356adee4aa0fc805fb19701c, type: 2}
-  - {fileID: 11400000, guid: ff7cb550876a3374da6fe5887096d322, type: 2}
-  - {fileID: 11400000, guid: 8c472007a8f3a0d4fafe771c9def1f0c, type: 2}
-  - {fileID: 11400000, guid: 278683d39fa371e459d0109b6f149117, type: 2}
-  - {fileID: 11400000, guid: 87de1671213a0aa489337f69ac7f4c27, type: 2}
+  - {fileID: 11400000, guid: 0d46f29ba9b1369439b88169b47e4c97, type: 2}
+  - {fileID: 11400000, guid: 60c3364bd0a108f4eb3f17409b61118c, type: 2}
   - {fileID: 11400000, guid: ac5e3978d858bc949bfcc63d0d9d505b, type: 2}
   - {fileID: 11400000, guid: 5ba1824ffda96cd409701284d7c746af, type: 2}
-  - {fileID: 11400000, guid: e795ec5065a22fb4db0e0e3e3a7ba877, type: 2}
-  - {fileID: 11400000, guid: 01a170760e01dbe43af4850046593dd7, type: 2}
-  - {fileID: 11400000, guid: a7a46e07d38517441b6613f6590f6a03, type: 2}
-  - {fileID: 11400000, guid: 608eb71dfccccc34e92d22d023d3f40d, type: 2}
