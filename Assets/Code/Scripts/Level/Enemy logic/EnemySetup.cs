@@ -6,7 +6,7 @@ using UnityEngine;
 public class EnemySetup : MonoBehaviour
 {
     [SerializeField] EnemyStats stats;
-    [SerializeField] LevelSO currentLevel;
+    private ILevelData currentLevel;
 
     private void OnEnable()
     {
@@ -17,7 +17,7 @@ public class EnemySetup : MonoBehaviour
         LevelSelectorUI.onSelectedLevelToPlay -= SelectCurrentLevel;
     }
 
-    private void SelectCurrentLevel(LevelSO level)
+    private void SelectCurrentLevel(ILevelData level)
     {
         currentLevel = level;
         ResetLevel();
@@ -26,28 +26,28 @@ public class EnemySetup : MonoBehaviour
     public void ResetLevel()
     {
         stats.currentEnemy = 0;
-        stats.totalEnemies = currentLevel.Enemies.Count - 1;
+        stats.totalEnemies = currentLevel.GetTotalEnemiesCount() - 1;
         SetupNewEnemy();
     }
 
     public void SetupNewEnemy()
     {
-        stats.maxHealth = currentLevel.Enemies[stats.currentEnemy].Health;
+        stats.maxHealth = currentLevel.GetEnemy(stats.currentEnemy).Health;
         stats.currentHealth = stats.maxHealth;
-        stats.currencyRewardList = currentLevel.Enemies[stats.currentEnemy].CurrencyRewardsList;
+        stats.currencyRewardList = currentLevel.GetEnemy(stats.currentEnemy).CurrencyRewardsList;
         SetupAttackPower();
         EnemyHealth.onChangeEnemyHealth?.Invoke(this, new OnChangeHealthEventArgs() { spawnNumberTextMesh = false});
     }
 
     public void SetupAttackPower()
     {
-        stats.attack = currentLevel.Enemies[stats.currentEnemy].Attack;
-        stats.minAttack = currentLevel.Enemies[stats.currentEnemy].minAttack;
-        stats.maxAttack = currentLevel.Enemies[stats.currentEnemy].maxAttack;
+        // stats.attack = currentLevel.GetEnemy(stats.currentEnemy).Attack;
+        stats.minAttack = currentLevel.GetEnemy(stats.currentEnemy).minAttack;
+        stats.maxAttack = currentLevel.GetEnemy(stats.currentEnemy).maxAttack;
     }
 
-    public void SetEnemyAttackToZero()
-    {
-        stats.attack = 0f;
-    }
+    // public void SetEnemyAttackToZero()
+    // {
+    //     stats.attack = 0f;
+    // }
 }

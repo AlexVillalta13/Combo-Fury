@@ -10,11 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 97c8b5a721767ec478e07dc0e56c8227, type: 3}
-  m_Name: PermanentPlayerStatsSO
+  m_Name: Procedural Base Stats
   m_EditorClassIdentifier: 
   MaxHealth: 100
   CurrentHealth: 100
   Attack: 10
+  MinAttack: 200
+  MaxAttack: 300
   Defense: 0
   CriticalAttackChance: 20
   DodgeChance: 0
@@ -35,15 +37,13 @@ MonoBehaviour:
   fireLevel: 0
   firePercentageDamage: 0
   firePercentageDamageIncrement: 10
-  fireChanceIncrement: 20
+  fireChanceIncrement: 10
   timeToDoDamageFire: 2
   timeToTurnOffFire: 10
   brickProbabilityList:
-  - brickType: 6
-    probability: 0
-  - brickType: 7
-    probability: 0
   - brickType: 2
-    probability: 30
+    Probability: 30
+    levelToUnlock: 0
   - brickType: 1
-    probability: 100
+    Probability: 70
+    levelToUnlock: 0

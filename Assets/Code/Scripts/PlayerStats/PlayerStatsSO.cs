@@ -141,7 +141,10 @@ public class PlayerStatsSO : ScriptableObject
 
         foreach(BrickProbability brickProbabilityToClone in listToClone)
         {
-            BrickProbability newBrickProbability = new BrickProbability(brickProbabilityToClone.BrickType, brickProbabilityToClone.Probability);
+            BrickProbability newBrickProbability = new BrickProbability(brickProbabilityToClone.BrickType)
+            {
+                Probability = brickProbabilityToClone.Probability
+            };
             probabilityList.Add(newBrickProbability);
         }
 

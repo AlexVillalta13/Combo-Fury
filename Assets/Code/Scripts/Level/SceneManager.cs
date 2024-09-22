@@ -8,7 +8,7 @@ public class SceneManager : MonoBehaviour
     [SerializeField] SceneElementsHolder alpineWoodsScene;
     [SerializeField] SceneElementsHolder forestScene;
 
-    [SerializeField] LevelSO currentLevelToLoad;
+    ILevelData currentLevelToLoad;
 
     private void OnEnable()
     {
@@ -41,7 +41,7 @@ public class SceneManager : MonoBehaviour
     public void ActivateSelectedSceneEnvironment()
     {
         DisableAllScenes();
-        switch(currentLevelToLoad.Environment)
+        switch(currentLevelToLoad.GetEnvironment())
         {
             case SceneEnum.AlpineWoods:
                 EnableScene(alpineWoodsScene);
@@ -56,10 +56,10 @@ public class SceneManager : MonoBehaviour
     private void EnableScene(SceneElementsHolder scene)
     {
         scene.gameObject.SetActive(true);
-        scene.SetupLevel(currentLevelToLoad.Enemies.Count);
+        scene.SetupLevel(currentLevelToLoad.GetTotalEnemiesCount());
     }
 
-    private void LoadLevel(LevelSO level)
+    private void LoadLevel(ILevelData level)
     {
         currentLevelToLoad = level;
     }

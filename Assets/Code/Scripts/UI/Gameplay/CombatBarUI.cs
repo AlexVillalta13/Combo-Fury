@@ -36,17 +36,17 @@ public class CombatBarUI : UIComponent
     [SerializeField] TouchBrickEventsSO touchBrickEventsHolder;
 
     [Header("SO Data")]
-    [SerializeField] LevelSO levelSO;
+    // private ILevelEnemyData levelSO;
     [SerializeField] BrickTypesSO brickTypesSO;
 
-    private void OnEnable()
-    {
-        LevelSelectorUI.onSelectedLevelToPlay += SetupLevel;
-    }
-    private void OnDisable()
-    {
-        LevelSelectorUI.onSelectedLevelToPlay -= SetupLevel;
-    }
+    // private void OnEnable()
+    // {
+    //     LevelSelectorUI.onSelectedLevelToPlay += SetupLevel;
+    // }
+    // private void OnDisable()
+    // {
+    //     LevelSelectorUI.onSelectedLevelToPlay -= SetupLevel;
+    // }
 
     public override void Awake()
     {
@@ -162,8 +162,8 @@ public class CombatBarUI : UIComponent
         bricksInBarDict.Clear();
     }
 
-    private void SetupLevel(LevelSO level)
-    {
-        this.levelSO = level;
-    }
+    // private void SetupLevel(ILevelEnemyData level)
+    // {
+    //     this.levelSO = level;
+    // }
 }

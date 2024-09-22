@@ -32,12 +32,6 @@ public class HealthBars : UIComponent
     [SerializeField] PlayerStatsSO inCombatPlayerStatsSO;
     [SerializeField] EnemyStats enemyStats;
 
-
-    public override void Awake()
-    {
-        base.Awake();
-    }
-
     private void OnEnable()
     {
         PlayerHealth.onChangePlayerHealth += ChangePlayerHealthUI;
@@ -95,7 +89,7 @@ public class HealthBars : UIComponent
 
     public void ChangeEnemyAttack()
     {
-        enemyAttackText.text = enemyStats.attack.ToString("0");
+        // enemyAttackText.text = enemyStats.attack.ToString("0");
     }
 
     public void ShowEnemyBar()

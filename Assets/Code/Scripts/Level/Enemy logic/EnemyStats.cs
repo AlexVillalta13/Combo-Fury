@@ -8,9 +8,9 @@ public class EnemyStats : ScriptableObject
 {
     public float maxHealth;
     public float currentHealth;
-    public float attack;
+    // public float attack;
     public float minAttack;
-    [FormerlySerializedAs("macAttack")] public float maxAttack;
+    public float maxAttack;
 
     public List<CurrencyReward> currencyRewardList = new List<CurrencyReward>();
 

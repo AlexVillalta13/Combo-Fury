@@ -7,8 +7,9 @@ using UnityEngine.UIElements;
 
 public class LevelSelectorUI : UIComponent
 {
-    [SerializeField] List<LevelSO> m_Levels;
-    [SerializeField] LevelSO testLevel;
+    [SerializeField] private List<LevelSO> m_Levels;
+    [SerializeField] private ProceduralLevelSO _proceduralLevelSO;
+    [SerializeField] private LevelSO testLevel;
 
     const string levelHolderReference = "levelHolder";
     const string backButtonReference = "BackButton";
@@ -17,7 +18,7 @@ public class LevelSelectorUI : UIComponent
     ScrollView scrollView;
     VisualElement backButton;
 
-    public static Action<LevelSO> onSelectedLevelToPlay;
+    public static Action<ILevelData> onSelectedLevelToPlay;
     [SerializeField] UnityEvent onLevelSelectionMenuClosed;
 
     public override void SetElementsReferences()
@@ -66,14 +67,16 @@ public class LevelSelectorUI : UIComponent
 
     private void Start()
     {
-        if(testLevel != null)
-        {
-            onSelectedLevelToPlay?.Invoke(testLevel);
-        }
-        else
-        {
-            onSelectedLevelToPlay?.Invoke(m_Levels[0]);
-        }
+        onSelectedLevelToPlay?.Invoke(_proceduralLevelSO);
+        
+        // if(testLevel != null)
+        // {
+        //     onSelectedLevelToPlay?.Invoke(testLevel);
+        // }
+        // else
+        // {
+        //     onSelectedLevelToPlay?.Invoke(m_Levels[0]);
+        // }
     }
 
     public override void SetDisplayElementFlex()

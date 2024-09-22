@@ -16,7 +16,7 @@ public class CombatBarPresenter : MonoBehaviour
 
     CombatBarUI combatBarUI;
 
-    LevelSO levelSO;
+    ILevelData levelSO;
     [SerializeField] EnemyStats EnemyStats;
 
     [SerializeField] PlayerStatsSO inCombatPlayerStatsSo;
@@ -71,8 +71,8 @@ public class CombatBarPresenter : MonoBehaviour
     }
     private void SetupEnemyBrickProbabilityStats()
     {
-        chanceOfPlayerBrick = levelSO.Enemies[EnemyStats.currentEnemy].ChanceOfPlayerBrick;
-        chanceOfEnemyBrick = levelSO.Enemies[EnemyStats.currentEnemy].ChanceOfEnemyBrick;
+        chanceOfPlayerBrick = levelSO.GetEnemy(EnemyStats.currentEnemy).ChanceOfPlayerBrick;
+        chanceOfEnemyBrick = levelSO.GetEnemy(EnemyStats.currentEnemy).ChanceOfEnemyBrick;
 
         maxRange = chanceOfPlayerBrick + chanceOfEnemyBrick;
         randomNumber = UnityEngine.Random.Range(0f, maxRange);
@@ -90,14 +90,14 @@ public class CombatBarPresenter : MonoBehaviour
         {
             //Enemy Brick
             maxRange = 0f;
-            foreach (BrickProbability brickProbability in levelSO.Enemies[EnemyStats.currentEnemy].EnemyBricks)
+            foreach (BrickProbability brickProbability in levelSO.GetEnemy(EnemyStats.currentEnemy).EnemyBricks)
             {
                 maxRange += brickProbability.Probability;
             }
 
             randomNumber = UnityEngine.Random.Range(0f, maxRange);
             rangeNumberToSpawn = 0f;
-            foreach (BrickProbability brickProbability in levelSO.Enemies[EnemyStats.currentEnemy].EnemyBricks)
+            foreach (BrickProbability brickProbability in levelSO.GetEnemy(EnemyStats.currentEnemy).EnemyBricks)
             {
                 if (rangeNumberToSpawn < randomNumber && (rangeNumberToSpawn + brickProbability.Probability) > randomNumber)
                 {
@@ -112,7 +112,7 @@ public class CombatBarPresenter : MonoBehaviour
         return BrickTypeEnum.Redbrick;
     }
 
-    private void SetupLevel(LevelSO level)
+    private void SetupLevel(ILevelData level)
     {
         this.levelSO = level;
     }
@@ -130,6 +130,6 @@ public class CombatBarPresenter : MonoBehaviour
 
     private void CreateRandomTimeToSpawnBrick()
     {
-        timeToSpawnBrick = UnityEngine.Random.Range(levelSO.Enemies[EnemyStats.currentEnemy].MinTimeToSpawnBrick, levelSO.Enemies[EnemyStats.currentEnemy].MaxTimeToSpawnBrick);
+        timeToSpawnBrick = UnityEngine.Random.Range(levelSO.GetEnemy(EnemyStats.currentEnemy).MinTimeToSpawnBrick, levelSO.GetEnemy(EnemyStats.currentEnemy).MaxTimeToSpawnBrick);
     }
 }

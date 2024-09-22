@@ -38,10 +38,14 @@ public class PlayLevelUI : UIComponent
         LevelSelectorUI.onSelectedLevelToPlay += ChangeLevelSelectedImageAndName;
     }
 
-    private void ChangeLevelSelectedImageAndName(LevelSO level)
+    private void ChangeLevelSelectedImageAndName(ILevelData level)
     {
-        levelImage.style.backgroundImage = new StyleBackground(level.LevelIcon);
-        levelSelectedName.text = level.name;
+        LevelSO levelSO = level as LevelSO;
+        if (levelSO != null)
+        {
+            levelImage.style.backgroundImage = new StyleBackground(levelSO.LevelIcon);
+            levelSelectedName.text = levelSO.name;
+        }
     }
 
     private void OnDisable()

@@ -50,6 +50,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 60256b58ddcf298439ec4d18cb8576da, type: 2}
   - {fileID: 11400000, guid: 5b3609f91976ce244a2d53ec18ca6fef, type: 2}
   - {fileID: 11400000, guid: 16c9563d85dc68a46999f2204f143f08, type: 2}
+  _proceduralLevelSO: {fileID: 11400000, guid: 93f61a73f1b4ee348a080a015cf58705, type: 2}
   testLevel: {fileID: 0}
   onLevelSelectionMenuClosed:
     m_PersistentCalls:

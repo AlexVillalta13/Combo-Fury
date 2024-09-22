@@ -39,13 +39,13 @@ public class EnemyHealth : MonoBehaviour
     {
         if (stats.currentHealth <= 0)
         {
-            if (stats.currentEnemy < stats.totalEnemies)
-            {
-                playerWinFightEvent.Raise(gameObject);
-            }
-            else if (stats.currentEnemy == stats.totalEnemies)
+            if (stats.currentEnemy == stats.totalEnemies)
             {
                 playerWinLevelEvent.Raise(gameObject);
+            }
+            else
+            {
+                playerWinFightEvent.Raise(gameObject);
             }
 
             stats.currentEnemy += 1;

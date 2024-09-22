@@ -8,11 +8,10 @@ public class EnemyData
 {
     public PlayerStatsSO InCombatStatsSO { get; set; }
 
-    [SerializeField] float health = 100;
-    public float Health { get { return health; } }
+    public float Health = 100;
 
-    [SerializeField] float attack = 5;
-    public float Attack { get { return attack; } }
+    // [SerializeField] float attack = 5;
+    // public float Attack { get { return attack; } }
     public float minAttack = 1f;
     public float maxAttack = 3f;
 
@@ -72,8 +71,8 @@ public class EnemyData
 
     public void SetEnemyData(float maxHealth, float attack, float minTimeToSpawnBrick, float maxTimeToSpawnBrick, float playerChance, float redBrickChance, float movingBrickChance, float shieldBrickChance, float trapChance)
     {
-        this.health = maxHealth;
-        this.attack = attack;
+        this.Health = maxHealth;
+        // this.attack = attack;
         this.minTimeToSpawnBrick = minTimeToSpawnBrick;
         this.maxTimeToSpawnBrick = maxTimeToSpawnBrick;
         this.chanceOfPlayerBrick = playerChance;
@@ -98,7 +97,10 @@ public class EnemyData
 
     private void CreateNewBrickProbability(BrickTypeEnum brickTypeEnum, float probabilityToSpawn)
     {
-        BrickProbability newgBrickProbability = new BrickProbability(brickTypeEnum, probabilityToSpawn);
-        enemyBricks.Add(newgBrickProbability);
+        BrickProbability newBrickProbability = new BrickProbability(brickTypeEnum)
+        {
+            Probability = probabilityToSpawn
+        };
+        enemyBricks.Add(newBrickProbability);
     }
 }

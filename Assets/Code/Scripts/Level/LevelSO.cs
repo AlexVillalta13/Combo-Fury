@@ -5,26 +5,40 @@ using UnityEngine.UIElements;
 using Sirenix.OdinInspector;
 
 [CreateAssetMenu(fileName = "New Level")]
-public class LevelSO : ScriptableObject
+public class LevelSO : ScriptableObject, ILevelData
 {
     [SerializeField] PlayerStatsSO inCombatStatsSO;
 
     [SerializeField] Sprite levelIcon;
-    public Sprite LevelIcon { get { return levelIcon; } }
+    public Sprite LevelIcon => levelIcon;
 
     [SerializeField] SceneEnum environment = SceneEnum.AlpineWoods;
-    public SceneEnum Environment { get { return environment; } }
+    // public SceneEnum Environment => environment;
+    public SceneEnum GetEnvironment()
+    {
+        return environment;
+    }
 
     [SerializeField] int initialPosition = 0;
 
     [SerializeField] BrickTypesSO brickTypes;
 
     [SerializeField] int minibossEncounterAt = 10;
-    public int MinibossEncounterAt { get { return minibossEncounterAt; } }
+    public int MinibossEncounterAt => minibossEncounterAt;
 
     [SerializeField] List<EnemyData> enemies = new List<EnemyData>();
 
-    public List<EnemyData> Enemies { get { return enemies; } set { enemies = value; } }
+    public List<EnemyData> Enemies { get => enemies; set => enemies = value; }
+
+    public EnemyData GetEnemy(int enemyNumber)
+    {
+        return enemies[enemyNumber];
+    }
+
+    public int GetTotalEnemiesCount()
+    {
+        return enemies.Count;
+    }
 
     private void OnEnable()
     {
@@ -36,20 +50,4 @@ public class LevelSO : ScriptableObject
             }
         }
     }
-}
-
-
-
-[System.Serializable]
-public class BrickProbability
-{
-    public BrickProbability(BrickTypeEnum brickTypeEnum, float probability)
-    {
-        this.brickType = brickTypeEnum;
-        this.probability = probability;
-    }
-    [SerializeField] BrickTypeEnum brickType;
-    public BrickTypeEnum BrickType { get { return brickType; }}
-    [SerializeField] float probability;
-    public float Probability { get { return probability; } set { probability = value; } }
 }
