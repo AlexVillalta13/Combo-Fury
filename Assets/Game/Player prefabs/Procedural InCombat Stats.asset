@@ -12,15 +12,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 97c8b5a721767ec478e07dc0e56c8227, type: 3}
   m_Name: Procedural InCombat Stats
   m_EditorClassIdentifier: 
-  MaxHealth: 100
-  CurrentHealth: 100
+  MaxHealth: 130
+  CurrentHealth: 1
   Attack: 10
-  MinAttack: 10
-  MaxAttack: 20
+  MinAttack: 3
+  MaxAttack: 78
   Defense: 0
   CriticalAttackChance: 20
   DodgeChance: 0
   comboCount: 0
+  maxHealthLevel: 2
+  maxHealthIncreasePerLevel: 10
+  minAttackLevel: 0
+  MinAttackLittleIncrement: 3
+  constToIncreaseMinLittleIncrement: 1
+  MinAttackBigIncrement: 6
+  constToIncreaseMinBigIncrement: 4
+  maxAttackLevel: 6
+  MaxAttackLittleIncrement: 12
+  constToIncreaseMaxLittleIncrement: 2
+  MaxAttackBigIncrement: 25
+  constToIncreaseMaxBigIncrement: 5
   healPercentage: 25
   littleAttackIncreasePercentage: 15
   mediumAttackIncreasePercentage: 30
@@ -42,6 +54,8 @@ MonoBehaviour:
   timeToTurnOffFire: 10
   brickProbabilityList:
   - brickType: 2
-    probability: 65
+    Probability: 30
+    levelToUnlock: 0
   - brickType: 1
-    probability: 35
+    Probability: 70
+    levelToUnlock: 0

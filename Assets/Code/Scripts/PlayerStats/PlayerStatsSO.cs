@@ -22,8 +22,34 @@ public class PlayerStatsSO : ScriptableObject
     public float DodgeChance = 0f;
     public int comboCount = 0;
 
+    [Title("Player contant Upgrade")]
+    [Title("Health", titleAlignment: TitleAlignments. Centered, horizontalLine: false, bold: false)]
+    public float maxHealthLevel = 0;
+    [SerializeField] float maxHealthIncreasePerLevel = 10f;
+    public float MaxHealthIncreasePerLevel => maxHealthIncreasePerLevel;
 
-    [Title("Player Upgrade Stats Increments")]
+    [Title("Min Attack", titleAlignment: TitleAlignments. Centered, horizontalLine: false, bold: false)]
+    public int minAttackLevel = 0;
+    public float MinAttackLittleIncrement = 3f;
+    [SerializeField] private float constToIncreaseMinLittleIncrement = 1f;
+    public float ConstToIncreaseMinLittleIncrement => constToIncreaseMinLittleIncrement;
+    
+    public float MinAttackBigIncrement = 6f;
+    [SerializeField] private float constToIncreaseMinBigIncrement = 4f;
+    public float ConstToIncreaseMinBigIncrement => constToIncreaseMinBigIncrement;
+    
+    [Title("Max Attack", titleAlignment: TitleAlignments. Centered, horizontalLine: false, bold: false)]
+    public int maxAttackLevel = 0;
+    public float MaxAttackLittleIncrement = 8f;
+    [SerializeField] private float constToIncreaseMaxLittleIncrement = 2f;
+    public float ConstToIncreaseMaxLittleIncrement => constToIncreaseMaxLittleIncrement;
+    
+    public float MaxAttackBigIncrement = 15f;
+    [SerializeField] private float constToIncreaseMaxBigIncrement = 5f;
+    public float ConstToIncreaseMaxBigIncrement => constToIncreaseMaxBigIncrement;
+
+
+    [Title("Player Percent Stats Increments")]
     [SerializeField] float healPercentage = 25f;
     public float HealPercentage { get { return healPercentage; } }
 
@@ -36,8 +62,8 @@ public class PlayerStatsSO : ScriptableObject
     [SerializeField] float mediumDefenseIncreasePercentage = 10f;
     public float MediumDefenseIncreasePercentage { get { return mediumDefenseIncreasePercentage; } }
 
-    [FormerlySerializedAs("maxHealthIncreasePercentage")] [SerializeField] float maxHealthIncreasePerLevel = 10f;
-    public float MaxHealthIncreasePerLevel { get { return maxHealthIncreasePerLevel; } }
+    [SerializeField] float maxHealthIncreasePercentage = 10f;
+    public float MaxHealthIncreasePercentage { get { return maxHealthIncreasePercentage; } }
 
     [SerializeField] float criticalChanceIncrease = 5f;
     public float CriticalChanceIncrease { get {  return criticalChanceIncrease; } }
@@ -108,6 +134,18 @@ public class PlayerStatsSO : ScriptableObject
         this.Attack = permanentStatsSO.Attack;
         this.MinAttack = permanentStatsSO.MinAttack;
         this.MaxAttack = permanentStatsSO.MaxAttack;
+
+        this.maxHealthLevel = permanentStatsSO.maxHealthLevel;
+        this.minAttackLevel = permanentStatsSO.minAttackLevel;
+        this.MinAttackLittleIncrement = permanentStatsSO.MinAttackLittleIncrement;
+        this.constToIncreaseMinLittleIncrement = permanentStatsSO.ConstToIncreaseMinLittleIncrement;
+        this.MinAttackBigIncrement = permanentStatsSO.MinAttackBigIncrement;
+        this.constToIncreaseMinBigIncrement = permanentStatsSO.ConstToIncreaseMinBigIncrement;
+        this.maxAttackLevel = permanentStatsSO.maxAttackLevel;
+        this.MaxAttackLittleIncrement = permanentStatsSO.MaxAttackLittleIncrement;
+        this.constToIncreaseMaxLittleIncrement = permanentStatsSO.ConstToIncreaseMaxLittleIncrement;
+        this.MaxAttackBigIncrement = permanentStatsSO.MaxAttackBigIncrement;
+        this.constToIncreaseMaxBigIncrement = permanentStatsSO.ConstToIncreaseMaxBigIncrement;
 
         this.Defense = permanentStatsSO.Defense;
         this.CriticalAttackChance = permanentStatsSO.CriticalAttackChance;

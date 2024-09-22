@@ -29,10 +29,11 @@ MonoBehaviour:
   - brickType: 4
     Probability: 0
     levelToUnlock: 0
+  currentEnemy: 9
   enemy:
-    Health: 1618
-    minAttack: 3
-    maxAttack: 7
+    Health: 168
+    minAttack: 19
+    maxAttack: 39
     minTimeToSpawnBrick: 1
     maxTimeToSpawnBrick: 3
     chanceOfPlayerBrick: 60
@@ -51,4 +52,3 @@ MonoBehaviour:
     - brickType: 4
       Probability: 0
       levelToUnlock: 0
-  currentEnemy: -1

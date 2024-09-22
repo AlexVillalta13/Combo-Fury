@@ -8,13 +8,11 @@ public class StatsUpgrade : MonoBehaviour
     [SerializeField] PlayerStatsSO inCombatPlayerStatsSO;
 
     [SerializeField] GameEvent onPlayerChangeInCombatStat;
-
-    private int maxHealthLevel = 0;
-
+    
     public void IncreaseMaxHealth()
     {
-        maxHealthLevel++;
-        float amountToIncreaseMaxHealth = maxHealthLevel * PermanentPlayerStatsSO.MaxHealthIncreasePerLevel;
+        inCombatPlayerStatsSO.maxHealthLevel++;
+        float amountToIncreaseMaxHealth = inCombatPlayerStatsSO.maxHealthLevel * inCombatPlayerStatsSO.MaxHealthIncreasePerLevel;
         // float amountToIncreaseMaxHealth = Mathf.Round(PermanentPlayerStatsSO.MaxHealth * inCombatPlayerStatsSO.MaxHealthIncreasePercentage / 100);
         
         inCombatPlayerStatsSO.MaxHealth += amountToIncreaseMaxHealth;
@@ -57,25 +55,41 @@ public class StatsUpgrade : MonoBehaviour
     
     public void IncreaseMinAttack()
     {
-        float attackIncrease = Mathf.Round(PermanentPlayerStatsSO.MinAttack * inCombatPlayerStatsSO.LittleAttackIncreasePercentage / 100);
-        if (attackIncrease < 1)
+        float attackIncrement = 0f;
+        inCombatPlayerStatsSO.minAttackLevel++;
+        if (inCombatPlayerStatsSO.minAttackLevel % 3 == 0)
         {
-            attackIncrease = 1;
+            attackIncrement = inCombatPlayerStatsSO.MinAttackBigIncrement;
+            
+            inCombatPlayerStatsSO.MinAttackLittleIncrement += inCombatPlayerStatsSO.ConstToIncreaseMinLittleIncrement;
+            inCombatPlayerStatsSO.MinAttackBigIncrement += inCombatPlayerStatsSO.ConstToIncreaseMinBigIncrement;
         }
-        inCombatPlayerStatsSO.MinAttack += attackIncrease;
-        inCombatPlayerStatsSO.MaxAttack += attackIncrease;
+        else
+        {
+            attackIncrement = inCombatPlayerStatsSO.MinAttackLittleIncrement;
+        }
+        inCombatPlayerStatsSO.MinAttack += attackIncrement;
+        inCombatPlayerStatsSO.MaxAttack += attackIncrement;
 
         onPlayerChangeInCombatStat.Raise(gameObject);
     }
     
     public void IncreaseMaxAttack()
     {
-        float attackIncrease = Mathf.Round(PermanentPlayerStatsSO.MaxAttack * inCombatPlayerStatsSO.LittleAttackIncreasePercentage / 100);
-        if (attackIncrease < 1)
+        float attackIncrement = 0f;
+        inCombatPlayerStatsSO.maxAttackLevel++;
+        if (inCombatPlayerStatsSO.maxAttackLevel % 3 == 0)
         {
-            attackIncrease = 1;
+            attackIncrement = inCombatPlayerStatsSO.MaxAttackBigIncrement;
+            
+            inCombatPlayerStatsSO.MaxAttackLittleIncrement += inCombatPlayerStatsSO.ConstToIncreaseMaxLittleIncrement;
+            inCombatPlayerStatsSO.MaxAttackBigIncrement += inCombatPlayerStatsSO.ConstToIncreaseMaxBigIncrement;
         }
-        inCombatPlayerStatsSO.MaxAttack += attackIncrease;
+        else
+        {
+            attackIncrement = inCombatPlayerStatsSO.MaxAttackLittleIncrement;
+        }
+        inCombatPlayerStatsSO.MaxAttack += attackIncrement;
 
         onPlayerChangeInCombatStat.Raise(gameObject);
     }

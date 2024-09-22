@@ -19643,7 +19643,6 @@ MonoBehaviour:
   mainMenuScene: {fileID: 1853280830}
   alpineWoodsScene: {fileID: 1975813330}
   forestScene: {fileID: 1390219403}
-  currentLevelToLoad: {fileID: 0}
 --- !u!114 &1495549492
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -15,12 +15,24 @@ MonoBehaviour:
   MaxHealth: 100
   CurrentHealth: 100
   Attack: 10
-  MinAttack: 200
-  MaxAttack: 300
+  MinAttack: 3
+  MaxAttack: 7
   Defense: 0
   CriticalAttackChance: 20
   DodgeChance: 0
   comboCount: 0
+  maxHealthLevel: 0
+  maxHealthIncreasePerLevel: 10
+  minAttackLevel: 0
+  MinAttackLittleIncrement: 3
+  constToIncreaseMinLittleIncrement: 1
+  MinAttackBigIncrement: 6
+  constToIncreaseMinBigIncrement: 4
+  maxAttackLevel: 0
+  MaxAttackLittleIncrement: 8
+  constToIncreaseMaxLittleIncrement: 2
+  MaxAttackBigIncrement: 15
+  constToIncreaseMaxBigIncrement: 5
   healPercentage: 25
   littleAttackIncreasePercentage: 15
   mediumAttackIncreasePercentage: 30
