@@ -8,10 +8,7 @@ using UnityEngine.Serialization;
 public class ProceduralLevelSO : ScriptableObject, ILevelData
 {
     [SerializeField] private SceneEnum environment = SceneEnum.AlpineWoods;
-    public SceneEnum GetEnvironment()
-    {
-        return environment;
-    }
+    public SceneEnum GetEnvironment() { return environment; }
 
     [SerializeField] private int initialHealth = 40;
 
@@ -20,8 +17,8 @@ public class ProceduralLevelSO : ScriptableObject, ILevelData
 
     [SerializeField] private List<BrickProbability> bricksProbabilities = new List<BrickProbability>();
     
-    public EnemyData enemy;
     public int currentEnemy = -1;
+    public EnemyData enemy;
     
     private void OnEnable()
     {

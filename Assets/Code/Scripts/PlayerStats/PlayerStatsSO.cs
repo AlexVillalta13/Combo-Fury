@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Sirenix.OdinInspector;
+using UnityEngine.Serialization;
 
 [CreateAssetMenu(menuName = "PlayerStatsSO", fileName = "New Player Stats SO")]
 public class PlayerStatsSO : ScriptableObject
@@ -13,8 +14,8 @@ public class PlayerStatsSO : ScriptableObject
         return CurrentHealth > 0;
     }
     public float Attack = 10f;
-    public float MinAttack = 10f;
-    public float MaxAttack = 20f;
+    public float MinAttack = 3f;
+    public float MaxAttack = 7f;
 
     public float Defense = 0f;
     public float CriticalAttackChance = 20f;
@@ -35,8 +36,8 @@ public class PlayerStatsSO : ScriptableObject
     [SerializeField] float mediumDefenseIncreasePercentage = 10f;
     public float MediumDefenseIncreasePercentage { get { return mediumDefenseIncreasePercentage; } }
 
-    [SerializeField] float maxHealthIncreasePercentage = 10f;
-    public float MaxHealthIncreasePercentage { get { return maxHealthIncreasePercentage; } }
+    [FormerlySerializedAs("maxHealthIncreasePercentage")] [SerializeField] float maxHealthIncreasePerLevel = 10f;
+    public float MaxHealthIncreasePerLevel { get { return maxHealthIncreasePerLevel; } }
 
     [SerializeField] float criticalChanceIncrease = 5f;
     public float CriticalChanceIncrease { get {  return criticalChanceIncrease; } }
@@ -116,7 +117,7 @@ public class PlayerStatsSO : ScriptableObject
         this.healPercentage = permanentStatsSO.HealPercentage;
         this.littleAttackIncreasePercentage = permanentStatsSO.littleAttackIncreasePercentage;
         this.mediumAttackIncreasePercentage = permanentStatsSO.mediumAttackIncreasePercentage;
-        this.maxHealthIncreasePercentage = permanentStatsSO.maxHealthIncreasePercentage;
+        this.maxHealthIncreasePerLevel = permanentStatsSO.maxHealthIncreasePerLevel;
         this.criticalChanceIncrease = permanentStatsSO.criticalChanceIncrease;
         this.adrenalineDogdeChance = permanentStatsSO.adrenalineDogdeChance;
         this.revengePercentageIncrease = permanentStatsSO.revengePercentageIncrease;

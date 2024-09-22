@@ -962,7 +962,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f545902fb9e02264ca98a434b2ff420c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerStatsSo: {fileID: 11400000, guid: f9b2a2eba51603b46aca59904a662435, type: 2}
+  playerStatsSo: {fileID: 11400000, guid: 18d973d39f614cd469fafa3f05b0972c, type: 2}
 --- !u!114 &3466733603231040327
 MonoBehaviour:
   m_ObjectHideFlags: 0

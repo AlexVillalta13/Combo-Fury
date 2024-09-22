@@ -9,9 +9,14 @@ public class StatsUpgrade : MonoBehaviour
 
     [SerializeField] GameEvent onPlayerChangeInCombatStat;
 
+    private int maxHealthLevel = 0;
+
     public void IncreaseMaxHealth()
     {
-        float amountToIncreaseMaxHealth = Mathf.Round(PermanentPlayerStatsSO.MaxHealth * inCombatPlayerStatsSO.MaxHealthIncreasePercentage / 100);
+        maxHealthLevel++;
+        float amountToIncreaseMaxHealth = maxHealthLevel * PermanentPlayerStatsSO.MaxHealthIncreasePerLevel;
+        // float amountToIncreaseMaxHealth = Mathf.Round(PermanentPlayerStatsSO.MaxHealth * inCombatPlayerStatsSO.MaxHealthIncreasePercentage / 100);
+        
         inCombatPlayerStatsSO.MaxHealth += amountToIncreaseMaxHealth;
         inCombatPlayerStatsSO.CurrentHealth += amountToIncreaseMaxHealth;
 
