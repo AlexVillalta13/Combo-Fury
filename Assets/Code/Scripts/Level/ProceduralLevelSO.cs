@@ -71,8 +71,20 @@ public class ProceduralLevelSO : ScriptableObject, ILevelData
 
     private void SetEnemyAttack()
     {
-        enemy.minAttack = 3;
-        enemy.maxAttack = 7;
+        int increment = 2; 
+        int totalAttack = minAttack;
+        
+        for (int i = 2; i <= currentEnemy; i++) 
+        {
+            if (i > 10)
+            {
+                increment = 4 + (i - 11) / 10;
+            }
+            totalAttack += increment;
+        }
+
+        enemy.minAttack = totalAttack;
+        enemy.maxAttack = enemy.minAttack * 2f + 1f;
     }
 
     private void SetEnemyBricksProbabilities()
