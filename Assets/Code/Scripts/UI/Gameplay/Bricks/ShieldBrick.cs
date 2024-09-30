@@ -27,13 +27,13 @@ public class ShieldBrick : Brick
         if(hitsToDestroyBrick == 2)
         {
             brickEventsHolder.GetPlayerBlockEvent().Raise(gameObject);
-            brickRootElementAttached.Query<VisualElement>(name: "Icon").First().style.backgroundImage = new StyleBackground(icon2WithHits);
+            iconElement.style.backgroundImage = new StyleBackground(icon2WithHits);
             ScaleDownALittleUI();
         }
         else if(hitsToDestroyBrick == 1)
         {
             brickEventsHolder.GetPlayerBlockEvent().Raise(gameObject);
-            brickRootElementAttached.Query<VisualElement>(name: "Icon").First().style.backgroundImage = null;
+            iconElement.style.backgroundImage = null;
             ScaleDownALittleUI();
         }
         else if (hitsToDestroyBrick <= 0)

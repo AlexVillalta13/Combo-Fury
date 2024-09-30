@@ -19,10 +19,8 @@ public class SpeedBrick : Brick
         brickType = BrickTypeEnum.SpeedBrick;
     }
 
-    public override IEnumerator PositionBrick()
+    public override void PositionBrick()
     {
-        yield return new WaitForEndOfFrame();
-
         brickRootElementAttached.style.visibility = Visibility.Visible;
 
         speedBrickPositionInBar = m_elementParent.resolvedStyle.left + m_elementParent.resolvedStyle.width - brickRootElementAttached.resolvedStyle.width / 2f;

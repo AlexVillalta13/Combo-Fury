@@ -4007,7 +4007,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   brickTypeEnum: 5
   BrickTypesSO: {fileID: 11400000, guid: 1de6bd5f177d50540a03449e4f318d9e, type: 2}
-  brickPrefab: {fileID: 4946787962681193312, guid: af5703731cf03b245bd9f8f7ed2033a6,
+  brickPrefab: {fileID: 6014339879886659586, guid: 6abdd1ba300465f43b57c2001a4d0c47,
     type: 3}
 --- !u!114 &315702247
 MonoBehaviour:
@@ -4023,7 +4023,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   brickTypeEnum: 4
   BrickTypesSO: {fileID: 11400000, guid: 1de6bd5f177d50540a03449e4f318d9e, type: 2}
-  brickPrefab: {fileID: 3074133138731469370, guid: cf8562a0db945854190d316e2a007db0,
+  brickPrefab: {fileID: 6014339879886659586, guid: c680efa7e9114a440a1c13987239e9f4,
     type: 3}
 --- !u!114 &315702248
 MonoBehaviour:
@@ -29339,6 +29339,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Gameplay UI
+      objectReference: {fileID: 0}
+    - target: {fileID: 8003274597360516392, guid: f2ea300f6b929f742a61d799408f2e41,
+        type: 3}
+      propertyPath: pointerVelocity
+      value: 70
       objectReference: {fileID: 0}
     - target: {fileID: 8973599123816074883, guid: f2ea300f6b929f742a61d799408f2e41,
         type: 3}

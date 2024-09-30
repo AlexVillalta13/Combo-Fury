@@ -24,7 +24,7 @@ public enum BrickHolder
 public class Brick: MonoBehaviour
 {
     protected BrickHolder brickHolder = BrickHolder.EnemyBrick;
-    protected BrickTypeEnum brickType = BrickTypeEnum.Redbrick;
+    [SerializeField] protected BrickTypeEnum brickType = BrickTypeEnum.Redbrick;
 
     [SerializeField] protected BrickTypesSO brickTypesSO;
     [SerializeField] protected TouchBrickEventsSO brickEventsHolder;
@@ -34,7 +34,7 @@ public class Brick: MonoBehaviour
     protected const string brickFlashClass = "brickFlash";
     const string scaleDownClass = "scaledDown";
     const string scaleDownALittleClass = "scaleDownALittle";
-    const string scaleUpClass = "scaledUp";
+    protected const string scaleUpClass = "scaledUp";
     protected const string ignoreBrickWithTouchUSSClassName = "ignoreBrickWithTouch";
     protected const string yellowBrickUSSClassName = "yellowBrick";
     protected const string greenBrickUSSClassName = "greenBrick";
@@ -46,11 +46,14 @@ public class Brick: MonoBehaviour
     protected VisualElement m_elementParent;
     protected VisualElement brickRootElementAttached;
     protected VisualElement brickElement;
+    protected VisualElement iconElement;
 
     [SerializeField] protected float timeToAutoDelete = 0f;
     [SerializeField] protected float minWidth;
     [SerializeField] protected float maxWidth;
     [SerializeField] protected int hitsToDestroyBrick = 1;
+    protected int currenHitsToDestroyBrick = 1;
+
 
     public Brick()
     {
@@ -59,8 +62,11 @@ public class Brick: MonoBehaviour
 
     public void SetupBrick(CombatBarUI combatBarUI, VisualElement playerElementParent, VisualElement enemyElementParent)
     {
+        currenHitsToDestroyBrick = hitsToDestroyBrick;
+        
         brickRootElementAttached.style.display = DisplayStyle.Flex;
 
+        iconElement = brickRootElementAttached.Query<VisualElement>(name: "Icon").First();
         this.combatBarUI = combatBarUI;
         this.brickElement = brickRootElementAttached.Q(className: brickUSSClass);
 
@@ -84,14 +90,19 @@ public class Brick: MonoBehaviour
 
         brickElement.RegisterCallback<TransitionEndEvent>(OnChangeScaleEndEvent);
 
-        StartCoroutine(PositionBrick());
+        StartCoroutine(WaitFrameAndPosition());
     }
 
-    public virtual IEnumerator PositionBrick()
+    private IEnumerator WaitFrameAndPosition()
     {
         yield return new WaitForEndOfFrame();
 
+        PositionBrick();
+    }
 
+
+    public virtual void PositionBrick()
+    {
         brickRootElementAttached.style.visibility = Visibility.Visible;
 
         brickRootElementAttached.style.left = UnityEngine.Random.Range(m_elementParent.resolvedStyle.left, m_elementParent.resolvedStyle.left + m_elementParent.resolvedStyle.width - brickRootElementAttached.resolvedStyle.width);
