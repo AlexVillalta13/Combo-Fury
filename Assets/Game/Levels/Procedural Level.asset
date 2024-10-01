@@ -18,17 +18,17 @@ MonoBehaviour:
   maxAttack: 7
   bricksProbabilities:
   - brickType: 0
-    Probability: 30
+    Probability: 50
     levelToUnlock: 0
   - brickType: 3
-    Probability: 30
-    levelToUnlock: 1
+    Probability: 10
+    levelToUnlock: 15
   - brickType: 5
-    Probability: 30
-    levelToUnlock: 0
+    Probability: 20
+    levelToUnlock: 5
   - brickType: 4
     Probability: 30
-    levelToUnlock: 0
+    levelToUnlock: 15
   currentEnemy: 1
   enemy:
     Health: 40
@@ -36,8 +36,8 @@ MonoBehaviour:
     maxAttack: 7
     minTimeToSpawnBrick: 1
     maxTimeToSpawnBrick: 3
-    chanceOfPlayerBrick: 0
-    chanceOfEnemyBrick: 100
+    chanceOfPlayerBrick: 50
+    chanceOfEnemyBrick: 50
     currencyRewardList: []
     enemyBricks:
     - brickType: 0

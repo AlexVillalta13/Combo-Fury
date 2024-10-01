@@ -19,11 +19,6 @@ public class RedBrick : Brick
 
     [SerializeField] Ease easeCurve = Ease.Linear;
     
-    public RedBrick()
-    {
-        brickHolder = BrickHolder.EnemyBrick;
-    }
-    
     public override void PositionBrick()
     {
         if (hitsToDestroyBrick == 3)

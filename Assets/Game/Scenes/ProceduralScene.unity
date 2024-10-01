@@ -29338,12 +29338,7 @@ PrefabInstance:
     - target: {fileID: 6120516854067755251, guid: f2ea300f6b929f742a61d799408f2e41,
         type: 3}
       propertyPath: m_Name
-      value: Gameplay UI
-      objectReference: {fileID: 0}
-    - target: {fileID: 8003274597360516392, guid: f2ea300f6b929f742a61d799408f2e41,
-        type: 3}
-      propertyPath: pointerVelocity
-      value: 70
+      value: Procedural Gameplay UI
       objectReference: {fileID: 0}
     - target: {fileID: 8973599123816074883, guid: f2ea300f6b929f742a61d799408f2e41,
         type: 3}

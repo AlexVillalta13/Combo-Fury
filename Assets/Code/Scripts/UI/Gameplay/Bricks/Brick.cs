@@ -23,7 +23,7 @@ public enum BrickHolder
 
 public class Brick: MonoBehaviour
 {
-    protected BrickHolder brickHolder = BrickHolder.EnemyBrick;
+    [SerializeField] protected BrickHolder brickHolder = BrickHolder.EnemyBrick;
     [SerializeField] protected BrickTypeEnum brickType = BrickTypeEnum.Redbrick;
 
     [SerializeField] protected BrickTypesSO brickTypesSO;
@@ -53,12 +53,6 @@ public class Brick: MonoBehaviour
     [SerializeField] protected float maxWidth;
     [SerializeField] protected int hitsToDestroyBrick = 1;
     protected int currenHitsToDestroyBrick = 1;
-
-
-    public Brick()
-    {
-
-    }
 
     public void SetupBrick(CombatBarUI combatBarUI, VisualElement playerElementParent, VisualElement enemyElementParent)
     {

@@ -21,8 +21,20 @@ public class PlayerStatsSO : ScriptableObject
     public float CriticalAttackChance = 20f;
     public float DodgeChance = 0f;
     public int comboCount = 0;
+    
+    [Title("Player Bricks")]
+    [SerializeField] List<BrickProbability> brickProbabilityList;
+    public List<BrickProbability> BrickProbabilityList => brickProbabilityList;
+    
+    [Title("Spawn Time Player Bricks")]
+    [SerializeField] private float minTimeToSpawnPlayerBrick = 0.5f;
+    public float MinTimeToSpawnPlayerBrick => minTimeToSpawnPlayerBrick;
+    [SerializeField] private float maxTimeToSpawnPlayerBrick = 1.5f;
+    public float MaxTimeToSpawnPlayerBrick => maxTimeToSpawnPlayerBrick;
+    [SerializeField] private int maxSimultaneousPlayerBricks = 6;
+    public int MaxSimultaneousPlayerBricks => maxSimultaneousPlayerBricks;
 
-    [Title("Player contant Upgrade")]
+    [Title("Player constant Upgrade")]
     [Title("Health", titleAlignment: TitleAlignments. Centered, horizontalLine: false, bold: false)]
     public float maxHealthLevel = 0;
     [SerializeField] float maxHealthIncreasePerLevel = 10f;
@@ -107,10 +119,6 @@ public class PlayerStatsSO : ScriptableObject
     [SerializeField] float timeToTurnOffFire = 10f;
     public float TimeToTurnOffFire { get { return timeToTurnOffFire; } }
 
-    [Title("Player Bricks")]
-    [SerializeField] List<BrickProbability> brickProbabilityList;
-    public List<BrickProbability> BrickProbabilityList => brickProbabilityList;
-
     public BrickTypeEnum GetRandomPlayerBrick()
     {
         float randomNumber = UnityEngine.Random.Range(0f, 100f);
@@ -134,6 +142,10 @@ public class PlayerStatsSO : ScriptableObject
         this.Attack = permanentStatsSO.Attack;
         this.MinAttack = permanentStatsSO.MinAttack;
         this.MaxAttack = permanentStatsSO.MaxAttack;
+
+        this.minTimeToSpawnPlayerBrick = permanentStatsSO.minTimeToSpawnPlayerBrick;
+        this.maxTimeToSpawnPlayerBrick = permanentStatsSO.maxTimeToSpawnPlayerBrick;
+        this.maxSimultaneousPlayerBricks = permanentStatsSO.maxSimultaneousPlayerBricks;
 
         this.maxHealthLevel = permanentStatsSO.maxHealthLevel;
         this.minAttackLevel = permanentStatsSO.minAttackLevel;

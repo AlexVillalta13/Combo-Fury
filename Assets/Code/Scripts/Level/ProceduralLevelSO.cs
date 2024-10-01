@@ -15,7 +15,7 @@ public class ProceduralLevelSO : ScriptableObject, ILevelData
     [SerializeField] private int minAttack = 3;
     [SerializeField] private int maxAttack = 7;
 
-    [SerializeField] private List<BrickProbability> bricksProbabilities = new List<BrickProbability>();
+    [FormerlySerializedAs("bricksProbabilities")] [SerializeField] private List<BrickProbability> enemyBricksProbabilities = new List<BrickProbability>();
     
     public int currentEnemy = -1;
     public EnemyData enemy;
@@ -86,7 +86,7 @@ public class ProceduralLevelSO : ScriptableObject, ILevelData
 
     private void SetEnemyBricksProbabilities()
     {
-        foreach (BrickProbability brickProbabilityToCompare in bricksProbabilities)
+        foreach (BrickProbability brickProbabilityToCompare in enemyBricksProbabilities)
         {
             foreach (BrickProbability enemyCurrentBrickProbability in enemy.EnemyBricks)
             {

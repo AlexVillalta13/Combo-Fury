@@ -1,16 +1,21 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using static Cinemachine.DocumentationSortingAttribute;
-using UnityEngine.UIElements;
-using System;
 
 public class CombatBarPresenter : MonoBehaviour
 {
     bool inCombat = false;
 
-    float timeToSpawnBrick = 5f;
-    float timerSpawn = 0f;
+    private float minTimeToSpawnEnemyBrick = 0f;
+    private float maxTimeToSpawnEnemyBrick = 0f;
+    private float timeToSpawnEnemyBrick = 0f;
+    private float spawnEnemyBrickTimer = 0f;
+    
+    private float minTimeToSpawnPlayerBrick = 0f;
+    private float maxTimeToSpawnPlayerBrick = 0f;
+    private int maxSimultaneousPlayerBricks = 0;
+    private float timeToSpawnPlayerBrick = 0f;
+    private float spawnEnemyPlayerTimer = 0f;
 
     [SerializeField] BrickTypesSO brickTypesSO;
 
@@ -49,72 +54,41 @@ public class CombatBarPresenter : MonoBehaviour
         if (inCombat == true)
         {
             combatBarUI.MovePointer();
+            
+            SpawnEnemyBrick();
 
-            timerSpawn += Time.deltaTime;
-            if (timerSpawn > timeToSpawnBrick)
-            {
-                timerSpawn = 0f;
-                CreateRandomTimeToSpawnBrick();
-
-                GetRandomBrickFromSO();
-            }
+            SpawnPlayerBrick();
         }
     }
-
-    private void GetRandomBrickFromSO()
+    
+    private void SpawnEnemyBrick()
     {
-        SetupEnemyBrickProbabilityStats();
-
-        BrickTypeEnum brickTypeToSpawn = ChoosePlayerOrEnemyBrick();
-
-        combatBarUI.InitializeBrick(brickTypesSO.GetPool(brickTypeToSpawn).Pool.Get());
-    }
-    private void SetupEnemyBrickProbabilityStats()
-    {
-        chanceOfPlayerBrick = levelSO.GetEnemy(EnemyStats.currentEnemy).ChanceOfPlayerBrick;
-        chanceOfEnemyBrick = levelSO.GetEnemy(EnemyStats.currentEnemy).ChanceOfEnemyBrick;
-
-        maxRange = chanceOfPlayerBrick + chanceOfEnemyBrick;
-        randomNumber = UnityEngine.Random.Range(0f, maxRange);
-        rangeNumberToSpawn = 0f;
-    }
-
-    public BrickTypeEnum ChoosePlayerOrEnemyBrick()
-    {
-        if (rangeNumberToSpawn < randomNumber && (rangeNumberToSpawn + chanceOfPlayerBrick) > randomNumber)
+        spawnEnemyBrickTimer += Time.deltaTime;
+        if (spawnEnemyBrickTimer >= timeToSpawnEnemyBrick)
         {
-            //Player Brick
-            return inCombatPlayerStatsSo.GetRandomPlayerBrick();
+            BrickTypeEnum brickTypeToSpawn = levelSO.GetEnemy(EnemyStats.currentEnemy).GetRandomEnemyBrick();
+            combatBarUI.InitializeBrick(brickTypesSO.GetPool(brickTypeToSpawn).Pool.Get());
+            timeToSpawnEnemyBrick = Random.Range(minTimeToSpawnEnemyBrick, maxTimeToSpawnEnemyBrick);
+            spawnEnemyBrickTimer = 0f;
         }
-        else
-        {
-            //Enemy Brick
-            maxRange = 0f;
-            foreach (BrickProbability brickProbability in levelSO.GetEnemy(EnemyStats.currentEnemy).EnemyBricks)
-            {
-                maxRange += brickProbability.Probability;
-            }
-
-            randomNumber = UnityEngine.Random.Range(0f, maxRange);
-            rangeNumberToSpawn = 0f;
-            foreach (BrickProbability brickProbability in levelSO.GetEnemy(EnemyStats.currentEnemy).EnemyBricks)
-            {
-                if (rangeNumberToSpawn < randomNumber && (rangeNumberToSpawn + brickProbability.Probability) > randomNumber)
-                {
-                    return brickProbability.BrickType;
-                }
-                rangeNumberToSpawn += brickProbability.Probability;
-            }
-            Debug.LogError("LevelSo: No random Enemy brick selected");
-        }
-
-        Debug.LogError("LevelSo: No random brick selected");
-        return BrickTypeEnum.Redbrick;
     }
-
+    
+    private void SpawnPlayerBrick()
+    {
+        spawnEnemyPlayerTimer += Time.deltaTime;
+        if (spawnEnemyPlayerTimer >= timeToSpawnPlayerBrick)
+        {
+            BrickTypeEnum brickTypeToSpawn = inCombatPlayerStatsSo.GetRandomPlayerBrick();
+            combatBarUI.InitializeBrick(brickTypesSO.GetPool(brickTypeToSpawn).Pool.Get());
+            timeToSpawnPlayerBrick = Random.Range(minTimeToSpawnPlayerBrick, maxTimeToSpawnPlayerBrick);
+            spawnEnemyPlayerTimer = 0f;
+        }
+    }
+    
     private void SetupLevel(ILevelData level)
     {
         this.levelSO = level;
+        CreateRandomTimeToSpawnBrick();
     }
 
     public void InCombat()
@@ -130,6 +104,16 @@ public class CombatBarPresenter : MonoBehaviour
 
     private void CreateRandomTimeToSpawnBrick()
     {
-        timeToSpawnBrick = UnityEngine.Random.Range(levelSO.GetEnemy(EnemyStats.currentEnemy).MinTimeToSpawnBrick, levelSO.GetEnemy(EnemyStats.currentEnemy).MaxTimeToSpawnBrick);
+        minTimeToSpawnEnemyBrick = levelSO.GetEnemy(EnemyStats.currentEnemy).MinTimeToSpawnBrick;
+        maxTimeToSpawnEnemyBrick = levelSO.GetEnemy(EnemyStats.currentEnemy).MaxTimeToSpawnBrick;
+
+        minTimeToSpawnPlayerBrick = inCombatPlayerStatsSo.MinTimeToSpawnPlayerBrick;
+        maxTimeToSpawnPlayerBrick = inCombatPlayerStatsSo.MaxTimeToSpawnPlayerBrick;
+        maxSimultaneousPlayerBricks = inCombatPlayerStatsSo.MaxSimultaneousPlayerBricks;
+        
+        timeToSpawnEnemyBrick = Random.Range(minTimeToSpawnEnemyBrick, maxTimeToSpawnEnemyBrick);
+        spawnEnemyBrickTimer = 0f;
+        timeToSpawnPlayerBrick = Random.Range(minTimeToSpawnPlayerBrick, maxTimeToSpawnPlayerBrick);
+        spawnEnemyPlayerTimer = 0f;
     }
 }
