@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class CombatBarPresenter : MonoBehaviour
 {
-    bool inCombat = false;
+    private bool inCombat = false;
 
     private float minTimeToSpawnEnemyBrick = 0f;
     private float maxTimeToSpawnEnemyBrick = 0f;
@@ -17,22 +17,19 @@ public class CombatBarPresenter : MonoBehaviour
     private float timeToSpawnPlayerBrick = 0f;
     private float spawnEnemyPlayerTimer = 0f;
 
-    [SerializeField] BrickTypesSO brickTypesSO;
+    [SerializeField] private BrickTypesSO brickTypesSO;
 
-    CombatBarUI combatBarUI;
+    private CombatBarUI combatBarUI;
 
-    ILevelData levelSO;
-    [SerializeField] EnemyStats EnemyStats;
+    private ILevelData levelSO;
+    [SerializeField] private EnemyStats EnemyStats;
 
-    [SerializeField] PlayerStatsSO inCombatPlayerStatsSo;
+    [SerializeField] private PlayerStatsSO inCombatPlayerStatsSo;
 
     //EnemyBrickStats
-    float chanceOfPlayerBrick = 60f;
-    float chanceOfEnemyBrick = 40f;
-
-    float maxRange;
-    float randomNumber;
-    float rangeNumberToSpawn;
+    private float maxRange;
+    private float randomNumber;
+    private float rangeNumberToSpawn;
 
     private void Awake()
     {
@@ -59,6 +56,7 @@ public class CombatBarPresenter : MonoBehaviour
 
             SpawnPlayerBrick();
         }
+        Debug.Log(combatBarUI.GetPlayerBricksInBar());
     }
     
     private void SpawnEnemyBrick()
@@ -76,7 +74,7 @@ public class CombatBarPresenter : MonoBehaviour
     private void SpawnPlayerBrick()
     {
         spawnEnemyPlayerTimer += Time.deltaTime;
-        if (spawnEnemyPlayerTimer >= timeToSpawnPlayerBrick)
+        if (spawnEnemyPlayerTimer >= timeToSpawnPlayerBrick && combatBarUI.GetPlayerBricksInBar() < maxSimultaneousPlayerBricks)
         {
             BrickTypeEnum brickTypeToSpawn = inCombatPlayerStatsSo.GetRandomPlayerBrick();
             combatBarUI.InitializeBrick(brickTypesSO.GetPool(brickTypeToSpawn).Pool.Get());

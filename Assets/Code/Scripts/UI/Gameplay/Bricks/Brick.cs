@@ -140,6 +140,9 @@ public class Brick: MonoBehaviour
         brickElement.RemoveFromClassList(brickFlashClass);
 
         combatBarUI.RemoveBrickFromDict(brickRootElementAttached);
+        
+        brickRootElementAttached.RemoveFromClassList(playerUSSClassName);
+        brickRootElementAttached.RemoveFromClassList(enemyUSSClassName);
 
         if (gameObject.activeSelf == true)
         {

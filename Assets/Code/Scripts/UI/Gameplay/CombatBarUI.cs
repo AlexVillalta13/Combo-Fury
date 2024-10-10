@@ -8,35 +8,38 @@ using UnityEngine.UIElements;
 public class CombatBarUI : UIComponent
 {
     // string references
-    const string pointerCombarBarReferfence = "PointerCombatBar";
-    const string enemyBricksElementReference = "EnemyAttacks";
-    const string playerBrickElementReference = "PlayerAttacks";
-    const string enemyUSSClassName = "enemyBrick";
-    const string playerUSSClassName = "playerBrick";
-    const string ignoreBrickWithTouchUSSClassName = "ignoreBrickWithTouch";
+    private const string pointerCombarBarReferfence = "PointerCombatBar";
+    private const string enemyBricksElementReference = "EnemyAttacks";
+    private const string playerBrickElementReference = "PlayerAttacks";
+    private const string enemyUSSClassName = "enemyBrick";
+    private const string playerUSSClassName = "playerBrick";
+    private const string ignoreBrickWithTouchUSSClassName = "ignoreBrickWithTouch";
 
     // visual elements references
-    VisualElement pointerCombatBar;
-    VisualElement enemyBricksElementHolder;
-    VisualElement playerBrickElementHolder;
+    private VisualElement pointerCombatBar;
+    private VisualElement enemyBricksElementHolder;
+    private VisualElement playerBrickElementHolder;
 
-    Dictionary<VisualElement, Brick> bricksInBarDict = new Dictionary<VisualElement, Brick>();
+    private Dictionary<VisualElement, Brick> bricksInBarDict = new Dictionary<VisualElement, Brick>();
+    private List<VisualElement> enemyBricksList = new List<VisualElement>();
+    private List<VisualElement> playerBricksList = new List<VisualElement>();
+    private List<VisualElement> bricksInPosition = new List<VisualElement>();
 
     // states
-    [SerializeField] bool inCombat = false;
+    [SerializeField] private bool inCombat = false;
 
 
 
     [Header("Combat Bar Stats")]
-    [SerializeField] float pointerVelocity = 60f;
-    float pointerPercentPosition = 0f;
+    [SerializeField] private float pointerVelocity = 60f;
+    private float pointerPercentPosition = 0f;
 
 
     [Header("Touch Event")]
-    [SerializeField] TouchBrickEventsSO touchBrickEventsHolder;
+    [SerializeField] private TouchBrickEventsSO touchBrickEventsHolder;
 
     [Header("SO Data")]
-    [SerializeField] BrickTypesSO brickTypesSO;
+    [SerializeField] private BrickTypesSO brickTypesSO;
     
     public override void SetElementsReferences()
     {
@@ -52,6 +55,7 @@ public class CombatBarUI : UIComponent
     {
         brickScriptToSpawn.SetupBrick(this, playerBrickElementHolder, enemyBricksElementHolder);
         bricksInBarDict.Add(brickScriptToSpawn.GetBrickElementAttached(), brickScriptToSpawn);
+        playerBricksList = playerBrickElementHolder.Query<VisualElement>(className: playerUSSClassName).ToList();
     }
 
     public void MovePointer()
@@ -77,9 +81,9 @@ public class CombatBarUI : UIComponent
         {
             float pointerPos = pointerCombatBar.resolvedStyle.left + pointerCombatBar.resolvedStyle.width / 2f;
 
-            List<VisualElement> enemyBricksList = enemyBricksElementHolder.Query<VisualElement>(className: enemyUSSClassName).ToList();
-            List<VisualElement> playerBricksList = playerBrickElementHolder.Query<VisualElement>(className: playerUSSClassName).ToList();
-            List<VisualElement> bricksInPosition = new List<VisualElement>();
+            enemyBricksList = enemyBricksElementHolder.Query<VisualElement>(className: enemyUSSClassName).ToList();
+            playerBricksList = playerBrickElementHolder.Query<VisualElement>(className: playerUSSClassName).ToList();
+            bricksInPosition.Clear();
 
             foreach (VisualElement element in enemyBricksList)
             {
@@ -128,6 +132,7 @@ public class CombatBarUI : UIComponent
     public void RemoveBrickFromDict(VisualElement brick)
     {
         bricksInBarDict.Remove(brick);
+        playerBricksList = playerBrickElementHolder.Query<VisualElement>(className: playerUSSClassName).ToList();
     }
 
     public void InCombat()
@@ -145,6 +150,11 @@ public class CombatBarUI : UIComponent
     public void DeleteAllBricks()
     {
         bricksInBarDict.Clear();
+    }
+
+    public int GetPlayerBricksInBar()
+    {
+        return playerBricksList.Count;
     }
 
     // private void SetupLevel(ILevelEnemyData level)
