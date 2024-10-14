@@ -140,6 +140,8 @@ public class Brick: MonoBehaviour
 
     public virtual void RemoveBrickElement()
     {
+        ScaleDownUI();
+        
         brickElement.UnregisterCallback<TransitionEndEvent>(OnChangeScaleEndEvent);
         brickRootElementAttached.style.display = DisplayStyle.None;
 
