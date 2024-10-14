@@ -8139,7 +8139,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   brickTypesSO: {fileID: 11400000, guid: 1de6bd5f177d50540a03449e4f318d9e, type: 2}
   EnemyStats: {fileID: 11400000, guid: f29dc49ee61fab4468be2c1ec4f4d0be, type: 2}
-  inCombatPlayerStatsSo: {fileID: 11400000, guid: aa73bdaa80e88ab4e8e2f1d00b7c5e66,
+  inCombatPlayerStatsSo: {fileID: 11400000, guid: 18d973d39f614cd469fafa3f05b0972c,
     type: 2}
 --- !u!114 &666459920
 MonoBehaviour:
@@ -15087,7 +15087,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1124932234
 MonoBehaviour:
   m_ObjectHideFlags: 0

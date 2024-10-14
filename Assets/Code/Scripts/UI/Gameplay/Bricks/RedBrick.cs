@@ -18,7 +18,13 @@ public class RedBrick : Brick
     [SerializeField] float maxTimeToCompletePath = 5f;
 
     [SerializeField] Ease easeCurve = Ease.Linear;
-    
+
+    protected override void SetVisualElementParent(VisualElement playerElementParent, VisualElement enemyElementParent, VisualElement trapElementParent)
+    {
+        this.m_elementParent = enemyElementParent;
+        brickRootElementAttached.AddToClassList(enemyUSSClassName);
+    }
+
     public override void PositionBrick()
     {
         if (hitsToDestroyBrick == 3)
@@ -78,8 +84,9 @@ public class RedBrick : Brick
             tween.Kill();
 
             brickEventsHolder.GetPlayerBlockEvent().Raise(gameObject);
-            ScaleDownUI();
             brickElement.AddToClassList(brickFlashClass);
+
+            ScaleDownUI();
         }
     }
 
@@ -87,5 +94,6 @@ public class RedBrick : Brick
     {
         base.OnScaledDown();
         RemoveBrickElement();
+        combatBarUI.RemoveBrickFromDict(brickRootElementAttached);
     }
 }

@@ -46,6 +46,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0a37e4706d17a3f4fac8a76ffcab5f7f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  brickHolder: 1
   brickType: 0
   brickTypesSO: {fileID: 11400000, guid: 1de6bd5f177d50540a03449e4f318d9e, type: 2}
   brickEventsHolder: {fileID: 11400000, guid: f6379521581245248af5ce73dcc16d7b, type: 2}
@@ -55,7 +56,8 @@ MonoBehaviour:
   minWidth: 80
   maxWidth: 150
   hitsToDestroyBrick: 1
-  icon2WithHits: {fileID: 0}
+  shieldSprite: {fileID: 0}
+  shieldBrokenSprite: {fileID: 0}
   minTimeToCompletePath: 2
   maxTimeToCompletePath: 4
   easeCurve: 1

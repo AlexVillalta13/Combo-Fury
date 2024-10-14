@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class YellowBrick : Brick
 {
@@ -8,6 +9,12 @@ public class YellowBrick : Brick
     {
         brickHolder = BrickHolder.PlayerBrick;
         brickType = BrickTypeEnum.YellowBrick;
+    }
+    
+    protected override void SetVisualElementParent(VisualElement playerElementParent, VisualElement enemyElementParent, VisualElement trapElementParent)
+    {
+        this.m_elementParent = playerElementParent;
+        brickRootElementAttached.AddToClassList(playerUSSClassName);
     }
 
     public override void EffectWithTouch()
@@ -18,8 +25,9 @@ public class YellowBrick : Brick
         if(hitsToDestroyBrick < 1)
         {
             brickEventsHolder.GetPlayerAttackEvent().Raise(gameObject);
-            ScaleDownUI();
             brickElement.AddToClassList(brickFlashClass);
+            
+            ScaleDownUI();
         }
     }
 
@@ -27,5 +35,6 @@ public class YellowBrick : Brick
     {
         base.OnScaledDown();
         RemoveBrickElement();
+        combatBarUI.RemoveBrickFromDict(brickRootElementAttached);
     }
 }

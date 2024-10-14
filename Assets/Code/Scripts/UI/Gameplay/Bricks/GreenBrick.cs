@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class GreenBrick : Brick
 {
@@ -8,8 +9,12 @@ public class GreenBrick : Brick
     {
         brickHolder = BrickHolder.PlayerBrick;
         brickType = BrickTypeEnum.Greenbrick;
-
-        //timeToAutoDelete = 10f;
+    }
+    
+    protected override void SetVisualElementParent(VisualElement playerElementParent, VisualElement enemyElementParent, VisualElement trapElementParent)
+    {
+        this.m_elementParent = playerElementParent;
+        brickRootElementAttached.AddToClassList(playerUSSClassName);
     }
 
     public override void EffectWithTouch()
@@ -30,14 +35,6 @@ public class GreenBrick : Brick
     {
         base.OnScaledDown();
         RemoveBrickElement();
+        combatBarUI.RemoveBrickFromDict(brickRootElementAttached);
     }
-
-    //public override void RemoveBrickElement()
-    //{
-    //    base.RemoveBrickElement();
-    //    if (gameObject.activeSelf == true)
-    //    {
-    //        bricksPool.GreenBrickPool.Release(this);
-    //    }
-    //}
 }

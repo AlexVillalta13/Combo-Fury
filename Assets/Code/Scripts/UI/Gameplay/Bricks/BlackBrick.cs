@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
+using UnityEngine.UIElements;
 
 public class BlackBrick : Brick
 {
@@ -15,6 +16,12 @@ public class BlackBrick : Brick
     {
         brickHolder = BrickHolder.EnemyBrick;
         brickType = BrickTypeEnum.BlackBrick;
+    }
+    
+    protected override void SetVisualElementParent(VisualElement playerElementParent, VisualElement enemyElementParent, VisualElement trapElementParent)
+    {
+        this.m_elementParent = trapElementParent;
+        brickRootElementAttached.AddToClassList(enemyUSSClassName);
     }
 
     protected override void OnBrickPositioned()
@@ -51,6 +58,7 @@ public class BlackBrick : Brick
     {
         tween = DOTween.Shake(() => vec3Shake, x => vec3Shake = x, 0.25f, shakeStrength, 100);
         tween.onComplete += RemoveBrickElement;
+        tween.onComplete += RemoveVisualElementFromDict;
         isShaking = true;
     }
 

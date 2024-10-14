@@ -38,8 +38,8 @@ public class Brick: MonoBehaviour
     protected const string ignoreBrickWithTouchUSSClassName = "ignoreBrickWithTouch";
     protected const string yellowBrickUSSClassName = "yellowBrick";
     protected const string greenBrickUSSClassName = "greenBrick";
-    const string enemyUSSClassName = "enemyBrick";
-    const string playerUSSClassName = "playerBrick";
+    protected const string enemyUSSClassName = "enemyBrick";
+    protected const string playerUSSClassName = "playerBrick";
 
     protected CombatBarUI combatBarUI;
 
@@ -54,7 +54,7 @@ public class Brick: MonoBehaviour
     [SerializeField] protected int hitsToDestroyBrick = 1;
     protected int currenHitsToDestroyBrick = 1;
 
-    public void SetupBrick(CombatBarUI combatBarUI, VisualElement playerElementParent, VisualElement enemyElementParent)
+    public void SetupBrick(CombatBarUI combatBarUI, VisualElement playerElementParent, VisualElement enemyElementParent, VisualElement trapElementParent)
     {
         currenHitsToDestroyBrick = hitsToDestroyBrick;
         
@@ -63,17 +63,10 @@ public class Brick: MonoBehaviour
         iconElement = brickRootElementAttached.Query<VisualElement>(name: "Icon").First();
         this.combatBarUI = combatBarUI;
         this.brickElement = brickRootElementAttached.Q(className: brickUSSClass);
+        
+        ResetUSSClasses();
 
-        if (brickHolder == BrickHolder.PlayerBrick)
-        {
-            this.m_elementParent = playerElementParent;
-            brickRootElementAttached.AddToClassList(playerUSSClassName);
-        }
-        else if(brickHolder == BrickHolder.EnemyBrick)
-        {
-            this.m_elementParent = enemyElementParent;
-            brickRootElementAttached.AddToClassList(enemyUSSClassName);
-        }
+        SetVisualElementParent(playerElementParent, enemyElementParent, trapElementParent);
 
         brickRootElementAttached.style.visibility = Visibility.Hidden;
         m_elementParent.Add(brickRootElementAttached);
@@ -85,6 +78,20 @@ public class Brick: MonoBehaviour
         brickElement.RegisterCallback<TransitionEndEvent>(OnChangeScaleEndEvent);
 
         StartCoroutine(WaitFrameAndPosition());
+    }
+
+    protected virtual void SetVisualElementParent(VisualElement playerElementParent, VisualElement enemyElementParent, VisualElement trapElementParent)
+    {
+        if (brickHolder == BrickHolder.PlayerBrick)
+        {
+            this.m_elementParent = playerElementParent;
+            brickRootElementAttached.AddToClassList(playerUSSClassName);
+        }
+        else if(brickHolder == BrickHolder.EnemyBrick)
+        {
+            this.m_elementParent = enemyElementParent;
+            brickRootElementAttached.AddToClassList(enemyUSSClassName);
+        }
     }
 
     private IEnumerator WaitFrameAndPosition()
@@ -136,13 +143,7 @@ public class Brick: MonoBehaviour
         brickElement.UnregisterCallback<TransitionEndEvent>(OnChangeScaleEndEvent);
         brickRootElementAttached.style.display = DisplayStyle.None;
 
-        brickRootElementAttached.RemoveFromClassList(ignoreBrickWithTouchUSSClassName);
-        brickElement.RemoveFromClassList(brickFlashClass);
-
-        combatBarUI.RemoveBrickFromDict(brickRootElementAttached);
-        
-        brickRootElementAttached.RemoveFromClassList(playerUSSClassName);
-        brickRootElementAttached.RemoveFromClassList(enemyUSSClassName);
+        ResetUSSClasses();
 
         if (gameObject.activeSelf == true)
         {
@@ -150,10 +151,24 @@ public class Brick: MonoBehaviour
         }
     }
 
+    private void ResetUSSClasses()
+    {
+        brickRootElementAttached.RemoveFromClassList(ignoreBrickWithTouchUSSClassName);
+        brickElement.RemoveFromClassList(brickFlashClass);
+        brickRootElementAttached.RemoveFromClassList(playerUSSClassName);
+        brickRootElementAttached.RemoveFromClassList(enemyUSSClassName);
+    }
+
+    protected void RemoveVisualElementFromDict()
+    {
+        combatBarUI.RemoveBrickFromDict(brickRootElementAttached);
+    }
+
     public IEnumerator AutoDestroyBrickElement()
     {
         yield return new WaitForSeconds(timeToAutoDelete);
         RemoveBrickElement();
+        combatBarUI.RemoveBrickFromDict(brickRootElementAttached);
     }
 
     protected void ScaleUpUI()

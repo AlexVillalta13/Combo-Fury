@@ -21,6 +21,34 @@ MonoBehaviour:
   CriticalAttackChance: 20
   DodgeChance: 0
   comboCount: 0
+  brickProbabilityList:
+  - brickType: 6
+    Probability: 0
+    levelToUnlock: 0
+  - brickType: 7
+    Probability: 0
+    levelToUnlock: 0
+  - brickType: 2
+    Probability: 30
+    levelToUnlock: 0
+  - brickType: 1
+    Probability: 70
+    levelToUnlock: 0
+  minTimeToSpawnPlayerBrick: 0.5
+  maxTimeToSpawnPlayerBrick: 1.5
+  maxSimultaneousPlayerBricks: 0
+  maxHealthLevel: 0
+  maxHealthIncreasePerLevel: 10
+  minAttackLevel: 0
+  MinAttackLittleIncrement: 3
+  constToIncreaseMinLittleIncrement: 1
+  MinAttackBigIncrement: 6
+  constToIncreaseMinBigIncrement: 4
+  maxAttackLevel: 0
+  MaxAttackLittleIncrement: 8
+  constToIncreaseMaxLittleIncrement: 2
+  MaxAttackBigIncrement: 15
+  constToIncreaseMaxBigIncrement: 5
   healPercentage: 25
   littleAttackIncreasePercentage: 15
   mediumAttackIncreasePercentage: 30
@@ -40,16 +68,3 @@ MonoBehaviour:
   fireChanceIncrement: 20
   timeToDoDamageFire: 2
   timeToTurnOffFire: 10
-  brickProbabilityList:
-  - brickType: 6
-    Probability: 0
-    levelToUnlock: 0
-  - brickType: 7
-    Probability: 0
-    levelToUnlock: 0
-  - brickType: 2
-    Probability: 30
-    levelToUnlock: 0
-  - brickType: 1
-    Probability: 70
-    levelToUnlock: 0

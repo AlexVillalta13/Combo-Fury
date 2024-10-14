@@ -10,6 +10,7 @@ public class CombatBarUI : UIComponent
     // string references
     private const string pointerCombarBarReferfence = "PointerCombatBar";
     private const string enemyBricksElementReference = "EnemyAttacks";
+    private const string trapBricksElementReference = "TrapAttacks";
     private const string playerBrickElementReference = "PlayerAttacks";
     private const string enemyUSSClassName = "enemyBrick";
     private const string playerUSSClassName = "playerBrick";
@@ -18,10 +19,13 @@ public class CombatBarUI : UIComponent
     // visual elements references
     private VisualElement pointerCombatBar;
     private VisualElement enemyBricksElementHolder;
+    private VisualElement trapBricksElementHolder;
     private VisualElement playerBrickElementHolder;
 
+    [ShowInInspector]
     private Dictionary<VisualElement, Brick> bricksInBarDict = new Dictionary<VisualElement, Brick>();
     private List<VisualElement> enemyBricksList = new List<VisualElement>();
+    private List<VisualElement> trapBricksList = new List<VisualElement>();
     private List<VisualElement> playerBricksList = new List<VisualElement>();
     private List<VisualElement> bricksInPosition = new List<VisualElement>();
 
@@ -46,6 +50,7 @@ public class CombatBarUI : UIComponent
         base.SetElementsReferences();
         pointerCombatBar = m_UIElement.Query<VisualElement>(pointerCombarBarReferfence);
         enemyBricksElementHolder = m_UIElement.Query<VisualElement>(enemyBricksElementReference);
+        trapBricksElementHolder = m_UIElement.Query<VisualElement>(trapBricksElementReference);
         playerBrickElementHolder = m_UIElement.Query<VisualElement>(playerBrickElementReference);
 
         pointerCombatBar.style.left = Length.Percent(pointerPercentPosition);
@@ -53,7 +58,7 @@ public class CombatBarUI : UIComponent
 
     public void InitializeBrick(Brick brickScriptToSpawn)
     {
-        brickScriptToSpawn.SetupBrick(this, playerBrickElementHolder, enemyBricksElementHolder);
+        brickScriptToSpawn.SetupBrick(this, playerBrickElementHolder, enemyBricksElementHolder, trapBricksElementHolder);
         bricksInBarDict.Add(brickScriptToSpawn.GetBrickElementAttached(), brickScriptToSpawn);
         playerBricksList = playerBrickElementHolder.Query<VisualElement>(className: playerUSSClassName).ToList();
     }
@@ -82,6 +87,7 @@ public class CombatBarUI : UIComponent
             float pointerPos = pointerCombatBar.resolvedStyle.left + pointerCombatBar.resolvedStyle.width / 2f;
 
             enemyBricksList = enemyBricksElementHolder.Query<VisualElement>(className: enemyUSSClassName).ToList();
+            trapBricksList  = trapBricksElementHolder.Query<VisualElement>(className: enemyUSSClassName).ToList();
             playerBricksList = playerBrickElementHolder.Query<VisualElement>(className: playerUSSClassName).ToList();
             bricksInPosition.Clear();
 
@@ -92,6 +98,18 @@ public class CombatBarUI : UIComponent
                     bricksInPosition.Add(element);
                 }
             }
+            
+            if (bricksInPosition.Count == 0)
+            {
+                foreach (VisualElement element in trapBricksList)
+                {
+                    if (pointerPos > element.resolvedStyle.left && pointerPos < element.resolvedStyle.left + element.resolvedStyle.width)
+                    {
+                        bricksInPosition.Add(element);
+                    }
+                }
+            }
+
             if (bricksInPosition.Count == 0)
             {
                 foreach (VisualElement element in playerBricksList)
@@ -149,6 +167,10 @@ public class CombatBarUI : UIComponent
 
     public void DeleteAllBricks()
     {
+        foreach (KeyValuePair<VisualElement, Brick> element in bricksInBarDict)
+        {
+            element.Value.RemoveBrickElement();
+        }
         bricksInBarDict.Clear();
     }
 

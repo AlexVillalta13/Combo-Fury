@@ -11,6 +11,7 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="HighlightingSettingsPerFile">
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/5a41d6b7189842eca409fd0b1c3e3dcf17bf78/92/a8eded2c/Void.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Code/Scripts/UI/Gameplay/MinMaxHealthBars.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="ProjectColorInfo">{
@@ -99,7 +100,10 @@
       <workItem from="1727023409182" duration="9066000" />
       <workItem from="1727709469495" duration="6996000" />
       <workItem from="1727770623346" duration="7339000" />
-      <workItem from="1728551902632" duration="3128000" />
+      <workItem from="1728551902632" duration="3760000" />
+      <workItem from="1728589834746" duration="359000" />
+      <workItem from="1728898590339" duration="9386000" />
+      <workItem from="1728927915803" duration="2054000" />
     </task>
     <servers />
   </component>

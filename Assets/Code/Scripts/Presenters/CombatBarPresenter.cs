@@ -56,7 +56,6 @@ public class CombatBarPresenter : MonoBehaviour
 
             SpawnPlayerBrick();
         }
-        Debug.Log(combatBarUI.GetPlayerBricksInBar());
     }
     
     private void SpawnEnemyBrick()
