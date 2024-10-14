@@ -58,8 +58,8 @@ MonoBehaviour:
   hitsToDestroyBrick: 1
   shieldSprite: {fileID: 0}
   shieldBrokenSprite: {fileID: 0}
-  minTimeToCompletePath: 2
-  maxTimeToCompletePath: 4
+  minTimeToCompletePath: 3
+  maxTimeToCompletePath: 5
   easeCurve: 1
 --- !u!114 &-777217446022399624
 MonoBehaviour:

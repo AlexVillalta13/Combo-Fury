@@ -12,6 +12,8 @@ public class BlackBrick : Brick
     Vector3 shakeStrength = new Vector3(50f, 0f, 0f);
     bool isShaking = false;
 
+    [SerializeField] private float timeToEnableTouch = 0.5f;
+
     public BlackBrick() : base()
     {
         brickHolder = BrickHolder.EnemyBrick;
@@ -29,6 +31,14 @@ public class BlackBrick : Brick
         base.OnBrickPositioned();
         blackBrickPositionInBar = brickRootElementAttached.style.left.value.value;
         vec3Shake.x = blackBrickPositionInBar;
+        brickRootElementAttached.AddToClassList(ignoreBrickWithTouchUSSClassName);
+        StartCoroutine(TouchBrickEnabled());
+    }
+
+    private IEnumerator TouchBrickEnabled()
+    {
+        yield return new WaitForSeconds(timeToEnableTouch);
+        brickRootElementAttached.RemoveFromClassList(ignoreBrickWithTouchUSSClassName);
     }
 
     private void Update()
