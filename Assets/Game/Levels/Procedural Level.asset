@@ -21,8 +21,8 @@ MonoBehaviour:
     Probability: 50
     levelToUnlock: 0
   - brickType: 3
-    Probability: 50
-    levelToUnlock: 0
+    Probability: 15
+    levelToUnlock: 30
   - brickType: 5
     Probability: 20
     levelToUnlock: 5
@@ -39,7 +39,7 @@ MonoBehaviour:
     currencyRewardList: []
     enemyBricks:
     - brickType: 0
-      Probability: 50
+      Probability: 0
       levelToUnlock: 0
     - brickType: 3
       Probability: 50

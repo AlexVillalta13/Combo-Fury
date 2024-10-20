@@ -32,6 +32,7 @@ public class EnemySetup : MonoBehaviour
 
     public void SetupNewEnemy()
     {
+        stats.isBoss = currentLevel.GetEnemy(stats.currentEnemy).IsBoss;
         stats.maxHealth = currentLevel.GetEnemy(stats.currentEnemy).Health;
         stats.currentHealth = stats.maxHealth;
         stats.currencyRewardList = currentLevel.GetEnemy(stats.currentEnemy).CurrencyRewardsList;

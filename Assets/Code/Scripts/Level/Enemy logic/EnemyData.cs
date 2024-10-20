@@ -8,6 +8,7 @@ public class EnemyData
 {
     public PlayerStatsSO InCombatStatsSO { get; set; }
 
+    public bool IsBoss = false;
     public float Health = 100;
 
     // [SerializeField] float attack = 5;

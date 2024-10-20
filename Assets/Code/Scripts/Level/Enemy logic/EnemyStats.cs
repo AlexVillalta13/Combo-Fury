@@ -1,11 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
+using MoreMountains.Tools;
 using UnityEngine;
 using UnityEngine.Serialization;
 
 [CreateAssetMenu(menuName = "EnemyStatsSO", fileName = "New Enemy Stats SO")]
 public class EnemyStats : ScriptableObject
 {
+    public bool isBoss = false;
     public float maxHealth;
     public float currentHealth;
     // public float attack;

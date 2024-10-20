@@ -104,7 +104,7 @@ public class MinMaxHealthBars : UIComponent
     public void ChangeEnemyCount()
     {
         enemyCountText.text = (enemyStats.currentEnemy + 1).ToString("0");
-        if(enemyStats.currentEnemy == enemyStats.totalEnemies)
+        if(enemyStats.isBoss == true)
         {
             BossModeOn();
         }

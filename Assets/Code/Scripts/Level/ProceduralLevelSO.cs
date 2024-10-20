@@ -54,7 +54,7 @@ public class ProceduralLevelSO : ScriptableObject, ILevelData
             {
                 maxHealthToIncrease += 16;
             }
-            else if (i % 10 == 1 && i > 20)
+            else if (i % 10 == 1 && i > 10)
             {
                 maxHealthToIncrease += 109;
             }
@@ -63,6 +63,17 @@ public class ProceduralLevelSO : ScriptableObject, ILevelData
                 maxHealthToIncrease += 41;
             }
         }
+
+        if (currentEnemy % 10 == 0)
+        {
+            maxHealthToIncrease *= 2;
+            enemy.IsBoss = true;
+        }
+        else
+        {
+            enemy.IsBoss = false;
+        }
+        
         enemy.Health = maxHealthToIncrease;
     }
 
