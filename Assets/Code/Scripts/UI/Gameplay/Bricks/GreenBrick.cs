@@ -5,11 +5,6 @@ using UnityEngine.UIElements;
 
 public class GreenBrick : Brick
 {
-    public GreenBrick() : base()
-    {
-        brickHolder = BrickHolder.PlayerBrick;
-        brickType = BrickTypeEnum.Greenbrick;
-    }
     
     protected override void SetVisualElementParent(VisualElement playerElementParent, VisualElement enemyElementParent, VisualElement trapElementParent)
     {
