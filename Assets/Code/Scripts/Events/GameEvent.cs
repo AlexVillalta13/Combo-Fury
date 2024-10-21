@@ -8,10 +8,10 @@ public class GameEvent : ScriptableObject
 {
     [ShowInInspector] private readonly List<GameEventListener> gameEventsList = new List<GameEventListener>();
 
-    [ShowInInspector] private readonly List<GameObject> gameObjectAttached = new List<GameObject>();
+    [ShowInInspector] private readonly List<object> gameObjectAttached = new List<object>();
 
     [Button(ButtonSizes.Medium)]
-    public void Raise (GameObject gameObjectAttached)
+    public void Raise (object gameObjectAttached)
     {
         //string path = AssetDatabase.GetAssetPath(this);
         //Debug.Log("GameObject: " + gameObjectAttached.name + ", script: " + ", SO: " + System.IO.Path.GetFileName(path));

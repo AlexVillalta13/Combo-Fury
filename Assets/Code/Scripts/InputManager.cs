@@ -27,6 +27,6 @@ public class InputManager : MonoBehaviour
 
     private void TouchPressed(InputAction.CallbackContext context)
     {
-        touchPressedEvent.Raise(gameObject);
+        touchPressedEvent.Raise(this);
     }
 }

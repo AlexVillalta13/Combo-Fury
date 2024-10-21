@@ -37,7 +37,7 @@ public class PlayerPrefabController : MonoBehaviour
         if(transform.position.x >= nextPositionToGO)
         {
             StopWalk();
-            enemyEncountered.Raise(gameObject);
+            enemyEncountered.Raise(this);
             UpdateNextPositionToGo();
         }
     }
@@ -50,6 +50,11 @@ public class PlayerPrefabController : MonoBehaviour
     public void StopWalk()
     {
         currentVelocity = 0f;
+    }
+
+    public void InfiniteWalk()
+    {
+        nextPositionToGO = transform.position.x + 100f;
     }
 
     public void UpdateNextPositionToGo()

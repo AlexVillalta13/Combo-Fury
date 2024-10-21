@@ -35,7 +35,7 @@ public class PlayerPrefabSpawn : MonoBehaviour
     {
         if(canDoFirstWalk && gameObject.activeInHierarchy == true)
         {
-            beginWalkEvent.Raise(gameObject);
+            beginWalkEvent.Raise(this);
             canDoFirstWalk = false;
         }
     }

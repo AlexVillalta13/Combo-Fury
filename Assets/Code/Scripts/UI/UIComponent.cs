@@ -8,8 +8,10 @@ public class UIComponent : MonoBehaviour
     [Header("References")]
     [SerializeField] protected UIDocument m_Document;
     [SerializeField] protected string elementName;
-    const string scaleDownClass = "scaledDown";
-    const string scaleUpClass = "scaledUp";
+    private const string scaleDownClass = "scaledDown";
+    private const string scaleUpClass = "scaledUp";
+    protected const string opacity100Class = "opacity100";
+    protected const string opacity0Class = "opacity0";
 
     protected VisualElement m_Root;
     protected VisualElement m_UIElement;

@@ -28,6 +28,6 @@ public class WinLevelUI : UIComponent
     private void ReturnToMainMenu()
     {
         SetDisplayElementNone();
-        returnToMainMenuEvent.Raise(gameObject);
+        returnToMainMenuEvent.Raise(this);
     }
 }

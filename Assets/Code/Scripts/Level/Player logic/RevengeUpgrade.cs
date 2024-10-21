@@ -32,7 +32,7 @@ public class RevengeUpgrade : UpgradeBehaviour
         {
             playerAttacks.RegisterDamageModifierInDict(this, inCombatPlayerStatsSO.RevengePercentageIncrease);
             revengeActivated = true;
-            activateRevenge.Raise(gameObject);
+            activateRevenge.Raise(this);
         }
     }
 
@@ -42,7 +42,7 @@ public class RevengeUpgrade : UpgradeBehaviour
         {
             playerAttacks.UnregisterDamageModifierInDict(this);
             revengeActivated = false;
-            deactivateRevenge.Raise(gameObject);
+            deactivateRevenge.Raise(this);
         }
     }
 }

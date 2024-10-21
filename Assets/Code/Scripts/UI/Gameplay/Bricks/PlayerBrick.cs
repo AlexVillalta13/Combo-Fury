@@ -31,11 +31,11 @@ public class PlayerBrick : Brick
         switch (brickType)
         {
             case BrickTypeEnum.YellowBrick:
-                brickEventsHolder.GetPlayerAttackEvent().Raise(gameObject);
+                brickEventsHolder.GetPlayerAttackEvent().Raise(this);
                 break;
 
             case BrickTypeEnum.Greenbrick:
-                brickEventsHolder.GetPlayerCriticalAttackEvent().Raise(gameObject);
+                brickEventsHolder.GetPlayerCriticalAttackEvent().Raise(this);
                 break;
         }
     }

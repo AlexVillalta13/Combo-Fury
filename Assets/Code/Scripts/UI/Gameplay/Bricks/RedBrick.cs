@@ -57,7 +57,7 @@ public class RedBrick : Brick
         if(MovingBrickPositionInBar <= 0f - (brickRootElementAttached.resolvedStyle.width / 2f))
         {
             tween.Kill();
-            brickEventsHolder.GetPlayerIsHitEvent().Raise(gameObject);
+            brickEventsHolder.GetPlayerIsHitEvent().Raise(this);
             ScaleDownUI();
         }
     }
@@ -69,13 +69,13 @@ public class RedBrick : Brick
         currenHitsToDestroyBrick--;
         if(currenHitsToDestroyBrick == 2)
         {
-            brickEventsHolder.GetPlayerBlockEvent().Raise(gameObject);
+            brickEventsHolder.GetPlayerBlockEvent().Raise(this);
             iconElement.style.backgroundImage = new StyleBackground(shieldBrokenSprite);
             ScaleDownALittleUI();
         }
         else if(currenHitsToDestroyBrick == 1)
         {
-            brickEventsHolder.GetPlayerBlockEvent().Raise(gameObject);
+            brickEventsHolder.GetPlayerBlockEvent().Raise(this);
             iconElement.style.backgroundImage = null;
             ScaleDownALittleUI();
         }
@@ -83,7 +83,7 @@ public class RedBrick : Brick
         {
             tween.Kill();
 
-            brickEventsHolder.GetPlayerBlockEvent().Raise(gameObject);
+            brickEventsHolder.GetPlayerBlockEvent().Raise(this);
             brickElement.AddToClassList(brickFlashClass);
 
             ScaleDownUI();
