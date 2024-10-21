@@ -43,7 +43,7 @@ public class FireUpgrade : UpgradeBehaviour
     public void TurnOffFire()
     {
         isEnemyOnFire = false;
-        onDeactivateEnemyInFire.Raise(gameObject);
+        onDeactivateEnemyInFire.Raise(this);
         fireTimer = 0f;
         fireDamageTimer = inCombatPlayerStatsSO.TimeToDoDamageFire;
     }
@@ -59,7 +59,7 @@ public class FireUpgrade : UpgradeBehaviour
         {
             isEnemyOnFire = true;
             fireTimer = inCombatPlayerStatsSO.TimeToTurnOffFire;
-            OnActivateEnemyInFire.Raise(gameObject);
+            OnActivateEnemyInFire.Raise(this);
         }
     }
 }

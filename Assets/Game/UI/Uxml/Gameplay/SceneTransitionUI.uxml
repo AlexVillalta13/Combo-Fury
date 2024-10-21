@@ -1,0 +1,4 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/Game/UI/USS/GeneralControls.uss?fileID=7433441132597879392&amp;guid=60241d5d6715a5448a07eaab8185a076&amp;type=3#GeneralControls" />
+    <ui:VisualElement name="BlackBackground" class="opacity0" style="background-color: rgb(0, 0, 0); transition-property: opacity; transition-duration: 2s; transition-delay: 1s; flex-grow: 1;" />
+</ui:UXML>

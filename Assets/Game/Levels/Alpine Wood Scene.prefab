@@ -6032,6 +6032,12 @@ PrefabInstance:
       propertyPath: m_LocalPosition.y
       value: 0.061
       objectReference: {fileID: 0}
+    - target: {fileID: 4157665912429121479, guid: d5155b9a31c671b4596024d4ca9d8813,
+        type: 3}
+      propertyPath: onEndOfSceneReached
+      value: 
+      objectReference: {fileID: 11400000, guid: b4fcd012ad3ab0749a2ba7929d48418d,
+        type: 2}
     - target: {fileID: 4394200865891104646, guid: d5155b9a31c671b4596024d4ca9d8813,
         type: 3}
       propertyPath: m_LocalPosition.y

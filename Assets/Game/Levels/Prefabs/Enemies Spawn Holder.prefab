@@ -71,6 +71,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spawnList: []
   currentEnemy: -1
+  onEndOfSceneReached: {fileID: 11400000, guid: b4fcd012ad3ab0749a2ba7929d48418d,
+    type: 2}
 --- !u!114 &2983506178787453224
 MonoBehaviour:
   m_ObjectHideFlags: 0

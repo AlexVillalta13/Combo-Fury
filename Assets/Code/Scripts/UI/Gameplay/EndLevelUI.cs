@@ -39,6 +39,6 @@ public class EndLevelUI : UIComponent
     private void RaiseReturnToMainMenuEvent(ClickEvent evt)
     {
         DisableTapToReturnToMainMenu();
-        returnToMainMenuEvent.Raise(gameObject);
+        returnToMainMenuEvent.Raise(this);
     }
 }

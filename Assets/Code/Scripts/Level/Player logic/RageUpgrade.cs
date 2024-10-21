@@ -31,13 +31,13 @@ public class RageUpgrade : UpgradeBehaviour
         if (PlayerHealthUnderRageCondition() == true && hasRage == false)
         {
             playerAttacks.RegisterDamageModifierInDict(this, inCombatPlayerStatsSO.ExtraRageAttack);
-            activateRage.Raise(gameObject);
+            activateRage.Raise(this);
             hasRage = true;
         }
         else if (PlayerHealthUnderRageCondition() == false && hasRage == true)
         {
             playerAttacks.UnregisterDamageModifierInDict(this);
-            deactivateRage.Raise(gameObject);
+            deactivateRage.Raise(this);
             hasRage = false;
         }
     }

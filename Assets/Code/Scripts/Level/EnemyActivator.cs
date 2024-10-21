@@ -8,6 +8,8 @@ public class EnemyActivator : MonoBehaviour
 
     [SerializeField] int currentEnemy = -1;
 
+    [SerializeField] private GameEvent onEndOfSceneReached;
+
     private void Awake()
     {
         SetListOfEnemySpawns();
@@ -57,7 +59,14 @@ public class EnemyActivator : MonoBehaviour
             return;
         }
         currentEnemy++;
-        spawnList[currentEnemy].ActivateEnemy();
+        if (currentEnemy >= spawnList.Count)
+        {
+            onEndOfSceneReached?.Raise(this);
+        }
+        else
+        {
+            spawnList[currentEnemy].ActivateEnemy();
+        }
     }
 
     public void DeactivatePreviousEnemy()

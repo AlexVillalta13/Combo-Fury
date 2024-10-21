@@ -38,7 +38,7 @@ public class StatsUpgrade : MonoBehaviour
             defenseIncrease = 2;
         }
         inCombatPlayerStatsSO.Defense += defenseIncrease;
-        onPlayerChangeInCombatStat.Raise(gameObject);
+        onPlayerChangeInCombatStat.Raise(this);
     }
 
     public void IncreaseAttack()
@@ -50,7 +50,7 @@ public class StatsUpgrade : MonoBehaviour
         }
         inCombatPlayerStatsSO.Attack += attackIncrease;
 
-        onPlayerChangeInCombatStat.Raise(gameObject);
+        onPlayerChangeInCombatStat.Raise(this);
     }
     
     public void IncreaseMinAttack()
@@ -71,7 +71,7 @@ public class StatsUpgrade : MonoBehaviour
         inCombatPlayerStatsSO.MinAttack += attackIncrement;
         inCombatPlayerStatsSO.MaxAttack += attackIncrement;
 
-        onPlayerChangeInCombatStat.Raise(gameObject);
+        onPlayerChangeInCombatStat.Raise(this);
     }
     
     public void IncreaseMaxAttack()
@@ -91,7 +91,7 @@ public class StatsUpgrade : MonoBehaviour
         }
         inCombatPlayerStatsSO.MaxAttack += attackIncrement;
 
-        onPlayerChangeInCombatStat.Raise(gameObject);
+        onPlayerChangeInCombatStat.Raise(this);
     }
 
     public void IncreaseCriticalChance()

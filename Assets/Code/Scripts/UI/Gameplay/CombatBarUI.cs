@@ -123,7 +123,7 @@ public class CombatBarUI : UIComponent
 
             if (bricksInPosition.Count == 0)
             {
-                touchBrickEventsHolder.GetPlayerIsHitEvent().Raise(gameObject);
+                touchBrickEventsHolder.GetPlayerIsHitEvent().Raise(this);
                 return;
             }
 

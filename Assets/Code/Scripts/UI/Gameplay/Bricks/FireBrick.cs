@@ -19,8 +19,8 @@ public class FireBrick : Brick
         hitsToDestroyBrick--;
         if (hitsToDestroyBrick < 1)
         {
-            fireAttackEvent.Raise(gameObject);
-            brickEventsHolder.GetPlayerAttackEvent().Raise(gameObject);
+            fireAttackEvent.Raise(this);
+            brickEventsHolder.GetPlayerAttackEvent().Raise(this);
             ScaleDownUI();
             brickElement.AddToClassList(brickFlashClass);
         }

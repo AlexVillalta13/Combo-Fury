@@ -3,13 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UIElements;
 
-public class GreenBrick : Brick
+public class PlayerBrick : Brick
 {
-    public GreenBrick() : base()
-    {
-        brickHolder = BrickHolder.PlayerBrick;
-        brickType = BrickTypeEnum.Greenbrick;
-    }
     
     protected override void SetVisualElementParent(VisualElement playerElementParent, VisualElement enemyElementParent, VisualElement trapElementParent)
     {
@@ -22,12 +17,26 @@ public class GreenBrick : Brick
         base.EffectWithTouch();
 
         hitsToDestroyBrick--;
-        if (hitsToDestroyBrick < 1)
+        if(hitsToDestroyBrick < 1)
         {
-            brickEventsHolder.GetPlayerCriticalAttackEvent().Raise(gameObject);
+            TriggerEventBasedOnType();
             brickElement.AddToClassList(brickFlashClass);
-
+            
             ScaleDownUI();
+        }
+    }
+
+    private void TriggerEventBasedOnType()
+    {
+        switch (brickType)
+        {
+            case BrickTypeEnum.YellowBrick:
+                brickEventsHolder.GetPlayerAttackEvent().Raise(this);
+                break;
+
+            case BrickTypeEnum.Greenbrick:
+                brickEventsHolder.GetPlayerCriticalAttackEvent().Raise(this);
+                break;
         }
     }
 

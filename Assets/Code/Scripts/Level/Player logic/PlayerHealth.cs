@@ -46,7 +46,7 @@ public class PlayerHealth : MonoBehaviour
     {
         if (UnityEngine.Random.Range(1f, 100f) < inCombatPlayerStatsSO.DodgeChance)
         {
-            playerDodges.Raise(gameObject);
+            playerDodges.Raise(this);
             return true;
         }
         return false;
@@ -56,7 +56,7 @@ public class PlayerHealth : MonoBehaviour
     {
         if (hasShield == true)
         {
-            onPlayerIsHitWithoutDamage.Raise(gameObject);
+            onPlayerIsHitWithoutDamage.Raise(this);
             onChangePlayerHealth(this, new OnChangeHealthEventArgs() { healthDifference = 0f });
             hasShield = false;
             return true;
@@ -69,7 +69,7 @@ public class PlayerHealth : MonoBehaviour
         attackIncome = Mathf.Clamp(eventArgs.enemyAttackDamage - inCombatPlayerStatsSO.Defense, 0f, eventArgs.enemyAttackDamage);
         inCombatPlayerStatsSO.CurrentHealth -= attackIncome;
 
-        onPlayerIsDamage.Raise(gameObject);
+        onPlayerIsDamage.Raise(this);
 
         onChangePlayerHealth(this, new OnChangeHealthEventArgs() { healthDifference = -attackIncome });
     }
@@ -84,7 +84,7 @@ public class PlayerHealth : MonoBehaviour
             }
             else
             {
-                playerDeathEvent.Raise(gameObject);
+                playerDeathEvent.Raise(this);
             }
         }
     }

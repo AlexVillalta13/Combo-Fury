@@ -325,6 +325,83 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!1 &5320193521113823549
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3368836788714078676}
+  - component: {fileID: 60976307650313111}
+  - component: {fileID: 6901158603800506786}
+  m_Layer: 0
+  m_Name: Scene Transition UI
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3368836788714078676
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5320193521113823549}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 8973599123816074883}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &60976307650313111
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5320193521113823549}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 66d0b1e2fab43a6459022e09a07f751d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Document: {fileID: 3781455914064523266}
+  elementName: SceneTransitionUI
+  OnChangeScene: {fileID: 11400000, guid: ebbfbbaa4358c384ca9883311d78f7fd, type: 2}
+  OnLevelLoadedEvent: {fileID: 11400000, guid: 7778c4a02a2ecb84f91e6256257b70a3, type: 2}
+--- !u!114 &6901158603800506786
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5320193521113823549}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb953a8383db9fc45943e75de88733bb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameEvent: {fileID: 11400000, guid: b4fcd012ad3ab0749a2ba7929d48418d, type: 2}
+  unityEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 60976307650313111}
+        m_TargetAssemblyTypeName: SceneTransitionUI, Assembly-CSharp
+        m_MethodName: SetOpacity100
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &6120516854067755251
 GameObject:
   m_ObjectHideFlags: 0
@@ -362,6 +439,7 @@ Transform:
   - {fileID: 9000182647592392622}
   - {fileID: 4688261439523986120}
   - {fileID: 7141677620364406120}
+  - {fileID: 3368836788714078676}
   - {fileID: 2619643543066720501}
   - {fileID: 745474193473736874}
   - {fileID: 827211360143606799}
@@ -944,6 +1022,7 @@ GameObject:
   - component: {fileID: 629461613946943935}
   - component: {fileID: 7379295973444178217}
   - component: {fileID: 6893541901811113309}
+  - component: {fileID: 7762112728471626757}
   m_Layer: 0
   m_Name: Tap To Begin Walk UI
   m_TagString: Untagged
@@ -1027,6 +1106,34 @@ MonoBehaviour:
       - m_Target: {fileID: 629461613946943935}
         m_TargetAssemblyTypeName: UIComponent, Assembly-CSharp
         m_MethodName: SetDisplayElementNone
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &7762112728471626757
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8877454005424654046}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb953a8383db9fc45943e75de88733bb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameEvent: {fileID: 11400000, guid: ebbfbbaa4358c384ca9883311d78f7fd, type: 2}
+  unityEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 629461613946943935}
+        m_TargetAssemblyTypeName: UIComponent, Assembly-CSharp
+        m_MethodName: SetDisplayElementFlex
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

@@ -41,11 +41,11 @@ public class EnemyHealth : MonoBehaviour
         {
             if (stats.currentEnemy == stats.totalEnemies)
             {
-                playerWinLevelEvent.Raise(gameObject);
+                playerWinLevelEvent.Raise(this);
             }
             else
             {
-                playerWinFightEvent.Raise(gameObject);
+                playerWinFightEvent.Raise(this);
             }
 
             stats.currentEnemy += 1;
@@ -56,11 +56,11 @@ public class EnemyHealth : MonoBehaviour
     {
         if (stats.currentEnemy == stats.totalEnemies)
         {
-            playerWinLevelEvent.Raise(gameObject);
+            playerWinLevelEvent.Raise(this);
         }
         else
         {
-            playerWinFightEvent.Raise(gameObject);
+            playerWinFightEvent.Raise(this);
         }
 
         stats.currentEnemy += 1;
@@ -68,6 +68,6 @@ public class EnemyHealth : MonoBehaviour
 
     public void WinLevelDEBUG()
     {
-        playerWinLevelEvent.Raise(gameObject);
+        playerWinLevelEvent.Raise(this);
     }
 }

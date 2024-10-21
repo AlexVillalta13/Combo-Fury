@@ -11,7 +11,7 @@ public class ShieldUpgrade : UpgradeBehaviour
     {
         if (HasUpgrade())
         {
-            ActivateShieldVFX.Raise(gameObject);
+            ActivateShieldVFX.Raise(this);
         }
     }
 
@@ -19,7 +19,7 @@ public class ShieldUpgrade : UpgradeBehaviour
     {
         if(HasUpgrade())
         {
-            DeactivateShieldVFX.Raise(gameObject);
+            DeactivateShieldVFX.Raise(this);
         }
     }
 }

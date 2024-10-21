@@ -11,12 +11,12 @@ public class ComboCounter : MonoBehaviour
     public void ResetComboCount()
     {
         inCombatPlayerStatsSO.comboCount = 0;
-        onUpdateComboNumber.Raise(gameObject);
+        onUpdateComboNumber.Raise(this);
     }
 
     public void IncreaseComboCount()
     {
         inCombatPlayerStatsSO.comboCount++;
-        onUpdateComboNumber.Raise(gameObject);
+        onUpdateComboNumber.Raise(this);
     }
 }

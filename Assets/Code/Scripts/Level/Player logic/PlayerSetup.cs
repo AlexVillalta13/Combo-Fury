@@ -17,7 +17,7 @@ public class PlayerSetup : MonoBehaviour
 
         inCombatPlayerStatsSO.StartGame(permanentPlayerStatsSO);
         
-        onPlayerChangeInCombatStat.Raise(gameObject);
+        onPlayerChangeInCombatStat.Raise(this);
         PlayerHealth.onChangePlayerHealth?.Invoke(this, new OnChangeHealthEventArgs() { spawnNumberTextMesh = false});
     }
 }

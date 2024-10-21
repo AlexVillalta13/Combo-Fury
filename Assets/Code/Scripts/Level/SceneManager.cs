@@ -8,6 +8,10 @@ public class SceneManager : MonoBehaviour
     [SerializeField] SceneElementsHolder alpineWoodsScene;
     [SerializeField] SceneElementsHolder forestScene;
 
+    [SerializeField] private SceneElementsHolder[] scenesToQueue;
+    private Queue<SceneElementsHolder> scenesQueue;
+    private SceneElementsHolder activatedScene;
+
     ILevelData currentLevelToLoad;
 
     private void OnEnable()
@@ -28,8 +32,17 @@ public class SceneManager : MonoBehaviour
     public void DisableAllScenes()
     {
         mainMenuScene.SetActive(false);
+        DisableAllGameplayScenes();
         alpineWoodsScene.gameObject.SetActive(false);
         forestScene.gameObject.SetActive(false);
+    }
+
+    private void DisableAllGameplayScenes()
+    {
+        foreach (SceneElementsHolder scene in scenesToQueue)
+        {
+            scene.gameObject.SetActive(false);
+        }
     }
 
     public void EnableMainMenu()
@@ -38,10 +51,39 @@ public class SceneManager : MonoBehaviour
         mainMenuScene.SetActive(true);
     }
 
+    private void DisableMainMenu()
+    {
+        mainMenuScene.SetActive(false);
+    }
+
+    public void BeginGameplay()
+    {
+        DisableMainMenu();
+        SetQueue();
+        EnableNextSceneFromQueue();
+    }
+
+    private void SetQueue()
+    {
+        scenesQueue = new Queue<SceneElementsHolder>(scenesToQueue);
+    }
+
+    public void EnableNextSceneFromQueue()
+    {
+        if (activatedScene != null && activatedScene.gameObject.activeInHierarchy == true)
+        {
+            activatedScene.gameObject.SetActive(false);
+        }
+
+        activatedScene = scenesQueue.Dequeue();
+        scenesQueue.Enqueue(activatedScene);
+        EnableScene(activatedScene);
+    }
+
     public void ActivateSelectedSceneEnvironment()
     {
         DisableAllScenes();
-        switch(currentLevelToLoad.GetEnvironment())
+        switch (currentLevelToLoad.GetEnvironment())
         {
             case SceneEnum.AlpineWoods:
                 EnableScene(alpineWoodsScene);
@@ -49,7 +91,6 @@ public class SceneManager : MonoBehaviour
             case SceneEnum.Forest:
                 EnableScene(forestScene);
                 break;
-
         }
     }
 
